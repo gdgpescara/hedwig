@@ -1,3 +1,7 @@
+---
+import Link from "./Link.astro";
+---
+
 <div class="navbar bg-base-100">
     <div class="flex-1">
         <a class="btn btn-ghost normal-case text-xl">Devfest 2023</a>
@@ -5,11 +9,11 @@
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li class=""><a>Link</a></li>
-            <li class=""><a>Link</a></li>
-            <li class=""><a>Link</a></li>
-            <li class=""><a>Link</a></li>
-            <li class=""><a>Link</a></li>
+            <li class=""><Link href="/">Home</Link></li>
+            <li class=""><Link href="/a">Link</Link></li>
+            <li class=""><Link href="/b">Link</Link></li>
+            <li class=""><Link href="/c">Link</Link></li>
+            <li class=""><Link href="/d">Link</Link></li>
         </ul>
     </div>
 </div>
