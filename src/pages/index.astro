@@ -40,4 +40,22 @@ import Section from "../components/Section.astro";
 			/>
 		</div>
 	</Section>
+	<Section>
+		<div class="flex md:flex-col lg:flex-row">
+			<div class="bg-green-500 h-[700px] w-full"></div>
+			<div class="w-full">Location</div>
+		</div>
+	</Section>
+	<Section title="Sponsor">sponsor</Section>
+	<div class="keep-in-touch">
+		<Section title="Keep in touch">keep in touch</Section>
+	</div>
 </Layout>
+<style>
+	.keep-in-touch {
+		background-color: red;
+		/* background-image: url("/images/ellipse.svg");  */
+		/* background-repeat: repeat; */
+		background-position: 30px 30px;
+	}
+</style>
