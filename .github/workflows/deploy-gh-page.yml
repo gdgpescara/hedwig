@@ -1,0 +1,2 @@
+- name: Astro Deploy
+  uses: withastro/action@v0.2.0
