@@ -1,9 +1,18 @@
 ---
 import Link from "./Link.astro";
+
+const links = [
+    {name: "Sign up", link: "#sign-up"},
+    {name: "Numbers", link: "#numbers"},
+    {name: "Location", link: "#location"},
+    {name: "Sponsors", link: "#sponsors"},
+    {name: "Contact", link: "#contact"}
+];
+
 ---
 
-<li class=""><Link href="/">Home</Link></li>
-<li class=""><Link href="/a">Link</Link></li>
-<li class=""><Link href="/b">Link</Link></li>
-<li class=""><Link href="/c">Link</Link></li>
-<li class=""><Link href="/d">Link</Link></li>
+{
+    links.map((item) => (
+        <li class=""><Link href={item.link}>{item.name}</Link></li>
+    ))
+}

@@ -1,13 +1,65 @@
-<div class="hero min-h-screen bg-base-200">
+<div class="hero parallax">
     <div class="hero-content text-center">
-        <div class="max-w-md">
+        <div class="backdrop-blur-sm bg-white/30 rounded-3xl p-80">
             <h1 class="text-5xl font-bold">Hello there</h1>
             <p class="py-6">
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
                 assumenda excepturi exercitationem quasi. In deleniti eaque aut
                 repudiandae et a id nisi.
             </p>
-            <button class="btn btn-primary">Get Started</button>
+            <button class="btn btn-primary bg-transparent text-black border-dashed border-black rounded-full px-8 hover:bg-black hover:border-transparent hover:border-dashed hover:text-white">Sign up</button>
         </div>
     </div>
 </div>
+
+
+<style is:global>
+    .hero {
+        --color-default: #ffffff;
+        --color-default-rgb: 255, 255, 255;
+        --color-background: #FFF;
+        --color-background-rgb: 255, 255, 255;
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        padding: 160px 0 80px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("images/intro.png");
+    }
+
+    .hero .container {
+        position: relative;
+        z-index: 3;
+    }
+
+    .hero h2 {
+        margin: 0;
+        font-size: 44px;
+        font-weight: 700;
+    }
+
+    .hero p {
+        color: rgba(var(--color-default-rgb), 0.8);
+        margin: 5px 0 0 0;
+        font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .hero h2 {
+            font-size: 32px;
+        }
+    
+        .hero p {
+            font-size: 18px;
+        }
+    }
+
+    .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
