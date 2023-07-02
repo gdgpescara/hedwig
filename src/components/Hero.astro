@@ -1,24 +1,31 @@
-<div class="hero parallax">
+---
+import { Image } from "@astrojs/image/components";
+import gdg from '../assets/gdg.svg';
+import title from '../assets/title.png';
+import subTitle from '../assets/subtitle.png';
+
+---
+
+<section class="hero parallax" id="signUp">
     <div class="hero-content text-center">
-        <div class="backdrop-blur-sm bg-white/30 rounded-3xl p-80">
-            <h1 class="text-5xl font-bold">Hello there</h1>
-            <p class="py-6">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
-            </p>
-            <button class="btn btn-primary bg-transparent text-black border-dashed border-black rounded-full px-8 hover:bg-black hover:border-transparent hover:border-dashed hover:text-white">Sign up</button>
+        <div class="backdrop-blur-sm bg-white/30 rounded-3xl lg:px-40 lg:py-20 justify-items-center grid">
+            <Image src={gdg} alt="Google developer groups" class={
+                'pb-20'
+            }/>
+            <Image src={title} alt="Devfest 2023" class={
+                'pb-10'
+            }/>
+            <Image src={subTitle} alt="and the developers' magic" />
+            <button
+                class="btn btn-primary bg-transparent text-black border-dashed border-black rounded-full px-20 normal-case hover:bg-black hover:text-white"
+                >Sign up</button
+            >
         </div>
     </div>
-</div>
+</section>
 
-
-<style is:global>
+<style is:global lang="scss">
     .hero {
-        --color-default: #ffffff;
-        --color-default-rgb: 255, 255, 255;
-        --color-background: #FFF;
-        --color-background-rgb: 255, 255, 255;
         width: 100%;
         min-height: 100vh;
         position: relative;
@@ -27,32 +34,10 @@
         align-items: center;
         justify-content: center;
         background-image: url("images/intro.png");
-    }
 
-    .hero .container {
-        position: relative;
-        z-index: 3;
-    }
-
-    .hero h2 {
-        margin: 0;
-        font-size: 44px;
-        font-weight: 700;
-    }
-
-    .hero p {
-        color: rgba(var(--color-default-rgb), 0.8);
-        margin: 5px 0 0 0;
-        font-size: 20px;
-    }
-
-    @media (max-width: 768px) {
-        .hero h2 {
-            font-size: 32px;
-        }
-    
-        .hero p {
-            font-size: 18px;
+        .container {
+            position: relative;
+            z-index: 3;
         }
     }
 

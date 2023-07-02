@@ -1,12 +1,13 @@
 ---
 interface Props {
     title?: string;
+    id?: string;
 }
 
-const { title } = Astro.props;
+const { title, id } = Astro.props;
 ---
 
-<section class="xl:pt-16 xl:pb-32">
+<section class="xl:pt-40 xl:pb-32" id={id}>
     {
         title && (
             <h2 class="text-center xl:text-3xl text-2xl xl:pb-32">{title}</h2>

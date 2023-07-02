@@ -1,18 +1,11 @@
 ---
 import Link from "./Link.astro";
-
-const links = [
-    {name: "Sign up", link: "#sign-up"},
-    {name: "Numbers", link: "#numbers"},
-    {name: "Location", link: "#location"},
-    {name: "Sponsors", link: "#sponsors"},
-    {name: "Contact", link: "#contact"}
-];
+import navData from "../data/nav-data";
 
 ---
 
 {
-    links.map((item) => (
-        <li class=""><Link href={item.link}>{item.name}</Link></li>
+    navData.map((nav) => (
+        <li class=""><Link href={nav.path}>{nav.name}</Link></li>
     ))
 }

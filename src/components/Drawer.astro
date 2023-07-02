@@ -1,12 +1,13 @@
 ---
 import Navbar from "./Navbar.astro";
+import { Image } from "@astrojs/image/components";
 ---
 
 <div class="drawer">
     <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
         <!-- Navbar -->
-        <div class="w-full navbar bg-base-300">
+        <header class="w-full navbar bg-transparent fixed top-0 z-50">
             <div class="flex-none lg:hidden">
                 <label for="drawer-toggle" class="btn btn-square btn-ghost">
                     <svg
@@ -23,15 +24,17 @@ import Navbar from "./Navbar.astro";
                 </label>
             </div>
             <!-- Logo -->
-            <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-xl">Devfest 2023</a>
+            <div class="flex-1 grid justify-items-center lg:justify-items-start">
+                <a class="btn normal-case text-xl logo">
+                    DevFest 2023 Pescara
+                </a>
             </div>
             <nav class="flex-none hidden lg:block">
                 <ul class="menu menu-horizontal">
                     <Navbar />
                 </ul>
             </nav>
-        </div>
+        </header>
         <!-- Page content here -->
         <slot />
     </div>
@@ -43,3 +46,61 @@ import Navbar from "./Navbar.astro";
         </ul>
     </aside>
 </div>
+
+<style is:global lang="scss">
+    header {
+        .logo {
+            color: black;
+            background-color: black;
+            -webkit-mask: url(/images/logo.svg) no-repeat;
+            mask: url(/images/logo.svg) no-repeat;
+            mask-size: contain;
+            mask-position: 1rem;
+            height: 80px;
+            width: 250px;
+            text-indent: -9999px;
+        }
+    }
+
+    .menu.menu-horizontal li {
+        color: black;
+        
+        a {
+            border-bottom: 2px dotted transparent;
+            border-radius: 0;
+            margin: 0 1rem;
+
+            &.active{
+                border-color: black;
+                background-color: transparent;
+                color: unset;
+            }
+        }
+    }
+    
+    .scrolled {
+        header {
+            background-color: hsl(var(--n) / var(--tw-bg-opacity))
+        }
+
+        .menu.menu-horizontal li {
+            color: white;
+        }
+
+        .logo {
+            background-color: white;
+        }
+
+        .menu-horizontal {
+            color: white;
+
+            li a.active{
+                border-color: white;
+            }
+        }
+    }
+</style>
+
+<script>
+    import "../scripts/header.js";
+</script>
