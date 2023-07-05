@@ -8,13 +8,11 @@ import subTitle from '../assets/subtitle.png';
 
 <section class="hero parallax" id="signUp">
     <div class="hero-content text-center">
-        <div class="backdrop-blur-sm bg-white/30 rounded-3xl lg:px-40 lg:py-20 justify-items-center grid">
-            <Image src={gdg} alt="Google developer groups" class={
-                'pb-20'
-            }/>
-            <Image src={title} alt="Devfest 2023" class={
-                'pb-10'
-            }/>
+        <div class="backdrop-blur-sm bg-white/30 rounded-3xl px-8 py-8 lg:px-40 lg:py-20 justify-items-center grid">
+            <Image src={gdg} alt="Google developer groups"/>
+            <h2>
+                Devfest 2023
+            </h2>
             <Image src={subTitle} alt="and the developers' magic" />
             <button
                 class="btn btn-primary bg-transparent text-black border-dashed border-black rounded-full px-20 normal-case hover:bg-black hover:text-white"
@@ -34,6 +32,18 @@ import subTitle from '../assets/subtitle.png';
         align-items: center;
         justify-content: center;
         background-image: url("images/intro.png");
+
+        h2 {
+            font-family: 'Scriptina';
+            color: #000;
+            font-size: 70px;
+            line-height: 3;
+
+            @media (max-width: 640px) {
+                font-size: 60px;
+                line-height: 2;
+            }
+        }
 
         .container {
             position: relative;
