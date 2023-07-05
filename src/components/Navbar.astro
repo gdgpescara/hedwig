@@ -1,9 +1,11 @@
 ---
 import Link from "./Link.astro";
+import navData from "../data/nav-data";
+
 ---
 
-<li class=""><Link href="/">Home</Link></li>
-<li class=""><Link href="/a">Link</Link></li>
-<li class=""><Link href="/b">Link</Link></li>
-<li class=""><Link href="/c">Link</Link></li>
-<li class=""><Link href="/d">Link</Link></li>
+{
+    navData.map((nav) => (
+        <li class=""><Link href={nav.path}>{nav.name}</Link></li>
+    ))
+}

@@ -1,13 +1,50 @@
-<div class="hero min-h-screen bg-base-200">
+---
+import { Image } from "@astrojs/image/components";
+import gdg from '../assets/gdg.svg';
+import title from '../assets/title.png';
+import subTitle from '../assets/subtitle.png';
+
+---
+
+<section class="hero parallax" id="signUp">
     <div class="hero-content text-center">
-        <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Hello there</h1>
-            <p class="py-6">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
-            </p>
-            <button class="btn btn-primary">Get Started</button>
+        <div class="backdrop-blur-sm bg-white/30 rounded-3xl lg:px-40 lg:py-20 justify-items-center grid">
+            <Image src={gdg} alt="Google developer groups" class={
+                'pb-20'
+            }/>
+            <Image src={title} alt="Devfest 2023" class={
+                'pb-10'
+            }/>
+            <Image src={subTitle} alt="and the developers' magic" />
+            <button
+                class="btn btn-primary bg-transparent text-black border-dashed border-black rounded-full px-20 normal-case hover:bg-black hover:text-white"
+                >Sign up</button
+            >
         </div>
     </div>
-</div>
+</section>
+
+<style is:global lang="scss">
+    .hero {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        padding: 160px 0 80px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("images/intro.png");
+
+        .container {
+            position: relative;
+            z-index: 3;
+        }
+    }
+
+    .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
