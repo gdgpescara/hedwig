@@ -43,7 +43,9 @@ import Section from "../components/Section.astro";
 	<Section>
 		<div class="flex md:flex-col lg:flex-row">
 			<div class="bg-green-500 h-[700px] w-full"></div>
-			<div class="w-full">Location</div>
+			<div class="w-full">
+				<div class="back-h">Location</div>
+			</div>
 		</div>
 	</Section>
 	<Section title="Sponsor">sponsor</Section>
@@ -57,5 +59,8 @@ import Section from "../components/Section.astro";
 		/* background-image: url("/images/ellipse.svg");  */
 		/* background-repeat: repeat; */
 		background-position: 30px 30px;
+	}
+	.back-h {
+		font-family: 'Scriptina';
 	}
 </style>
