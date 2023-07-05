@@ -5,9 +5,11 @@ interface Props {
 }
 
 const { title, id } = Astro.props;
+
+const sectionClass = `xl:pt-40 xl:pb-32 parallax ${id}`;
 ---
 
-<section class="xl:pt-40 xl:pb-32" id={id}>
+<section class={sectionClass} id={id}>
     {
         title && (
             <h2 class="text-center xl:text-3xl text-2xl xl:pb-32">{title}</h2>
@@ -15,3 +17,19 @@ const { title, id } = Astro.props;
     }
     <slot />
 </section>
+
+<style is:global lang="scss">
+    .numbers, .sponsors {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        background-image: url("images/old-map-bg.png");
+    }
+
+    .contacts {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        background-image: url("images/grid-point.png");
+    }
+</style>
