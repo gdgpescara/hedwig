@@ -6,10 +6,10 @@ interface Props {
 
 const { title, id } = Astro.props;
 
-const sectionClass = `xl:pt-40 xl:pb-32 parallax ${id}`;
+const sectionClass = `xl:pt-16 xl:pb-8 parallax ${id}`;
 ---
 
-<section class={sectionClass} id={id}>
+<section class="xl:pt-16 xl:pb-8">
     {
         title && (
             <h2 class="text-center xl:text-3xl text-2xl xl:pb-32">{title}</h2>
