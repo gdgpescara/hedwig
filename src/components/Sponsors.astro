@@ -1,9 +1,9 @@
 ---
-import Section from "../../components/Section.astro";
-import Sponsor from "../../components/Sponsor.astro";
-import googleIconSrc from "../../assets/sponsors/google.png";
-import stickermuleIconSrc from "../../assets/sponsors/stickermule.png";
-import frontiereIconSrc from "../../assets/sponsors/frontiere.svg";
+import googleIconSrc from "../assets/sponsors/google.png";
+import stickermuleIconSrc from "../assets/sponsors/stickermule.png";
+import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
+import Section from "./Section.astro";
+import Sponsor from "./Sponsor.astro";
 
 interface SponsorValue {
   level: string;
@@ -40,7 +40,7 @@ const sponsors: SponsorValue[][] = [
 <div class="bg-[url('images/old-map.png')]">
     <Section title="Sponsors">
       {sponsors.map((sponsorLevel) => (
-              <div class="grid gap-8 xl:grid-cols-4 md:grid-cols-2 my-8">
+              <div class="flex flex-wrap justify-center gap-8 pt-20 pb-16">
                 {sponsorLevel.map((sponsor) => (
                         <Sponsor
                                 level={sponsor.level}
