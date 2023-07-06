@@ -12,6 +12,7 @@ import Sponsor from "../components/Sponsor.astro";
 import googleIconSrc from "../assets/sponsors/google.png";
 import stickermuleIconSrc from "../assets/sponsors/stickermule.png";
 import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
+import Map from "../components/Map.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -45,8 +46,10 @@ import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
 		</div>
 	</Section>
 	<Section>
-		<div class="flex md:flex-col lg:flex-row">
-			<div class="bg-green-500 h-full w-full"></div>
+		<div class="flex md:flex-col lg:flex-row min-h-[485px]">
+			<div class="pl-2 w-full">
+				<Map></Map>
+			</div>
 			<div class="w-full location-detail-container">
 				<div class="back-h location-h">Location</div>
 				<div class="location-detail">
@@ -94,6 +97,10 @@ import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
 </Layout>
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+	html, body {
+		background-color: #181818;
+	}
 
 	.keep-in-touch {
 		background-color: red;
