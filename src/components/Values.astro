@@ -1,23 +1,22 @@
 ---
+import Heading from "./Heading.astro";
+import {Image} from "@astrojs/image/components";
 interface Props {
-    imageSrc: string;
-    imageAlt: string;
-    title: string;
-    description: string;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  description: string;
 }
 
-import { Image } from "@astrojs/image/components";
-const { imageSrc, imageAlt, title, description } = Astro.props;
+const {imageSrc, imageAlt, title, description} = Astro.props;
 ---
 
 <div class="text-center px-2">
     <Image
-        class="max-h-[200px] h-[200px] m-auto"
-        width={200}
-        height={100}
-        src={imageSrc}
-        alt={imageAlt}
+            class="max-h-[200px] h-[200px] m-auto"
+            src={imageSrc}
+            alt={imageAlt}
     />
-    <h3 class="xl:text-3xl mt-4 mb-6">{title}</h3>
-    <div class="xl:text-6xl font-bold text-accent-content">{description}</div>
+    <Heading text={title} level="h3"/>
+    <div class="text-6xl font-bold text-accent-content">{description}</div>
 </div>

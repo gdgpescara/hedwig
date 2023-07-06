@@ -1,0 +1,51 @@
+---
+import Section from "../../components/Section.astro";
+import {Image} from "@astrojs/image/components";
+import instagramImageSrc from "../../assets/social/instagram.svg";
+import facebookImageSrc from "../../assets/social/facebook.svg";
+import linkedinImageSrc from "../../assets/social/linkedin.svg";
+import twitterImageSrc from "../../assets/social/twitter.svg";
+
+interface Social {
+  link: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const social: Social[] = [
+  {
+    link: "https://www.instagram.com/gdgpescara/",
+    imageSrc: instagramImageSrc,
+    imageAlt: "Instagram",
+  },
+  {
+    link: "https://www.facebook.com/gdgpescara/",
+    imageSrc: facebookImageSrc,
+    imageAlt: "Facebook",
+  },
+  {
+    link: "https://www.linkedin.com/company/gdg-pescara/",
+    imageSrc: linkedinImageSrc,
+    imageAlt: "LinkedIn",
+  },
+  {
+    link: "https://twitter.com/gdgpescara",
+    imageSrc: twitterImageSrc,
+    imageAlt: "Twitter",
+  },
+]
+---
+
+<Section title="Keep in touch">
+    <div class="flex justify-center gap-8 pt-20 pb-16">
+      {social.map((item) => (
+              <a href={item.link} target="_blank">
+                  <Image
+                          class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+                          src={item.imageSrc}
+                          alt={item.imageAlt}
+                  />
+              </a>
+      ))}
+    </div>
+</Section>

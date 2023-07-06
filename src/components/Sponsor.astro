@@ -1,21 +1,20 @@
 ---
+import {Image} from "@astrojs/image/components";
 interface Props {
-    imageSrc: string;
-    imageAlt: string;
-    level: string;
-    link: string;
+  imageSrc: string;
+  imageAlt: string;
+  level: string;
+  link: string;
 }
-
-import { Image } from "@astrojs/image/components";
-const { imageSrc, imageAlt, level, link } = Astro.props;
+const {imageSrc, imageAlt, level, link} = Astro.props;
 ---
 
 <div class="text-center px-2 mx-9">
     <a href={link} target="_blank">
         <Image
-            class="sponsor-image"
-            src={imageSrc}
-            alt={imageAlt}
+                class="sponsor-image"
+                src={imageSrc}
+                alt={imageAlt}
         />
     </a>
     <div class="sponsor-level flex md:flex-col lg:flex-row items-center mt-5">
@@ -28,12 +27,14 @@ const { imageSrc, imageAlt, level, link } = Astro.props;
         max-height: 150px;
         max-width: 230px;
     }
+
     .sponsor-level h3 {
-        font-family: 'Roboto';
+        font-family: 'Roboto', sans-serif;
         font-size: 12px;
         font-weight: 900;
         color: white;
     }
+
     .sponsor-dots {
         background-image: linear-gradient(to right, white 9%, rgb(255, 255, 255, 0) 0%);
         background-position: bottom;

@@ -12,6 +12,7 @@ import Sponsor from "../components/Sponsor.astro";
 import googleIconSrc from "../assets/sponsors/google.png";
 import stickermuleIconSrc from "../assets/sponsors/stickermule.png";
 import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
+import KeepInTouch from "./sections/KeepInTouch.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -90,7 +91,7 @@ import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
 			</div>
 		</div>
 	</Section>
-	<Section title="Keep in touch">keep in touch</Section>
+	<KeepInTouch />
 </Layout>
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
@@ -152,6 +153,7 @@ import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
 		width: 100%;
 		height: 100%;
 		background-image: url('images/old-map.png');
+		background-size: cover;
 		background-repeat: no-repeat;
 	}
 	.sponsors-detail {

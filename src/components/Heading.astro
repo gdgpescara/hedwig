@@ -1,0 +1,35 @@
+---
+interface Props {
+  text: string;
+  level: 'h1' | 'h2' | 'h3';
+}
+
+const {text, level} = Astro.props;
+
+const back = {
+    'h1': 'text-9xl px-2 py-4 back-h',
+    'h2': 'text-8xl px-2 py-4 back-h',
+    'h3': 'text-7xl px-2 py-4 back-h',
+}[level];
+---
+
+<div class={back} data-content={text}>
+    {
+        {
+            'h1': <h1 class="text-6xl font-bold foreground-h">{text}</h1>,
+            'h2': <h2 class="text-5xl font-bold foreground-h">{text}</h2>,
+            'h3': <h3 class="text-3xl font-bold foreground-h">{text}</h3>,
+        }[level]
+    }
+</div>
+<style>
+    .back-h::before {
+        content: attr(data-content);
+        font-family: 'Scriptina', serif;
+        color: #363636; /* TODO replace with theme color */
+    }
+
+    .foreground-h {
+        margin-top: -1.5rem;
+    }
+</style>
