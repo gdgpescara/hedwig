@@ -36,16 +36,24 @@ const social: Social[] = [
 ]
 ---
 
-<Section title="Keep in touch">
-    <div class="flex justify-center gap-8 pt-20 pb-16">
-      {social.map((item) => (
-              <a href={item.link} target="_blank">
-                  <Image
-                          class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
-                          src={item.imageSrc}
-                          alt={item.imageAlt}
-                  />
-              </a>
-      ))}
-    </div>
-</Section>
+<div class="grid-point">
+  <Section title="Keep in touch">
+      <div class="flex justify-center gap-8 pt-20 pb-16">
+        {social.map((item) => (
+                <a href={item.link} target="_blank">
+                    <Image
+                            class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+                            src={item.imageSrc}
+                            alt={item.imageAlt}
+                    />
+                </a>
+        ))}
+      </div>
+  </Section>
+</div>
+<style>
+  .grid-point {
+    background-image: radial-gradient(#7B7B7B 1px, transparent 0);
+    background-size: 34px 34px;
+  }
+</style>
