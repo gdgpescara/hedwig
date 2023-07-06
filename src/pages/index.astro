@@ -8,12 +8,9 @@ import daysIconSrc from "../assets/days.svg";
 import { Image } from "@astrojs/image/components";
 import Values from "../components/Values.astro";
 import Section from "../components/Section.astro";
-import Sponsor from "../components/Sponsor.astro";
-import googleIconSrc from "../assets/sponsors/google.png";
-import stickermuleIconSrc from "../assets/sponsors/stickermule.png";
-import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
 import Map from "../components/Map.astro";
-import KeepInTouch from "./sections/KeepInTouch.astro";
+import Sponsors from "../components/Sponsors.astro";
+import KeepInTouch from "../components/KeepInTouch.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -64,36 +61,7 @@ import KeepInTouch from "./sections/KeepInTouch.astro";
 			</div>
 		</div>
 	</Section>
-	<Section>
-		<div class="sponsors-container  min-h-[857px]">
-			<div class="back-h sponsors-h">Sponsors</div>
-			<div class="sponsors-detail">
-				<h1 class="front-h text-center">Sponsors</h1>
-				<div class="flex md:flex-col lg:flex-row items-end justify-center mb-16 mt-16">
-					<Sponsor 
-						level="Main sponsor"
-						imageAlt="Google"
-						imageSrc={googleIconSrc}
-						link="https://gdg.community.dev/">
-					</Sponsor>
-					<Sponsor 
-						level="Media partner"
-						imageAlt="Stickermule"
-						imageSrc={stickermuleIconSrc}
-						link="https://www.stickermule.com">
-					</Sponsor>
-				</div>
-				<div class="flex md:flex-col lg:flex-row items-end justify-center">
-					<Sponsor 
-						level="Gold sponsor"
-						imageAlt="Frontiere"
-						imageSrc={frontiereIconSrc}
-						link="https://frontiere.io/">
-					</Sponsor>
-				</div>
-			</div>
-		</div>
-	</Section>
+	<Sponsors/>
 	<KeepInTouch />
 </Layout>
 <style>
@@ -152,22 +120,5 @@ import KeepInTouch from "./sections/KeepInTouch.astro";
 	.front-h {
 		font-size: 40px;
 		font-weight: 900;
-	}
-	.sponsors-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		background-image: url('images/old-map.png');
-		background-size: cover;
-		background-repeat: no-repeat;
-	}
-	.sponsors-detail {
-		margin-top: 120px;
-		z-index: 10;
-	}
-	.sponsors-h {
-		margin-top: -530px;
 	}
 </style>

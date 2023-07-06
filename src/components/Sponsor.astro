@@ -12,29 +12,17 @@ const {imageSrc, imageAlt, level, link} = Astro.props;
 <div class="text-center px-2 mx-9">
     <a href={link} target="_blank">
         <Image
-                class="sponsor-image"
+                class="max-h-[150px] h-[150px] max-w-[230px] w-[230px] object-contain object-bottom"
                 src={imageSrc}
                 alt={imageAlt}
         />
     </a>
-    <div class="sponsor-level flex md:flex-col lg:flex-row items-center mt-5">
-        <h3 class="leading-3 grow-0 w-[60px] text-start">{level}</h3>
+    <div class="sponsor-level flex lg:flex-row items-center mt-5">
+        <h3 class="text-sm text-accent-content font-bold grow-0 w-[60px] text-start">{level}</h3>
         <div class="sponsor-dots grow h-px"></div>
     </div>
 </div>
 <style>
-    .sponsor-image {
-        max-height: 150px;
-        max-width: 230px;
-    }
-
-    .sponsor-level h3 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 12px;
-        font-weight: 900;
-        color: white;
-    }
-
     .sponsor-dots {
         background-image: linear-gradient(to right, white 9%, rgb(255, 255, 255, 0) 0%);
         background-position: bottom;

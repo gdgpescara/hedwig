@@ -1,0 +1,60 @@
+---
+import googleIconSrc from "../assets/sponsors/google.png";
+import stickermuleIconSrc from "../assets/sponsors/stickermule.png";
+import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
+import Section from "./Section.astro";
+import Sponsor from "./Sponsor.astro";
+
+interface SponsorValue {
+  level: string;
+  name: string;
+  imageSrc: string;
+  link: string;
+}
+
+const sponsors: SponsorValue[][] = [
+  [
+    {
+      level: "Main sponsor",
+      name: "Google",
+      imageSrc: googleIconSrc,
+      link: "https://gdg.community.dev/",
+    },
+    {
+      level: "Media partner",
+      name: "Stickermule",
+      imageSrc: stickermuleIconSrc,
+      link: "https://www.stickermule.com",
+    },
+  ],
+  [
+    {
+      level: "Gold sponsor",
+      name: "Frontiere",
+      imageSrc: frontiereIconSrc,
+      link: "https://frontiere.io/",
+    },
+  ],
+];
+---
+
+<div class="bg-[url('images/old-map.png')]">
+  <Section title="Sponsors">
+    <div class="m-auto">
+      {
+        sponsors.map((sponsorLevel) => (
+          <div class="flex flex-wrap my-8 justify-center m-auto items-center">
+            {sponsorLevel.map((sponsor) => (
+              <Sponsor
+                level={sponsor.level}
+                imageAlt={sponsor.name}
+                imageSrc={sponsor.imageSrc}
+                link={sponsor.link}
+              />
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+</div>
