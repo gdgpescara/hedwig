@@ -18,9 +18,9 @@ const backClass = `${backCommon} ${backByLevel}`;
 <div class={backClass} data-content={text}>
     {
         {
-            'h1': <h1 class="text-5xl xl:text-6xl font-bold foreground-h">{text}</h1>,
-            'h2': <h2 class="text-4xl xl:text-5xl font-bold foreground-h">{text}</h2>,
-            'h3': <h3 class="text-2xl xl:text-3xl font-bold foreground-h">{text}</h3>,
+            'h1': <h1 class="text-5xl xl:text-6xl font-bold text-accent-content foreground-h">{text}</h1>,
+            'h2': <h2 class="text-4xl xl:text-5xl font-bold text-accent-content foreground-h">{text}</h2>,
+            'h3': <h3 class="text-2xl xl:text-3xl font-bold text-accent-content foreground-h">{text}</h3>,
         }[level]
     }
 </div>
