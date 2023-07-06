@@ -5,9 +5,11 @@ interface Props {
 }
 
 const {title} = Astro.props;
+
+const sectionClass = title ? "py-16 my-16" : "";
 ---
 
-<section class="py-4 my-4">
+<section class={sectionClass}>
     <div class="text-center">
         <Heading text={title} level="h2"/>
     </div>
