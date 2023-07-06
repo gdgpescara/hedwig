@@ -5,94 +5,28 @@ import sponsorIconSrc from "../assets/sponsor.svg";
 import partecipantsIconSrc from "../assets/partecipants.svg";
 import speakerIconSrc from "../assets/speaker.svg";
 import daysIconSrc from "../assets/days.svg";
-import { Image } from "@astrojs/image/components";
+import {Image} from "@astrojs/image/components";
 import Values from "../components/Values.astro";
 import Section from "../components/Section.astro";
 import Map from "../components/Map.astro";
 import Sponsors from "../components/Sponsors.astro";
 import KeepInTouch from "../components/KeepInTouch.astro";
 import Numbers from "../components/Numbers.astro";
+import Heading from "../components/Heading.astro";
+import Location from "../components/Location.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<Hero />
-	<Numbers />
-	<Section>
-		<div class="flex md:flex-col lg:flex-row min-h-[485px]">
-			<div class="pl-2 w-full">
-				<Map></Map>
-			</div>
-			<div class="w-full location-detail-container">
-				<div class="back-h location-h">Location</div>
-				<div class="location-detail">
-					<h1 class="front-h">Location</h1>
-					<div class="location-name">Universit&agrave; degli studi "G. D'Annunzio", sede di Pescara</div>
-					<div class="location-address">Viale Pindaro, 42 - 65127 Pescara PE</div>
-					<a class="location-direction" href="https://www.google.com/maps/dir//Universit%C3%A0+degli+studi+%22G.d'Annunzio%22+sede+Pescara,+Viale+Pindaro,+42,+65127+Pescara+PE/@42.4520472,14.1424379,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1331a74d5acdfbdf:0x4389fccd7763c874!2m2!1d14.2248392!2d42.45195?entry=ttu">
-						DIRECTION
-					</a>
-				</div>
-			</div>
-		</div>
-	</Section>
-	<Sponsors/>
-	<KeepInTouch />
+    <Hero/>
+    <Numbers/>
+    <Location/>
+    <Sponsors/>
+    <KeepInTouch/>
 </Layout>
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-	html, body {
-		background-color: #181818;
-	}
-
-	.keep-in-touch {
-		background-color: red;
-		background-position: 30px 30px;
-	}
-	.back-h {
-		font-family: 'Scriptina';
-		z-index: 5;
-		color: #363636;
-		font-size: 120px;
-		position: absolute;
-	}
-	.location-detail-container {
-		display: flex;
-		align-items: center;
-		margin-left: 80px;
-	}
-	.location-detail {
-		padding-left: 45px;
-		margin-top: 120px;
-		z-index: 10;
-		font-family: 'Roboto', sans-serif;
-		color: white;
-	}
-	.location-h {
-		margin-top: -245px;
-	}
-	.location-name {
-		margin-top: 70px;
-		font-size: 25px;
-		font-weight: 900;
-	}
-	.location-address {
-		margin-top: 25px;
-		font-size: 18px;
-		font-weight: 100;
-		margin-bottom: 45px;
-	}
-	.location-direction {
-		border-color: white;
-		border-width: 1px;
-		border-style: dashed;
-		border-radius: 25px;
-		padding: 15px 50px;
-		text-decoration: none;
-		font-weight: bold;
-	}
-	.front-h {
-		font-size: 40px;
-		font-weight: 900;
-	}
+    html, body {
+        background-color: #181818;
+    }
 </style>
