@@ -7,6 +7,7 @@ import linkedinImageSrc from "../assets/social/linkedin.svg";
 import twitterImageSrc from "../assets/social/twitter.svg";
 import heartSrc from "../assets/heart.svg";
 import gdgLogoSrc from "../assets/gdg-logo.svg";
+import gdgCloudTorinoLogoSrc from "../assets/gdg_cloud_torino.png";
 
 interface Social {
   link: string;
@@ -55,7 +56,11 @@ const social: Social[] = [
             <Image class="max-h-[24px] h-[24px] max-w-[24px] w-[24px]" src={heartSrc} alt="Heart"/>
             by
         </div>
-        <Image class="max-h-[70px] h-[70px] max-w-[290px] w-[290px] m-auto" src={gdgLogoSrc} alt="GDG Logo"/>
+        <div class="flex justify-center items-center gap-6">
+          <a href="https://gdg.community.dev/gdg-pescara/" target="_blank"><Image class="max-h-[70px] h-[70px] max-w-[290px] w-[290px]" src={gdgLogoSrc} alt="GDG Pescara Logo"/></a>
+          <p>and</p>
+          <a href="https://gdg.community.dev/gdg-cloud-torino/" target="_blank"><Image class="max-h-[117px] h-[105px] max-w-[290px] w-[260px]" src={gdgCloudTorinoLogoSrc} alt="GDG Cloud Torino Logo"/></a>
+        </div>
     </Section>
 </div>
 <style>
