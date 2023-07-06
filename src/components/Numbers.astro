@@ -1,0 +1,39 @@
+---
+import sponsorIconSrc from "../assets/sponsor.svg";
+import partecipantsIconSrc from "../assets/partecipants.svg";
+import speakerIconSrc from "../assets/speaker.svg";
+import daysIconSrc from "../assets/days.svg";
+import Section from "./Section.astro";
+import Values from "./Values.astro";
+---
+<div class="bg-[url('images/old-map.png')]">
+    <Section title="Numbers">
+        <div class="grid xl:grid-cols-4 md:grid-cols-2">
+            <Values
+                title="Sponsor"
+                description="16+"
+                imageAlt="Sponsor"
+                imageSrc={sponsorIconSrc}
+            />
+            <Values
+                title="Partecipants"
+                description="800+"
+                imageAlt="Partecipants"
+                imageSrc={partecipantsIconSrc}
+            />
+            <Values
+                title="Speaker"
+                description="35+"
+                imageAlt="Speaker"
+                imageSrc={speakerIconSrc}
+            />
+            <Values
+                title="Days"
+                description="2"
+                imageAlt="Days"
+                imageSrc={daysIconSrc}
+            />
+        </div>
+    </Section>
+</div>
+

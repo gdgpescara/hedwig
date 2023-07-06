@@ -19,3 +19,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# lock file
+package-lock.json*
+
+# intellij
+.idea/

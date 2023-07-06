@@ -1,4 +1,5 @@
 ---
+import Heading from "./Heading.astro";
 interface Props {
     title?: string;
     id?: string;
@@ -7,15 +8,14 @@ interface Props {
 const { title, id } = Astro.props;
 
 const sectionClass = `xl:pt-16 xl:pb-8 parallax ${id}`;
+
 ---
 
-<section class="xl:pt-16 xl:pb-8">
-    {
-        title && (
-            <h2 class="text-center xl:text-3xl text-2xl xl:pb-32">{title}</h2>
-        )
-    }
-    <slot />
+<section class={sectionClass}>
+    <div class="text-center">
+        <Heading text={title} level="h2"/>
+    </div>
+    <slot/>
 </section>
 
 <style is:global lang="scss">

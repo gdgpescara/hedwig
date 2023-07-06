@@ -1,164 +1,23 @@
 ---
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
-import sponsorIconSrc from "../assets/sponsor.svg";
-import partecipantsIconSrc from "../assets/partecipants.svg";
-import speakerIconSrc from "../assets/speaker.svg";
-import daysIconSrc from "../assets/days.svg";
-import { Image } from "@astrojs/image/components";
-import Values from "../components/Values.astro";
-import Section from "../components/Section.astro";
-import Sponsor from "../components/Sponsor.astro";
-import googleIconSrc from "../assets/sponsors/google.png";
-import stickermuleIconSrc from "../assets/sponsors/stickermule.png";
-import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
+import Sponsors from "../components/Sponsors.astro";
+import KeepInTouch from "../components/KeepInTouch.astro";
+import Numbers from "../components/Numbers.astro";
+import Location from "../components/Location.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<Hero />
-	<Section title="Numbers" id="numbers">
-		<div class="grid justify-around xl:grid-cols-4 md:grid-cols-2">
-			<Values
-				title="Sponsor"
-				description="16+"
-				imageAlt=""
-				imageSrc={sponsorIconSrc}
-			/>
-			<Values
-				title="Partecipants"
-				description="16+"
-				imageAlt=""
-				imageSrc={partecipantsIconSrc}
-			/>
-			<Values
-				title="Speaker"
-				description="16+"
-				imageAlt=""
-				imageSrc={speakerIconSrc}
-			/>
-			<Values
-				title="Days"
-				description="16+"
-				imageAlt=""
-				imageSrc={daysIconSrc}
-			/>
-		</div>
-	</Section>
-	<Section id="location">
-		<div class="flex md:flex-col lg:flex-row">
-			<div class="bg-green-500 h-full w-full"></div>
-			<div class="w-full location-detail-container">
-				<div class="back-h location-h">Location</div>
-				<div class="location-detail">
-					<h1 class="front-h">Location</h1>
-					<div class="location-name">Universit&agrave; degli studi "G. D'Annunzio", sede di Pescara</div>
-					<div class="location-address">Viale Pindaro, 42 - 65127 Pescara PE</div>
-					<a class="location-direction" href="https://www.google.com/maps/dir//Universit%C3%A0+degli+studi+%22G.d'Annunzio%22+sede+Pescara,+Viale+Pindaro,+42,+65127+Pescara+PE/@42.4520472,14.1424379,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1331a74d5acdfbdf:0x4389fccd7763c874!2m2!1d14.2248392!2d42.45195?entry=ttu">
-						DIRECTION
-					</a>
-				</div>
-			</div>
-		</div>
-	</Section>
-	<Section title="Sponsor" id="sponsors">
-		<div class="sponsors-container  min-h-[857px]">
-			<div class="back-h sponsors-h">Sponsors</div>
-			<div class="sponsors-detail">
-				<h1 class="front-h text-center">Sponsors</h1>
-				<div class="flex md:flex-col lg:flex-row items-end justify-center mb-16 mt-16">
-					<Sponsor 
-						level="Main sponsor"
-						imageAlt="Google"
-						imageSrc={googleIconSrc}
-						link="https://gdg.community.dev/">
-					</Sponsor>
-					<Sponsor 
-						level="Media partner"
-						imageAlt="Stickermule"
-						imageSrc={stickermuleIconSrc}
-						link="https://www.stickermule.com">
-					</Sponsor>
-				</div>
-				<div class="flex md:flex-col lg:flex-row items-end justify-center">
-					<Sponsor 
-						level="Gold sponsor"
-						imageAlt="Frontiere"
-						imageSrc={frontiereIconSrc}
-						link="https://frontiere.io/">
-					</Sponsor>
-				</div>
-			</div>
-		</div>
-	</Section>
-	<Section title="Keep in touch">keep in touch</Section>
+    <Hero/>
+    <Numbers/>
+    <Location/>
+    <Sponsors/>
+    <KeepInTouch/>
 </Layout>
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-	.keep-in-touch {
-		background-color: red;
-		background-position: 30px 30px;
-	}
-	.back-h {
-		font-family: 'Scriptina';
-		z-index: 5;
-		color: #363636;
-		font-size: 120px;
-		position: absolute;
-	}
-	.location-detail-container {
-		display: flex;
-		align-items: center;
-		margin-left: 80px;
-	}
-	.location-detail {
-		padding-left: 45px;
-		margin-top: 120px;
-		z-index: 10;
-		font-family: 'Roboto', sans-serif;
-		color: white;
-	}
-	.location-h {
-		margin-top: -245px;
-	}
-	.location-name {
-		margin-top: 70px;
-		font-size: 25px;
-		font-weight: 900;
-	}
-	.location-address {
-		margin-top: 25px;
-		font-size: 18px;
-		font-weight: 100;
-		margin-bottom: 45px;
-	}
-	.location-direction {
-		border-color: white;
-		border-width: 1px;
-		border-style: dashed;
-		border-radius: 25px;
-		padding: 15px 50px;
-		text-decoration: none;
-		font-weight: bold;
-	}
-	.front-h {
-		font-size: 40px;
-		font-weight: 900;
-	}
-	.sponsors-container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		background-image: url('images/old-map.png');
-		background-repeat: no-repeat;
-	}
-	.sponsors-detail {
-		margin-top: 120px;
-		z-index: 10;
-	}
-	.sponsors-h {
-		margin-top: -530px;
-	}
+    html, body {
+        background-color: #181818;
+    }
 </style>
