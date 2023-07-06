@@ -5,6 +5,8 @@ import instagramImageSrc from "../assets/social/instagram.svg";
 import facebookImageSrc from "../assets/social/facebook.svg";
 import linkedinImageSrc from "../assets/social/linkedin.svg";
 import twitterImageSrc from "../assets/social/twitter.svg";
+import heartSrc from "../assets/heart.svg";
+import gdgLogoSrc from "../assets/gdg-logo.svg";
 
 interface Social {
   link: string;
@@ -35,17 +37,30 @@ const social: Social[] = [
   },
 ]
 ---
-
-<Section title="Keep in touch">
-    <div class="flex justify-center gap-8 pt-20 pb-16">
-      {social.map((item) => (
-              <a href={item.link} target="_blank">
-                  <Image
-                          class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
-                          src={item.imageSrc}
-                          alt={item.imageAlt}
-                  />
-              </a>
-      ))}
-    </div>
-</Section>
+<div class="text-center dots">
+    <Section title="Keep in touch">
+        <div class="flex justify-center gap-8 py-8">
+            {social.map((item) => (
+                <a href={item.link} target="_blank">
+                    <Image
+                        class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+                        src={item.imageSrc}
+                        alt={item.imageAlt}
+                    />
+                </a>
+            ))}
+        </div>
+        <div class="flex justify-center gap-4 pt-16">
+            Organized with
+            <Image class="max-h-[24px] h-[24px] max-w-[24px] w-[24px]" src={heartSrc} alt="Heart"/>
+            by
+        </div>
+        <Image class="max-h-[70px] h-[70px] max-w-[290px] w-[290px] m-auto" src={gdgLogoSrc} alt="GDG Logo"/>
+    </Section>
+</div>
+<style>
+    .dots {
+        background-image: radial-gradient(#7B7B7B 5%, transparent 5%);
+        background-size: 32px 32px;
+    }
+</style>
