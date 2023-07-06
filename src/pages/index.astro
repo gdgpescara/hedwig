@@ -11,38 +11,12 @@ import Section from "../components/Section.astro";
 import Map from "../components/Map.astro";
 import Sponsors from "../components/Sponsors.astro";
 import KeepInTouch from "../components/KeepInTouch.astro";
+import Numbers from "../components/Numbers.astro";
 ---
 
 <Layout title="Welcome to Astro.">
 	<Hero />
-	<Section title="Numbers">
-		<div class="grid xl:grid-cols-4 md:grid-cols-2">
-			<Values
-				title="Sponsor"
-				description="16+"
-				imageAlt="Sponsor"
-				imageSrc={sponsorIconSrc}
-			/>
-			<Values
-				title="Partecipants"
-				description="800+"
-				imageAlt="Partecipants"
-				imageSrc={partecipantsIconSrc}
-			/>
-			<Values
-				title="Speaker"
-				description="35+"
-				imageAlt="Speaker"
-				imageSrc={speakerIconSrc}
-			/>
-			<Values
-				title="Days"
-				description="2"
-				imageAlt="Days"
-				imageSrc={daysIconSrc}
-			/>
-		</div>
-	</Section>
+	<Numbers />
 	<Section>
 		<div class="flex md:flex-col lg:flex-row min-h-[485px]">
 			<div class="pl-2 w-full">
