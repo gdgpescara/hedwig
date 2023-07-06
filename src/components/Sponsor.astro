@@ -1,30 +1,38 @@
 ---
-import {Image} from "@astrojs/image/components";
+import { Image } from "@astrojs/image/components";
 interface Props {
-  imageSrc: string;
-  imageAlt: string;
-  level: string;
-  link: string;
+    imageSrc: string;
+    imageAlt: string;
+    level: string;
+    link: string;
 }
-const {imageSrc, imageAlt, level, link} = Astro.props;
+const { imageSrc, imageAlt, level, link } = Astro.props;
 ---
 
 <div class="text-center px-2 mx-9">
     <a href={link} target="_blank">
         <Image
-                class="max-h-[150px] h-[150px] max-w-[230px] w-[230px] object-contain object-bottom"
-                src={imageSrc}
-                alt={imageAlt}
+            class="max-h-[150px] h-[150px] max-w-[230px] w-[230px] object-contain object-bottom"
+            src={imageSrc}
+            alt={imageAlt}
         />
     </a>
     <div class="sponsor-level flex lg:flex-row items-center mt-5">
-        <h3 class="text-sm text-accent-content font-bold grow-0 w-[60px] text-start">{level}</h3>
+        <h3
+            class="text-sm text-accent-content font-bold grow-0 w-[60px] text-start"
+        >
+            {level}
+        </h3>
         <div class="sponsor-dots grow h-px"></div>
     </div>
 </div>
 <style>
     .sponsor-dots {
-        background-image: linear-gradient(to right, white 9%, rgb(255, 255, 255, 0) 0%);
+        background-image: linear-gradient(
+            to right,
+            white 9%,
+            rgb(255, 255, 255, 0) 0%
+        );
         background-position: bottom;
         background-size: 11px 1px;
         background-repeat: repeat-x;

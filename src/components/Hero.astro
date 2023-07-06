@@ -1,20 +1,34 @@
 ---
-import {Image} from "@astrojs/image/components";
+import { Image } from "@astrojs/image/components";
 import gdgLogoSrc from "../assets/gdg-logo.svg";
 
-const signUpUrl = "https://gdg.community.dev/events/details/google-gdg-pescara-presents-devfest-pescara-2023/cohost-gdg-pescara";
+const signUpUrl =
+    "https://gdg.community.dev/events/details/google-gdg-pescara-presents-devfest-pescara-2023/cohost-gdg-pescara";
 ---
+
 <div id="sign-up" class="hero min-h-screen bg-[url('images/map-old-top.svg')]">
-    <div class="hero-content text-center backdrop-blur-md backdrop-contrast-20 p-16 rounded-[25px]">
+    <div
+        class="hero-content text-center backdrop-blur-md backdrop-contrast-20 p-16 rounded-[25px]"
+    >
         <div class="max-w-3xl">
             <Image
+                width={1512}
+                height={837}
                 class="m-auto"
                 src={gdgLogoSrc}
                 alt="GDG Logo"
             />
-            <h1 class="text-8xl font-scriptina font-light text-black pt-16">Dev Fest 2023</h1>
-            <h2 class="text-8xl font-harrypotter text-black py-16">and the developer magic</h2>
-            <a class="btn btn-outline btn-wide btn-circle border-dashed text-black" href={signUpUrl} target="_blank">Sign up</a>
+            <h1 class="text-8xl font-scriptina font-light text-black pt-16">
+                DevFest 2023
+            </h1>
+            <h2 class="text-8xl font-harrypotter text-black py-16">
+                and the developer magic
+            </h2>
+            <a
+                class="btn btn-outline btn-wide btn-circle border-dashed text-black"
+                href={signUpUrl}
+                target="_blank">Sign up</a
+            >
         </div>
     </div>
 </div>

@@ -6,7 +6,9 @@ import Navbar from "./Navbar.astro";
     <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
         <!-- Navbar -->
-        <div class="w-full navbar sticky top-0 z-40 backdrop-blur-2xl mix-blend-difference">
+        <div
+            class="w-full navbar sticky top-0 z-40 backdrop-blur-2xl mix-blend-difference"
+        >
             <div class="flex-none lg:hidden">
                 <label for="drawer-toggle" class="btn btn-square btn-ghost">
                     <svg
@@ -23,8 +25,10 @@ import Navbar from "./Navbar.astro";
                 </label>
             </div>
             <!-- Logo -->
-            <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-3xl font-scriptina">Devfest 2023</a>
+            <div class="flex-1 py-3">
+                <a class="cursor-pointer normal-case text-3xl font-scriptina relative bottom-2"
+                    >Devfest 2023</a
+                >
             </div>
             <nav class="flex-none hidden lg:block">
                 <ul class="menu menu-horizontal">
