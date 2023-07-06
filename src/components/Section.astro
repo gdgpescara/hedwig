@@ -1,14 +1,12 @@
 ---
 import Heading from "./Heading.astro";
 interface Props {
-    title?: string;
-    id?: string;
+  title?: string;
 }
 
-const { title, id } = Astro.props;
+const {title} = Astro.props;
 
-const sectionClass = `xl:pt-16 xl:pb-8 parallax ${id}`;
-
+const sectionClass = title ? "py-16 my-16" : "";
 ---
 
 <section class={sectionClass}>
@@ -17,19 +15,3 @@ const sectionClass = `xl:pt-16 xl:pb-8 parallax ${id}`;
     </div>
     <slot/>
 </section>
-
-<style is:global lang="scss">
-    .numbers, .sponsors {
-        width: 100%;
-        min-height: 100vh;
-        position: relative;
-        background-image: url("images/old-map-bg.png");
-    }
-
-    .contacts {
-        width: 100%;
-        min-height: 100vh;
-        position: relative;
-        background-image: url("images/grid-point.png");
-    }
-</style>
