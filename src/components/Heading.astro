@@ -6,19 +6,21 @@ interface Props {
 
 const {text, level} = Astro.props;
 
-const back = {
-    'h1': 'text-9xl px-2 py-4 back-h',
-    'h2': 'text-8xl px-2 py-4 back-h',
-    'h3': 'text-7xl px-2 py-4 back-h',
+const backCommon = 'px-2 pb-16 back-h';
+const backByLevel = {
+    'h1': 'text-8xl xl:text-9xl',
+    'h2': 'text-7xl xl:text-8xl',
+    'h3': 'text-6xl xl:text-7xl',
 }[level];
+const backClass = `${backCommon} ${backByLevel}`;
 ---
 
-<div class={back} data-content={text}>
+<div class={backClass} data-content={text}>
     {
         {
-            'h1': <h1 class="text-6xl font-bold foreground-h">{text}</h1>,
-            'h2': <h2 class="text-5xl font-bold foreground-h">{text}</h2>,
-            'h3': <h3 class="text-3xl font-bold foreground-h">{text}</h3>,
+            'h1': <h1 class="text-5xl xl:text-6xl font-bold foreground-h">{text}</h1>,
+            'h2': <h2 class="text-4xl xl:text-5xl font-bold foreground-h">{text}</h2>,
+            'h3': <h3 class="text-2xl xl:text-3xl font-bold foreground-h">{text}</h3>,
         }[level]
     }
 </div>
