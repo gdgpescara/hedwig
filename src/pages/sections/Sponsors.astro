@@ -18,40 +18,43 @@ const sponsors: SponsorValue[][] = [
       level: "Main sponsor",
       name: "Google",
       imageSrc: googleIconSrc,
-      link: "https://gdg.community.dev/"
+      link: "https://gdg.community.dev/",
     },
     {
       level: "Media partner",
       name: "Stickermule",
       imageSrc: stickermuleIconSrc,
-      link: "https://www.stickermule.com"
-    }
+      link: "https://www.stickermule.com",
+    },
   ],
   [
     {
       level: "Gold sponsor",
       name: "Frontiere",
       imageSrc: frontiereIconSrc,
-      link: "https://frontiere.io/"
-    }
-  ]
+      link: "https://frontiere.io/",
+    },
+  ],
 ];
 ---
-<div class="bg-[url('images/old-map.png')]">
-    <Section title="Sponsors">
-      {sponsors.map((sponsorLevel) => (
-              <div class="grid gap-8 xl:grid-cols-4 md:grid-cols-2 my-8">
-                {sponsorLevel.map((sponsor) => (
-                        <Sponsor
-                                level={sponsor.level}
-                                imageAlt={sponsor.name}
-                                imageSrc={sponsor.imageSrc}
-                                link={sponsor.link}
-                        >
-                        </Sponsor>
-                ))}
-              </div>
-      ))}
-    </Section>
-</div>
 
+<div class="bg-[url('images/old-map.png')]">
+  <Section title="Sponsors">
+    <div class="m-auto">
+      {
+        sponsors.map((sponsorLevel) => (
+          <div class="flex my-8 justify-center m-auto items-center">
+            {sponsorLevel.map((sponsor) => (
+              <Sponsor
+                level={sponsor.level}
+                imageAlt={sponsor.name}
+                imageSrc={sponsor.imageSrc}
+                link={sponsor.link}
+              />
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+</div>
