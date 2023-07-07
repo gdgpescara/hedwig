@@ -8,8 +8,8 @@ export default defineConfig({
   experimental: {
     assets: true,
   },
-  // site: 'https://gdgpescara.github.io', // TODO: remove after setting the real deploy
-  // base: '/hedwig', // TODO: remove after setting the real deploy
+  site: 'https://gdgpescara.github.io', // TODO: remove after setting the real deploy
+  base: '/hedwig', // TODO: remove after setting the real deploy
   integrations: [
     react(),
     tailwind(),
