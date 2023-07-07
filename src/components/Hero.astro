@@ -27,8 +27,38 @@ const signUpUrl =
             <a
                 class="btn btn-outline btn-wide btn-circle border-dashed text-black"
                 href={signUpUrl}
-                target="_blank">Sign up</a
-            >
+                target="_blank">Sign up</a>
         </div>
     </div>
-</div>
+</section>
+
+<style lang="scss">
+    .hero {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        padding: 160px 0 80px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("images/intro.png");
+
+        h2 {
+            font-family: "Scriptina";
+            color: #000;
+            font-size: 70px;
+            line-height: 3;
+            @media (max-width: 640px) {
+                font-size: 60px;
+                line-height: 2;
+            }
+        }
+    }
+
+    .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>

@@ -41,3 +41,7 @@ All commands are run from the root of the project, from a terminal:
 - Tailwind CSS (Utility-First CSS Framework)[https://tailwindcss.com/]
 - DaisyUI (Tailwind CSS Components)[https://daisyui.com/]
 
+## Mockup
+
+(Figma)[https://www.figma.com/file/vGNg1oFEozLImMUl8vidyo/Landing-DevFest-2023?type=design&node-id=0%3A1&mode=design&t=i1jkPzTUHDnIPDi6-1]
+
