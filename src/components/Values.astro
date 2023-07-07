@@ -1,7 +1,6 @@
 ---
 import type { ImageMetadata } from "astro";
 import Heading from "./Heading.astro";
-import {Image} from "@astrojs/image/components";
 interface Props {
   imageSrc: ImageMetadata;
   imageAlt: string;
@@ -9,17 +8,19 @@ interface Props {
   description: string;
 }
 
-const {imageSrc, imageAlt, title, description} = Astro.props;
+const { imageSrc, imageAlt, title, description } = Astro.props;
 ---
 
 <div class="text-center px-2">
-    <Image
-            class="max-h-[200px] h-[200px] m-auto"
-            src={imageSrc.src}
-            width={imageSrc.width}
-            height={imageSrc.height}
-            alt={imageAlt}
-    />
-    <Heading text={title} level="h3"/>
-    <div class="text-5xl xl:text-6xl font-bold text-accent-content">{description}</div>
+  <img
+    class="max-h-[200px] h-[200px] m-auto"
+    src={imageSrc.src}
+    width={imageSrc.width}
+    height={imageSrc.height}
+    alt={imageAlt}
+  />
+  <Heading text={title} level="h3" />
+  <div class="text-5xl xl:text-6xl font-bold text-accent-content">
+    {description}
+  </div>
 </div>
