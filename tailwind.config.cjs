@@ -18,13 +18,13 @@ module.exports = {
         "@font-face": {
           fontFamily: "Scriptina",
           fontWheight: "300",
-          src: "url(fonts/scriptina.ttf)",
+          src: "url(/fonts/scriptina.ttf)",
         },
       });
       addBase({
         "@font-face": {
           fontFamily: "Harrypotter",
-          src: "url(fonts/harryp.ttf)",
+          src: "url(/fonts/harryp.ttf)",
         },
       });
     }),
