@@ -20,4 +20,14 @@ import Location from "../components/Location.astro";
     html, body {
         background-color: #181818;
     }
+
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+        :global(html) {
+            scroll-behavior: auto;
+        }
+    }
 </style>
