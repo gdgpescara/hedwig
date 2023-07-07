@@ -6,23 +6,23 @@ const signUpUrl =
     "https://gdg.community.dev/events/details/google-gdg-pescara-presents-devfest-pescara-2023/cohost-gdg-pescara";
 ---
 
-<div id="sign-up" class="hero min-h-screen bg-[url('images/map-old-top.svg')]">
+<section id="signUp" class="hero min-h-screen bg-[url('images/map-old-top.svg')]">
     <div
         class="hero-content text-center backdrop-blur-md backdrop-contrast-20 p-16 rounded-[25px]"
     >
         <div class="max-w-3xl">
             <Image
-                width={1512}
-                height={837}
+                width={306}
+                height={23}
                 class="m-auto"
                 src={gdgLogoSrc}
                 alt="GDG Logo"
             />
             <h1 class="text-8xl font-scriptina font-light text-black pt-16">
-                DevFest 2023
+                DevFest Pescara 2023
             </h1>
             <h2 class="text-8xl font-harrypotter text-black py-16">
-                and the developer magic
+                and the developers' magic
             </h2>
             <a
                 class="btn btn-outline btn-wide btn-circle border-dashed text-black"
@@ -43,14 +43,15 @@ const signUpUrl =
         justify-content: center;
         background-image: url("images/intro.png");
 
+        h1 {
+            font-size: 60px;
+        }
+
         h2 {
-            font-family: "Scriptina";
             color: #000;
-            font-size: 70px;
-            line-height: 3;
+            font-size: 80px;
             @media (max-width: 640px) {
                 font-size: 60px;
-                line-height: 2;
             }
         }
     }
