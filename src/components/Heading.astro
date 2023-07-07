@@ -6,7 +6,7 @@ interface Props {
 
 const {text, level} = Astro.props;
 
-const backCommon = 'px-2 pb-8 back-h font-scriptina';
+const backCommon = 'px-2 pb-8 back-h';
 const backByLevel = {
     'h1': 'text-8xl xl:text-9xl',
     'h2': 'text-7xl xl:text-8xl',
@@ -26,6 +26,7 @@ const backClass = `${backCommon} ${backByLevel}`;
 </div>
 <style>
     .back-h::before {
+        font-family: theme(fontFamily.scriptina);
         content: attr(data-content);
         color: #363636; /* TODO replace with theme color */
     }

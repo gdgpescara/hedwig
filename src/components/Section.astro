@@ -4,14 +4,14 @@ interface Props {
   title?: string;
 }
 
-const {title} = Astro.props;
+const { title } = Astro.props;
 
 const sectionClass = title ? "py-16 md:py-32 xl:py-64 my-16" : "";
 ---
 
 <section class={sectionClass}>
-    <div class="text-center">
-        <Heading text={title} level="h2"/>
-    </div>
-    <slot/>
+  <div class="text-center">
+    {title && <Heading text={title} level="h2" />}
+  </div>
+  <slot />
 </section>

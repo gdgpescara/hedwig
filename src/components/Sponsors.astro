@@ -4,11 +4,12 @@ import stickermuleIconSrc from "../assets/sponsors/stickermule.png";
 import frontiereIconSrc from "../assets/sponsors/frontiere.svg";
 import Section from "./Section.astro";
 import Sponsor from "./Sponsor.astro";
+import type { ImageMetadata } from "astro";
 
 interface SponsorValue {
   level: string;
   name: string;
-  imageSrc: string;
+  imageSrc: ImageMetadata;
   link: string;
 }
 
@@ -38,7 +39,7 @@ const sponsors: SponsorValue[][] = [
 ];
 ---
 
-<div id="sponsors" class="bg-[url('images/map-old-sponsors.svg')]">
+<div id="sponsors" class="bg-[url('/images/map-old-sponsors.svg')]">
   <Section title="Sponsors">
     <div class="m-auto">
       {
