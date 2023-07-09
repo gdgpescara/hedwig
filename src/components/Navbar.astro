@@ -5,7 +5,7 @@ import navData from "../data/nav-data";
 ---
 
 {
-    navData.map((nav) => (
-        <li class="font-black"><Link href={nav.path}>{nav.name}</Link></li>
+    navData.map((nav, index) => (
+        <li class="text-white"><Link href={nav.path} active={index === 0}>{nav.name}</Link></li>
     ))
 }

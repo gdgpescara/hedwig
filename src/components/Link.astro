@@ -1,10 +1,11 @@
 ---
 export interface Props {
     href: string;
+    active: boolean;
 }
 
-const { href } = Astro.props;
+const { href, active } = Astro.props;
 
 ---
 
-<a href={href}><slot /></a>
+<a href={href} class={ active ? 'active': null }><slot /></a>

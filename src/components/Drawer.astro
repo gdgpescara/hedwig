@@ -1,6 +1,5 @@
 ---
 import Navbar from "./Navbar.astro";
-import { Image } from "@astrojs/image/components";
 ---
 
 <div class="drawer">
@@ -26,9 +25,7 @@ import { Image } from "@astrojs/image/components";
             <!-- Logo -->
             <div class="flex-1 grid justify-items-center lg:justify-items-start">
                 <a class="btn normal-case text-xl logo">
-                    <h1>
-                        DevFest 2023 Pescara
-                    </h1>
+                    DevFest 2023 Pescara
                 </a>
             </div>
             <nav class="flex-none hidden lg:block">
@@ -40,7 +37,7 @@ import { Image } from "@astrojs/image/components";
         <!-- Page content here -->
         <slot />
     </div>
-    <aside class="drawer-side">
+    <aside class="drawer-side top-[96px]">
         <label for="drawer-toggle" class="drawer-overlay"></label>
         <ul class="menu p-4 w-80 h-full bg-base-200">
             <!-- Sidebar content here (a duplication on navbar) -->
@@ -52,8 +49,8 @@ import { Image } from "@astrojs/image/components";
 <style is:global lang="scss">
     header {
         .logo {
-            color: black;
-            background-color: black;
+            color: #000;
+            background-color: #000;
             -webkit-mask: url(/images/logo.svg) no-repeat;
             mask: url(/images/logo.svg) no-repeat;
             mask-size: contain;
@@ -62,10 +59,14 @@ import { Image } from "@astrojs/image/components";
             width: 250px;
             text-indent: -9999px;
         }
+
+        label svg {
+            color: #000;
+        }
     }
 
     .menu.menu-horizontal li {
-        color: black;
+        color: #000;
         
         a {
             border-bottom: 2px dotted transparent;
@@ -73,7 +74,7 @@ import { Image } from "@astrojs/image/components";
             margin: 0 1rem;
 
             &.active{
-                border-color: black;
+                border-color: #000;
                 background-color: transparent;
                 color: unset;
             }
@@ -82,7 +83,11 @@ import { Image } from "@astrojs/image/components";
     
     .scrolled {
         header {
-            background-color: hsl(var(--n) / var(--tw-bg-opacity))
+            background-color: hsl(var(--b2) / var(--tw-bg-opacity))
+        }
+
+        label svg {
+            color: #FFF;
         }
 
         .menu.menu-horizontal li {
