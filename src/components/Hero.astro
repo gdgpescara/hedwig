@@ -1,5 +1,4 @@
 ---
-import { Image } from "@astrojs/image/components";
 import gdgLogo from "../assets/gdg-logo.svg";
 
 const signUpUrl =
@@ -11,7 +10,7 @@ const signUpUrl =
     class="hero min-h-screen bg-[url('/images/map-old-top.svg')]"
 >
     <div
-        class="hero-content text-center backdrop-blur-md backdrop-contrast-20 p-16 rounded-[25px]"
+        class="hero-content text-center backdrop-blur-md backdrop-contrast-20 p-8 rounded-[25px] md:p-16"
     >
         <div class="max-w-3xl">
             <img
@@ -21,10 +20,10 @@ const signUpUrl =
                 src={gdgLogo.src}
                 alt="GDG Logo"
             />
-            <h1 class="text-8xl font-scriptina font-light text-black pt-16">
+            <h1 class="text-5xl md:text-6xl font-scriptina font-light text-black pt-16">
                 DevFest Pescara 2023
             </h1>
-            <h2 class="text-8xl font-harrypotter text-black py-16">
+            <h2 class="text-4xl md:text-[5rem] font-harrypotter text-black py-16">
                 and the developers' magic
             </h2>
             <a
@@ -38,26 +37,7 @@ const signUpUrl =
 
 <style lang="scss">
     .hero {
-        width: 100%;
-        min-height: 100vh;
-        position: relative;
-        padding: 160px 0 80px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-image: url("/images/intro.png");
-
-        h1 {
-            font-size: 60px;
-        }
-
-        h2 {
-            color: #000;
-            font-size: 80px;
-            @media (max-width: 640px) {
-                font-size: 60px;
-            }
-        }
+        padding: 8rem 1rem 5rem 1rem;
     }
 
     .parallax {
