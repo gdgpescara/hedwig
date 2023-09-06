@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import Section from "./Section.astro";
 import instagramImageSrc from "../assets/social/instagram.svg";
 import facebookImageSrc from "../assets/social/facebook.svg";
@@ -11,7 +11,7 @@ import gdgCloudTorinoLogoSrc from "../assets/gdg_cloud_torino.png";
 
 interface Social {
   link: string;
-  imageSrc: string;
+  imageSrc: ImageMetadata;
   imageAlt: string;
 }
 
