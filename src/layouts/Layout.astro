@@ -1,6 +1,8 @@
 ---
+import i18next from "i18next";
 import Drawer from "../components/Drawer.astro";
 import Footer from "../components/Footer.astro";
+import { HeadHrefLangs } from "astro-i18next/components";
 
 export interface Props {
   title: string;
@@ -9,24 +11,22 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
-<html data-theme="dark" lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Devfest Pescara 2023 and the developers' magic"
-    />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <Drawer>
-      <slot />
-    </Drawer>
-  </body>
+<!DOCTYPE html>
+<html data-theme="dark" lang={i18next.language}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Devfest Pescara 2023 and the developers' magic" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<HeadHrefLangs />
+	</head>
+	<body>
+		<Drawer>
+			<slot />
+		</Drawer>
+	</body>
 </html>
 <style is:global>
   /* The integration's default injected base.css file */
