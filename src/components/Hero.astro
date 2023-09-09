@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import gdgLogo from "../assets/gdg-logo.svg";
 
 const signUpUrl =
@@ -21,15 +22,15 @@ const signUpUrl =
                 alt="GDG Logo"
             />
             <h1 class="text-5xl md:text-6xl font-scriptina font-light text-black pt-16">
-                DevFest Pescara 2023
+                {t('site-title')}
             </h1>
             <h2 class="text-4xl md:text-[5rem] font-harrypotter text-black py-16">
-                and the developers' magic
+                {t('site-motto')}
             </h2>
             <a
                 class="btn btn-outline btn-wide btn-circle border-dashed text-black"
                 href={signUpUrl}
-                target="_blank">Sign up</a
+                target="_blank">{t("sign-up")}</a
             >
         </div>
     </div>

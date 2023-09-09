@@ -3,7 +3,7 @@ export default {
   defaultLocale: "en",
   locales: ["en", "it"],
   defaultNamespace: "common",
-  namespaces: ["common"],
+  namespaces: ["common", "landing"],
   // i18nextServer: {
   //   debug: true,
   // }
