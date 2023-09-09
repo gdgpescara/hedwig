@@ -1,5 +1,11 @@
 {
-  "numbers": {
-    "title": "Numbers"
-  }
+    "site-title": "DevFest 2023 Pescara",
+    "site-motto": "and the developers' magic",
+    "sign-up": "Sign up",
+    "and": "and",
+    "by": "by",
+    "keep-in-touch": {
+        "title": "Keep in touch",
+        "organized-with": "Organized with"
+    }
 }

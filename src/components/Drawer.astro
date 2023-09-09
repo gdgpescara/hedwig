@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import Navbar from "./Navbar.astro";
 ---
 
@@ -25,7 +26,7 @@ import Navbar from "./Navbar.astro";
             <!-- Logo -->
             <div class="flex-1 grid justify-items-center lg:justify-items-start">
                 <a class="btn normal-case text-xl logo">
-                    DevFest 2023 Pescara
+                    {t('site-title')}
                 </a>
             </div>
             <nav class="flex-none hidden lg:block">

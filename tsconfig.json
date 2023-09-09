@@ -3,9 +3,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "skipLibCheck": true,
-    "types": [
-      "@astrojs/image/client"
-    ]
+    "skipLibCheck": true
   }
 }
