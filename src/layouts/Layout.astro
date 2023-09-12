@@ -3,31 +3,49 @@ import Drawer from "../components/Drawer.astro";
 import Footer from "../components/Footer.astro";
 
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html data-theme="dark" lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Devfest Pescara 2023 and the developers' magic" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Drawer>
-			<slot />
-		</Drawer>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Devfest Pescara 2023 and the developers' magic"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Drawer>
+      <slot />
+    </Drawer>
+  </body>
 </html>
 <style is:global>
-	/* The integration's default injected base.css file */
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+  /* The integration's default injected base.css file */
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/serviceWorker.js")
+      .then(function (registration) {
+        console.log(
+          "ServiceWorker registration successful with scope: ",
+          registration.scope
+        );
+      })
+      .catch(function (err) {
+        console.log("ServiceWorker registration failed: ", err);
+      });
+  }
+</script>
