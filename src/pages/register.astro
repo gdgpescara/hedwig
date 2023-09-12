@@ -1,0 +1,118 @@
+---
+import { getAuth } from "firebase-admin/auth";
+import { changeLanguage } from "i18next";
+import TextField from "../components/TextField.astro";
+import { app } from "../firebase/server";
+import Layout from "../layouts/Layout.astro";
+import { registrationSchema, type RegistrationData, } from "../utils/validations";
+import { getCurrentUser } from "../utils/session.server";
+
+changeLanguage("en");
+
+const user = await getCurrentUser(Astro.cookies);
+if (user) {
+    return Astro.redirect("/");
+}
+let errors: Partial<{
+    [key in keyof RegistrationData]: string;
+}> = {};
+let partialData: Partial<RegistrationData> = {};
+let registrationError = "";
+if (Astro.request.method === "POST") {
+    const auth = getAuth(app);
+    const formData = await Astro.request.formData();
+    const registrationPayload = registrationSchema.safeParse({
+        email: formData.get("email"),
+        password: formData.get("password"),
+        passwordConfirmation: formData.get("password-confirmation"),
+    });
+    if (registrationPayload.success) {
+        const { email, password } = registrationPayload.data;
+        try {
+            await auth.createUser({
+                email,
+                password,
+            });
+            return Astro.redirect("/login");
+        }
+        catch (error) {
+            console.log(error);
+            if (error instanceof Error) {
+                registrationError = error.message;
+            }
+            partialData = {
+                email,
+                password,
+                passwordConfirmation: "",
+            };
+        }
+    }
+    else {
+        errors = registrationPayload.error.issues.reduce((acc, issue) => ({
+            ...acc,
+            [issue.path[0]]: issue.message,
+        }), {});
+        partialData = {
+            email: formData.get("email")?.toString(),
+            password: formData.get("password")?.toString(),
+        };
+    }
+}
+export const prerender = false;
+---
+
+<Layout title="reg">
+  <div
+    class="container max-w-sm min-h-screen mx-auto flex-1 flex flex-col items-center justify-center px-2"
+  >
+    <div class="bg-white px-6 py-8 shadow-md w-full">
+      <div
+        id="register-error"
+        class=`alert alert-error ${registrationError ? "" : "hidden"}`
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="stroke-current shrink-0 h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span>{registrationError}</span>
+      </div>
+
+      <form method="POST">
+        <TextField
+          label="Email"
+          name="email"
+          id="registration-email"
+          value={partialData.email}
+          errorText={errors.email}
+        />
+        <TextField
+          label="Password"
+          name="password"
+          id="registration-password"
+          value={partialData.password}
+          errorText={errors.password}
+        />
+        <TextField
+          label="Repeat Password"
+          name="password-confirmation"
+          id="registration-password-confirmation"
+          value={partialData.passwordConfirmation}
+          errorText={errors.passwordConfirmation}
+        />
+
+        <div class="text-right">
+          <button class="btn btn-active" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</Layout>

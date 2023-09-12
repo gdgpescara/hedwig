@@ -1,0 +1,32 @@
+---
+type Props = {
+  name?: string;
+  id: string;
+  label?: string;
+  errorText?: string;
+  value?: string;
+  required?: boolean;
+  type?: astroHTML.JSX.HTMLInputTypeAttribute;
+  placeholder?: string;
+};
+
+const { errorText, id, label, name, value, required, type, placeholder } = Astro.props;
+---
+
+<div class=`form-control w-full max-w-xs`>
+  <label class="label" for={id}>
+    <span class="label-text">{label}</span>
+  </label>
+  <input
+    value={value}
+    id={id}
+    name={name}
+    type={type}
+    required={required}
+    placeholder={placeholder}
+    class=`input input-bordered w-full max-w-xs ${errorText ? 'input-error' : ''}`
+  />
+  <label class="label">
+    <span class="label-text-alt">{errorText}</span>
+  </label>
+</div>

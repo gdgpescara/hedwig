@@ -1,0 +1,19 @@
+<div>
+  <h1 class="session">Session</h1>
+  <p>Session cookie value</p>
+</div>
+
+<script>
+  import { getAuthCookie, getCookie } from "../utils/session.client";
+
+  const session = getCookie("session");
+
+  if (session) {
+    const auth = getAuthCookie(session);
+    const sessionElement = document.querySelector(".session");
+
+    if (sessionElement) {
+      sessionElement.innerHTML = auth?.name || "No session";
+    }
+  }
+</script>

@@ -1,0 +1,14 @@
+{
+    "do-you-want-to-register": "Do you want to signup with your email?",
+    "register": "Register",
+    "errors": {
+        "generic": "Credentials are invalid",
+        "firebase": {
+            "auth/email-already-exists": "Email already exists",
+            "auth/invalid-email": "Invalid email",
+            "auth/invalid-password": "Invalid password",
+            "auth/user-not-found": "User not found",
+            "auth/wrong-password": "Wrong password"
+        }
+    }
+}

@@ -1,0 +1,208 @@
+---
+import { t } from 'i18next';
+import TextField from '../components/TextField.astro';
+import Layout from '../layouts/Layout.astro';
+import { getCurrentUser } from '../utils/session.server';
+
+const user = await getCurrentUser(Astro.cookies);
+
+if (user) {
+  return Astro.redirect('/');
+}
+---
+
+<Layout title="login">
+  <div
+    class="container max-w-sm min-h-screen mx-auto flex-1 flex flex-col items-center justify-center px-2"
+  >
+    <div class="bg-white px-6 py-8 shadow-md w-full">
+      <div id="register-error" class=`alert alert-error hidden`>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="stroke-current shrink-0 h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span id="register-error-text">{t('register:errors.generic')}</span>
+      </div>
+      <!-- Scegli se autenticarti con google o facebook o twitter -->
+      <div class="text-center">
+        <div class="flex gap-2 justify-center">
+          <!-- 
+          q: quale è il colore principale di Google? 
+          -->
+          <button
+            data-social="google"
+            class="btn btn-md text-white bg-[#DB4437]"
+            id="google-login">Google</button
+          >
+          <button
+            data-social="facebook"
+            class="btn btn-md text-white bg-[#1877f2]"
+            id="facebook-login">Facebook</button
+          >
+          <button
+            data-social="x"
+            class="btn btn-md text-white bg-[#14171A]"
+            id="twitter-login">X</button
+          >
+        </div>
+        <div class="divider uppercase">{t('or')}</div>
+        <form action="/api/auth/signin" id="login-form" method="POST">
+          <TextField
+            required
+            label="Email"
+            name="email"
+            id="registration-email"
+            type="email"
+          />
+          <TextField
+            required
+            label="Password"
+            type="password"
+            name="password"
+            id="registration-password"
+          />
+          <div class="text-right">
+            <button class="btn btn-active" type="submit">Submit</button>
+          </div>
+        </form>
+        <!-- oppure fai login -->
+        <div class="divider"></div>
+        <div class="text-center text-sm text-grey-dark mt-4">
+          {t('register:do-you-want-to-register')}{` `}
+          <a
+            class="no-underline border-b border-blue text-blue"
+            href="/register"
+          >
+            {t('register:register')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import {
+      getAuth,
+      inMemoryPersistence,
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup,
+      FacebookAuthProvider,
+      TwitterAuthProvider,
+    } from 'firebase/auth';
+    import { app } from '../firebase/client';
+    import { getFirebaseErrorCode } from '../utils/getFirebaseErrorCode';
+
+    const form = document.querySelector('#login-form') as HTMLFormElement;
+    const auth = getAuth(app);
+
+    const handleFirebaseErrors = (err: unknown) => {
+      if (err instanceof Error) {
+        const errorDiv = document.querySelector(
+          '#register-error',
+        ) as HTMLDivElement;
+
+        console.error(getFirebaseErrorCode(err));
+
+        errorDiv.classList.remove('hidden');
+      }
+    };
+
+    const verifyIdToken = async (idToken: string) => {
+      const response = await fetch(form.action, {
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+
+      if (response.redirected) {
+        window.location.assign(response.url);
+      }
+    };
+
+    if (form) {
+      auth.setPersistence(inMemoryPersistence);
+
+      form.addEventListener('click', () => {
+        const errorDiv = document.querySelector(
+          '#register-error',
+        ) as HTMLDivElement;
+        errorDiv.classList.add('hidden');
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const email = formData.get('email')?.toString();
+        const password = formData.get('password')?.toString();
+
+        if (!email || !password) {
+          return;
+        }
+
+        try {
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password,
+          );
+
+          const idToken = await userCredential.user.getIdToken();
+
+          verifyIdToken(idToken);
+        } catch (err) {
+          handleFirebaseErrors(err);
+        }
+      });
+    }
+
+    const socialButtons = document.querySelectorAll(
+      '[data-social]',
+    ) as HTMLButtonElement[];
+
+    for (const button of socialButtons) {
+      button.addEventListener('click', async (e) => {
+        const social = button.dataset.social;
+
+        if (!social) {
+          return;
+        }
+
+        const provider = (() => {
+          switch (social) {
+            case 'google':
+              return new GoogleAuthProvider();
+            case 'facebook':
+              return new FacebookAuthProvider();
+            case 'x':
+              return new TwitterAuthProvider();
+            default:
+              return null;
+          }
+        })();
+
+        if (!provider) {
+          return;
+        }
+
+        try {
+          const userCredential = await signInWithPopup(auth, provider);
+          const idToken = await userCredential.user.getIdToken();
+
+          verifyIdToken(idToken);
+        } catch (err) {
+          handleFirebaseErrors(err);
+        }
+      });
+    }
+  </script>
+</Layout>

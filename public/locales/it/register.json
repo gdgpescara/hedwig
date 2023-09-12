@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "firebase": {
+      "auth/invalid-email": "E-mail non valido",
+      "auth/invalid-password": "Password non valida",
+      "auth/user-not-found": "Utente non trovato",
+      "auth/wrong-password": "Password errata",
+      "auth/email-already-exists": "Email già esistente"
+    }
+  }
+}
