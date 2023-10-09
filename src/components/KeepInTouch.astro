@@ -8,6 +8,7 @@ import twitterImageSrc from "../assets/social/twitter.svg";
 import heartSrc from "../assets/heart.svg";
 import gdgLogoSrc from "../assets/gdg-pescara-logo.svg";
 import gdgCloudTorinoLogoSrc from "../assets/gdg_cloud_torino.png";
+import { t } from "i18next";
 
 interface Social {
   link: string;
@@ -40,7 +41,7 @@ const social: Social[] = [
 ---
 
 <div id="contacts" class="text-center dots">
-  <Section title="Keep in touch">
+  <Section title={t("keep-in-touch.title") || "Keep in touch"}>
     <div class="flex justify-center gap-8 py-8">
       {
         social.map((item) => (
@@ -55,16 +56,18 @@ const social: Social[] = [
       }
     </div>
     <div class="flex justify-center gap-4 pt-16">
-      Organized with
+      {t("keep-in-touch.organized-with")}
       <Image
         class="max-h-[24px] h-[24px] max-w-[24px] w-[24px]"
         src={heartSrc}
         alt="Heart"
       />
-      by
+      {t("by")}
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap py-10">
+    <div
+      class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap py-10"
+    >
       <a href="https://gdg.community.dev/gdg-pescara/" target="_blank"
         ><Image
           class="max-h-[70px] h-[70px] max-w-[290px] w-[290px]"
@@ -73,7 +76,7 @@ const social: Social[] = [
         /></a
       >
 
-      <div class="">and</div>
+      <div class="">{t("and")}</div>
       <a href="https://gdg.community.dev/gdg-cloud-torino/" target="_blank"
         ><Image
           class="max-h-[117px] h-[105px] max-w-[290px] w-[260px]"
