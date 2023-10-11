@@ -1,0 +1,38 @@
+---
+import Section from "./Section.astro";
+import AgendaCard from "./AgendaCard.astro";
+import agenda from "../data/agenda";
+---
+<div id="agenda" class="dots">
+    <Section title="Agenda">
+        <div class="max-w-3xl text-center">
+            <a
+                class="btn btn-outline btn-wide btn-circle border-dashed text-black"
+                target="_blank">Day 1</a
+            >
+            <a
+                class="btn btn-outline btn-wide btn-circle border-dashed text-black"
+                target="_blank">Day 2</a
+            >
+        </div>
+        
+
+    </Section>
+</div>
+<div class="relative mx-9">
+    <h2 class="text-4xl">18 Novembre 2023</h2>
+    {
+        agenda.map((element) => (
+        
+            <AgendaCard
+                time={element.time}
+                name={element.name}
+                length={element.length}
+                language={element.language}
+                speaker={element.speaker}
+            />
+        ))
+    }
+</div>
+
+
