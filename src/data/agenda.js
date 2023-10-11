@@ -1,3 +1,5 @@
+import speaker from "../assets/speaker.png";
+
 const agenda = [
     {
         time: '08:30',
@@ -15,7 +17,7 @@ const agenda = [
         length: '15 mins'
     },
     {
-        time: '09:45',
+        time: '10:00',
         name: 'Coffee break',
         length: '15 mins'
     },
@@ -27,7 +29,7 @@ const agenda = [
         speaker: {
             name: 'Jane Doe',
             description: 'description',
-            image: '/url-di-prova',
+            imageUrl: speaker.src,
         }
     },
     {
@@ -38,7 +40,7 @@ const agenda = [
         speaker: {
             name: 'John Doe',
             description: 'description',
-            image: '/url-di-prova',
+            imageUrl: speaker.src,
         }
     },
     {
@@ -49,7 +51,7 @@ const agenda = [
         speaker: {
             name: 'John Doe',
             description: 'description',
-            image: '/url-di-prova',
+            imageUrl: speaker.src,
         }
     },
 ];

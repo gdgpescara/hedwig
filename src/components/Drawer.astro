@@ -68,24 +68,31 @@ import Navbar from "./Navbar.astro";
 
     .menu.menu-horizontal li {
         color: #000;
-        
+
         a {
             border-bottom: 2px dotted transparent;
             border-radius: 0;
             margin: 0 1rem;
 
-            &.active{
+            &.active, &:active, &:hover {
                 border-color: #000;
-                background-color: transparent;
-                color: unset;
+                background-color: transparent !important;
+                color: unset !important;
             }
         }
+    }
+
+    .menu li > :not(ul):not(.menu-title):not(details):active, .menu li > :not(ul):not(.menu-title):not(details).active, .menu li > details > summary:active {
+
     }
     
     .scrolled {
         header {
             background-color: hsl(var(--b2) / var(--tw-bg-opacity))
         }
+    }
+
+    .black, .scrolled {
 
         label svg {
             color: #FFF;
