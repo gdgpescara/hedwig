@@ -1,61 +1,77 @@
 ---
 export interface Speaker {
-    name: string;
-    description: string;
-    imageUrl: string;
+  name: string;
+  description: string;
+  imageUrl: string;
 }
 
 export interface Event {
-    time: string;
-    name: string;
-    length: string;
-    language?: string;
-    speaker?: Speaker;
+  time: string;
+  name: string;
+  length: string;
+  language?: string;
+  speaker?: Speaker;
 }
 
-const { time, name, length, language,  speaker} = Astro.props;
+const { time, name, length, language, speaker } = Astro.props;
 ---
+
 <div class="flex my-8">
-    <!--If speaker --> 
-    {
-        speaker && (
-        <div class="w-40 h-40 rounded bg-[#232323] mx-9 p-6 text-center leading-loose">
-            <span class="text-[50px]">{time.split(':')[0]}</span><span class="text-[25px]">:{time.split(':')[1]}</span>
+  <!--If speaker -->
+  {
+    speaker && (
+      <>
+        <div class="rounded-3xl">
+          <div class="w-40 h-40 text-center bg-[#232323]">
+            <span class="text-[50px]">{time.split(":")[0]}</span>
+            <span class="text-[25px]">:{time.split(":")[1]}</span>
+          </div>
         </div>
         <div class="w-full rounded bg-[#232323] p-6 mx-9">
-            <div class="agenda-element">
-                <span class="agenda-badge">{length}</span>
-                <span class="agendcda-badge">{language}</span>
-                <h2>{name}</h2>
-                <div class="agenda-footer">
-                    <div class="blog-author d-flex align-items-center">
-                        <img src="assets/img/blog/blog-author.jpg" class="w-10 h-10 rounded-full" alt="Jane Doe">
-                        <div>
-                            <h3>{speaker.name}</h3>
-                            <p>
-                                {speaker.description}
-                            </p>
-                        </div>
-                    </div>
+          <div class="agenda-element">
+            <span class="agenda-badge">{length}</span>
+            <span class="agendcda-badge">{language}</span>
+            <h2>{name}</h2>
+            <div class="agenda-footer">
+              <div class="blog-author d-flex align-items-center">
+                <img
+                  src="assets/img/blog/blog-author.jpg"
+                  class="w-10 h-10 rounded-full"
+                  alt="Jane Doe"
+                />
+                <div>
+                  <h3>{speaker.name}</h3>
+                  <p>{speaker.description}</p>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        )
-    }
-    <!-- If !speaker -->
-    {
-        !speaker && (
-        <div class="w-40 h-40 rounded bg-[#232323] mx-9 p-6 text-center leading-loose">
-            <span class="text-[50px]">{time.split(':')[0]}</span><span class="text-[25px]">:{time.split(':')[1]}</span>
+      </>
+    )
+  }
+  <!-- If !speaker -->
+  {
+    !speaker && (
+      <div class="flex flex-col md:flex-row w-full gap-6 mb-6">
+        <div class="h-40 w-40 rounded-3xl shrink-0 bg-[#232323] text-center flex ">
+          <div class="h-min m-auto">
+            <span class="text-4xl font-black">{time.split(":")[0]}</span>
+            <span class="text-2xl">:{time.split(":")[1]}</span>
+          </div>
         </div>
-        <div class="w-full rounded bg-[#232323] p-6 mx-9">
-            <div class="agenda-element">
-                <span class="agenda-badge">{length}</span>
-                <h2 class="text-4xl">{name}</h2>
-                <hr class="h-px my-8 border-dotted">
+        <div class="w-full rounded-3xl bg-[#232323] p-6">
+          <div class="agenda-element">
+            <div class="flex justify-end">
+              <span class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm">
+                {length}
+              </span>
             </div>
+            <h2 class="text-4xl font-black">{name}</h2>
+            <hr class="h-px my-8 border-dashed" />
+          </div>
         </div>
-        )
-    }
-    
+      </div>
+    )
+  }
 </div>

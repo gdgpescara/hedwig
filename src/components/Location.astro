@@ -13,7 +13,7 @@ const mapUrl =
     id="location"
     class="grid grid-cols-1 xl:grid-cols-2 justify-center items-center min-h-[35rem]"
   >
-    <Map />
+    <Map client:visible />
     <div class="px-16 py-8 order-1 md:order-2">
       <Heading text={t('landing:location.title')} level="h2" />
       <div class="text-2xl xl:text-3xl font-bold text-accent-content pt-4">
