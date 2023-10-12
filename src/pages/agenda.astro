@@ -2,7 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import Agenda from "../components/Agenda.astro";
 ---
+<script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" is:inline></script>
+<link href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 
 <Layout title="Devfest Pescara 2023 - Agenda">
     <Agenda/>
+
+    <script is:inline>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const elms = document.getElementsByClassName( 'splide' );
+
+            for ( var i = 0; i < elms.length; i++ ) {
+                new Splide(elms[i]).mount();
+            }
+        });
+    </script>
 </Layout>

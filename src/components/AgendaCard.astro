@@ -29,22 +29,22 @@ const { time, events, multiple } = Astro.props;
                 <span class="text-2xl">:{time.split(":")[1]}</span>
             </div>
         </div>
-        <div class="w-full rounded-3xl bg-[#232323] p-6">
-            {
-                events.map((event: Event, index: number) => (
-                    <EventCard
-                        name={event.name}
-                        length={event.length}
-                        language={event.language}
-                        speaker={event.speaker}
-                        multiple={multiple}
-                    />
-                    <!-- If multiple -->
-                    { multiple && (index === 0) && (
-                        <span class="text-2xl">carousel</span>
-                    )}
-                ))
-            }
+        <div class={ multiple ? "w-full rounded-3xl bg-[#232323] p-6 splide" : "w-full rounded-3xl bg-[#232323] p-6"}>
+            <div class={ multiple ? "splide__track" : null }>
+                <ul class="splide__list">
+                    {
+                        events.map((event: Event, index: number) => (
+                            <EventCard
+                                name={event.name}
+                                length={event.length}
+                                language={event.language}
+                                speaker={event.speaker}
+                                multiple={multiple}
+                            />
+                        ))
+                    }
+                </ul>
+            </div>
         </div>
     </div>
 </div>

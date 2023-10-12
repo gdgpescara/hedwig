@@ -10,7 +10,7 @@ const { name, length, language, speaker, multiple } = Astro.props;
 
 {
     speaker && (
-    <div class={ multiple ? 'flex flex-col md:flex-row gap-6 w-10/12': 'flex flex-col md:flex-row gap-6 w-full' }>
+    <li class={ multiple ? 'flex flex-col md:flex-row gap-6 w-10/12 splide__slide': 'flex flex-col md:flex-row gap-6 w-full' }>
         <div class="rounded-3xl bg-[#2E2E2E]" >
             <div class="p-6">
                 <div class="flex justify-start">
@@ -51,11 +51,11 @@ const { name, length, language, speaker, multiple } = Astro.props;
                 )
             }
         </div>
-    </div>
+    </li>
     )
 }
 { !speaker && (
-    <div class="w-full rounded-3xl bg-[#232323]">
+    <li class="w-full rounded-3xl bg-[#232323]">
         <div class="flex justify-end">
             <span class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm">
                 {length}
@@ -63,5 +63,5 @@ const { name, length, language, speaker, multiple } = Astro.props;
         </div>
         <h2 class="text-4xl font-black">{name}</h2>
         <hr class="h-px my-8 border-dashed" />
-    </div>
+    </li>
 )}
