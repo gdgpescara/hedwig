@@ -2,6 +2,35 @@
 import Section from "./Section.astro";
 import AgendaCard from "./AgendaCard.astro";
 import agenda from "../data/agenda";
+
+// we need to group all the events at the same time
+const key = 'time';
+const agendaFiltered = agenda.reduce((acc, cur) => {
+    if(cur[key]) {
+        const event = {
+            name: cur.name,
+            length: cur.length,
+            language: cur.language,
+            speaker: cur.speaker
+        };
+        let alreadyAdded = false;
+        if (acc.length) {
+            if(acc[acc.length - 1][key] === cur[key]) {
+                alreadyAdded = true;
+                acc[acc.length - 1].events.push(event);
+            }
+        }
+        if(!alreadyAdded) {
+            const eventToAdd = {
+                time: cur.time,
+                events: [event]
+            };
+            acc.push(eventToAdd);
+        }
+    }
+    return acc;
+}, [] as any[]);
+
 ---
 <div id="agenda" class="dots">
     <Section title="Agenda">
@@ -22,14 +51,11 @@ import agenda from "../data/agenda";
 <div class="relative mx-9">
     <h2 class="text-4xl">18 Novembre 2023</h2>
     {
-        agenda.map((element) => (
+        agendaFiltered.map((element) => (
         
             <AgendaCard
                 time={element.time}
-                name={element.name}
-                length={element.length}
-                language={element.language}
-                speaker={element.speaker}
+                events={element.events}
             />
         ))
     }

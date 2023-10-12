@@ -1,4 +1,5 @@
 ---
+import EventCard from "./EventCard.astro";
 export interface Speaker {
     name: string;
     description: string;
@@ -6,14 +7,18 @@ export interface Speaker {
 }
 
 export interface Event {
-    time: string;
     name: string;
     length: string;
     language?: string;
     speaker?: Speaker;
 }
 
-const { time, name, length, language, speaker } = Astro.props;
+export interface AgendaElement {
+    time: string;
+    events: Event[]
+}
+
+const { time, events } = Astro.props;
 ---
 
 <div class="flex my-8">
@@ -25,43 +30,15 @@ const { time, name, length, language, speaker } = Astro.props;
             </div>
         </div>
         <div class="w-full rounded-3xl bg-[#232323]">
-            <div class="p-6">
-                <div class="flex justify-end">
-                    <span class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm">
-                        {length}
-                    </span>
-                    <!--If language -->
-                    {
-                        language && (
-                        <span class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm">
-                            {language}
-                        </span>
-                        )
-                    }
-                </div>
-                <h2 class="text-4xl font-black">{name}</h2>
-                <!-- If !speaker -->
-                { !speaker && (
-                    <hr class="h-px my-8 border-dashed" />
-                )}
-            </div>
-            <!--If speaker -->
             {
-                speaker && (
-                    <div class="w-full bg-[#323232] rounded-b-3xl p-6">
-                        <div class="blog-author flex align-items-center">
-                            <img
-                                src={speaker.imageUrl}
-                                class="w-14 h-14 rounded-2xl"
-                                alt={speaker.name}
-                            />
-                            <div>
-                                <h3>{speaker.name}</h3>
-                                <p>{speaker.description}</p>
-                            </div>
-                        </div>
-                    </div>
-                )
+                events.map((event: Event) => (
+                    <EventCard
+                        name={event.name}
+                        length={event.length}
+                        language={event.language}
+                        speaker={event.speaker}
+                    />
+                ))
             }
         </div>
     </div>
