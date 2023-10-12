@@ -17,12 +17,14 @@ const agendaFiltered = agenda.reduce((acc, cur) => {
         if (acc.length) {
             if(acc[acc.length - 1][key] === cur[key]) {
                 alreadyAdded = true;
+                acc[acc.length - 1].multiple = true;
                 acc[acc.length - 1].events.push(event);
             }
         }
         if(!alreadyAdded) {
             const eventToAdd = {
                 time: cur.time,
+                multiple: false,
                 events: [event]
             };
             acc.push(eventToAdd);
@@ -56,6 +58,7 @@ const agendaFiltered = agenda.reduce((acc, cur) => {
             <AgendaCard
                 time={element.time}
                 events={element.events}
+                multiple={element.multiple}
             />
         ))
     }

@@ -18,7 +18,7 @@ export interface AgendaElement {
     events: Event[]
 }
 
-const { time, events } = Astro.props;
+const { time, events, multiple } = Astro.props;
 ---
 
 <div class="flex my-8">
@@ -29,15 +29,20 @@ const { time, events } = Astro.props;
                 <span class="text-2xl">:{time.split(":")[1]}</span>
             </div>
         </div>
-        <div class="w-full rounded-3xl bg-[#232323]">
+        <div class="w-full rounded-3xl bg-[#232323] p-6">
             {
-                events.map((event: Event) => (
+                events.map((event: Event, index: number) => (
                     <EventCard
                         name={event.name}
                         length={event.length}
                         language={event.language}
                         speaker={event.speaker}
+                        multiple={multiple}
                     />
+                    <!-- If multiple -->
+                    { multiple && (index === 0) && (
+                        <span class="text-2xl">carousel</span>
+                    )}
                 ))
             }
         </div>
