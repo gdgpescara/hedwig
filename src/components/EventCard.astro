@@ -10,8 +10,8 @@ const { name, length, language, speaker, multiple } = Astro.props;
 
 {
     speaker && (
-    <li class={ multiple ? 'flex flex-col md:flex-row gap-6 w-10/12 splide__slide': 'flex flex-col md:flex-row gap-6 w-full' }>
-        <div class="rounded-3xl bg-[#2E2E2E]" >
+    <li class={ multiple ? 'flex flex-col md:flex-row gap-6 splide__slide mr-8': 'flex flex-col md:flex-row gap-6 w-full' }>
+        <div class="rounded-3xl bg-[#2E2E2E] grid" >
             <div class="p-6">
                 <div class="flex justify-start">
                     <span class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm">
@@ -35,16 +35,16 @@ const { name, length, language, speaker, multiple } = Astro.props;
             <!--If speaker -->
             {
                 speaker && (
-                    <div class="w-full bg-[#323232] rounded-b-3xl p-6">
+                    <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
                         <div class="blog-author flex align-items-center">
                             <img
                                 src={speaker.imageUrl}
-                                class="w-14 h-14 rounded-2xl"
+                                class="w-14 h-14 rounded-2xl mr-4"
                                 alt={speaker.name}
                             />
                             <div>
-                                <h3>{speaker.name}</h3>
-                                <p>{speaker.description}</p>
+                                <h3 class="text-xl">{speaker.name}</h3>
+                                <p class="text-sm">{speaker.description}</p>
                             </div>
                         </div>
                     </div>

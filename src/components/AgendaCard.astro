@@ -44,7 +44,20 @@ const { time, events, multiple } = Astro.props;
                         ))
                     }
                 </ul>
+                <!--If speaker -->
             </div>
+            {
+                multiple && (
+                    <div class="splide__arrows absolute -bottom-8 left-6 rounded-xl bg-[#323232] divide-x divide-dotted">
+                        <button class="splide__arrow--prev p-2 px-4 text-2xl">
+                            &lt;
+                        </button>
+                        <button class="splide__arrow--next p-2 px-4 text-2xl">
+                            &gt;
+                        </button>
+                    </div>
+                )
+            }
         </div>
     </div>
 </div>
