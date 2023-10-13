@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import agenda from "../../data/agenda";
+
+export async function getStaticPaths() {
+  return agenda.filter((event: any) => event.speaker).map((event: any) => {
+    return {
+      params: { name: event.speaker.name.toLowerCase().replace(' ', '-') },
+      props: { event },
+    }}
+  );
+}
+
+const { name } = Astro.params;
+const { event } =  Astro.props;
+---
+
+<Layout title={"Devfest Pescara 2023 - " + event.speaker.name}>
+    <h1>{name}</h1>
+</Layout>

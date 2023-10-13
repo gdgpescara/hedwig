@@ -1,5 +1,6 @@
 ---
 export interface Speaker {
+    id: number,
     name: string;
     description: string;
     imageUrl: string;
@@ -37,11 +38,13 @@ const { name, length, language, speaker, multiple } = Astro.props;
                 speaker && (
                     <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
                         <div class="blog-author flex align-items-center">
-                            <img
-                                src={speaker.imageUrl}
-                                class="w-14 h-14 rounded-2xl mr-4"
-                                alt={speaker.name}
-                            />
+                            <a href={"/speaker/" + speaker.name.toLowerCase().replace(' ', '-') }>
+                                <img
+                                    src={speaker.imageUrl}
+                                    class="w-14 h-14 rounded-2xl mr-4"
+                                    alt={speaker.name}
+                                />
+                            </a>
                             <div>
                                 <h3 class="text-xl">{speaker.name}</h3>
                                 <p class="text-sm">{speaker.description}</p>
