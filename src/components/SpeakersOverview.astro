@@ -1,0 +1,29 @@
+---
+import { events, filterEventsBySpeaker } from "../data/agenda-data";
+import { type SpeakerId } from "../data/speakers-data";
+import AgendaOverview from "./AgendaOverview.astro";
+import SpeakersDetail from "./SpeakersDetail.astro";
+
+type Props = {
+  speakerId: string;
+};
+
+const { speakerId } = Astro.props;
+
+---
+
+<div id={"speaker-" + speakerId } class="dots">
+  <SpeakersDetail speakerId={speakerId}></SpeakersDetail>
+</div>
+<div class="relative px-9">
+  <h2 class="text-4xl">18 Novembre 2023</h2>
+  <AgendaOverview
+    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 1)}
+  />
+</div>
+<div class="relative px-9">
+  <h2 class="text-4xl">19 Novembre 2023</h2>
+  <AgendaOverview
+    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 2)}
+  />
+</div>

@@ -4,20 +4,11 @@ import facebookImageSrc from "../assets/social/facebook.svg";
 import instagramImageSrc from "../assets/social/instagram.svg";
 import linkedinImageSrc from "../assets/social/linkedin.svg";
 import twitterImageSrc from "../assets/social/twitter.svg";
-import { events, filterEventsBySpeaker } from "../data/agenda-data";
-import { speakersData, type SpeakerId } from "../data/speakers-data";
-import AgendaOverview from "./AgendaOverview.astro";
+import { speakersData } from "../data/speakers-data";
 import Section from "./Section.astro";
-
-type Props = {
-  speakerId: string;
-};
 
 const { speakerId } = Astro.props;
 const speaker = (speakersData as any)[speakerId];
-const speakerEvents = filterEventsBySpeaker(events, speakerId as SpeakerId);
-console.log(speakerId);
-console.log(JSON.stringify(speakerEvents));
 ---
 
 <Section>
@@ -83,15 +74,3 @@ console.log(JSON.stringify(speakerEvents));
     </div>
   </div>
 </Section>
-<div class="relative px-9">
-  <h2 class="text-4xl">18 Novembre 2023</h2>
-  <AgendaOverview
-    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 1)}
-  />
-</div>
-<div class="relative px-9">
-  <h2 class="text-4xl">19 Novembre 2023</h2>
-  <AgendaOverview
-    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 2)}
-  />
-</div>

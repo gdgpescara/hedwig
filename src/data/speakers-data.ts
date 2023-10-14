@@ -29,3 +29,20 @@ export const speakersData = {
 };
 
 export type SpeakerId = keyof typeof speakersData;
+
+
+export interface Speaker {
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+  work: string;
+  jobTitle: string;
+  social: {
+    instagram: string;
+    facebook: string;
+    linkedin: string;
+    twitter: string;
+    sito: string;
+  }
+}
