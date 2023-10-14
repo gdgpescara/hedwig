@@ -1,4 +1,5 @@
 ---
+import clsx from "clsx";
 export interface Speaker {
   id: number;
   name: string;
@@ -10,11 +11,11 @@ const { name, length, language, speaker, multiple } = Astro.props;
 ---
 
 <li
-  class={multiple
-    ? "flex flex-col md:flex-row gap-6 splide__slide mr-8 m-6"
-    : "flex flex-col md:flex-row gap-6 w-full m-6"}
+  class={clsx("flex flex-col md:flex-row gap-6 w-full", {
+    "splide__slide mr-8 md:m-6": multiple,
+  })}
 >
-  <div class="rounded-3xl bg-[#2E2E2E] flex flex-col w-full">
+  <div class="rounded-3xl md:bg-[#2E2E2E] flex flex-col w-full">
     <div class="p-6 h-full">
       <div class="flex justify-start pb-6">
         <span
@@ -31,7 +32,7 @@ const { name, length, language, speaker, multiple } = Astro.props;
           )
         }
       </div>
-      <h2 class="text-4xl font-black">{name}</h2>
+      <h2 class="text-2xl md:text-4xl font-black">{name}</h2>
       <!-- If !speaker -->
       {!speaker && <hr class="h-px my-8 border-dashed" />}
     </div>
@@ -50,7 +51,7 @@ const { name, length, language, speaker, multiple } = Astro.props;
               />
             </a>
             <div>
-              <h3 class="text-xl">{speaker.name}</h3>
+              <h3 class="text-lg md:text-xl">{speaker.name}</h3>
               <p class="text-sm">{speaker.description}</p>
             </div>
           </div>

@@ -4,7 +4,7 @@ import facebookImageSrc from "../assets/social/facebook.svg";
 import instagramImageSrc from "../assets/social/instagram.svg";
 import linkedinImageSrc from "../assets/social/linkedin.svg";
 import twitterImageSrc from "../assets/social/twitter.svg";
-import { events, filterEventsByDay, filterEventsBySpeaker } from "../data/agenda-data";
+import { events, filterEventsBySpeaker } from "../data/agenda-data";
 import { speakersData, type SpeakerId } from "../data/speakers-data";
 import AgendaOverview from "./AgendaOverview.astro";
 import Section from "./Section.astro";
@@ -27,13 +27,17 @@ console.log(JSON.stringify(speakerEvents));
       class="w-60 h-60 rounded-full border-4 m-auto"
       alt={speaker.name}
     />
-    <h2 class="text-4xl font-bold text-accent-content pt-4">{ speaker.name }</h2>
-    <h3 class="text-3xl text-accent-content pt-4">@{ speaker.work }</h3>
-    <h4 class="text-2xl font-bold text-accent-content pt-4">{ speaker.jobTitle }</h4>
-    <p class="text-xl px-10 text-accent-content pt-4 xl:px-64">{ speaker.description }</p>
+    <h2 class="text-4xl font-bold text-accent-content pt-4">{speaker.name}</h2>
+    <h3 class="text-3xl text-accent-content pt-4">@{speaker.work}</h3>
+    <h4 class="text-2xl font-bold text-accent-content pt-4">
+      {speaker.jobTitle}
+    </h4>
+    <p class="text-xl px-10 text-accent-content pt-4 xl:px-64">
+      {speaker.description}
+    </p>
     <div class="pt-4 px-8">
       {
-        speaker.social &&  speaker.social.instagram && (
+        speaker.social && speaker.social.instagram && (
           <a href={speaker.social.instagram} target="_blank">
             <Image
               class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
@@ -44,8 +48,8 @@ console.log(JSON.stringify(speakerEvents));
         )
       }
       {
-        speaker.social &&  speaker.social.facebook && (
-        <a href={speaker.social.facebook} target="_blank">
+        speaker.social && speaker.social.facebook && (
+          <a href={speaker.social.facebook} target="_blank">
             <Image
               class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
               src={facebookImageSrc}
@@ -55,8 +59,8 @@ console.log(JSON.stringify(speakerEvents));
         )
       }
       {
-        speaker.social &&  speaker.social.linkedin && (
-        <a href={speaker.social.linkedin} target="_blank">
+        speaker.social && speaker.social.linkedin && (
+          <a href={speaker.social.linkedin} target="_blank">
             <Image
               class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
               src={linkedinImageSrc}
@@ -66,8 +70,8 @@ console.log(JSON.stringify(speakerEvents));
         )
       }
       {
-        speaker.social &&  speaker.social.twitter && (
-        <a href={speaker.social.twitter} target="_blank">
+        speaker.social && speaker.social.twitter && (
+          <a href={speaker.social.twitter} target="_blank">
             <Image
               class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
               src={twitterImageSrc}
@@ -81,9 +85,13 @@ console.log(JSON.stringify(speakerEvents));
 </Section>
 <div class="relative px-9">
   <h2 class="text-4xl">18 Novembre 2023</h2>
-  <AgendaOverview events={filterEventsBySpeaker(events, speakerId as SpeakerId)} />
+  <AgendaOverview
+    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 1)}
+  />
 </div>
 <div class="relative px-9">
   <h2 class="text-4xl">19 Novembre 2023</h2>
-  <AgendaOverview events={filterEventsByDay(events, 2)} />
+  <AgendaOverview
+    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 2)}
+  />
 </div>

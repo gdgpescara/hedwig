@@ -2,6 +2,8 @@
 import EventCard from "./EventCard.astro";
 import AgendaIntermission from "../components/AgendaIntermission.astro";
 import type { AgendaEvent, AgendaEventType } from "../types";
+import { speakersData } from "../data/speakers-data";
+import clsx from "clsx";
 
 type Props = {
   events: [string, AgendaEventType[]][];
@@ -15,20 +17,20 @@ const { events } = Astro.props;
     const hasMultipleEvents = _events.length > 1;
 
     return (
-      <div class="flex my-8">
-        <div class="flex flex-col md:flex-row w-full gap-6 mb-6">
-          <div class="h-40 w-40 rounded-3xl shrink-0 bg-[#232323] text-center flex">
+      <div class={clsx("flex my-8", { "mb-16": hasMultipleEvents })}>
+        <div class="flex flex-col md:flex-row w-full gap-3 md:gap-6">
+          <div class="h-20 w-20 md:h-40 md:w-40 rounded-3xl shrink-0 bg-[#232323] text-center flex">
             <div class="h-min m-auto">
-              <span class="text-4xl font-black">{schedule.split(":")[0]}</span>
-              <span class="text-2xl">:{schedule.split(":")[1]}</span>
+              <span class="text-2xl md:text-4xl font-black">
+                {schedule.split(":")[0]}
+              </span>
+              <span class="text-xl md:text-2xl">:{schedule.split(":")[1]}</span>
             </div>
           </div>
           <div
-            class={
-              hasMultipleEvents
-                ? "w-full rounded-3xl bg-[#232323]  splide"
-                : "w-full rounded-3xl bg-[#232323] "
-            }
+            class={clsx("w-full rounded-3xl bg-[#232323]", {
+              splide: hasMultipleEvents,
+            })}
           >
             <div class={hasMultipleEvents ? "splide__track" : null}>
               <ul class="splide__list">
@@ -46,8 +48,8 @@ const { events } = Astro.props;
                     <EventCard
                       name={event.name}
                       length={event.length}
-                      language={"test"}
-                      speaker={{ name: "curo" }}
+                      language={event.language}
+                      speaker={{ name: speakersData[event.speaker.id].name }}
                       multiple={hasMultipleEvents}
                     />
                   );
@@ -83,11 +85,16 @@ const { events } = Astro.props;
     for (var i = 0; i < elms.length; i++) {
       const element = elms[i];
       if (element) {
-        new Splide(element, {
+        const splide = new Splide(element, {
+          autoWidth: true,
           padding: { right: "10%" },
           perPage: 1,
           pagination: false,
         }).mount();
+
+        // splide.on('active', (slideComponent) => {
+        //   slideComponent.
+        // })
       }
     }
   });

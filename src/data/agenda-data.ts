@@ -1,4 +1,4 @@
-import type { AgendaEvent } from "../types";
+import type { AgendaEvent, AgendaEventType, EventSchedule } from "../types";
 import { speakersData, type SpeakerId } from "./speakers-data";
 
 export const events: AgendaEvent = {
@@ -14,6 +14,16 @@ export const events: AgendaEvent = {
     {
       day: 1,
       name: "The Future of Astro",
+      type: "talk",
+      length: "30 min",
+      language: "English",
+      speaker: {
+        id: "f-sciuti",
+      },
+    },
+    {
+      day: 2,
+      name: "The Future of Astro (day 2)",
       type: "talk",
       length: "30 min",
       language: "English",
@@ -55,20 +65,44 @@ export const events: AgendaEvent = {
 };
 
 export const filterEventsByDay = (events: AgendaEvent, day: number) => {
-  return Object.entries(events).filter(([key, value]) => {
-    return value.some((event) => event.day === day);
-  });
+  const foundArray: [EventSchedule, AgendaEventType[]][] = [];
+
+  for (const [key, value] of Object.entries(events)) {
+    const schedule = key as EventSchedule;
+    const foundEvents = value.filter((event) => {
+      return event.day === day;
+    });
+
+    if (foundEvents.length > 0) {
+      foundArray.push([schedule, foundEvents]);
+    }
+  }
+  return foundArray;
 };
 
 export const filterEventsBySpeaker = (
   events: AgendaEvent,
-  speakerId: SpeakerId
+  speakerId: SpeakerId,
+  day?: number
 ) => {
-  return Object.entries(events).filter(([key, value]) => {
-    return value.some((event) => {
+  const foundArray: [EventSchedule, AgendaEventType[]][] = [];
+
+  for (const [key, value] of Object.entries(events)) {
+    const schedule = key as EventSchedule;
+
+    const speakerTalks = value.filter((event) => {
+      const dayMatches = !day || event.day === day;
+
       if (event.type === "talk") {
-        return event.speaker.id === speakerId;
+        return event.speaker.id === speakerId && dayMatches;
       }
+
+      return false;
     });
-  });
+
+    if (speakerTalks.length > 0) {
+      foundArray.push([schedule, speakerTalks]);
+    }
+  }
+  return foundArray;
 };
