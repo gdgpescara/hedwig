@@ -1,67 +1,32 @@
 ---
+import { events, filterEventsByDay } from "../data/agenda-data";
+import AgendaOverview from "./AgendaOverview.astro";
 import Section from "./Section.astro";
-import AgendaCard from "./AgendaCard.astro";
-import agenda from "../data/agenda";
 
-// we need to group all the events at the same time
-const key = 'time';
-const agendaFiltered = agenda.reduce((acc, cur) => {
-    if(cur[key]) {
-        const event = {
-            name: cur.name,
-            length: cur.length,
-            language: cur.language,
-            speaker: cur.speaker
-        };
-        let alreadyAdded = false;
-        if (acc.length) {
-            if(acc[acc.length - 1][key] === cur[key]) {
-                alreadyAdded = true;
-                acc[acc.length - 1].multiple = true;
-                acc[acc.length - 1].events.push(event);
-            }
-        }
-        if(!alreadyAdded) {
-            const eventToAdd = {
-                time: cur.time,
-                multiple: false,
-                events: [event]
-            };
-            acc.push(eventToAdd);
-        }
-    }
-    return acc;
-}, [] as any[]);
+type Props = {
+  day: number;
+};
 
+const { day } = Astro.props;
 ---
+
 <div id="agenda" class="dots">
-    <Section title="Agenda">
-        <div class="max-w-3xl text-center">
-            <a
-                class="btn btn-outline btn-wide btn-circle border-dashed text-black"
-                target="_blank">Day 1</a
-            >
-            <a
-                class="btn btn-outline btn-wide btn-circle border-dashed text-black"
-                target="_blank">Day 2</a
-            >
-        </div>
-        
-
-    </Section>
+  <Section title="Agenda" />
 </div>
-<div class="relative mx-9">
-    <h2 class="text-4xl">18 Novembre 2023</h2>
-    {
-        agendaFiltered.map((element) => (
-        
-            <AgendaCard
-                time={element.time}
-                events={element.events}
-                multiple={element.multiple}
-            />
-        ))
-    }
+<div>
+  <div class="max-w-3xl text-center m-auto">
+    <a
+      class="btn btn-o utline btn-wide btn-circle border-dashed text-black"
+      target="_blank">Day 1</a
+    >
+    <a
+      class="btn btn-outline btn-wide btn-circle border-dashed text-black"
+      target="_blank">Day 2</a
+    >
+  </div>
 </div>
+<div class="relative px-9">
+  <h2 class="text-4xl">18 Novembre 2023</h2>
 
-
+  <AgendaOverview events={filterEventsByDay(events, day)} />
+</div>

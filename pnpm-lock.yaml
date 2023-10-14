@@ -3,7 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/node': ^6.0.0
   '@astrojs/react': ^2.2.1
-  '@astrojs/tailwind': ^4.0.0
+  '@astrojs/tailwind': ^5.0.0
+  '@splidejs/splide': ^4.1.4
   '@types/google.maps': ^3.54.0
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
@@ -21,7 +22,8 @@ specifiers:
 dependencies:
   '@astrojs/node': 6.0.0_astro@3.0.9
   '@astrojs/react': 2.3.2_zkisbtryv3xtasf42ecsrjh3ky
-  '@astrojs/tailwind': 4.0.0_ewpqle5fddhdfice7dvrrsolvm
+  '@astrojs/tailwind': 5.0.2_ewpqle5fddhdfice7dvrrsolvm
+  '@splidejs/splide': 4.1.4
   '@types/react': 18.2.21
   '@types/react-dom': 18.2.7
   astro: 3.0.9_sass@1.66.1
@@ -123,10 +125,10 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/tailwind/4.0.0_ewpqle5fddhdfice7dvrrsolvm:
-    resolution: {integrity: sha512-HmCAXFFes7MUBt5ihdfH1goa8QyGkHejIpz6Z4XBKK9VNYY9G2E3brCn8+pNn5zAOzcwl3FYcuH2AiOa/NGoMQ==}
+  /@astrojs/tailwind/5.0.2_ewpqle5fddhdfice7dvrrsolvm:
+    resolution: {integrity: sha512-oXqeqmBlkQmsltrsU9nEWeXOtrZIAHW8dcmX7BCdrjzPnU6dPwWzAwhddNQ9ihKiWwsLnlbwQZIo2CDigcZlIA==}
     peerDependencies:
-      astro: ^2.6.5
+      astro: ^3.2.4
       tailwindcss: ^3.0.24
     dependencies:
       astro: 3.0.9_sass@1.66.1
@@ -867,6 +869,10 @@ packages:
     dependencies:
       '@proload/core': 0.3.3
       tsm: 2.3.0
+    dev: false
+
+  /@splidejs/splide/4.1.4:
+    resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
     dev: false
 
   /@types/babel__core/7.20.1:

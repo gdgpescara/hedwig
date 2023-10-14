@@ -1,0 +1,94 @@
+---
+import EventCard from "./EventCard.astro";
+import AgendaIntermission from "../components/AgendaIntermission.astro";
+import type { AgendaEvent, AgendaEventType } from "../types";
+
+type Props = {
+  events: [string, AgendaEventType[]][];
+};
+
+const { events } = Astro.props;
+---
+
+{
+  events.map(([schedule, _events]) => {
+    const hasMultipleEvents = _events.length > 1;
+
+    return (
+      <div class="flex my-8">
+        <div class="flex flex-col md:flex-row w-full gap-6 mb-6">
+          <div class="h-40 w-40 rounded-3xl shrink-0 bg-[#232323] text-center flex">
+            <div class="h-min m-auto">
+              <span class="text-4xl font-black">{schedule.split(":")[0]}</span>
+              <span class="text-2xl">:{schedule.split(":")[1]}</span>
+            </div>
+          </div>
+          <div
+            class={
+              hasMultipleEvents
+                ? "w-full rounded-3xl bg-[#232323]  splide"
+                : "w-full rounded-3xl bg-[#232323] "
+            }
+          >
+            <div class={hasMultipleEvents ? "splide__track" : null}>
+              <ul class="splide__list">
+                {_events.map((event) => {
+                  if (event.type === "intermission") {
+                    return (
+                      <AgendaIntermission
+                        name={event.name}
+                        length={event.length}
+                      />
+                    );
+                  }
+
+                  return (
+                    <EventCard
+                      name={event.name}
+                      length={event.length}
+                      language={"test"}
+                      speaker={{ name: "curo" }}
+                      multiple={hasMultipleEvents}
+                    />
+                  );
+                })}
+              </ul>
+            </div>
+            {hasMultipleEvents && (
+              <div class="splide__arrows absolute -bottom-12 left-6 rounded-xl bg-[#323232] divide-x divide-dashed p-1">
+                <button class="splide__arrow--prev p-2 px-4 text-2xl">
+                  &lt;
+                </button>
+                <button class="splide__arrow--next p-2 px-4 text-2xl">
+                  &gt;
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  })
+}
+
+<script>
+  import Splide from "@splidejs/splide";
+  import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+
+  document.addEventListener("DOMContentLoaded", (event) => {
+    const elms = document.getElementsByClassName(
+      "splide"
+    ) as HTMLCollectionOf<HTMLElement>;
+
+    for (var i = 0; i < elms.length; i++) {
+      const element = elms[i];
+      if (element) {
+        new Splide(element, {
+          padding: { right: "10%" },
+          perPage: 1,
+          pagination: false,
+        }).mount();
+      }
+    }
+  });
+</script>

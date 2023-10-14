@@ -1,0 +1,13 @@
+---
+const { length, name } = Astro.props;
+---
+
+<li class="w-full rounded-3xl bg-[#232323] m-6">
+  <div class="flex justify-end">
+    <span class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm">
+      {length}
+    </span>
+  </div>
+  <h2 class="text-4xl font-black">{name}</h2>
+  <hr class="h-px my-8 border-dashed" />
+</li>

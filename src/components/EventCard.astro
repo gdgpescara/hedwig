@@ -1,70 +1,61 @@
 ---
 export interface Speaker {
-    id: number,
-    name: string;
-    description: string;
-    imageUrl: string;
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
 }
 
 const { name, length, language, speaker, multiple } = Astro.props;
 ---
 
-{
-    speaker && (
-    <li class={ multiple ? 'flex flex-col md:flex-row gap-6 splide__slide mr-8': 'flex flex-col md:flex-row gap-6 w-full' }>
-        <div class="rounded-3xl bg-[#2E2E2E] grid" >
-            <div class="p-6">
-                <div class="flex justify-start">
-                    <span class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm">
-                        {length}
-                    </span>
-                    <!--If language -->
-                    {
-                        language && (
-                        <span class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm">
-                            {language}
-                        </span>
-                        )
-                    }
-                </div>
-                <h2 class="text-4xl font-black">{name}</h2>
-                <!-- If !speaker -->
-                { !speaker && (
-                    <hr class="h-px my-8 border-dashed" />
-                )}
-            </div>
-            <!--If speaker -->
-            {
-                speaker && (
-                    <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
-                        <div class="blog-author flex align-items-center">
-                            <a href={"/speaker/" + speaker.name.toLowerCase().replace(' ', '-') }>
-                                <img
-                                    src={speaker.imageUrl}
-                                    class="w-14 h-14 rounded-2xl mr-4"
-                                    alt={speaker.name}
-                                />
-                            </a>
-                            <div>
-                                <h3 class="text-xl">{speaker.name}</h3>
-                                <p class="text-sm">{speaker.description}</p>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-        </div>
-    </li>
-    )
-}
-{ !speaker && (
-    <li class="w-full rounded-3xl bg-[#232323]">
-        <div class="flex justify-end">
-            <span class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm">
-                {length}
+<li
+  class={multiple
+    ? "flex flex-col md:flex-row gap-6 splide__slide mr-8 m-6"
+    : "flex flex-col md:flex-row gap-6 w-full m-6"}
+>
+  <div class="rounded-3xl bg-[#2E2E2E] flex flex-col w-full">
+    <div class="p-6 h-full">
+      <div class="flex justify-start pb-6">
+        <span
+          class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm"
+        >
+          {length}
+        </span>
+        <!--If language -->
+        {
+          language && (
+            <span class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm">
+              {language}
             </span>
+          )
+        }
+      </div>
+      <h2 class="text-4xl font-black">{name}</h2>
+      <!-- If !speaker -->
+      {!speaker && <hr class="h-px my-8 border-dashed" />}
+    </div>
+    <!--If speaker -->
+    {
+      speaker && (
+        <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
+          <div class="blog-author flex align-items-center">
+            <a
+              href={"/speaker/" + speaker.name.toLowerCase().replace(" ", "-")}
+            >
+              <img
+                src={speaker.imageUrl}
+                class="w-14 h-14 rounded-2xl mr-4"
+                alt={speaker.name}
+              />
+            </a>
+            <div>
+              <h3 class="text-xl">{speaker.name}</h3>
+              <p class="text-sm">{speaker.description}</p>
+            </div>
+          </div>
         </div>
-        <h2 class="text-4xl font-black">{name}</h2>
-        <hr class="h-px my-8 border-dashed" />
-    </li>
-)}
+      )
+    }
+  </div>
+</li>
