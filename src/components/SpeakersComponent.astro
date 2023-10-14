@@ -1,0 +1,16 @@
+---
+import Section from "./Section.astro";
+import { speakersData } from "../data/speakers-data";
+const speakers = Object.keys(speakersData);
+import SpeakersDetail from "../components/SpeakersDetail.astro";
+
+---
+
+<div id="speakers" class="dots">
+  <Section title="Speakers" />
+</div>
+{
+  speakers.map((speaker) => (
+    <SpeakersDetail speakerId={speaker} />
+  ))
+}
