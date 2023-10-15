@@ -19,19 +19,23 @@ const speaker = (speakersData as any)[speakerId];
       alt={speaker.name}
     />
     <h2 class="text-4xl font-bold text-accent-content pt-4">{speaker.name}</h2>
-    <h3 class="text-3xl text-accent-content pt-4">@{speaker.work}</h3>
-    <h4 class="text-2xl font-bold text-accent-content pt-4">
+    {
+      speaker.company && (
+        <div class="text-3xl text-accent-content pt-4">@{speaker.company}</div>
+      )
+    }
+    <div class="text-2xl font-bold text-accent-content pt-4">
       {speaker.jobTitle}
-    </h4>
+    </div>
     <p class="text-xl px-10 text-accent-content pt-4 xl:px-64">
       {speaker.description}
     </p>
-    <div class="pt-4 px-8">
+    <div class="pt-4 px-8 flex justify-center gap-8">
       {
         speaker.social && speaker.social.instagram && (
           <a href={speaker.social.instagram} target="_blank">
             <Image
-              class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+              class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
               src={instagramImageSrc}
               alt="Instagram"
             />
@@ -42,7 +46,7 @@ const speaker = (speakersData as any)[speakerId];
         speaker.social && speaker.social.facebook && (
           <a href={speaker.social.facebook} target="_blank">
             <Image
-              class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+              class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
               src={facebookImageSrc}
               alt="Facebook"
             />
@@ -53,7 +57,7 @@ const speaker = (speakersData as any)[speakerId];
         speaker.social && speaker.social.linkedin && (
           <a href={speaker.social.linkedin} target="_blank">
             <Image
-              class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+              class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
               src={linkedinImageSrc}
               alt="Linkedin"
             />

@@ -10,18 +10,35 @@ type Props = {
 
 const { speakerId } = Astro.props;
 
+const firstDayEvents = filterEventsBySpeaker(events, speakerId as SpeakerId, 1);
+const secondDayEvents = filterEventsBySpeaker(
+  events,
+  speakerId as SpeakerId,
+  2,
+);
 ---
 
-<SpeakersDetail speakerId={speakerId} additionalClass="dots"></SpeakersDetail>
-<div class="relative px-9">
-  <h2 class="text-4xl">18 Novembre 2023</h2>
-  <AgendaOverview
-    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 1)}
-  />
-</div>
-<div class="relative px-9">
-  <h2 class="text-4xl">19 Novembre 2023</h2>
-  <AgendaOverview
-    events={filterEventsBySpeaker(events, speakerId as SpeakerId, 2)}
-  />
-</div>
+<SpeakersDetail speakerId={speakerId} additionalClass="dots xl:min-h-screen" />
+{
+  firstDayEvents.length !== 0 && (
+    <div class="relative px-9">
+      <h2 class="text-4xl">18 Novembre 2023</h2>
+      <AgendaOverview events={firstDayEvents} />
+    </div>
+  )
+}
+{
+  firstDayEvents.length !== 0 && secondDayEvents.length !== 0 && (
+    <div class="px-9">
+      <hr class="h-px my-8 border-dashed" />
+    </div>
+  )
+}
+{
+  secondDayEvents.length !== 0 && (
+    <div class="relative px-9">
+      <h2 class="text-4xl">19 Novembre 2023</h2>
+      <AgendaOverview events={secondDayEvents} />
+    </div>
+  )
+}
