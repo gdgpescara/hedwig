@@ -7,11 +7,11 @@ import twitterImageSrc from "../assets/social/twitter.svg";
 import { speakersData } from "../data/speakers-data";
 import Section from "./Section.astro";
 
-const { speakerId } = Astro.props;
+const { speakerId, additionalClass } = Astro.props;
 const speaker = (speakersData as any)[speakerId];
 ---
 
-<Section>
+<Section additionalClass={ additionalClass }>
   <div class="py-16 md:pt-10 xl:pt-20 my-16 text-center">
     <img
       src={speaker.imageUrl}

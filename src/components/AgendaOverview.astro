@@ -51,7 +51,7 @@ const { events } = Astro.props;
                       language={event.language}
                       speaker={{
                         name: speakersData[event.speaker.id].name,
-                        url: `/speakers/${event.speaker.id}`,
+                        url: `/speaker/${event.speaker.id}`,
                         description: speakersData[event.speaker.id].description,
                         imageUrl: speakersData[event.speaker.id].imageUrl,
                       }}

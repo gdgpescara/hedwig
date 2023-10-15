@@ -1,17 +1,27 @@
 ---
 import Heading from "./Heading.astro";
 interface Props {
+  id?: string;
   title?: string;
+  additionalClass?: string;
 }
 
-const { title } = Astro.props;
+const { title, additionalClass, id } = Astro.props;
 
-const sectionClass = title ? "py-16 md:py-32 xl:py-64 my-16" : "";
+let sectionClass = "";
+if (additionalClass) {
+  sectionClass = `${additionalClass} `;
+}
+
+sectionClass += (title ? "py-16 md:py-32 xl:py-64" : "");
 ---
 
-<section class={sectionClass}>
-  <div class="text-center">
-    {title && <Heading text={title} level="h2" />}
-  </div>
+<section class={sectionClass} id={ id ?? null }>
+  {
+    title && (
+      <div class="text-center">
+      <Heading text={title} level="h2" />
+      </div>
+  )}
   <slot />
 </section>

@@ -12,9 +12,7 @@ const { speakerId } = Astro.props;
 
 ---
 
-<div id={"speaker-" + speakerId } class="dots">
-  <SpeakersDetail speakerId={speakerId}></SpeakersDetail>
-</div>
+<SpeakersDetail speakerId={speakerId} additionalClass="dots"></SpeakersDetail>
 <div class="relative px-9">
   <h2 class="text-4xl">18 Novembre 2023</h2>
   <AgendaOverview

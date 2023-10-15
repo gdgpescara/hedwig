@@ -6,9 +6,10 @@ import SpeakersDetail from "../components/SpeakersDetail.astro";
 
 ---
 
-<div id="speakers" class="dots">
-  <Section title="Speakers" />
-</div>
+<Section 
+  title="Speakers"
+  id="speakers" 
+  additionalClass="dots" />
 {
   speakers.map((speaker) => (
     <SpeakersDetail speakerId={speaker} />

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectHeader.classList.remove('bg-neutral');
             selectHeader.classList.add('bg-transparent');
             selectBody.classList.remove('scrolled');
-            if (!firstSection) {
+            if (!firstSection || !firstSection.classList.contains('section-white')) {
                 selectHeader.classList.add('black');
             }
         }
