@@ -74,12 +74,21 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
                       name={event.name}
                       length={event.length}
                       language={event.language}
-                      speaker={{
-                        name: speakersData[event.speaker.id].name,
-                        url: `/speaker/${event.speaker.id}`,
-                        description: getSpeakerJob(event.speaker.id),
-                        imageUrl: speakersData[event.speaker.id].imageUrl,
-                      }}
+                      speaker={
+                        Array.isArray(event.speaker)
+                          ? event.speaker.map((speaker) => ({
+                              name: speakersData[speaker.id].name,
+                              url: `/speaker/${speaker.id}`,
+                              description: getSpeakerJob(speaker.id),
+                              imageUrl: speakersData[speaker.id].imageUrl,
+                            }))
+                          : {
+                              name: speakersData[event.speaker.id].name,
+                              url: `/speaker/${event.speaker.id}`,
+                              description: getSpeakerJob(event.speaker.id),
+                              imageUrl: speakersData[event.speaker.id].imageUrl,
+                            }
+                      }
                       multiple={hasMultipleEvents}
                     />
                   );

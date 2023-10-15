@@ -1,17 +1,20 @@
 ---
 import clsx from "clsx";
+import AgendaSpeaker from "./AgendaSpeaker.astro";
+
+type Speaker = {
+  name: string;
+  url: string;
+  description: string;
+  imageUrl: string;
+};
 
 type Props = {
   name: string;
   language: string;
   length: string;
   multiple: boolean;
-  speaker: {
-    name: string;
-    url: string;
-    description: string;
-    imageUrl: string;
-  };
+  speaker: Speaker | Speaker[];
 };
 
 const { name, language, speaker, length, multiple } = Astro.props;
@@ -20,7 +23,7 @@ const { name, language, speaker, length, multiple } = Astro.props;
 <li
   class={clsx("flex flex-col md:flex-row gap-6 overflow-hidden w-full", {
     "splide__slide md:m-6 mx-2 md:max-w-[90%] relative": multiple,
-    "px-2 md:px-0":! multiple,
+    "px-2 md:px-0": !multiple,
   })}
 >
   <div
@@ -50,19 +53,15 @@ const { name, language, speaker, length, multiple } = Astro.props;
     {
       speaker && (
         <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
-          <div class="blog-author flex align-items-center gap-3">
-            <a href={speaker.url} class="block w-14 h-14 shrink-0">
-              <img
-                src={speaker.imageUrl}
-                class="w-14 h-14 rounded-2xl mr-4 shrink-0"
-                alt={speaker.name}
-              />
-            </a>
-            <div>
-              <h3 class="text-lg md:text-xl font-bold">{speaker.name}</h3>
-              <p class="text-sm font-light">{speaker.description}</p>
+          {Array.isArray(speaker) ? (
+            <div class="flex flex-col gap-3">
+              {speaker.map((_speaker) => (
+                <AgendaSpeaker {..._speaker} />
+              ))}
             </div>
-          </div>
+          ) : (
+            <AgendaSpeaker {...speaker} />
+          )}
         </div>
       )
     }

@@ -12,7 +12,7 @@ interface AgendaElement {
 type AgendaEventSpeakerType = {
   type: "talk";
   language: string;
-  speaker: Speaker;
+  speaker: Speaker | Speaker[];
 };
 
 type AgendaEventIntermissionType = {

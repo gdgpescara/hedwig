@@ -27,9 +27,12 @@ export const events: AgendaEvent = {
       type: "talk",
       length: "30 min",
       language: "English",
-      speaker: {
-        id: "f-sciuti",
-      },
+      speaker: [
+        {
+          id: "f-sciuti",
+        },
+        { id: "g-palama" },
+      ],
     },
     {
       day: 1,
@@ -136,7 +139,13 @@ export const filterEventsBySpeaker = (
       const dayMatches = !day || event.day === day;
 
       if (event.type === "talk") {
-        return event.speaker.id === speakerId && dayMatches;
+        if (Array.isArray(event.speaker)) {
+          return event.speaker.some((speaker) => {
+            return speaker.id === speakerId && dayMatches;
+          });
+        } else {
+          return event.speaker.id === speakerId && dayMatches;
+        }
       }
 
       return false;
