@@ -18,12 +18,13 @@ const { name, language, speaker, length, multiple } = Astro.props;
 ---
 
 <li
-  class={clsx("flex flex-col md:flex-row gap-6 w-full", {
-    "splide__slide mr-8 md:m-6 mx-2": multiple,
+  class={clsx("flex flex-col md:flex-row gap-6 overflow-hidden w-full", {
+    "splide__slide md:m-6 mx-2 md:max-w-[90%] relative": multiple,
+    "px-2 md:px-0":! multiple,
   })}
 >
   <div
-    class={clsx("rounded-3xl flex flex-col w-full bg-[#232323] ", {
+    class={clsx("rounded-3xl flex flex-col w-full bg-[#232323]", {
       "md:bg-[#2E2E2E]": multiple,
     })}
   >
