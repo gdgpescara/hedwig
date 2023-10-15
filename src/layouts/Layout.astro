@@ -34,6 +34,23 @@ const { title } = Astro.props;
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+  
+  html,
+  body {
+    background-color: #181818;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+  }
 </style>
 <script>
   if ("serviceWorker" in navigator) {

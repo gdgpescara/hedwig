@@ -62,6 +62,48 @@ export const events: AgendaEvent = {
       length: "30 min",
     },
   ],
+  "11:00": [
+    {
+      day: 1,
+      name: "The wizardry of project management",
+      length: "45 min",
+      language: "English",
+      speaker: {
+        id: "g-galleno",
+      },
+      type: "talk",
+    },
+    {
+      day: 1,
+      name: "Jetpack Compose animations playground",
+      length: "45 min",
+      language: "English",
+      speaker: {
+        id: "d-favaro",
+      },
+      type: "talk",
+    },
+    {
+      day: 2,
+      name: "Come il Data Mesh rivoluzionerà le aziende",
+      length: "45 min",
+      language: "Italian",
+      speaker: {
+        id: "f-carusi",
+      },
+      type: "talk",
+    },
+    {
+      day: 2,
+      name: "Measuring the Cost of a GraphQL Query",
+      length: "45 min",
+      language: "English",
+      speaker: {
+        id: "m-ippolito",
+      },
+      type: "talk",
+    },
+  ],
 };
 
 export const filterEventsByDay = (events: AgendaEvent, day: number) => {
