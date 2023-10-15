@@ -1,21 +1,32 @@
 ---
 import clsx from "clsx";
-export interface Speaker {
-  id: number;
-  name: string;
-  description: string;
-  imageUrl: string;
-}
 
-const { name, length, language, speaker, multiple } = Astro.props;
+type Props = {
+  name: string;
+  language: string;
+  length: string;
+  multiple: boolean;
+  speaker: {
+    name: string;
+    url: string;
+    description: string;
+    imageUrl: string;
+  };
+};
+
+const { name, language, speaker, length, multiple } = Astro.props;
 ---
 
 <li
-  class={clsx("flex flex-col md:flex-row gap-6 w-full mx-2 ", {
-    "splide__slide mr-8 md:m-6": multiple,
+  class={clsx("flex flex-col md:flex-row gap-6 w-full", {
+    "splide__slide mr-8 md:m-6 mx-2": multiple,
   })}
 >
-  <div class="rounded-3xl md:bg-[#2E2E2E] flex flex-col w-full bg-[#232323]">
+  <div
+    class={clsx("rounded-3xl flex flex-col w-full bg-[#232323] ", {
+      "md:bg-[#2E2E2E]": multiple,
+    })}
+  >
     <div class="p-6 h-full">
       <div class="flex justify-start pb-6">
         <span
@@ -23,14 +34,12 @@ const { name, length, language, speaker, multiple } = Astro.props;
         >
           {length}
         </span>
-        <!--If language -->
-        {
-          language && (
-            <span class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm">
-              {language}
-            </span>
-          )
-        }
+
+        <span
+          class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm"
+        >
+          {language}
+        </span>
       </div>
       <h2 class="text-2xl md:text-4xl font-black">{name}</h2>
       <!-- If !speaker -->
@@ -40,19 +49,17 @@ const { name, length, language, speaker, multiple } = Astro.props;
     {
       speaker && (
         <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
-          <div class="blog-author flex align-items-center">
-            <a
-              href={"/speaker/" + speaker.name.toLowerCase().replace(" ", "-")}
-            >
+          <div class="blog-author flex align-items-center gap-3">
+            <a href={speaker.url} class="block w-14 h-14 shrink-0">
               <img
                 src={speaker.imageUrl}
-                class="w-14 h-14 rounded-2xl mr-4"
+                class="w-14 h-14 rounded-2xl mr-4 shrink-0"
                 alt={speaker.name}
               />
             </a>
             <div>
-              <h3 class="text-lg md:text-xl">{speaker.name}</h3>
-              <p class="text-sm">{speaker.description}</p>
+              <h3 class="text-lg md:text-xl font-bold">{speaker.name}</h3>
+              <p class="text-sm font-light">{speaker.description}</p>
             </div>
           </div>
         </div>

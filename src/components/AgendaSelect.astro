@@ -1,0 +1,44 @@
+---
+import { events, filterEventsByDay } from "../data/agenda-data";
+import AgendaOverview from "./AgendaOverview.astro";
+import Section from "./Section.astro";
+import clsx from "clsx";
+
+type Props = {
+  day: number;
+};
+
+const { day } = Astro.props;
+---
+
+<div id="agenda" class="dots">
+  <Section title="Agenda" />
+</div>
+<div>
+  <div
+    class="w-3xl max-w-full text-center m-auto py-8 flex flex-wrap flex-col md:flex-row justify-center gap-4 items-center"
+  >
+    <a
+      href="/agenda"
+      class={clsx(
+        "btn btn-o utline btn-wide btn-circle border-dashed text-black",
+        { "bg-black text-white": day !== 1 }, //TODO: to verify
+        { "bg-white text-black": day === 1 } //TODO: to verify
+      )}>Day 1</a
+    >
+    <a
+      href="/agenda/2"
+      class={clsx(
+        "btn btn-o utline btn-wide btn-circle border-dashed text-black",
+        { "bg-black text-white": day !== 2 }, //TODO: to verify
+        { "bg-white text-black": day === 2 } //TODO: to verify
+      )}>Day 2</a
+    >
+  </div>
+</div>
+<div class="relative md:px-9">
+  <h2 class="text-4xl">
+    {day === 1 ? "18 November 2023" : "19 November 2023"}
+  </h2>
+  <slot />
+</div>

@@ -29,7 +29,7 @@ const { events } = Astro.props;
           </div>
           <div
             class={clsx("w-full rounded-3xl md:bg-[#232323]", {
-              "splide": hasMultipleEvents,
+              splide: hasMultipleEvents,
             })}
           >
             <div class={clsx({ splide__track: hasMultipleEvents })}>
@@ -49,7 +49,12 @@ const { events } = Astro.props;
                       name={event.name}
                       length={event.length}
                       language={event.language}
-                      speaker={{ name: speakersData[event.speaker.id].name }}
+                      speaker={{
+                        name: speakersData[event.speaker.id].name,
+                        url: `/speakers/${event.speaker.id}`,
+                        description: speakersData[event.speaker.id].description,
+                        imageUrl: speakersData[event.speaker.id].imageUrl,
+                      }}
                       multiple={hasMultipleEvents}
                     />
                   );
