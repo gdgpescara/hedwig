@@ -36,9 +36,10 @@ import { t } from "i18next";
     >
   </div>
 </Section>
-<div class="relative md:px-9">
+<div class="relative md:px-9 py-12 md:py-24">
   <h2 class="text-4xl px-2 md:px-0">
     {day === 1 ? t("agenda:event-date-1") : t("agenda:event-date-2")}
   </h2>
+  <div>
   <slot />
 </div>

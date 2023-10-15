@@ -2,7 +2,7 @@
 import EventCard from "./EventCard.astro";
 import AgendaIntermission from "../components/AgendaIntermission.astro";
 import type { AgendaEvent, AgendaEventType } from "../types";
-import { speakersData } from "../data/speakers-data";
+import { speakersData, type SpeakerId } from "../data/speakers-data";
 import clsx from "clsx";
 
 type Props = {
@@ -10,6 +10,21 @@ type Props = {
 };
 
 const { events } = Astro.props;
+
+const getSpeakerJob = (speakerId: SpeakerId) => {
+  const speaker = speakersData[speakerId];
+  let description = "";
+
+  if ("jobTitle" in speaker) {
+    description += `${speaker.jobTitle}`;
+  }
+
+  if ("company" in speaker) {
+    description += `, ${speaker.company}`;
+  }
+
+  return description;
+};
 ---
 
 {
@@ -62,7 +77,7 @@ const { events } = Astro.props;
                       speaker={{
                         name: speakersData[event.speaker.id].name,
                         url: `/speaker/${event.speaker.id}`,
-                        description: speakersData[event.speaker.id].description,
+                        description: getSpeakerJob(event.speaker.id),
                         imageUrl: speakersData[event.speaker.id].imageUrl,
                       }}
                       multiple={hasMultipleEvents}
