@@ -23,15 +23,13 @@ export const events: AgendaEvent = {
     },
     {
       day: 2,
-      name: "The Future of Astro (day 2)",
+      name: "Il viaggio di una commit",
       type: "talk",
-      length: "30 min",
-      language: "English",
+      length: "45 min",
+      language: "Italian",
       speaker: [
-        {
-          id: "f-sciuti",
-        },
-        { id: "g-palama" },
+        { id: "a-forese" },
+        { id: "m-dangelo" },
       ],
     },
     {

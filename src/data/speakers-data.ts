@@ -168,6 +168,205 @@ export const speakersData = {
       blog: "https://sites.google.com/view/pantarei-mb-en/blog"
     }
   },
+  "a-forese": {
+    name: "Aurelio Forese",
+    imageUrl:
+      "https://sessionize.com/image/4055-400o400o2-4HxfQecEunAjxh6zjJixGJ.jpeg",
+    description: "Cloud Engineer @Netsons s.r.l.",
+    company: "Netsons s.r.l.",
+    jobTitle: "Cloud Engineer",
+    bio: `Inizia la propria carriera informatica a 7 anni con un Commodore PC1 che inizia a smontare per capirne il funzionamento.
+      Dopo la laurea in ing. informatica presso l'università La Sapienza Roma, ha ricoperto, negli ultimi 10 anni, diversi ruoli tecnici occupandosi dei vari aspetti relativi a sistemi distribuiti (networking, architetture software). 
+      Attualmente ricopre il ruolo di Cloud Engineer presso Netsons guidando il team dedicato allo sviluppo di servizi basati sulle tecnologie cloud più avanzate (E.g. OpenStack e Kubernetes).`,
+    social: {
+      instagram: "",
+      facebook: "",
+      linkedin: "https://it.linkedin.com/in/aurelio-forese-b2670929",
+      twitter: "",
+      blog: ""
+    }
+  },
+  "m-dangelo": {
+    name: "Mircha D'Angelo",
+    imageUrl:
+      "https://sessionize.com/image/bdac-400o400o2-GVMb88UukvY14ER2pUxF9j.jpg",
+    description: "Athomos Srl, Senior Full-stack Developer",
+    company: "Athomos",
+    jobTitle: "Senior Full-stack Developer",
+    bio: `Curious about everything around him, especially boxes with levers, lights, and sounds. A cybernaut since the days of BBS and interested in all topics related to cybersecurity. Passionate and expert Full-Stack Developer, currently employed at one of the leading Italian hosting providers.`,
+    social: {
+      instagram: "",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/mirchaemanueldangelo/",
+      twitter: "https://twitter.com/MirchaEmanuel",
+      blog: "https://a80.it"
+    }
+  },
+  "s-chiccarelli": {
+    name: "Stefano Chiccarelli",
+    imageUrl:
+      "",
+    description: "Aesys Cyber",
+    company: "Aesys Cyber",
+    jobTitle: "",
+    bio: ``,
+    social: {
+      instagram: "",
+      facebook: "",
+      linkedin: "",
+      twitter: "",
+      blog: ""
+    }
+  },
+  "a-mazzu": {
+    name: "Alessandro Mazzù",
+    imageUrl:
+      "",
+    description: "",
+    company: "",
+    jobTitle: "",
+    bio: ``,
+    social: {
+      instagram: "",
+      facebook: "",
+      linkedin: "",
+      twitter: "",
+      blog: ""
+    }
+  },
+  "s-denisov": {
+    name: "Sasha Denisov",
+    imageUrl:
+      "https://sessionize.com/image/af22-400o400o2-9g5Xhi9yF3EsFhewZaE49D.jpg",
+    description: "EPAM Systems, Chief Software Engineer, Flutter and Dart GDE",
+    company: "Epam",
+    jobTitle: "EPAM Systems, Chief Software Engineer, Flutter and Dart GDE",
+    bio: `Aleksandr is an experienced software developer with a rich background, in IT for more than 20 years. He worked with different stacks in backend, frontend and mobile fields, but since 2018 his main interest is Flutter. Aleksandr is a Flutter and Dart GDE and Head of Flutter Discipline in EPAM Systems. Co-Organizer of Flutter Berlin Meetup community.`,
+    social: {
+      instagram: "https://www.instagram.com/sic.transit.gloria.mundi55",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/aleks-denisov/",
+      twitter: "https://twitter.com/ShuregDenisov",
+      blog: ""
+    }
+  },
+  "m-trizio": {
+    name: "Michelantonio Trizio",
+    imageUrl:
+      "https://sessionize.com/image/cfa6-400o400o2-6e-7503-4017-b3e3-250175e1e00a.0d7bedc3-1b92-4f8d-8915-6230ad28a478.jpg",
+    description: "CTO @Wideverse",
+    company: "Wideverse",
+    jobTitle: "CTO",
+    bio: `Engineer & Digital entrepreneur. I took the master degree in computer engineering with a thesis on AI at Polytechnic University of Bari in 2007. I worked for several years in ICT companies in Italy as a backend software developer. I attended the Mind The Bridge startup school in San Francisco in 2011. Back in Italy I started working on my own companies. Now, I'm the CTO of Wideverse, a spin-off of the Polytechnic University of Bari that works on XR technologies. In addition I'm the founder and the current lead of Google Developer Group Bari community and Content manager for Codemotion Italian conferences.  I’m a public speaker globetrotter nerd with the passion for photography, SUP, running and Rock. BBQ and IPA beers addicted.`,
+    social: {
+      instagram: "https://www.instagram.com/mikelantonio/",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/michelantoniotrizio/",
+      twitter: "https://twitter.com/mik3lantoni0",
+      blog: ""
+    }
+  },
+  "s-dalessandro": {
+    name: "Stefano D'Alessandro",
+    imageUrl:
+      "https://sessionize.com/image/fd5a-400o400o2-W49iWUM59F1PfyCVggQGv4.png",
+    description: "CEO e Founder @Suredi | Startup Mentor | Aspirante Full Stack Entrepreneur",
+    company: "Suredi",
+    jobTitle: "CEO e Founder @Suredi | Startup Mentor | Aspirante Full Stack Entrepreneur",
+    bio: `Sono Laureato in Informatica e lavoro nel mondo IT da oltre 10 anni. Dal 2016 sono un Imprenditore Digitale, CEO e Founder di Suredi, azienda che nasce con l'obiettivo di progettare e sviluppare prodotti digital memorabili!
+      Sono inoltre Co-Founder della Community pescarese Lean Startup Lab che si occupa di far incontrare talenti (Sognatori, Innovatori, Marketers, Sviluppatori, Designer, Imprenditori) e diffondere la metodologia Lean Startup, utile per chi vuole sviluppare un'idea e trasformarla in business evitando sprechi di risorse.
+      Le mie 3 parole preferite? "SI PUÒ FARE!" Ma che cosa si può fare? Beh, crearsi il proprio spazio nel mondo, raccontare la propria storia, sfruttare le proprie passioni ed ambizioni, con curiosità, fame e voglia di fare...cercando di contribuire, con il proprio fare, a rendere il mondo un posto migliore.
+      Perché troverai online delle mie foto con una mela? :D Se sei curioso, te lo racconterò di persona!`,
+    social: {
+      instagram: "https://www.instagram.com/iamstefanodalex/",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/stefanodalex/",
+      twitter: "https://twitter.com/stefanodalex",
+      blog: ""
+    }
+  },
+  "s-bonfrate": {
+    name: "Simone Bonfrate",
+    imageUrl:
+      "https://sessionize.com/image/fce2-400o400o2-HSadECnzhLParuNw8MEgC5.png",
+    description: "XR Engineer @ Wideverse",
+    company: "Wideverse",
+    jobTitle: "XR Engineer",
+    bio: `Sono uno sviluppatore Flutter e Mixed Reality, uno studente del Politecnico di Bari e il responsabile del GDG Bari. Amo tenere conferenze per ampliare le mie conoscenze e mi piace correre e andare in bicicletta nel tempo libero. Mi dedico alla condivisione delle sue competenze, all'organizzazione di eventi e all'apprendimento costante per avere un impatto positivo sulla comunità degli sviluppatori.`,
+    social: {
+      instagram: "https://www.instagram.com/bonfry/",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/simone-bonfrate/",
+      twitter: "https://twitter.com/bonfry_dev",
+      blog: "https://bonfry.com"
+    }
+  },
+  "p-insogna": {
+    name: "Paolo Insogna",
+    imageUrl:
+      "https://sessionize.com/image/f493-400o400o2-PSt5mDhCrYJEibYim5yRq5.jpg",
+    description: "Node.js Core Member, Staff DX Engineer @ NearForm, Co-founder and Principal Architect @ OramaSearch. RPG/LARPer. Surrounded by lovely chubby cats.",
+    company: "Nearform",
+    jobTitle: "Node.js Core Member, Staff DX Engineer @ NearForm, Co-founder and Principal Architect @ OramaSearch. RPG/LARPer. Surrounded by lovely chubby cats.",
+    bio: `Node.js Core Member, Staff Developer Experience Engineer at NearForm, Polyglot Developer. RPG and LARP addicted and nerd on lot more. Surrounded by lovely chubby cats.`,
+    social: {
+      instagram: "",
+      facebook: "",
+      linkedin: "https://linkedin.com/in/pinsogna",
+      twitter: "https://twitter.com/p_insogna",
+      blog: ""
+    }
+  },
+  "g-santomaggio": {
+    name: "Gabriele Santomaggio",
+    imageUrl:
+      "https://sessionize.com/image/ac56-400o400o2-77aqHzitmPAyLUqdjXFjUk.jpg",
+    description: "Senior Member of Technical Staff In Vmware.",
+    company: "VMWare",
+    jobTitle: "Senior Member of Technical Staff",
+    bio: `Developer, speaker, 99.9% open-source code.    
+      RabbitMQ team.
+      Codemotion Ambassador.`,
+    social: {
+      instagram: "https://www.instagram.com/g.santomaggio/",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/santomaggio/",
+      twitter: "https://twitter.com/GSantomaggio",
+      blog: "https://twitter.com/GSantomaggio"
+    }
+  },
+  "c-bucciarelli": {
+    name: "Camillo Bucciarelli",
+    imageUrl:
+      "https://sessionize.com/image/edcd-400o400o2-HfF1SQKRTkTkZ983QYync2.jpeg",
+    description: "Technical manager @ Sopra Steria",
+    company: "Soprasteria",
+    jobTitle: "Technical manager",
+    bio: `Passionate about technology work in the IT industry since 2015. From Android through the web to Flutter helps companies to get their target.`,
+    social: {
+      instagram: "",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/camillo-bucciarelli/",
+      twitter: "",
+      blog: ""
+    }
+  },
+  "s-caruso": {
+    name: "Santino Caruso",
+    imageUrl:
+      "https://sessionize.com/image/4bf8-400o400o2-e5c46d5b-f1ce-4569-ac57-e195a59178ca.jpg",
+    description: "Altrama DevOps",
+    company: "Altrama",
+    jobTitle: "DevOps",
+    bio: `sono uno sviluppatore di giorno ed un sistemista di notte, con esperienza nello sviluppo di soluzioni enterprise per il web. Appassionato di nuove tecnologie e di Internet of Things, quando non sto al computer a programmare nuove soluzioni digitali legate al turismo e ai Beni Culturali amo viaggiare tra le bellezze dell'Italia.`,
+    social: {
+      instagram: "https://www.instagram.com/ssantinocaruso/",
+      facebook: "",
+      linkedin: "https://www.linkedin.com/in/santocaruso/",
+      twitter: "https://twitter.com/ssantinocaruso",
+      blog: ""
+    }
+  },
 };
 
 export type SpeakerId = keyof typeof speakersData;
