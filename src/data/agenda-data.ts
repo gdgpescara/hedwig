@@ -32,16 +32,6 @@ export const events: AgendaEvent = {
         { id: "m-dangelo" },
       ],
     },
-    {
-      day: 1,
-      name: "The Future of React",
-      type: "talk",
-      length: "30 min",
-      language: "English",
-      speaker: {
-        id: "g-palama",
-      },
-    },
   ],
   "9:00": [
     {
@@ -70,7 +60,7 @@ export const events: AgendaEvent = {
       length: "45 min",
       language: "English",
       speaker: {
-        id: "g-galleno",
+        id: "g-gallenomalaga",
       },
       type: "talk",
     },
