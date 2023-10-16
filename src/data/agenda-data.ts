@@ -2,21 +2,29 @@ import type { AgendaEvent, AgendaEventType, EventSchedule } from "../types";
 import { speakersData, type SpeakerId } from "./speakers-data";
 
 export const events: AgendaEvent = {
-  "7:00": [
+  "8:00": [
     {
       day: 1,
-      name: "Breakfast",
+      name: "Check-in and breakfast",
       type: "intermission",
-      length: "30 min",
+      length: "120 min",
     },
   ],
   "10:00": [
     {
       day: 1,
+      name: "Opening by GDG Pescara",
+      type: "intermission",
+      length: "15 min",
+    },
+  ],
+  "10:15": [
+    {
+      day: 1,
       name: "True Wizards: The Story of John Von Neumann and Alan Turing",
       type: "talk",
       tags: ["Keynote"],
-      length: "65 min",
+      length: "50 min",
       language: "English",
       speaker: {
         id: "e-dusi",
