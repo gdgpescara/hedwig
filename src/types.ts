@@ -12,7 +12,19 @@ interface AgendaElement {
 type AgendaEventSpeakerType = {
   type: "talk";
   language: string;
-  speaker: Speaker | Speaker[];
+  tags: string[];
+  abstract: string;
+  room: string;
+  speaker?: Speaker | Speaker[];
+};
+
+type AgendaEventWorkshopType = {
+  type: "workshop";
+  language: string;
+  tags: string[];
+  abstract: string;
+  room: string;
+  speaker?: Speaker | Speaker[];
 };
 
 type AgendaEventIntermissionType = {
@@ -23,7 +35,7 @@ export type AgendaEventType = {
   name: string;
   length: string;
   day: 1 | 2;
-} & (AgendaEventSpeakerType | AgendaEventIntermissionType);
+} & (AgendaEventSpeakerType | AgendaEventIntermissionType | AgendaEventWorkshopType);
 
 export type EventSchedule = `${string}:${string}`;
 

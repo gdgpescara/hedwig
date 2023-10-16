@@ -638,7 +638,16 @@ export const speakersData = {
       blog: ''
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fz-levy.jpg?alt=media&token=65e08ab4-78fc-4c09-adc9-26883e6dd0b9'
-  }*/
+  }*/,
+  'tbd': {
+    name: 'To be defined',
+    jobTitle: '',
+    description: '',
+    bio: "",
+    social: {
+    },
+    imageUrl: ''
+  }
 };
 
 export type SpeakerId = keyof typeof speakersData;
