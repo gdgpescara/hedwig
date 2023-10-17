@@ -21,7 +21,7 @@ import { t } from "i18next";
     <a
       href="/agenda"
       class={clsx(
-        "btn btn-o utline btn-wide btn-circle border-dashed text-black",
+        "btn btn-outline btn-wide btn-circle border-dashed text-black",
         { "bg-black text-white": day !== 1 }, //TODO: to verify
         { "bg-white text-black": day === 1 } //TODO: to verify
       )}>{t("agenda:event-day", { day: 1 })}</a
@@ -29,7 +29,7 @@ import { t } from "i18next";
     <a
       href="/agenda/2"
       class={clsx(
-        "btn btn-o utline btn-wide btn-circle border-dashed text-black",
+        "btn btn-outline btn-wide btn-circle border-dashed uppercase",
         { "bg-black text-white": day !== 2 }, //TODO: to verify
         { "bg-white text-black": day === 2 } //TODO: to verify
       )}>{t("agenda:event-day", { day: 2 })}</a
