@@ -15,16 +15,7 @@ type AgendaEventSpeakerType = {
   tags: string[];
   abstract: string;
   room: string;
-  speaker?: Speaker | Speaker[];
-};
-
-type AgendaEventWorkshopType = {
-  type: "workshop";
-  language: string;
-  tags: string[];
-  abstract: string;
-  room: string;
-  speaker?: Speaker | Speaker[];
+  speaker: Speaker | Speaker[];
 };
 
 type AgendaEventIntermissionType = {
@@ -35,7 +26,7 @@ export type AgendaEventType = {
   name: string;
   length: string;
   day: 1 | 2;
-} & (AgendaEventSpeakerType | AgendaEventIntermissionType | AgendaEventWorkshopType);
+} & (AgendaEventSpeakerType | AgendaEventIntermissionType);
 
 export type EventSchedule = `${string}:${string}`;
 

@@ -13,11 +13,12 @@ type Props = {
   name: string;
   language: string;
   length: string;
+  room: string;
   multiple: boolean;
   speaker: Speaker | Speaker[];
 };
 
-const { name, language, speaker, length, multiple } = Astro.props;
+const { name, language, speaker, length, multiple, room } = Astro.props;
 ---
 
 <li
@@ -33,6 +34,12 @@ const { name, language, speaker, length, multiple } = Astro.props;
   >
     <div class="p-6 h-full">
       <div class="flex justify-start pb-6">
+        <span
+          class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm"
+        >
+          {room}
+        </span>
+
         <span
           class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm"
         >

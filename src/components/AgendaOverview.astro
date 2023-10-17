@@ -44,7 +44,7 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
           </div>
           <div
             class={clsx(
-              "md:p-0 w-full max-w-[100vw] rounded-3xl md:bg-[#232323]",
+              "md:p-0 w-full max-w-[80vw] rounded-3xl md:bg-[#232323]",
               {
                 splide: hasMultipleEvents,
               }
@@ -74,6 +74,7 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
                       name={event.name}
                       length={event.length}
                       language={event.language}
+                      room={event.room}
                       speaker={
                         Array.isArray(event.speaker)
                           ? event.speaker.map((speaker) => ({
