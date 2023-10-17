@@ -57,6 +57,16 @@ export const speakersData = {
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fc-bucciarelli.png?alt=media&token=c462fc65-8956-44cc-8114-15879abbc387'
   },
+  'c-desanctis': {
+    name: 'Cesare De Sanctis',
+    jobTitle: "Team Leader & Senior .Net Developer @ Lynx s.p.a.",
+    description: "Team Leader & Senior .Net Developer @ Lynx s.p.a.",
+    bio: "",
+    social: {
+      linkedin: 'https://www.linkedin.com/in/cesare-de-sanctis/'
+    },
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fc-desanctis.png?alt=media&token=3f5032e9-4a33-4286-81ca-3427922f1903"
+  },
   'c-lucera': {
     name: 'Carlo Lucera',
     jobTitle: 'HatDroid! - Flutter dev',
@@ -73,19 +83,15 @@ export const speakersData = {
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fc-lucera.jpg?alt=media&token=3b183013-c154-4b21-b988-b36880e2e53b'
   },
-  'c-desanctis': {
-    name: 'Cesare De Sanctis',
-    jobTitle: null,
-    description: null,
-    bio: null,
+  'c-martini': {
+    name: 'Claudio Martini',
+    jobTitle: "Product Manager in Ready2Use di “SOPHIA” - Piattaforma di Supporto alle Decisioni",
+    description: "Product Manager in Ready2Use di “SOPHIA” - Piattaforma di Supporto alle Decisioni",
+    bio: "Claudio Martini, è oggi Product Manager di sistemi di Supporto alla Decisione (DSS) presso Ready2use S.r.l. Con trent’anni di esperienza internazionale nel mondo ICT come manager, consulente e imprenditore su strategia e prodotti/servizi digitali, ha partecipato in start-up, progetti e aziende in Italia, Europa Centrale e Orientale e America Latina. Negli ultimi dieci anni si è dedicato alla consulenza per la trasformazione digitale per i settori media, bancario e finanziario, a sistemi di analisi comportamentale su canali digitali, e a sistemi di Supporto alla Decisione per diversi ambiti di mercato. È anche musicista, ma questa è un’altra storia. Aiuta a rilassare la mente.",
     social: {
-      linkedin: '',
-      twitter: '',
-      facebook: '',
-      instagram: '',
-      blog: ''
+      linkedin: 'https://www.linkedin.com/company/ready2use/'
     },
-    imageUrl: null
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fc-martini.jpg?alt=media&token=71d19419-6ba2-4382-9091-c6bd35d250eb"
   },
   'd-favaro': {
     name: 'Daniele Favaro',
@@ -559,6 +565,16 @@ export const speakersData = {
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fs-caruso.jpg?alt=media&token=6f9defe4-fae6-4b96-8530-3ce6a8bbb5f4'
   },
+  's-chiccarelli': {
+    name: 'Stefano Chiccarelli',
+    jobTitle: "Partner & CTO @ Aesys Cyber srl",
+    description: "Partner & CTO @ Aesys Cyber srl",
+    bio: "",
+    social: {
+      linkedin: 'https://www.linkedin.com/in/stefanochiccarelli/'
+    },
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fs-chiccarelli.jpeg?alt=media&token=3bcc729a-da02-4fb6-b749-e4310a171206"
+  },
   's-denisov': {
     name: 'Sasha Denisov',
     jobTitle: 'EPAM Systems, Chief Software Engineer, Flutter and Dart GDE',
@@ -641,12 +657,12 @@ export const speakersData = {
   }*/,
   'tbd': {
     name: 'To be defined',
-    jobTitle: '',
-    description: '',
-    bio: "",
+    jobTitle: 'TBD',
+    description: 'TBD',
+    bio: "TBD",
     social: {
     },
-    imageUrl: ''
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Ftbd.jpeg?alt=media&token=997af04d-6fec-4c7d-87d0-f6919c1a4c5d'
   }
 };
 
