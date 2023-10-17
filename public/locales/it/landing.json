@@ -1,0 +1,19 @@
+{
+  "numbers": {
+    "sponsors": "Sponsor",
+    "title": "Numeri",
+    "speakers": "Speaker",
+    "days": "Giorni",
+    "participants": "Partecipanti"
+  },
+  "location": {
+    "map": "Mappa",
+    "place": "Università degli studi \"G.D'Annunzio\", sede di Pescara",
+    "address": "Viale Pindaro, 42 - 65127 Pescara PE",
+    "direction": "Indicazioni",
+    "title": "Posizione"
+  },
+  "sponsors": {
+    "title": "Sponsor"
+  }
+}

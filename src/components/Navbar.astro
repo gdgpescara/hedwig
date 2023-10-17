@@ -1,11 +1,16 @@
 ---
-import Link from "./Link.astro";
 import navData from "../data/nav-data";
-
+import Link from "./Link.astro";
+let pathname = new URL(Astro.request.url).pathname;
+pathname = pathname.length > 1 ? pathname.slice(0, -1) : pathname;
 ---
 
 {
-    navData.map((nav, index) => (
-        <li class="text-white"><Link href={nav.path} active={index === 0}>{nav.name}</Link></li>
-    ))
+  navData.map((nav) => (
+    <li class="text-white">
+      <Link href={nav.path} active={pathname === nav.path}>
+        {nav.name}
+      </Link>
+    </li>
+  ))
 }

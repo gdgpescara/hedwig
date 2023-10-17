@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import Navbar from "./Navbar.astro";
 ---
 
@@ -24,8 +25,8 @@ import Navbar from "./Navbar.astro";
             </div>
             <!-- Logo -->
             <div class="flex-1 grid justify-items-center lg:justify-items-start">
-                <a class="btn normal-case text-xl logo">
-                    DevFest 2023 Pescara
+                <a class="btn normal-case text-xl logo" href="/">
+                    {t('site-title')}
                 </a>
             </div>
             <nav class="flex-none hidden lg:block">
@@ -67,34 +68,50 @@ import Navbar from "./Navbar.astro";
 
     .menu.menu-horizontal li {
         color: #000;
-        
+
         a {
             border-bottom: 2px dotted transparent;
             border-radius: 0;
             margin: 0 1rem;
 
-            &.active{
+            &.active, &:active, &:hover {
                 border-color: #000;
-                background-color: transparent;
-                color: unset;
+                background-color: transparent !important;
+                color: unset !important;
             }
         }
+    }
+
+    .menu li > :not(ul):not(.menu-title):not(details):active, .menu li > :not(ul):not(.menu-title):not(details).active, .menu li > details > summary:active {
+
     }
     
     .scrolled {
         header {
             background-color: hsl(var(--b2) / var(--tw-bg-opacity))
         }
+    }
+
+    .black, .scrolled {
 
         label svg {
             color: #FFF;
         }
 
         .menu.menu-horizontal li {
-            color: white;
+            color: #FFF;
+
+            a {
+                &.active, &:active, &:hover {
+                    border-color: #FFF;
+                }
+            }
         }
 
         .logo {
+            background-color: white;
+        }
+        .logo:hover {
             background-color: white;
         }
 

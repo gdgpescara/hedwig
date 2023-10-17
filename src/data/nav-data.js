@@ -1,9 +1,9 @@
+import { t } from "i18next";
+
 const navData = [
-    { name: "Sign up", path: "#signUp" },
-    { name: "Numbers", path: "#numbers" },
-    { name: "Location", path: "#location" },
-    { name: "Sponsors", path: "#sponsors" },
-    { name: "Contacts", path: "#contacts" }
+  { name: t("Home"), path: "/" },
+  { name: t("agenda"), path: "/agenda" },
+  { name: t("speakers"), path: "/speaker" }
 ];
 
 export default navData;

@@ -1,22 +1,99 @@
-<footer class="footer p-10 bg-neutral text-neutral-content">
-    <div>
-        <span class="footer-title">Services</span>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
+---
+import { Image } from "astro:assets";
+import { t } from "i18next";
+import gdgLogoSrc from "../assets/gdg-pescara-logo.svg";
+import gdgCloudTorinoLogoSrc from "../assets/gdg_cloud_torino.png";
+import heartSrc from "../assets/heart.svg";
+import facebookImageSrc from "../assets/social/facebook.svg";
+import instagramImageSrc from "../assets/social/instagram.svg";
+import linkedinImageSrc from "../assets/social/linkedin.svg";
+import twitterImageSrc from "../assets/social/twitter.svg";
+import Heading from "./Heading.astro";
+
+interface Social {
+  link: string;
+  imageSrc: ImageMetadata;
+  imageAlt: string;
+}
+
+const social: Social[] = [
+  {
+    link: "https://www.instagram.com/gdgpescara/",
+    imageSrc: instagramImageSrc,
+    imageAlt: "Instagram",
+  },
+  {
+    link: "https://www.facebook.com/gdgpescara/",
+    imageSrc: facebookImageSrc,
+    imageAlt: "Facebook",
+  },
+  {
+    link: "https://www.linkedin.com/company/gdg-pescara/",
+    imageSrc: linkedinImageSrc,
+    imageAlt: "LinkedIn",
+  },
+  {
+    link: "https://twitter.com/gdgpescara",
+    imageSrc: twitterImageSrc,
+    imageAlt: "Twitter",
+  },
+];
+---
+
+<footer class="text-center dots py-8 md:pt-32 xl:pt-64">
+    <div class="text-center">
+        <Heading text={t("keep-in-touch.title") || "Keep in touch"} level="h2" />
     </div>
-    <div>
-        <span class="footer-title">Company</span>
-        <a class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
-        <a class="link link-hover">Jobs</a>
-        <a class="link link-hover">Press kit</a>
+    <div class="flex justify-center gap-8 py-8">
+        {
+            social.map((item) => (
+                <a href={item.link} target="_blank">
+                    <Image
+                        class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+                        src={item.imageSrc}
+                        alt={item.imageAlt}
+                    />
+                </a>
+            ))
+        }
     </div>
-    <div>
-        <span class="footer-title">Legal</span>
-        <a class="link link-hover">Terms of use</a>
-        <a class="link link-hover">Privacy policy</a>
-        <a class="link link-hover">Cookie policy</a>
+    <div class="flex justify-center gap-4 pt-16">
+        {t("keep-in-touch.organized-with")}
+        <Image
+            class="max-h-[24px] h-[24px] max-w-[24px] w-[24px]"
+            src={heartSrc}
+            alt="Heart"
+        />
+        {t("by")}
+    </div>
+
+    <div
+        class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap py-10"
+    >
+        <a href="https://gdg.community.dev/gdg-pescara/" target="_blank"
+            ><Image
+                class="max-h-[70px] h-[70px] max-w-[290px] w-[290px]"
+                src={gdgLogoSrc}
+                alt="GDG Pescara Logo"
+            /></a
+        >
+
+        <div class="">{t("and")}</div>
+        <a
+            href="https://gdg.community.dev/gdg-cloud-torino/"
+            target="_blank"
+            ><Image
+                class="max-h-[117px] h-[105px] max-w-[290px] w-[260px]"
+                src={gdgCloudTorinoLogoSrc}
+                alt="GDG Cloud Torino Logo"
+            /></a
+        >
     </div>
 </footer>
+
+<style is:global>
+    .dots {
+        background-image: radial-gradient(#7b7b7b 1px, transparent 0);
+        background-size: 32px 32px;
+    }
+</style>

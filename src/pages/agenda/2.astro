@@ -1,0 +1,15 @@
+---
+import { changeLanguage } from "i18next";
+import AgendaOverview from "../../components/AgendaOverview.astro";
+import AgendaSelect from "../../components/AgendaSelect.astro";
+import Layout from "../../layouts/Layout.astro";
+import { events, filterEventsByDay } from "../../data/agenda-data";
+
+changeLanguage("en");
+---
+
+<Layout title="Devfest Pescara 2023 - Agenda">
+  <AgendaSelect day={2}>
+    <AgendaOverview events={filterEventsByDay(events, 2)} />
+  </AgendaSelect>
+</Layout>
