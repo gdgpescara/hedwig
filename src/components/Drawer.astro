@@ -99,7 +99,13 @@ import Navbar from "./Navbar.astro";
         }
 
         .menu.menu-horizontal li {
-            color: white;
+            color: #FFF;
+
+            a {
+                &.active, &:active, &:hover {
+                    border-color: #FFF;
+                }
+            }
         }
 
         .logo {
