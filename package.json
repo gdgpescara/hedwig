@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:base": "astro dev --base=''",
     "start": "astro dev",
     "build": "pnpm generate-translations && astro build",
     "preview": "astro preview",
@@ -13,11 +14,13 @@
   "dependencies": {
     "@astrojs/node": "^6.0.0",
     "@astrojs/react": "^2.2.1",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "@splidejs/splide": "^4.1.4",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "astro": "^3.0.8",
     "astro-i18next": "1.0.0-beta.21",
+    "clsx": "^2.0.0",
     "daisyui": "^3.1.6",
     "i18next": "^22.5.1",
     "i18next-fs-backend": "^2.1.5",

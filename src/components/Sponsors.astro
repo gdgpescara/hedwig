@@ -56,23 +56,24 @@ const sponsors: SponsorValue[][] = [
 ];
 ---
 
-<div id="sponsors" class="bg-[url('/images/map-old-sponsors.svg')]">
-  <Section title={t('landing:sponsors.title') || 'Sponsors'}>
-    <div class="m-auto">
-      {
-        sponsors.map((sponsorLevel) => (
-          <div class="flex flex-wrap my-8 justify-center m-auto items-center">
-            {sponsorLevel.map((sponsor) => (
-              <Sponsor
-                level={sponsor.level}
-                imageAlt={sponsor.name}
-                imageSrc={sponsor.imageSrc}
-                link={sponsor.link}
-              />
-            ))}
-          </div>
-        ))
-      }
-    </div>
-  </Section>
-</div>
+<Section 
+  title={t('landing:sponsors.title') || 'Sponsors'} 
+  additionalClass="bg-[url('/images/map-old-sponsors.svg')]"
+  id="sponsors">
+  <div class="m-auto">
+    {
+      sponsors.map((sponsorLevel) => (
+        <div class="flex flex-wrap my-8 justify-center m-auto items-center">
+          {sponsorLevel.map((sponsor) => (
+            <Sponsor
+              level={sponsor.level}
+              imageAlt={sponsor.name}
+              imageSrc={sponsor.imageSrc}
+              link={sponsor.link}
+            />
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</Section>

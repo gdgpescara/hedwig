@@ -1,11 +1,10 @@
 ---
 import { changeLanguage } from "i18next";
 import Hero from "../components/Hero.astro";
-import Layout from "../layouts/Layout.astro";
-import Sponsors from "../components/Sponsors.astro";
-import KeepInTouch from "../components/KeepInTouch.astro";
-import Numbers from "../components/Numbers.astro";
 import Location from "../components/Location.astro";
+import Numbers from "../components/Numbers.astro";
+import Sponsors from "../components/Sponsors.astro";
+import Layout from "../layouts/Layout.astro";
 
 changeLanguage("en");
 ---
@@ -15,23 +14,4 @@ changeLanguage("en");
   <Numbers />
   <Location />
   <Sponsors />
-  <KeepInTouch />
 </Layout>
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-
-  html,
-  body {
-    background-color: #181818;
-  }
-
-  :global(html) {
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    :global(html) {
-      scroll-behavior: auto;
-    }
-  }
-</style>

@@ -1,8 +1,8 @@
 ---
+import { HeadHrefLangs } from "astro-i18next/components";
 import i18next from "i18next";
 import Drawer from "../components/Drawer.astro";
 import Footer from "../components/Footer.astro";
-import { HeadHrefLangs } from "astro-i18next/components";
 
 export interface Props {
   title: string;
@@ -26,13 +26,31 @@ const { title } = Astro.props;
 		<Drawer>
 			<slot />
 		</Drawer>
+    <Footer/>
 	</body>
 </html>
 <style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
   /* The integration's default injected base.css file */
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+  
+  html,
+  body {
+    background-color: #181818;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+  }
 </style>
 <script>
   if ("serviceWorker" in navigator) {

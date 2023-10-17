@@ -8,27 +8,24 @@ const mapUrl =
   "https://www.google.com/maps/dir//Universit%C3%A0+degli+studi+%22G.d'Annunzio%22+sede+Pescara,+Viale+Pindaro,+42,+65127+Pescara+PE/@42.4520472,14.1424379,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1331a74d5acdfbdf:0x4389fccd7763c874!2m2!1d14.2248392!2d42.45195?entry=ttu";
 ---
 
-<Section>
-  <div
-    id="location"
-    class="grid grid-cols-1 xl:grid-cols-2 justify-center items-center min-h-[35rem]"
-  >
-    <Map />
-    <div class="px-16 py-8 order-1 md:order-2">
-      <Heading text={t('landing:location.title')} level="h2" />
-      <div class="text-2xl xl:text-3xl font-bold text-accent-content pt-4">
-        {t("landing:location.place")}
-      </div>
-      <div class="text-base xl:text-xl py-4">
-        {t("landing:location.address")}
-      </div>
-      <a
-        class="btn btn-outline btn-wide btn-circle border-dashed uppercase"
-        target="_blank"
-        role="link"
-        href={mapUrl}>{t("landing:location.direction")}</a
-      >
+<Section 
+  additionalClass="min-h-screen grid grid-cols-1 xl:grid-cols-2 justify-center items-center" 
+  id="location">
+  <Map />
+  <div class="px-16 py-8 order-1 md:order-2">
+    <Heading text={t('landing:location.title')} level="h2" />
+    <div class="text-2xl xl:text-3xl font-bold text-accent-content pt-4">
+      {t("landing:location.place")}
     </div>
+    <div class="text-base xl:text-xl py-4">
+      {t("landing:location.address")}
+    </div>
+    <a
+      class="btn btn-outline btn-wide btn-circle border-dashed uppercase"
+      target="_blank"
+      role="link"
+      href={mapUrl}>{t("landing:location.direction")}</a
+    >
   </div>
 </Section>
 

@@ -8,4 +8,4 @@ const { href, active } = Astro.props;
 
 ---
 
-<a href={href} class={ active ? 'active': null }><slot /></a>
+<a href={href} class={ active ? 'active': null } class="bg-transparent"><slot /></a>

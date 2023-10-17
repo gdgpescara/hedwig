@@ -8,33 +8,35 @@ import Values from "./Values.astro";
 import { t } from "i18next";
 ---
 
-<div id="numbers" class="bg-[url('/images/map-old-numbers.svg')]">
-  <Section title={t("landing:numbers.title") || "Numbers"}>
-    <div class="grid xl:grid-cols-4 md:grid-cols-2">
-      <Values
-        title={t("landing:numbers.sponsors")}
-        description="16+"
-        imageAlt=""
-        imageSrc={sponsorIconSrc}
-      />
-      <Values
-        title={t("landing:numbers.participants")}
-        description="800+"
-        imageAlt=""
-        imageSrc={partecipantsIconSrc}
-      />
-      <Values
-        title={t("landing:numbers.speakers")}
-        description="35+"
-        imageAlt=""
-        imageSrc={speakerIconSrc}
-      />
-      <Values
-        title={t("landing:numbers.days")}
-        description="2"
-        imageAlt=""
-        imageSrc={daysIconSrc}
-      />
-    </div>
-  </Section>
-</div>
+<Section 
+  title={t("landing:numbers.title") || "Numbers"}
+  additionalClass="bg-[url('/images/map-old-numbers.svg')]"
+  id="numbers"
+  >
+  <div class="grid xl:grid-cols-4 md:grid-cols-2">
+    <Values
+      title={t("landing:numbers.sponsors")}
+      description="16+"
+      imageAlt=""
+      imageSrc={sponsorIconSrc}
+    />
+    <Values
+      title={t("landing:numbers.participants")}
+      description="800+"
+      imageAlt=""
+      imageSrc={partecipantsIconSrc}
+    />
+    <Values
+      title={t("landing:numbers.speakers")}
+      description="35+"
+      imageAlt=""
+      imageSrc={speakerIconSrc}
+    />
+    <Values
+      title={t("landing:numbers.days")}
+      description="2"
+      imageAlt=""
+      imageSrc={daysIconSrc}
+    />
+  </div>
+</Section>

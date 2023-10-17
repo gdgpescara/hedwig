@@ -1,0 +1,29 @@
+---
+import { changeLanguage } from "i18next";
+import SpeakersOverview from "../../components/SpeakersOverview.astro";
+import { speakersData, type SpeakerId, type Speaker, } from "../../data/speakers-data";
+import Layout from "../../layouts/Layout.astro";
+
+changeLanguage("en");
+
+export async function getStaticPaths() {
+    return Object.keys(speakersData).map((speakerKey) => {
+        const speakerId = speakerKey as SpeakerId;
+        const speaker = speakersData[speakerId];
+        return {
+            params: { name: speakerId },
+            props: { speaker },
+        };
+    });
+}
+type Props = {
+    speaker: Speaker;
+};
+const { speaker } = Astro.props;
+const { name } = Astro.params;
+const speakerId = name as SpeakerId;
+---
+
+<Layout title={"Devfest Pescara 2023 - " + speaker.name}>
+  <SpeakersOverview speakerId={speakerId} />
+</Layout>

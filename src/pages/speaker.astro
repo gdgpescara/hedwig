@@ -1,0 +1,14 @@
+---
+import { changeLanguage } from "i18next";
+import Layout from "../layouts/Layout.astro";
+import SpeakersComponent from "../components/SpeakersComponent.astro";
+import { speakersData } from "../data/speakers-data";
+
+changeLanguage("en");
+
+const speakers = Object.keys(speakersData);
+---
+
+<Layout title="Devfest Pescara 2023 - Speakers">
+  <SpeakersComponent speakerId={ undefined } />
+</Layout>

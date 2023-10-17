@@ -1,20 +1,14 @@
 ---
-import { t } from "i18next";
+import navData from "../data/nav-data";
 import Link from "./Link.astro";
-
-const navData = [
-  { name: t("sign-up"), path: "#signUp" },
-  { name: t("landing:numbers.title"), path: "#numbers" },
-  { name: t("landing:location.title"), path: "#location" },
-  { name: t("landing:sponsors.title"), path: "#sponsors" },
-  { name: t("keep-in-touch.title"), path: "#contacts" },
-];
+let pathname = new URL(Astro.request.url).pathname;
+pathname = pathname.length > 1 ? pathname.slice(0, -1) : pathname;
 ---
 
 {
-  navData.map((nav, index) => (
+  navData.map((nav) => (
     <li class="text-white">
-      <Link href={nav.path} active={index === 0}>
+      <Link href={nav.path} active={pathname === nav.path}>
         {nav.name}
       </Link>
     </li>

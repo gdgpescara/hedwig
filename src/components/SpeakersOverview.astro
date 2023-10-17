@@ -1,0 +1,45 @@
+---
+import { t } from "i18next";
+import { events, filterEventsBySpeaker } from "../data/agenda-data";
+import { type SpeakerId } from "../data/speakers-data";
+import AgendaOverview from "./AgendaOverview.astro";
+import SpeakersDetail from "./SpeakersDetail.astro";
+
+type Props = {
+  speakerId: SpeakerId;
+};
+
+const { speakerId } = Astro.props;
+
+const firstDayEvents = filterEventsBySpeaker(events, speakerId as SpeakerId, 1);
+const secondDayEvents = filterEventsBySpeaker(
+  events,
+  speakerId as SpeakerId,
+  2,
+);
+---
+
+<SpeakersDetail speakerId={speakerId} additionalClass="dots xl:min-h-screen" />
+{
+  firstDayEvents.length !== 0 && (
+    <div class="relative p-9">
+      <h3 class="text-3xl text-center font-bold text-accent-content pt-4">{t("agenda:event-date-1")}</h3>
+      <AgendaOverview events={firstDayEvents} />
+    </div>
+  )
+}
+{
+  firstDayEvents.length !== 0 && secondDayEvents.length !== 0 && (
+    <div class="px-9">
+      <hr class="h-px my-8 border-dashed" />
+    </div>
+  )
+}
+{
+  secondDayEvents.length !== 0 && (
+    <div class="relative p-9">
+      <h3 class="text-4xl text-center font-bold text-accent-content pt-4">{ t("agenda:event-date-2")}</h2>
+      <AgendaOverview events={secondDayEvents} />
+    </div>
+  )
+}
