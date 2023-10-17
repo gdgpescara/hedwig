@@ -1,7 +1,8 @@
 ---
 import navData from "../data/nav-data";
 import Link from "./Link.astro";
-const pathname = new URL(Astro.request.url).pathname;
+let pathname = new URL(Astro.request.url).pathname;
+pathname = pathname.length > 1 ? pathname.slice(0, -1) : pathname;
 ---
 
 {
