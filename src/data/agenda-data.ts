@@ -77,6 +77,30 @@ export const events: AgendaEvent = {
       },
       abstract: "It would be great to have a bunch of spells ready to be used to overcome any issue, delay, or conflict during the lifecycle of a project! Do you agree? Unfortunately, those spells are not available yet, but I will show you how to use your magic powder (soft skills) to manage one of the most important resources in a project, to successfully deliver a project on time, within budget, and to the required quality...that important resource is your stakeholders. ATTENTION: This session is not only for project managers. If you have a position that demands leadership or if you want to become a project manager, you can't miss this session!"
     },
+    {
+      day: 2,
+      name: "Python beginner's workshop",
+      type: "talk",
+      tags: ["Workshop"],
+      length: "180 min",
+      language: "Italian",
+      room: "Room 3 INFO",
+      speaker: [
+        {
+          id: "l-divita",
+        },
+        {
+          id: "j-salviati",
+        },
+        {
+          id: "m-mazzocchetti",
+        },
+        {
+          id: "p-melchiorre",
+        }
+      ],
+      abstract: "Registrazioni tramite il form https://docs.google.com/forms/d/e/1FAIpQLSeCKzlR-lFlpDDcEhuFAzxSteAVWCQdCy_CzW91i27JfBaz8A/viewform"
+    }
   ],
   "10:15": [
     {
@@ -208,7 +232,7 @@ export const events: AgendaEvent = {
       },
       abstract: "Developers often make the mistake of centralizing fragment definitions and using them in every query, even when only a subset of attributes is needed. It's important for GraphQL clients to be mindful of query optimization because the server has to process the client's query and generate a customized response. If the client's query isn't optimized, it can force the server to process unnecessary data, resulting in slower response times. Unfortunately, identifying performance bottlenecks and slow queries, especially in an Apollo Federation architecture, can be quite challenging. In this session, we'll dive into the reasons why measuring the \"cost\" of a GraphQL query is not a simple task. We'll explore how the unique design of GraphQL affects the speed at which it executes a query. You'll understand why it's essential for you, as a client, to prioritize query optimization in order to achieve faster and more efficient performance."
     },
-    /*{
+    {
       day: 1,
       name: "Home Assistant: The Open Source Home Automation Platform",
       type: "talk",
@@ -220,7 +244,7 @@ export const events: AgendaEvent = {
         id: "a-morresi",
       },
       abstract: "Home Assistant is a powerful tool that can make your home smarter, but it can also be a lot of fun. In this session, we will give an overview of Home Assistant, including its features, benefits, and installation process. We will also cover some of the most popular integrations available, such as IoT devices, smart speakers, etc. Finally, we will show you how to create your own automations, so that you can control your smart home devices however you want."
-    }*/
+    }
   ],
   "11:40": [
     {
@@ -416,6 +440,26 @@ export const events: AgendaEvent = {
       },
       abstract: "Quick intro about SRE and reasons why to implement SRE best practices when developing and engineering on GCP. Overview of native API's and services that are available on GCP that enable SRE natively on the platform. A demo application running in GCP with said services including explanations, cost effectiveness (Cloud FinOps), monitoring, logging and DevOps etc. Ending with questions."
     },
+  ],
+  "14:30": [
+    {
+      day: 1,
+      name: "Your First Node.js Contribution",
+      type: "talk",
+      tags: ["Workshop", "Open source"],
+      length: "180 min",
+      language: "Italian",
+      room: "Room 3 INFO",
+      speaker: [
+        {
+          id: "m-ippolito",
+        },
+        {
+          id: "p-insogna",
+        }
+      ],
+      abstract: "Have you ever wanted to contribute to a foundational open source project like Node.js? Maybe you don’t know where to start. Maybe you always assumed that was work reserved for “someone else.” Join experienced contributors who will guide you through your first (or second or third or fourth) commit to the Node.js core. They will be available to help troubleshoot any development environment issues and also to provide guided tours through specific areas of the Node.js core source code. Contributors of all skill levels and experiences are welcome (not every contribution has to be a code change). Come and make your first Node.js core contribution!"
+    }
   ],
   "14:50": [
     {

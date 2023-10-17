@@ -296,6 +296,16 @@ export const speakersData = {
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fj-harel.jpg?alt=media&token=847c929b-a747-4fbc-be50-f28f86f0775e'
   },*/
+  'j-salviati': {
+    name: 'Juna Salviati',
+    jobTitle: "",
+    description: "",
+    bio: "",
+    social: {
+      linkedin: 'https://www.linkedin.com/in/junasalviati/'
+    },
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fj-salviati.jpeg?alt=media&token=0c5079a7-3ea7-441c-b105-492e0dd0fbcc"
+  },
   'k-hrytsaienko': {
     name: 'Kateryna Hrytsaienko',
     jobTitle: 'Software Engineer Consultant Valtech | Woman Techmakers Ambassador| GDSC Mentor ',
@@ -401,6 +411,16 @@ export const speakersData = {
       blog: ''
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fm-marzocchi.jpg?alt=media&token=6de98aff-f908-4876-87ba-eb4a87655078'
+  },
+  'm-mazzocchetti': {
+    name: 'Moreno Mazzocchetti',
+    jobTitle: "Freelance Developer",
+    description: "Freelance Developer",
+    bio: "",
+    social: {
+      linkedin: 'https://www.linkedin.com/in/morenomazzocchetti/'
+    },
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fm-mazzocchetti.jpeg?alt=media&token=1e5e5d51-72b9-4e1c-b7ef-3d310a4ad524"
   },
   'm-ippolito': {
     name: 'Marco Ippolito',
@@ -519,6 +539,17 @@ export const speakersData = {
       blog: ''
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fp-insogna.jpg?alt=media&token=bc3dd2b1-0cfa-42f3-b6b7-761778af7059'
+  },
+  'p-melchiorre': {
+    name: 'Paolo Melchiorre',
+    jobTitle: "CTO @ 20tab",
+    description: "CTO @ 20tab",
+    bio: "",
+    social: {
+      linkedin: 'https://www.linkedin.com/in/paolomelchiorre/',
+      blog: "https://www.paulox.net/"
+    },
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fp-melchiorre.png?alt=media&token=1fa9b598-1621-4081-990a-d6a3e2de85f4"
   },
   'r-araujo': {
     name: 'Renan Araujo',
