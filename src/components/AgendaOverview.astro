@@ -1,15 +1,16 @@
 ---
-import EventCard from "./EventCard.astro";
-import AgendaIntermission from "../components/AgendaIntermission.astro";
-import type { AgendaEvent, AgendaEventType } from "../types";
-import { speakersData, type SpeakerId } from "../data/speakers-data";
 import clsx from "clsx";
+import AgendaIntermission from "../components/AgendaIntermission.astro";
+import { speakersData, type SpeakerId } from "../data/speakers-data";
+import type { AgendaEventType } from "../types";
+import EventCard from "./EventCard.astro";
 
 type Props = {
   events: [string, AgendaEventType[]][];
+  showAbstract?: boolean;
 };
 
-const { events } = Astro.props;
+const { events, showAbstract = false } = Astro.props;
 
 const getSpeakerJob = (speakerId: SpeakerId) => {
   const speaker = speakersData[speakerId];
@@ -75,6 +76,7 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
                       length={event.length}
                       language={event.language}
                       room={event.room}
+                      abstract={showAbstract ? event.abstract : undefined}
                       speaker={
                         Array.isArray(event.speaker)
                           ? event.speaker.map((speaker) => ({
