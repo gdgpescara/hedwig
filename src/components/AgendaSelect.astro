@@ -10,11 +10,7 @@ const { day } = Astro.props;
 import { t } from "i18next";
 ---
 
-<Section 
-  title={t("agenda:title") || ""}
-  id="agenda"
-  additionalClass="dots xl:min-h-screen"
-  >
+<Section title={t("agenda:title") || ""} id="agenda" additionalClass="dots">
   <div
     class="w-3xl max-w-full text-center m-auto py-8 mt-16 xl:mt-32 flex flex-wrap flex-col md:flex-row justify-center gap-4 items-center"
   >
@@ -41,5 +37,6 @@ import { t } from "i18next";
     {day === 1 ? t("agenda:event-date-1") : t("agenda:event-date-2")}
   </h2>
   <div>
-  <slot />
+    <slot />
+  </div>
 </div>
