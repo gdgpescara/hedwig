@@ -26,6 +26,7 @@ export type AgendaEventType = {
   name: string;
   length: string;
   day: 1 | 2;
+  tags?: string[];
 } & (AgendaEventSpeakerType | AgendaEventIntermissionType);
 
 export type EventSchedule = `${string}:${string}`;

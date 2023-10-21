@@ -4,12 +4,15 @@ import AgendaOverview from "../../components/AgendaOverview.astro";
 import AgendaSelect from "../../components/AgendaSelect.astro";
 import Layout from "../../layouts/Layout.astro";
 import { events, filterEventsByDay } from "../../data/agenda-data";
+import { getSchedulesFiltersByUrl } from "../../utils";
+
+const filters = getSchedulesFiltersByUrl(new URL(Astro.request.url));
 
 changeLanguage("en");
 ---
 
 <Layout title="Devfest Pescara 2023 - Agenda">
   <AgendaSelect day={1}>
-    <AgendaOverview events={filterEventsByDay(events, 1)} />
+    <AgendaOverview events={filterEventsByDay(events, 1, filters)} />
   </AgendaSelect>
 </Layout>

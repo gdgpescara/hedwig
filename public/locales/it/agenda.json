@@ -2,5 +2,7 @@
   "event-date-1": "18 novembre 2023",
   "event-date-2": "19 novembre 2023",
   "event-day": "Giorno {{day}}",
-  "title": "Programma"
+  "title": "Programma",
+  "no-events-found": "Nessun evento trovato"
+
 }
