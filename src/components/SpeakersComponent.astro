@@ -12,6 +12,6 @@ import SpeakersDetail from "../components/SpeakersDetail.astro";
   additionalClass="dots xl:min-h-screen" />
 {
   speakers.map((speaker) => (
-    <SpeakersDetail speakerId={speaker} />
+    <SpeakersDetail speakerId={speaker} showLink={true} />
   ))
 }
