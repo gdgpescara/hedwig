@@ -1,14 +1,14 @@
 ---
-import { changeLanguage } from "i18next";
-import Layout from "../layouts/Layout.astro";
+import { changeLanguage, t } from "i18next";
 import SpeakersComponent from "../components/SpeakersComponent.astro";
 import { speakersData } from "../data/speakers-data";
+import Layout from "../layouts/Layout.astro";
 
 changeLanguage("en");
 
 const speakers = Object.keys(speakersData);
 ---
 
-<Layout title="Devfest Pescara 2023 - Speakers">
+<Layout title="Devfest Pescara 2023 - Speakers" description="Devfest Pescara 2023 - Speakers" keywords={[t('speakers')]}>
   <SpeakersComponent speakerId={ undefined } />
 </Layout>
