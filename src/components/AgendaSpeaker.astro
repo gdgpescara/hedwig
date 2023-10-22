@@ -10,15 +10,15 @@ const speaker = Astro.props;
 ---
 
 <div class="blog-author flex align-items-center gap-3">
-  <a href={speaker.url} class="block w-14 h-14 shrink-0">
+  <div class="block w-14 h-14 shrink-0">
     <img
       src={speaker.imageUrl}
       class="w-14 h-14 rounded-2xl mr-4 shrink-0"
       alt={speaker.name}
     />
-  </a>
-  <div>
+  </div>
+  <a href={speaker.url} >
     <h3 class="text-lg md:text-xl font-bold">{speaker.name}</h3>
     <p class="text-sm font-light">{speaker.description}</p>
-  </div>
+  </a>
 </div>

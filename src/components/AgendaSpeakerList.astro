@@ -1,0 +1,30 @@
+---
+type Props = {
+  name: string;
+  url: string;
+  description: string;
+  imageUrl: string;
+};
+
+import { t } from "i18next";
+
+const speaker = Astro.props;
+---
+
+<div class="absolute bottom-0 duration-700 ease-in-out flex label left-0 ml-3 sm:ml-2 transition-all">
+  <a class="w-14" href="javascript:void(0)" aria-label={t('agenda:show-detail', { name: speaker.name })}>
+    <img
+      src={speaker.imageUrl}
+      class="w-14 h-14 rounded-2xl shrink-0"
+      alt={speaker.name}
+    />
+  </a>
+  <a href={speaker.url} class="ml-4 delay-700 content flex flex-col justify-center text-white whitespace-pre">
+    <div>
+      <h3 class="text-lg md:text-xl font-bold">
+        {speaker.name}
+      </h3>
+      <p class="text-sm font-light">{speaker.description}</p>
+    </div>
+  </a>
+</div>

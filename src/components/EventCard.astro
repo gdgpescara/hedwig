@@ -1,6 +1,7 @@
 ---
 import clsx from "clsx";
 import AgendaSpeaker from "./AgendaSpeaker.astro";
+import AgendaSpeakerList from "./AgendaSpeakerList.astro";
 
 type Speaker = {
   name: string;
@@ -34,8 +35,6 @@ const { name, language, speaker, length, multiple, room } = Astro.props;
   >
     <div class="p-6 h-full">
       <div class="flex justify-start pb-6">
-        
-
         <span
           class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm"
         >
@@ -60,11 +59,22 @@ const { name, language, speaker, length, multiple, room } = Astro.props;
     <!--If speaker -->
     {
       speaker && (
-        <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
+        <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end pane-parent">
           {Array.isArray(speaker) ? (
-            <div class="flex flex-col gap-3">
-              {speaker.map((_speaker) => (
-                <AgendaSpeaker {..._speaker} />
+            <div class="flex flex-col flex-grow items-stretch min-w-md w-full sm:flex-row sm:overflow-hidden">
+              {speaker.map((_speaker, index) => (
+                <div
+                  class={clsx(
+                    "duration-700 ease-in-out h-20 flex-grow overflow-hidden pane relative transition-all",
+                    {
+                      active: index === 0,
+                    },
+                  )}
+                >
+                  <AgendaSpeakerList
+                    { ..._speaker}
+                  ></AgendaSpeaker>
+                </div>
               ))}
             </div>
           ) : (
@@ -75,3 +85,37 @@ const { name, language, speaker, length, multiple, room } = Astro.props;
     }
   </div>
 </li>
+
+<style lang="scss" is:global>
+  .pane {
+
+    &:not(.active) {
+      cursor: pointer;
+    }
+
+    .content {
+      display: none;
+
+      @media (max-width: 640px) {
+        display: block;
+      }
+    }
+
+
+
+    &.active {
+
+      flex-grow: 10;
+      max-width: 100%;
+
+      div:first-child>a:first-child {
+        pointer-events: none;
+      }
+  
+      .content {
+        display: flex;
+      }
+    }
+
+  }
+</style>
