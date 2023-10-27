@@ -53,9 +53,9 @@ const { title } = Astro.props;
   }
 </style>
 <script>
-  if ("serviceWorker" in navigator) {
+  if ("service-worker" in navigator) {
     navigator.serviceWorker
-      .register("/serviceWorker.js")
+      .register("/service-worker.js")
       .then(function (registration) {
         console.log(
           "ServiceWorker registration successful with scope: ",

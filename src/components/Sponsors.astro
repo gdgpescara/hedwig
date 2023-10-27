@@ -7,7 +7,15 @@ import surediIconSrc from "../assets/sponsors/suredi.svg";
 import udaIconSrc from "../assets/sponsors/uda.png";
 import decIconSrc from "../assets/sponsors/dec.png";
 import netsonsIconSrc from "../assets/sponsors/netsons.svg";
+import futuraIconSrc from "../assets/sponsors/futura.svg";
 import leanStartupIconSrc from "../assets/sponsors/leanstartuplab.png";
+import pythonPescaraIconSrc from "../assets/sponsors/pythonpescara.png";
+import jetbrainsIconSrc from "../assets/sponsors/jetbrains.svg";
+import synergieIconSrc from "../assets/sponsors/synergie.png";
+import innovalleyIconSrc from "../assets/sponsors/innovalley.png";
+import ready2useIconSrc from "../assets/sponsors/ready2use.png";
+import aesysIconSrc from "../assets/sponsors/aesys.png";
+import scuolacomicsIconSrc from "../assets/sponsors/scuolacomics.png";
 import Section from "./Section.astro";
 import Sponsor from "./Sponsor.astro";
 import type { ImageMetadata } from "astro";
@@ -27,33 +35,7 @@ const sponsors: SponsorValue[][] = [
       name: "Google",
       imageSrc: googleIconSrc,
       link: "https://gdg.community.dev/",
-    },
-    {
-      level: "Media partner",
-      name: "Stickermule",
-      imageSrc: stickermuleIconSrc,
-      link: "https://www.stickermule.com",
-    },
-    {
-      level: "Community partner",
-      name: "Lean Startup Lab",
-      imageSrc: leanStartupIconSrc,
-      link: "https://meetu.ps/c/4fDsg/FSPD4/a",
-    },
-  ],
-  [
-    {
-      level: "General partner",
-      name: "UdA",
-      imageSrc: udaIconSrc,
-      link: "https://www.unich.it/",
-    },
-    {
-      level: "General Partner",
-      name: "DEC",
-      imageSrc: decIconSrc,
-      link: "https://www.dec.unich.it/home-dec-1",
-    },
+    }
   ],
   [
     {
@@ -61,6 +43,18 @@ const sponsors: SponsorValue[][] = [
       name: "Netsons",
       imageSrc: netsonsIconSrc,
       link: "https://www.netsons.com/",
+    },
+    {
+      level: "Platinum sponsor",
+      name: "Ready2Use",
+      imageSrc: ready2useIconSrc,
+      link: "https://r2u.it/",
+    },
+    {
+      level: "Platinum sponsor",
+      name: "Aesys - Aesys Cyber",
+      imageSrc: aesysIconSrc,
+      link: "https://www.aesys.tech/",
     }
   ],
   [
@@ -75,6 +69,18 @@ const sponsors: SponsorValue[][] = [
       name: "Tredipi",
       imageSrc: tredipiIconSrc,
       link: "https://www.tredipi.it/",
+    },
+    {
+      level: "Gold sponsor",
+      name: "Synergie",
+      imageSrc: synergieIconSrc,
+      link: "https://www.synergie-italia.it/",
+    },
+    {
+      level: "Gold sponsor",
+      name: "Innovalley",
+      imageSrc: innovalleyIconSrc,
+      link: "https://www.inno-valley.it/",
     }
   ],
   [
@@ -83,6 +89,60 @@ const sponsors: SponsorValue[][] = [
       name: "Suredi",
       imageSrc: surediIconSrc,
       link: "https://www.suredi.it/",
+    },
+    {
+      level: "Silver sponsor",
+      name: "Scuola Internazionale del Comics - sede di Pescara",
+      imageSrc: scuolacomicsIconSrc,
+      link: "https://scuolacomics.com/sede/pescara",
+    }
+  ],
+  [
+    {
+      level: "Bronze sponsor",
+      name: "Futura",
+      imageSrc: futuraIconSrc,
+      link: "https://www.linkedin.com/company/futura-dev/",
+    }
+  ],
+  [
+    {
+      level: "General partner",
+      name: "UdA",
+      imageSrc: udaIconSrc,
+      link: "https://www.unich.it/",
+    },
+    {
+      level: "General Partner",
+      name: "DEC",
+      imageSrc: decIconSrc,
+      link: "https://www.dec.unich.it/home-dec-1",
+    },
+    {
+      level: "General partner",
+      name: "JetBrains",
+      imageSrc: jetbrainsIconSrc,
+      link: "https://www.jetbrains.com/",
+    },
+    {
+      level: "Media partner",
+      name: "Stickermule",
+      imageSrc: stickermuleIconSrc,
+      link: "https://www.stickermule.com",
+    },
+  ],
+  [
+    {
+      level: "Community partner",
+      name: "Lean Startup Lab",
+      imageSrc: leanStartupIconSrc,
+      link: "https://meetu.ps/c/4fDsg/FSPD4/a",
+    },
+    {
+      level: "Community partner",
+      name: "Python Pescara",
+      imageSrc: pythonPescaraIconSrc,
+      link: "https://pescara.python.it/",
     }
   ]
 ];
