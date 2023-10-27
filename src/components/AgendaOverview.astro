@@ -7,10 +7,9 @@ import EventCard from "./EventCard.astro";
 
 type Props = {
   events: [string, AgendaEventType[]][];
-  showAbstract?: boolean;
 };
 
-const { events, showAbstract = false } = Astro.props;
+const { events } = Astro.props;
 
 const getSpeakerJob = (speakerId: SpeakerId) => {
   const speaker = speakersData[speakerId];
@@ -76,7 +75,7 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
                       length={event.length}
                       language={event.language}
                       room={event.room}
-                      abstract={showAbstract ? event.abstract : undefined}
+                      abstract={event.abstract}
                       speaker={
                         Array.isArray(event.speaker)
                           ? event.speaker.map((speaker) => ({
