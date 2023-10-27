@@ -23,8 +23,10 @@ const secondDayEvents = filterEventsBySpeaker(
 {
   firstDayEvents.length !== 0 && (
     <div class="relative p-9">
-      <h3 class="text-3xl text-center font-bold text-accent-content pt-4">{t("agenda:event-date-1")}</h3>
-      <AgendaOverview events={firstDayEvents} />
+      <a href="/agenda">
+        <h3 class="text-3xl text-center font-bold text-accent-content pt-4">{t("agenda:event-date-1")}</h3>
+      </a>
+      <AgendaOverview events={firstDayEvents}/>
     </div>
   )
 }
@@ -38,8 +40,10 @@ const secondDayEvents = filterEventsBySpeaker(
 {
   secondDayEvents.length !== 0 && (
     <div class="relative p-9">
-      <h3 class="text-4xl text-center font-bold text-accent-content pt-4">{ t("agenda:event-date-2")}</h2>
-      <AgendaOverview events={secondDayEvents} />
+      <a href="/agenda/2">
+        <h3 class="text-4xl text-center font-bold text-accent-content pt-4">{ t("agenda:event-date-2")}</h2>
+      </a>
+      <AgendaOverview events={secondDayEvents}/>
     </div>
   )
 }

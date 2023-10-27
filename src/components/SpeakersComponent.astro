@@ -8,5 +8,12 @@ const speakers = Object.keys(speakersData);
 const randomSpeakers = randomize(speakers);
 ---
 
-<Section title="Speakers" id="speakers" additionalClass="dots" />
-{randomSpeakers.map((speaker) => <SpeakersDetail speakerId={speaker} />)}
+<Section 
+  title="Speakers"
+  id="speakers" 
+  additionalClass="dots xl:min-h-screen" />
+{
+  randomSpeakers.map((speaker) => (
+    <SpeakersDetail speakerId={speaker} showLink={true} />
+  ))
+}

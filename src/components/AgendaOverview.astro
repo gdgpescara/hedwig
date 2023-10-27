@@ -1,10 +1,11 @@
 ---
-import EventCard from "./EventCard.astro";
-import AgendaIntermission from "../components/AgendaIntermission.astro";
-import type { AgendaEvent, AgendaEventType } from "../types";
-import { speakersData, type SpeakerId } from "../data/speakers-data";
 import clsx from "clsx";
+import AgendaIntermission from "../components/AgendaIntermission.astro";
+import { speakersData, type SpeakerId } from "../data/speakers-data";
+import type { AgendaEventType } from "../types";
+import EventCard from "./EventCard.astro";
 import { randomize } from "../utils";
+
 
 type Props = {
   events: [string, AgendaEventType[]][];
@@ -76,6 +77,7 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
                       length={event.length}
                       language={event.language}
                       room={event.room}
+                      abstract={event.abstract}
                       speaker={
                         Array.isArray(event.speaker)
                           ? event.speaker.map((speaker) => ({
