@@ -4,6 +4,8 @@ import SpeakersOverview from "../../components/SpeakersOverview.astro";
 import { speakersData, type SpeakerId, type Speaker, } from "../../data/speakers-data";
 import Layout from "../../layouts/Layout.astro";
 
+export const prerender = true;
+
 changeLanguage("en");
 
 export async function getStaticPaths() {
