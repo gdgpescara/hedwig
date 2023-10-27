@@ -1,17 +1,12 @@
 ---
 import Section from "./Section.astro";
 import { speakersData } from "../data/speakers-data";
-const speakers = Object.keys(speakersData);
 import SpeakersDetail from "../components/SpeakersDetail.astro";
+import { randomize } from "../utils";
 
+const speakers = Object.keys(speakersData);
+const randomSpeakers = randomize(speakers);
 ---
 
-<Section 
-  title="Speakers"
-  id="speakers" 
-  additionalClass="dots xl:min-h-screen" />
-{
-  speakers.map((speaker) => (
-    <SpeakersDetail speakerId={speaker} />
-  ))
-}
+<Section title="Speakers" id="speakers" additionalClass="dots" />
+{randomSpeakers.map((speaker) => <SpeakersDetail speakerId={speaker} />)}

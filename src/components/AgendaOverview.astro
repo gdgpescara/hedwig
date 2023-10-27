@@ -4,6 +4,7 @@ import AgendaIntermission from "../components/AgendaIntermission.astro";
 import type { AgendaEvent, AgendaEventType } from "../types";
 import { speakersData, type SpeakerId } from "../data/speakers-data";
 import clsx from "clsx";
+import { randomize } from "../utils";
 
 type Props = {
   events: [string, AgendaEventType[]][];
@@ -59,7 +60,7 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
               />
 
               <ul class="splide__list">
-                {_events.map((event) => {
+                {randomize(_events).map((event) => {
                   if (event.type === "intermission") {
                     return (
                       <AgendaIntermission
