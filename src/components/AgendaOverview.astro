@@ -6,6 +6,7 @@ import type { AgendaEventType } from "../types";
 import EventCard from "./EventCard.astro";
 import { randomize } from "../utils";
 
+import { t } from "i18next";
 
 type Props = {
   events: [string, AgendaEventType[]][];
@@ -77,6 +78,7 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
                       length={event.length}
                       language={event.language}
                       room={event.room}
+                      tags={event.tags}
                       abstract={event.abstract}
                       speaker={
                         Array.isArray(event.speaker)
@@ -142,6 +144,16 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
       </div>
     );
   })
+}
+
+{
+  events.length === 0 && (
+    <div class="flex flex-col items-center justify-center h-full">
+      <div class="text-center py-16">
+        <h2 class="text-2xl font-bold mb-4">{t("agenda:no-events-found")}</h2>
+      </div>
+    </div>
+  )
 }
 
 <script>

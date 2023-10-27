@@ -17,9 +17,11 @@ type Props = {
   multiple: boolean;
   speaker: Speaker | Speaker[];
   abstract?: string;
+  tags?: string[];
 };
 
-const { name, language, speaker, length, multiple, room, abstract } = Astro.props;
+const { name, language, speaker, length, multiple, room, abstract, tags } =
+  Astro.props;
 ---
 
 <li
@@ -35,8 +37,6 @@ const { name, language, speaker, length, multiple, room, abstract } = Astro.prop
   >
     <div class="p-6 h-full">
       <div class="flex justify-start pb-6">
-        
-
         <span
           class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm"
         >
@@ -56,9 +56,16 @@ const { name, language, speaker, length, multiple, room, abstract } = Astro.prop
       </div>
       <h2 class="text-2xl md:text-4xl font-black">{name}</h2>
       <!--If abstract -->
+      {abstract && <p class="text-left mt-4">{abstract}</p>}
       {
-        abstract && (
-          <p class="text-left mt-4">{abstract}</p>
+        (
+          <div class="pt-4 pb-2 flex gap-3 flex-wrap">
+            {tags?.map((tag) => (
+              <a href={`?tag=${tag}`} class="btn btn-sm btn-outline">
+                {tag}
+              </a>
+            ))}
+          </div>
         )
       }
       <!-- If !speaker -->
