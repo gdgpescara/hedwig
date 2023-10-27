@@ -372,8 +372,8 @@ export const speakersData = {
   },
   'l-divita': {
     name: 'Luca Di Vita',
-    jobTitle: 'Machine Learning Engineer',
-    description: 'Machine Learning Engineer',
+    jobTitle: 'Machine Learning Engineer @ Frontiere',
+    description: 'Machine Learning Engineer @ Frontiere',
     bio: "Laureato in Ingegneria Informatica all'Università degli Studi de L'Aquila e appassionato del mondo della ricerca, in particolar modo inerente il Machine Learning e Computazione Evolutiva, lavoro nel mondo IT come Machine Learning Engineer. La mia passione per lo studio e l'accademia mi ha portato nel fantastico mondo dei Dev Talks dove spero di appassionare tanto quanto lo sono io.",
     social: {
       linkedin: 'https://it.linkedin.com/in/luca-di-vita-563b0a183',
@@ -539,6 +539,20 @@ export const speakersData = {
       blog: ''
     },
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fp-insogna.jpg?alt=media&token=bc3dd2b1-0cfa-42f3-b6b7-761778af7059'
+  },
+  'p-lacitignola': {
+    name: 'Piergiuseppe Lacitignola',
+    jobTitle: 'Game Design Teacher @ Scuola Internazionale di Comics',
+    description: 'Game Design Teacher @ Scuola Internazionale di Comics',
+    bio: '',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/piergiuseppe-lacitignola-5b277097/',
+      twitter: '',
+      facebook: '',
+      instagram: '',
+      blog: ''
+    },
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Fp-lacitignola.jpeg?alt=media&token=3004358a-3b18-42ea-9766-1badb547281e'
   },
   'p-melchiorre': {
     name: 'Paolo Melchiorre',

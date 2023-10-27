@@ -53,7 +53,7 @@ export const events: AgendaEvent = {
     },
     {
       day: 2,
-      name: "Erlang: Ora vi farò un gioco di magia",
+      name: "La magia di Erlang può far bene  al tuo stipendio",
       type: "talk",
       tags: ["Languages"],
       length: "50 min",
@@ -62,7 +62,7 @@ export const events: AgendaEvent = {
       speaker: {
         id: "g-santomaggio",
       },
-      abstract: "Hai presente whatsapp? Ecco molte parti del server e' scritto in Erlang! In questa sessione vedremo alcune features che rendono questo linguaggio completamente diverso dagli altri. Features come distributed calls, load del codice dinamico ed altre magie della BEAM."
+      abstract: "Gli sviluppatori Erlang sono tra i più pagati sul mercato.\nWhatsapp e molti altri grandi sistemi usano Erlang/Elixir come linguaggio di backend.\n\nIn questo talk cerchiamo di capire perché questo linguaggio è cosi potente e perché conoscerlo ti può far bene anche se usi altri linguaggi.\nSopratutto potrebbe far bene alla tua RAL:)!\nfonte ( https://survey.stackoverflow.co/2023/#work-salary )"
     },
     {
       day: 2,
@@ -619,16 +619,16 @@ export const events: AgendaEvent = {
     },
     {
       day: 1,
-      name: "To be defined",
+      name: "Come sei progetta un videogioco: dall’idea allo sviluppo",
       type: "talk",
-      tags: ["TBD"],
+      tags: ["Game Design"],
       length: "50 min",
       language: "Italian",
       room: "Room 10-12",
       speaker: {
-        id: "tbd",
+        id: "p-lacitignola",
       },
-      abstract: "To be defined"
+      abstract: "Le fasi e il flusso di lavoro necessari allo sviluppo di un prodotto videoludico, dall'ideazione del progetto alla realizzazione del prodotto per il mercato"
     },
   ],
   "17:40": [
