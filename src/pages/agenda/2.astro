@@ -5,6 +5,8 @@ import AgendaSelect from "../../components/AgendaSelect.astro";
 import Layout from "../../layouts/Layout.astro";
 import { events, filterEventsByDay } from "../../data/agenda-data";
 
+export const prerender = false;
+
 changeLanguage("en");
 ---
 
