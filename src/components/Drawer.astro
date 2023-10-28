@@ -4,127 +4,134 @@ import Navbar from "./Navbar.astro";
 ---
 
 <div class="drawer">
-    <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col">
-        <!-- Navbar -->
-        <header class="w-full navbar bg-transparent fixed top-0 z-50">
-            <div class="flex-none lg:hidden">
-                <label for="drawer-toggle" class="btn btn-square btn-ghost">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        class="inline-block w-6 h-6 stroke-current"
-                        ><path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path></svg
-                    >
-                </label>
-            </div>
-            <!-- Logo -->
-            <div class="flex-1 grid justify-items-center lg:justify-items-start">
-                <a class="btn normal-case text-xl logo" href="/">
-                    {t('site-title')}
-                </a>
-            </div>
-            <nav class="flex-none hidden lg:block">
-                <ul class="menu menu-horizontal">
-                    <Navbar />
-                </ul>
-            </nav>
-        </header>
-        <!-- Page content here -->
-        <slot />
-    </div>
-    <aside class="drawer-side top-[96px]">
-        <label for="drawer-toggle" class="drawer-overlay"></label>
-        <ul class="menu p-4 w-80 h-full bg-base-200">
-            <!-- Sidebar content here (a duplication on navbar) -->
-            <Navbar />
+  <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content overflow-x-auto flex flex-col">
+    <!-- Navbar -->
+    <header class="w-full navbar bg-transparent fixed top-0 z-50">
+      <div class="flex-none lg:hidden">
+        <label for="drawer-toggle" class="btn btn-square btn-ghost">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block w-6 h-6 stroke-current"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path></svg
+          >
+        </label>
+      </div>
+      <!-- Logo -->
+      <div class="flex-1 grid justify-items-center lg:justify-items-start">
+        <a class="btn normal-case text-xl logo" href="/">
+          {t("site-title")}
+        </a>
+      </div>
+      <nav class="flex-none hidden lg:block">
+        <ul class="menu menu-horizontal">
+          <Navbar />
         </ul>
-    </aside>
+      </nav>
+    </header>
+    <!-- Page content here -->
+    <div>
+      <slot />
+    </div>
+  </div>
+  <aside class="drawer-side top-[96px]">
+    <label for="drawer-toggle" class="drawer-overlay"></label>
+    <ul class="menu p-4 w-80 h-full bg-base-200">
+      <!-- Sidebar content here (a duplication on navbar) -->
+      <Navbar />
+    </ul>
+  </aside>
 </div>
 
 <style is:global lang="scss">
-    header {
-        .logo {
-            color: #000;
-            background-color: #000;
-            -webkit-mask: url(/images/logo.svg) no-repeat;
-            mask: url(/images/logo.svg) no-repeat;
-            mask-size: contain;
-            mask-position: 1rem;
-            height: 80px;
-            width: 250px;
-            text-indent: -9999px;
-        }
+  header {
+    .logo {
+      color: #000;
+      background-color: #000;
+      -webkit-mask: url(/images/logo.svg) no-repeat;
+      mask: url(/images/logo.svg) no-repeat;
+      mask-size: contain;
+      mask-position: 1rem;
+      height: 80px;
+      width: 250px;
+      text-indent: -9999px;
+    }
 
-        label svg {
-            color: #000;
-        }
+    label svg {
+      color: #000;
+    }
+  }
+
+  .menu.menu-horizontal li {
+    color: #000;
+
+    a {
+      border-bottom: 2px dotted transparent;
+      border-radius: 0;
+      margin: 0 1rem;
+
+      &.active,
+      &:active,
+      &:hover {
+        border-color: #000;
+        background-color: transparent !important;
+        color: unset !important;
+      }
+    }
+  }
+
+  .menu li > :not(ul):not(.menu-title):not(details):active,
+  .menu li > :not(ul):not(.menu-title):not(details).active,
+  .menu li > details > summary:active {
+  }
+
+  .scrolled {
+    header {
+      background-color: hsl(var(--b2) / var(--tw-bg-opacity));
+    }
+  }
+
+  .black,
+  .scrolled {
+    label svg {
+      color: #fff;
     }
 
     .menu.menu-horizontal li {
-        color: #000;
+      color: #fff;
 
-        a {
-            border-bottom: 2px dotted transparent;
-            border-radius: 0;
-            margin: 0 1rem;
-
-            &.active, &:active, &:hover {
-                border-color: #000;
-                background-color: transparent !important;
-                color: unset !important;
-            }
+      a {
+        &.active,
+        &:active,
+        &:hover {
+          border-color: #fff;
         }
+      }
     }
 
-    .menu li > :not(ul):not(.menu-title):not(details):active, .menu li > :not(ul):not(.menu-title):not(details).active, .menu li > details > summary:active {
-
+    .logo {
+      background-color: white;
     }
-    
-    .scrolled {
-        header {
-            background-color: hsl(var(--b2) / var(--tw-bg-opacity))
-        }
+    .logo:hover {
+      background-color: white;
     }
 
-    .black, .scrolled {
+    .menu-horizontal {
+      color: white;
 
-        label svg {
-            color: #FFF;
-        }
-
-        .menu.menu-horizontal li {
-            color: #FFF;
-
-            a {
-                &.active, &:active, &:hover {
-                    border-color: #FFF;
-                }
-            }
-        }
-
-        .logo {
-            background-color: white;
-        }
-        .logo:hover {
-            background-color: white;
-        }
-
-        .menu-horizontal {
-            color: white;
-
-            li a.active{
-                border-color: white;
-            }
-        }
+      li a.active {
+        border-color: white;
+      }
     }
+  }
 </style>
 
 <script>
-    import "../scripts/header.js";
+  import "../scripts/header.js";
 </script>
