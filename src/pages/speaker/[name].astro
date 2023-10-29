@@ -1,9 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import { changeLanguage } from "i18next";
 import SpeakersOverview from "../../components/SpeakersOverview.astro";
-import { getSpeakers, type Speaker } from "../../data/speakers-data";
+import { type Speaker } from "../../data/speakers-data";
 import Layout from "../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
 
 changeLanguage("en");
 
