@@ -1,3 +1,4 @@
+import type { Render } from "astro:content";
 import type { SpeakerId } from "./data/speakers-data";
 
 interface Speaker {
@@ -13,9 +14,9 @@ type AgendaEventSpeakerType = {
   type: "talk";
   language: string;
   tags: string[];
-  abstract: string;
+  Abstract: Awaited<Render[".md"]>;
   room: string;
-  speaker: Speaker | Speaker[];
+  speaker: Speaker[];
 };
 
 type AgendaEventIntermissionType = {

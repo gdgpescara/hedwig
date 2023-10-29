@@ -4,9 +4,11 @@ import facebookImageSrc from "../assets/social/facebook.svg";
 import instagramImageSrc from "../assets/social/instagram.svg";
 import linkedinImageSrc from "../assets/social/linkedin.svg";
 import twitterImageSrc from "../assets/social/twitter.svg";
-import { speakersData } from "../data/speakers-data";
+import { getSpeakerById, speakersData } from "../data/speakers-data";
 import Section from "./Section.astro";
-
+// @ts-expect-error missing types?
+import { localizeUrl } from "astro-i18next";
+import SpeakerProfile from "./SpeakerProfile.astro";
 type Props = {
   speakerId: string;
   additionalClass?: string;
@@ -14,90 +16,35 @@ type Props = {
 };
 
 const { speakerId, additionalClass, showLink } = Astro.props;
-const speaker = (speakersData as any)[speakerId];
+const speaker = await getSpeakerById(speakerId);
+const { origin } = new URL(Astro.request.url);
+
+if (!speaker) {
+  throw new Response(null, { status: 404 });
+}
 ---
 
-<Section additionalClass={ additionalClass }>
-  <div class="py-16 md:pt-10 xl:pt-20 my-16 text-center">
-    <!-- if showLink -->
-    {
-      showLink && (
-        <a href={`/speaker/${speakerId}`}>
-          <img
-            src={speaker.imageUrl}
-            class="w-60 h-60 rounded-full border-4 m-auto"
-            alt={speaker.name}
-          />
-        </a>
-      )
-    }
-    <!-- if !showLink -->
-    {
-      !showLink && (
-        <img
-          src={speaker.imageUrl}
-          class="w-60 h-60 rounded-full border-4 m-auto"
-          alt={speaker.name}
-        />
-      )
-    }
-    <h2 class="text-4xl font-bold text-accent-content pt-4">{speaker.name}</h2>
-    {
-      speaker.company && (
-        <div class="text-3xl text-accent-content pt-4">@{speaker.company}</div>
-      )
-    }
-    <div class="text-2xl font-bold text-accent-content pt-4 px-10">
-      {speaker.jobTitle}
+<Section additionalClass={additionalClass}>
+  <div
+    class="gap-2 xl:flex lg:items-center xl:justify-center p-2 flex-wrap xl:pb-16"
+  >
+    <div class="shrink-0 py-16 md:pt-10 xl:pt-20 my-16">
+      <SpeakerProfile
+        id={speakerId}
+        name={speaker.name}
+        jobTitle={speaker.jobTitle}
+        company={speaker.company}
+        imageUrl={speaker.imageUrl}
+        social={speaker.social}
+        showLink={showLink}
+      />
     </div>
-    <p class="text-xl px-10 text-left xl:text-center text-accent-content pt-4 xl:px-64">
-      {speaker.bio}
-    </p>
-    <div class="pt-4 px-8 flex justify-center gap-8">
-      {
-        speaker.social && speaker.social.instagram && (
-          <a href={speaker.social.instagram} target="_blank">
-            <Image
-              class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
-              src={instagramImageSrc}
-              alt="Instagram"
-            />
-          </a>
-        )
-      }
-      {
-        speaker.social && speaker.social.facebook && (
-          <a href={speaker.social.facebook} target="_blank">
-            <Image
-              class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
-              src={facebookImageSrc}
-              alt="Facebook"
-            />
-          </a>
-        )
-      }
-      {
-        speaker.social && speaker.social.linkedin && (
-          <a href={speaker.social.linkedin} target="_blank">
-            <Image
-              class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
-              src={linkedinImageSrc}
-              alt="Linkedin"
-            />
-          </a>
-        )
-      }
-      {
-        speaker.social && speaker.social.twitter && (
-          <a href={speaker.social.twitter} target="_blank">
-            <Image
-              class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
-              src={twitterImageSrc}
-              alt="Twitter"
-            />
-          </a>
-        )
-      }
-    </div>
+    {
+      speaker.raw.trim() ? (
+        <div class="bg-[#232323] py-16 max-w-screen-lg mx-auto xl:mx-0 text-xl px-10 text-left xl:text-left text-base-content xl:py-16 rounded-xl">
+          <speaker.Bio.Content />
+        </div>
+      ) : null
+    }
   </div>
 </Section>

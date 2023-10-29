@@ -21,6 +21,9 @@ body {
 
 .btn-outline {
   border-style: dashed;
+  &:not(.btn-primary):hover {
+    color: theme("textColor.primary");
+  }
 }
 /* 
 .btn-outline.btn-accent {

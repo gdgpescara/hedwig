@@ -2,16 +2,20 @@
 import { changeLanguage, t } from "i18next";
 import AgendaOverview from "../../components/AgendaOverview.astro";
 import AgendaSelect from "../../components/AgendaSelect.astro";
+import { getEvents } from "../../data/agenda-data";
 import Layout from "../../layouts/Layout.astro";
-import { events, filterEventsByDay } from "../../data/agenda-data";
-import { getSchedulesFiltersByUrl } from "../../utils";
 
 changeLanguage("en");
 
 const url = new URL(Astro.request.url);
-const filters = getSchedulesFiltersByUrl(url);
 const currentFilter = url.searchParams.get("tag");
 const urlWithoutParams = url.origin + url.pathname;
+const events = await getEvents({
+    filters: {
+        tag: currentFilter ? currentFilter : undefined,
+        day: 2,
+    },
+});
 export const prerender = false;
 ---
 
@@ -24,6 +28,8 @@ export const prerender = false;
         </a>
       ) : null
     }
-    <AgendaOverview events={filterEventsByDay(events, 2, filters)} />
+    <div class="relative max-w-screen-2xl m-auto md:p-2">
+      <AgendaOverview events={events} />
+    </div>
   </AgendaSelect>
 </Layout>

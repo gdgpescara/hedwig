@@ -6,7 +6,6 @@ import Layout from "../../layouts/Layout.astro";
 
 changeLanguage("en");
 
-export const prerender = true;
 export async function getStaticPaths() {
     return Object.keys(speakersData).map((speakerKey) => {
         const speakerId = speakerKey as SpeakerId;

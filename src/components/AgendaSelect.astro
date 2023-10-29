@@ -37,7 +37,7 @@ const { origin } = new URL(Astro.request.url);
   <h2 class="text-4xl text-center font-bold text-accent-content px-2 md:px-0">
     {day === 1 ? t("agenda:event-date-1") : t("agenda:event-date-2")}
   </h2>
-  <div class="py-5">
+  <div class="py-5 max-w-screen-2xl m-auto p-2">
     <slot name="filter" />
   </div>
   <div>

@@ -10,7 +10,7 @@ export default defineConfig({
   //site: "https://gdgpescara.github.io", // TODO: remove after setting the real deploy
   //base: '/hedwig', // TODO: remove after setting the real deploy
   integrations: [react(), tailwind(),astroI18next()],
-  output: "server",
+  output: "hybrid",
   adapter: nodejs({
     mode: "standalone",
   }),
