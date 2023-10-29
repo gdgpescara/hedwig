@@ -5,14 +5,26 @@ import AgendaSelect from "../../components/AgendaSelect.astro";
 import Layout from "../../layouts/Layout.astro";
 import { events, filterEventsByDay } from "../../data/agenda-data";
 import { getSchedulesFiltersByUrl } from "../../utils";
-
-const filters = getSchedulesFiltersByUrl(new URL(Astro.request.url));
+import { t, changeLanguage } from "i18next";
 
 changeLanguage("en");
+
+const url = new URL(Astro.request.url);
+const filters = getSchedulesFiltersByUrl(url);
+const currentFilter = url.searchParams.get("tag");
+const urlWithoutParams = url.origin + url.pathname;
+export const prerender = false;
 ---
 
 <Layout title="Devfest Pescara 2023 - Agenda">
   <AgendaSelect day={1}>
+    {
+      currentFilter ? (
+        <a href={urlWithoutParams} class="btn btn-secondary" slot="filter">
+          {t("agenda:remove-filters-for", { filter: currentFilter })}
+        </a>
+      ) : null
+    }
     <AgendaOverview events={filterEventsByDay(events, 1, filters)} />
   </AgendaSelect>
 </Layout>

@@ -1,13 +1,16 @@
 ---
 import clsx from "clsx";
 import Section from "./Section.astro";
+// @ts-expect-error - no types
+import { localizeUrl } from "astro-i18next";
+import { t } from "i18next";
 
 type Props = {
   day: number;
 };
 
 const { day } = Astro.props;
-import { t } from "i18next";
+const { origin } = new URL(Astro.request.url);
 ---
 
 <Section title={t("agenda:title") || ""} id="agenda" additionalClass="dots">
@@ -15,22 +18,18 @@ import { t } from "i18next";
     class="w-3xl max-w-full text-center m-auto py-8 mt-16 xl:mt-32 flex flex-wrap flex-col md:flex-row justify-center gap-4 items-center"
   >
     <a
-      href="/agenda"
-      tabindex={ day === 1 ? -1 : null }
-      class={clsx(
-        "btn btn-outline btn-wide btn-circle border-dashed text-black",
-        { "bg-black text-white": day !== 1 }, //TODO: to verify
-        { "bg-white text-black pointer-events-none": day === 1 } //TODO: to verify
-      )}>{t("agenda:event-day", { day: 1 })}</button
+      href={localizeUrl(`${origin}/agenda`)}
+      tabindex={day === 1 ? -1 : null}
+      class={clsx("btn btn-wide btn-secondary btn-circle", {
+        "btn-outline": day !== 1,
+      })}>{t("agenda:event-day", { day: 1 })}</a
     >
     <a
-      href="/agenda/2"
-      tabindex={ day === 2 ? -1 : null }
-      class={clsx(
-        "btn btn-outline btn-wide btn-circle border-dashed uppercase",
-        { "bg-black text-white": day !== 2 }, //TODO: to verify
-        { "bg-white text-black pointer-events-none": day === 2 } //TODO: to verify
-      )}>{t("agenda:event-day", { day: 2 })}</a
+      href={localizeUrl(`${origin}/agenda/2`)}
+      tabindex={day === 2 ? -1 : null}
+      class={clsx("btn btn-secondary btn-wide btn-circle", {
+        "btn-outline": day !== 2,
+      })}>{t("agenda:event-day", { day: 2 })}</a
     >
   </div>
 </Section>
@@ -38,6 +37,9 @@ import { t } from "i18next";
   <h2 class="text-4xl text-center font-bold text-accent-content px-2 md:px-0">
     {day === 1 ? t("agenda:event-date-1") : t("agenda:event-date-2")}
   </h2>
+  <div class="py-5">
+    <slot name="filter" />
+  </div>
   <div>
     <slot />
   </div>
