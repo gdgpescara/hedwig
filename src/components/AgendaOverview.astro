@@ -1,7 +1,6 @@
 ---
 import clsx from "clsx";
 import AgendaIntermission from "../components/AgendaIntermission.astro";
-import { speakersData, type SpeakerId } from "../data/speakers-data";
 import type { AgendaEventType } from "../types";
 import EventCard from "./EventCard.astro";
 import { randomize } from "../utils";
@@ -14,20 +13,6 @@ type Props = {
 
 const { events } = Astro.props;
 
-const getSpeakerJob = (speakerId: SpeakerId) => {
-  const speaker = speakersData[speakerId];
-  let description = "";
-
-  if ("jobTitle" in speaker) {
-    description += `${speaker.jobTitle}`;
-  }
-
-  if ("company" in speaker) {
-    description += `, ${speaker.company}`;
-  }
-
-  return description;
-};
 ---
 
 {

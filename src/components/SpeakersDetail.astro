@@ -1,13 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import facebookImageSrc from "../assets/social/facebook.svg";
-import instagramImageSrc from "../assets/social/instagram.svg";
-import linkedinImageSrc from "../assets/social/linkedin.svg";
-import twitterImageSrc from "../assets/social/twitter.svg";
-import { getSpeakerById, speakersData } from "../data/speakers-data";
+import { getSpeakerById } from "../data/speakers-data";
 import Section from "./Section.astro";
-// @ts-expect-error missing types?
-import { localizeUrl } from "astro-i18next";
 import SpeakerProfile from "./SpeakerProfile.astro";
 type Props = {
   speakerId: string;
@@ -17,7 +10,6 @@ type Props = {
 
 const { speakerId, additionalClass, showLink } = Astro.props;
 const speaker = await getSpeakerById(speakerId);
-const { origin } = new URL(Astro.request.url);
 
 if (!speaker) {
   throw new Response(null, { status: 404 });

@@ -1,12 +1,11 @@
 ---
 import { t } from "i18next";
 import { getEvents } from "../data/agenda-data";
-import { type SpeakerId } from "../data/speakers-data";
 import AgendaOverview from "./AgendaOverview.astro";
 import SpeakersDetail from "./SpeakersDetail.astro";
 
 type Props = {
-  speakerId: SpeakerId;
+  speakerId: string;
 };
 
 const { speakerId } = Astro.props;
