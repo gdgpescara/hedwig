@@ -34,7 +34,7 @@ jobs:
       - name: Build and Push Container
         run: |-
           docker build -t "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.SERVICE }}:${{ github.sha }}" ./
-          docker push "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.SERVICE }}:${{ github.sha }}"
+          docker push "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}:${{ github.sha }}"
 
       # END - Docker auth and build
 
@@ -45,7 +45,7 @@ jobs:
           service: ${{ vars.SERVICE }}
           region: ${{ vars.REGION }}
           # NOTE: If using a pre-built image, update the image name here
-          image: ${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.SERVICE }}:${{ github.sha }}
+          image: ${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}:${{ github.sha }}
 
       # If required, use the Cloud Run url output in later steps
       - name: Show Output
