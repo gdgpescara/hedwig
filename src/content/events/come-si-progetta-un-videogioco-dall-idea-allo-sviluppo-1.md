@@ -3,7 +3,7 @@
   time: "16:50"
   tags:
     - Game Design
-  name: "Come sei progetta un videogioco: dall’idea allo sviluppo"
+  name: "Come si progetta un videogioco: dall’idea allo sviluppo"
   duration: 50 min
   type: talk
   room: Room 10-12
