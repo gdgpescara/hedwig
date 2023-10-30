@@ -4,13 +4,14 @@ import Section from "./Section.astro";
 // @ts-expect-error - no types
 import { localizeUrl } from "astro-i18next";
 import { t } from "i18next";
+import { env } from "../costants";
 
 type Props = {
   day: number;
 };
 
 const { day } = Astro.props;
-const { origin } = new URL(Astro.request.url);
+const origin = env.siteUrl;
 ---
 
 <Section title={t("agenda:title") || ""} id="agenda" additionalClass="dots">

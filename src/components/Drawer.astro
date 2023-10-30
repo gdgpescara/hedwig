@@ -5,13 +5,14 @@ import clsx from "clsx";
 // @ts-expect-error - no types
 import { localizeUrl } from "astro-i18next";
 import { LanguageSelector } from "astro-i18next/components";
+import { env } from "../costants";
 
 type Props = {
   headerShouldBeDarker?: boolean;
 };
 
 const { headerShouldBeDarker } = Astro.props;
-const { pathname, origin } = new URL(Astro.request.url);
+const origin = env.siteUrl;
 ---
 
 <div class="drawer">
@@ -57,10 +58,16 @@ const { pathname, origin } = new URL(Astro.request.url);
         >
           <Navbar />
         </ul>
-        <LanguageSelector showFlag={false} class={clsx("select select-ghost font-bold lang-selector focus:text-secondary", {
-          "text-primary": headerShouldBeDarker,
-          "text-secondary": !headerShouldBeDarker,
-        })} />
+        <LanguageSelector
+          showFlag={false}
+          class={clsx(
+            "select select-ghost font-bold lang-selector focus:text-secondary",
+            {
+              "text-primary": headerShouldBeDarker,
+              "text-secondary": !headerShouldBeDarker,
+            }
+          )}
+        />
       </nav>
     </header>
     <!-- Page content here -->
@@ -76,7 +83,10 @@ const { pathname, origin } = new URL(Astro.request.url);
         <Navbar />
       </ul>
       <div class="p-4">
-        <LanguageSelector showFlag={true} class="select select-ghost w-full font-bold" />
+        <LanguageSelector
+          showFlag={true}
+          class="select select-ghost w-full font-bold"
+        />
       </div>
     </div>
   </aside>

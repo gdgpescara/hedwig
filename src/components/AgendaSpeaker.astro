@@ -1,5 +1,5 @@
 ---
-import { getEntryBySlug } from "astro:content";
+import { env } from "../costants";
 import { getSpeakerById } from "../data/speakers-data";
 // @ts-expect-error missing types?
 import { localizeUrl } from "astro-i18next";
@@ -8,7 +8,7 @@ type Props = { id: string };
 
 const { id } = Astro.props;
 const speaker = await getSpeakerById(id);
-const { origin } = new URL(Astro.request.url);
+const origin = env.siteUrl;
 ---
 
 {

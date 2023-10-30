@@ -3,6 +3,10 @@ import facebookImageSrc from "../assets/social/facebook.svg";
 import instagramImageSrc from "../assets/social/instagram.svg";
 import linkedinImageSrc from "../assets/social/linkedin.svg";
 import twitterImageSrc from "../assets/social/twitter.svg";
+// @ts-expect-error missing types?
+import { localizeUrl } from "astro-i18next";
+import { Image } from "astro:assets";
+import { env } from "../costants";
 
 type Props = {
   showLink?: boolean;
@@ -19,10 +23,7 @@ type Props = {
   };
 };
 
-// @ts-expect-error missing types?
-import { localizeUrl } from "astro-i18next";
-import { Image } from "astro:assets";
-const { origin } = new URL(Astro.request.url);
+const origin = env.siteUrl
 
 const { company, id, imageUrl, jobTitle, name, social, showLink } = Astro.props;
 ---
@@ -51,7 +52,7 @@ const { company, id, imageUrl, jobTitle, name, social, showLink } = Astro.props;
     )
   }
   <h2 class="text-4xl font-bold text-accent-content pt-4">{name}</h2>
-  <div class="text-2xl text-accent-content/60  px-10 max-w-screen-md m-auto">
+  <div class="text-2xl text-accent-content/60 px-10 max-w-screen-md m-auto">
     {jobTitle}
   </div>
   {company && <div class="text-3xl text-accent-content py-4">@{company}</div>}
