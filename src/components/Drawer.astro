@@ -57,7 +57,7 @@ const { pathname, origin } = new URL(Astro.request.url);
         >
           <Navbar />
         </ul>
-        <LanguageSelector showFlag={false} class={clsx("select select-ghost font-bold lang-selector focus:text-secondary", {
+        <LanguageSelector showFlag={false} class={clsx("select select-ghost select-sm font-bold lang-selector focus:text-secondary", {
           "text-primary": headerShouldBeDarker,
           "text-secondary": !headerShouldBeDarker,
         })} />
@@ -76,7 +76,7 @@ const { pathname, origin } = new URL(Astro.request.url);
         <Navbar />
       </ul>
       <div class="p-4">
-        <LanguageSelector showFlag={true} class="select select-ghost w-full font-bold" />
+        <LanguageSelector showFlag={true} class="select select-ghost select-sm w-full font-bold" />
       </div>
     </div>
   </aside>
