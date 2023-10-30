@@ -4,12 +4,13 @@ import AgendaOverview from "../../components/AgendaOverview.astro";
 import AgendaSelect from "../../components/AgendaSelect.astro";
 import { getEvents } from "../../data/agenda-data";
 import Layout from "../../layouts/Layout.astro";
+import { env } from "../../costants";
 
 changeLanguage("en");
 
-const url = new URL(Astro.request.url);
-const currentFilter = url.searchParams.get("tag");
-const urlWithoutParams = url.origin + url.pathname;
+const { pathname, searchParams } = new URL(Astro.request.url);
+const currentFilter = searchParams.get("tag");
+const urlWithoutParams = env.siteUrl + pathname;
 const events = await getEvents({
     filters: {
         tag: currentFilter ? currentFilter : undefined,
