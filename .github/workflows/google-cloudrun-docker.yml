@@ -20,7 +20,7 @@ jobs:
         id: auth
         uses: 'google-github-actions/auth@v0'
         with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}''
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
       # Authenticate Docker to Google Cloud Artifact Registry
       - name: Docker Auth
