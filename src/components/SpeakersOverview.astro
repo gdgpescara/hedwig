@@ -1,32 +1,40 @@
 ---
 import { t } from "i18next";
-import { events, filterEventsBySpeaker } from "../data/agenda-data";
-import { type SpeakerId } from "../data/speakers-data";
+import { getEvents } from "../data/agenda-data";
 import AgendaOverview from "./AgendaOverview.astro";
 import SpeakersDetail from "./SpeakersDetail.astro";
 
 type Props = {
-  speakerId: SpeakerId;
+  speakerId: string;
 };
 
 const { speakerId } = Astro.props;
 
-const firstDayEvents = filterEventsBySpeaker(events, speakerId as SpeakerId, 1);
-const secondDayEvents = filterEventsBySpeaker(
-  events,
-  speakerId as SpeakerId,
-  2,
-);
+const firstDayEvents = await getEvents({
+  filters: {
+    speaker: speakerId,
+    day: 1,
+  },
+});
+
+const secondDayEvents = await getEvents({
+  filters: {
+    speaker: speakerId,
+    day: 2,
+  },
+});
 ---
 
-<SpeakersDetail speakerId={speakerId} additionalClass="dots xl:min-h-screen" />
+<SpeakersDetail speakerId={speakerId} additionalClass="dots" />
 {
   firstDayEvents.length !== 0 && (
-    <div class="relative p-9">
+    <div class="relative max-w-screen-2xl m-auto md:p-2">
       <a href="/agenda">
-        <h3 class="text-3xl text-center font-bold text-accent-content pt-4">{t("agenda:event-date-1")}</h3>
+        <h3 class="text-3xl text-center font-bold text-accent-content pt-8 md:pt-32 pb-4 md:pb-16">
+          {t("agenda:event-date-1")}
+        </h3>
       </a>
-      <AgendaOverview events={firstDayEvents}/>
+      <AgendaOverview events={firstDayEvents} />
     </div>
   )
 }
@@ -39,11 +47,13 @@ const secondDayEvents = filterEventsBySpeaker(
 }
 {
   secondDayEvents.length !== 0 && (
-    <div class="relative p-9">
+    <div class="max-w-screen-2xl m-auto relative md:p-2">
       <a href="/agenda/2">
-        <h3 class="text-4xl text-center font-bold text-accent-content pt-4">{ t("agenda:event-date-2")}</h2>
+        <h3 class="text-3xl text-center font-bold text-accent-content pt-8 md:pt-32 pb-4 md:pb-16">
+          {t("agenda:event-date-2")}
+        </h3>
       </a>
-      <AgendaOverview events={secondDayEvents}/>
+      <AgendaOverview events={secondDayEvents} />
     </div>
   )
 }

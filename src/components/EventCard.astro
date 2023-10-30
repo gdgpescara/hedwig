@@ -3,10 +3,7 @@ import clsx from "clsx";
 import AgendaSpeaker from "./AgendaSpeaker.astro";
 
 type Speaker = {
-  name: string;
-  url: string;
-  description: string;
-  imageUrl: string;
+  id: string;
 };
 
 type Props = {
@@ -15,12 +12,11 @@ type Props = {
   length: string;
   room: string;
   multiple: boolean;
-  speaker: Speaker | Speaker[];
-  abstract?: string;
+  speaker: Speaker[];
   tags?: string[];
 };
 
-const { name, language, speaker, length, multiple, room, abstract, tags } =
+const { name, language, speaker, length, multiple, room, tags } =
   Astro.props;
 ---
 
@@ -35,39 +31,41 @@ const { name, language, speaker, length, multiple, room, abstract, tags } =
       "md:bg-[#2E2E2E]": multiple,
     })}
   >
-    <div class="p-6 h-full">
-      <div class="flex justify-start pb-6">
-        <span
-          class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm"
-        >
-          {length}
-        </span>
+    <div class="h-full">
+      <div class="p-6">
+        <div class="flex justify-start pb-6">
+          <span
+            class="block bg-slate-300 text-black px-3 py-2 rounded-3xl text-sm"
+          >
+            {length}
+          </span>
 
-        <span
-          class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm"
-        >
-          {language}
-        </span>
-        <span
-          class="block border-slate-300 border text-white px-3 py-2 mx-2 rounded-3xl text-sm ml-auto"
-        >
-          {room}
-        </span>
+          <span
+            class="block bg-slate-300 text-black px-3 py-2 mx-2 rounded-3xl text-sm"
+          >
+            {language}
+          </span>
+          <span
+            class="block border-slate-300 border text-white px-3 py-2 mx-2 rounded-3xl text-sm ml-auto"
+          >
+            {room}
+          </span>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-black">{name}</h2>
+        <!--If abstract -->
+        <div class="text-left mt-4"><slot /></div>
+        {
+          (
+            <div class="pt-4 pb-2 flex gap-3 flex-wrap">
+              {tags?.map((tag) => (
+                <a href={`?tag=${tag}`} class="btn btn-sm btn-outline">
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )
+        }
       </div>
-      <h2 class="text-2xl md:text-4xl font-black">{name}</h2>
-      <!--If abstract -->
-      {abstract && <p class="text-left mt-4">{abstract}</p>}
-      {
-        (
-          <div class="pt-4 pb-2 flex gap-3 flex-wrap">
-            {tags?.map((tag) => (
-              <a href={`?tag=${tag}`} class="btn btn-sm btn-outline">
-                {tag}
-              </a>
-            ))}
-          </div>
-        )
-      }
       <!-- If !speaker -->
       {!speaker && <hr class="h-px my-8 border-dashed" />}
     </div>
@@ -75,15 +73,11 @@ const { name, language, speaker, length, multiple, room, abstract, tags } =
     {
       speaker && (
         <div class="w-full bg-[#323232] rounded-b-3xl p-6 justify-self-end">
-          {Array.isArray(speaker) ? (
-            <div class="flex flex-col gap-3">
-              {speaker.map((_speaker) => (
-                <AgendaSpeaker {..._speaker} />
-              ))}
-            </div>
-          ) : (
-            <AgendaSpeaker {...speaker} />
-          )}
+          <div class="flex flex-col gap-3">
+            {speaker.map(({ id }) => (
+              <AgendaSpeaker id={id} />
+            ))}
+          </div>
         </div>
       )
     }

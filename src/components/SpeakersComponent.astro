@@ -1,19 +1,38 @@
 ---
 import Section from "./Section.astro";
-import { speakersData } from "../data/speakers-data";
-import SpeakersDetail from "../components/SpeakersDetail.astro";
+import { getSpeakers } from "../data/speakers-data";
 import { randomize } from "../utils";
+import SpeakerProfile from "./SpeakerProfile.astro";
+import clsx from "clsx";
 
-const speakers = Object.keys(speakersData);
+const speakers = await getSpeakers();
 const randomSpeakers = randomize(speakers);
 ---
 
-<Section 
-  title="Speakers"
-  id="speakers" 
-  additionalClass="dots" />
+<Section title="Speakers" id="speakers" additionalClass="dots" />
 {
   randomSpeakers.map((speaker) => (
-    <SpeakersDetail speakerId={speaker} showLink={true} />
+    <div class="max-w-screen-lg m-auto">
+      <div class="bg-[#232323] rounded-xl p-6 my-6 lg:grid lg:grid-cols-2 justify-center">
+        <div class={clsx({ "col-span-2": !speaker.raw.trim() })}>
+          <SpeakerProfile
+            id={speaker.id}
+            name={speaker.name}
+            jobTitle={speaker.jobTitle}
+            company={speaker.company}
+            imageUrl={speaker.imageUrl}
+            social={speaker.social}
+            showLink
+          />
+        </div>
+
+        {speaker.raw.trim() ? (
+          <div class="max-w-lg m-auto pt-6">
+            <speaker.Bio.Content />
+          </div>
+        ) : null}
+        <div class="divider-horizontal divide-secondary-content" />
+      </div>
+    </div>
   ))
 }

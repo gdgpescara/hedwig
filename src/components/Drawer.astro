@@ -1,20 +1,34 @@
 ---
 import { t } from "i18next";
 import Navbar from "./Navbar.astro";
+import clsx from "clsx";
+// @ts-expect-error - no types
+import { localizeUrl } from "astro-i18next";
+import { LanguageSelector } from "astro-i18next/components";
+
+type Props = {
+  headerShouldBeDarker?: boolean;
+};
+
+const { headerShouldBeDarker } = Astro.props;
+const { pathname, origin } = new URL(Astro.request.url);
 ---
 
 <div class="drawer">
   <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content overflow-x-auto flex flex-col">
     <!-- Navbar -->
-    <header class="w-full navbar bg-transparent fixed top-0 z-50">
+    <header class="w-full navbar fixed top-0 z-50">
       <div class="flex-none lg:hidden">
         <label for="drawer-toggle" class="btn btn-square btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            class="inline-block w-6 h-6 stroke-current"
+            class={clsx("hamburger inline-block w-6 h-6 ", {
+              "stroke-secondary": !headerShouldBeDarker,
+              "stroke-primary": headerShouldBeDarker,
+            })}
             ><path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -25,14 +39,28 @@ import Navbar from "./Navbar.astro";
       </div>
       <!-- Logo -->
       <div class="flex-1 grid justify-items-center lg:justify-items-start">
-        <a class="btn normal-case text-xl logo" href="/">
+        <a
+          class={clsx("btn normal-case text-xl logo hover:scale-105", {
+            "bg-secondary hover:bg-secondary": !headerShouldBeDarker,
+            "bg-primary hover:bg-primary": headerShouldBeDarker,
+          })}
+          href={localizeUrl(`${origin}/`)}
+        >
           {t("site-title")}
         </a>
       </div>
       <nav class="flex-none hidden lg:block">
-        <ul class="menu menu-horizontal">
+        <ul
+          class={clsx("nav menu menu-horizontal gap-2", {
+            "paint-it-black": headerShouldBeDarker,
+          })}
+        >
           <Navbar />
         </ul>
+        <LanguageSelector showFlag={false} class={clsx("select select-ghost font-bold lang-selector focus:text-secondary", {
+          "text-primary": headerShouldBeDarker,
+          "text-secondary": !headerShouldBeDarker,
+        })} />
       </nav>
     </header>
     <!-- Page content here -->
@@ -40,98 +68,75 @@ import Navbar from "./Navbar.astro";
       <slot />
     </div>
   </div>
-  <aside class="drawer-side top-[96px]">
+  <aside class="drawer-side z-50">
     <label for="drawer-toggle" class="drawer-overlay"></label>
-    <ul class="menu p-4 w-80 h-full bg-base-200">
-      <!-- Sidebar content here (a duplication on navbar) -->
-      <Navbar />
-    </ul>
+    <div class="bg-base-200 h-full flex flex-col">
+      <ul class="menu p-4 w-80 gap-3 flex-1">
+        <!-- Sidebar content here (a duplication on navbar) -->
+        <Navbar />
+      </ul>
+      <div class="p-4">
+        <LanguageSelector showFlag={true} class="select select-ghost w-full font-bold" />
+      </div>
+    </div>
   </aside>
-</div>
 
-<style is:global lang="scss">
-  header {
-    .logo {
-      color: #000;
-      background-color: #000;
-      -webkit-mask: url(/images/logo.svg) no-repeat;
-      mask: url(/images/logo.svg) no-repeat;
-      mask-size: contain;
-      mask-position: 1rem;
-      height: 80px;
-      width: 250px;
-      text-indent: -9999px;
-    }
-
-    label svg {
-      color: #000;
-    }
-  }
-
-  .menu.menu-horizontal li {
-    color: #000;
-
-    a {
-      border-bottom: 2px dotted transparent;
-      border-radius: 0;
-      margin: 0 1rem;
-
-      &.active,
-      &:active,
-      &:hover {
-        border-color: #000;
-        background-color: transparent !important;
-        color: unset !important;
+  <style>
+    header:not(.scrolled) .paint-it-black {
+      & :global(.nav-item),
+      :global(.nav-item a) {
+        color: theme(colors.primary);
       }
     }
-  }
 
-  .menu li > :not(ul):not(.menu-title):not(details):active,
-  .menu li > :not(ul):not(.menu-title):not(details).active,
-  .menu li > details > summary:active {
-  }
-
-  .scrolled {
     header {
-      background-color: hsl(var(--b2) / var(--tw-bg-opacity));
-    }
-  }
-
-  .black,
-  .scrolled {
-    label svg {
-      color: #fff;
-    }
-
-    .menu.menu-horizontal li {
-      color: #fff;
-
-      a {
-        &.active,
-        &:active,
-        &:hover {
-          border-color: #fff;
-        }
+      .logo {
+        -webkit-mask: url(/images/logo.svg) no-repeat;
+        mask: url(/images/logo.svg) no-repeat;
+        mask-size: contain;
+        mask-position: 1rem;
+        height: 80px;
+        width: 250px;
+        text-indent: -9999px;
       }
     }
 
-    .logo {
-      background-color: white;
-    }
-    .logo:hover {
-      background-color: white;
-    }
+    .scrolled {
+      @apply transition-all duration-150;
 
-    .menu-horizontal {
-      color: white;
+      .lang-selector {
+        @apply text-secondary;
+      }
+      .logo {
+        @apply bg-secondary;
+      }
 
-      li a.active {
-        border-color: white;
+      header {
+        background-color: hsl(var(--b2) / var(--tw-bg-opacity));
+      }
+
+      label svg {
+        color: #fff;
+      }
+
+      .hamburger {
+        @apply stroke-secondary;
       }
     }
-  }
-</style>
 
-<script>
-  import "../scripts/header.js";
-</script>
+    .paint-it-black {
+      .nav-items {
+        background: theme(colors.primary);
+      }
+    }
+  </style>
+
+  <script>
+    // when the scroll is greater than 0px, add a class to the header element
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      header?.classList.toggle("scrolled", window.scrollY > 0);
+      header?.classList.toggle("bg-primary", window.scrollY > 0);
+    });
+  </script>
+</div>

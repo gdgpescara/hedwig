@@ -1,7 +1,6 @@
 ---
 import clsx from "clsx";
 import AgendaIntermission from "../components/AgendaIntermission.astro";
-import { speakersData, type SpeakerId } from "../data/speakers-data";
 import type { AgendaEventType } from "../types";
 import EventCard from "./EventCard.astro";
 import { randomize } from "../utils";
@@ -14,20 +13,6 @@ type Props = {
 
 const { events } = Astro.props;
 
-const getSpeakerJob = (speakerId: SpeakerId) => {
-  const speaker = speakersData[speakerId];
-  let description = "";
-
-  if ("jobTitle" in speaker) {
-    description += `${speaker.jobTitle}`;
-  }
-
-  if ("company" in speaker) {
-    description += `, ${speaker.company}`;
-  }
-
-  return description;
-};
 ---
 
 {
@@ -79,24 +64,11 @@ const getSpeakerJob = (speakerId: SpeakerId) => {
                       language={event.language}
                       room={event.room}
                       tags={event.tags}
-                      abstract={event.abstract}
-                      speaker={
-                        Array.isArray(event.speaker)
-                          ? event.speaker.map((speaker) => ({
-                              name: speakersData[speaker.id].name,
-                              url: `/speaker/${speaker.id}`,
-                              description: getSpeakerJob(speaker.id),
-                              imageUrl: speakersData[speaker.id].imageUrl,
-                            }))
-                          : {
-                              name: speakersData[event.speaker.id].name,
-                              url: `/speaker/${event.speaker.id}`,
-                              description: getSpeakerJob(event.speaker.id),
-                              imageUrl: speakersData[event.speaker.id].imageUrl,
-                            }
-                      }
+                      speaker={event.speaker}
                       multiple={hasMultipleEvents}
-                    />
+                    >
+                      <event.Abstract.Content />
+                    </EventCard>
                   );
                 })}
               </ul>
