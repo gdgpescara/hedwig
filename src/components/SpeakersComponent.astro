@@ -13,7 +13,7 @@ const randomSpeakers = randomize(speakers);
 {
   randomSpeakers.map((speaker) => (
     <div class="max-w-screen-lg m-auto">
-      <div class="bg-[#232323] rounded-xl p-6 my-6 lg:grid lg:grid-cols-2 justify-center">
+      <div class="bg-[#232323] rounded-xl p-6 my-6 lg:grid lg:grid-cols-2 justify-center m-2">
         <div class={clsx({ "col-span-2": !speaker.raw.trim() })}>
           <SpeakerProfile
             id={speaker.id}
@@ -27,8 +27,10 @@ const randomSpeakers = randomize(speakers);
         </div>
 
         {speaker.raw.trim() ? (
-          <div class="max-w-lg m-auto pt-6">
-            <speaker.Bio.Content />
+          <div>
+            <div class="max-w-lg m-auto pt-6 prose">
+              <speaker.Bio.Content />
+            </div>
           </div>
         ) : null}
         <div class="divider-horizontal divide-secondary-content" />
