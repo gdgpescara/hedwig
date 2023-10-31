@@ -18,7 +18,7 @@ if (!speaker) {
 
 <Section additionalClass={additionalClass}>
   <div
-    class="gap-2 xl:flex lg:items-center xl:justify-center p-2 flex-wrap xl:pb-16"
+    class="gap-2 xl:flex lg:items-center xl:justify-center flex-wrap xl:pb-16 p-2"
   >
     <div class="shrink-0 py-16 md:pt-10 xl:pt-20 my-16">
       <SpeakerProfile
@@ -33,7 +33,7 @@ if (!speaker) {
     </div>
     {
       speaker.raw.trim() ? (
-        <div class="bg-[#232323] py-16 max-w-screen-lg mx-auto xl:mx-0 text-xl px-10 text-left xl:text-left text-base-content xl:py-16 rounded-xl">
+        <div class="bg-[#232323] py-16 max-w-screen-lg mx-auto xl:mx-0 text-xl px-10 text-left xl:text-left text-base-content xl:py-16 rounded-xl prose">
           <speaker.Bio.Content />
         </div>
       ) : null
