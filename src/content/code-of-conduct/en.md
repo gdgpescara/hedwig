@@ -37,8 +37,8 @@ This policy is based on and influenced by several other community policies inclu
 
 To report an incident look for a staff member by badge/attire or contact our incident response team below:
 
-- Gregorio Palamà $[+39 340 23 67 996]$ - [gregoriopalama@gmail.com](mailto:gregoriopalama@gmail.com)
-- Luca Di Vita $[+39 370 13 91 973]$ - [lucadivita.ldv@gmail.com](mailto:lucadivita.ldv@gmail.com)
+- Gregorio Palamà \[+39 340 23 67 996\] - [gregoriopalama@gmail.com](mailto:gregoriopalama@gmail.com)
+- Luca Di Vita \[+39 370 13 91 973\] - [lucadivita.ldv@gmail.com](mailto:lucadivita.ldv@gmail.com)
 
 #### Anonymous report
 

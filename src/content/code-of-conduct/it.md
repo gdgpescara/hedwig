@@ -37,8 +37,8 @@ Questo codice di condotta è basato e influenzato da diverse altre politiche del
 
 Per segnalare un incidente, cerca un membro dello staff in base al badge/abbigliamento o contatta il nostro team di risposta agli incidenti di seguito:
 
-- Gregorio Palamà $[+39 340 23 67 996]$ - [gregoriopalama@gmail.com](mailto:gregoriopalama@gmail.com)
-- Luca Di Vita $[+39 370 13 91 973]$ - [lucadivita.ldv@gmail.com](mailto:lucadivita.ldv@gmail.com)
+- Gregorio Palamà \[+39 340 23 67 996\] - [gregoriopalama@gmail.com](mailto:gregoriopalama@gmail.com)
+- Luca Di Vita \[+39 370 13 91 973\] - [lucadivita.ldv@gmail.com](mailto:lucadivita.ldv@gmail.com)
 
 #### Segnalazione anonima
 
