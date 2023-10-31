@@ -12,7 +12,7 @@ const mapUrl =
   additionalClass="min-h-screen grid grid-cols-1 xl:grid-cols-2 justify-center items-center" 
   id="location">
   <Map />
-  <div class="px-16 py-8 order-1 md:order-2">
+  <div class="px-16 py-8 order-1 md:order-2 text-center ">
     <Heading text={t('landing:location.title')} level="h2" />
     <div class="text-2xl xl:text-3xl font-bold text-accent-content pt-4">
       {t("landing:location.place")}
@@ -21,18 +21,10 @@ const mapUrl =
       {t("landing:location.address")}
     </div>
     <a
-      class="btn btn-outline btn-secondary btn-wide btn-circle border-dashed uppercase"
+      class="btn btn-outline btn-secondary btn-wide btn-circle border-dashed uppercase mt-3"
       target="_blank"
       role="link"
       href={mapUrl}>{t("landing:location.direction")}</a
     >
   </div>
 </Section>
-
-<style>
-  @media (max-width: 640px) {
-    #location {
-      text-align: center;
-    }
-  }
-</style>
