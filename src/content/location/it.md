@@ -10,7 +10,7 @@ Barcellona (Girona), Bruxelles (Charleroi), Bucarest, Dusseldorf (Weeze), Franco
 
 Da Milano ci sono altri voli con <a href="https://www.alitalia.com/" target="_blank">Alitalia</a> (Malpensa / Linate) 
 
-Mentre <a href="https://www.volotea.com/" target="_blank">Volotea</a> collega la città con le isole principali con voli da Cagliari, Catania e Palermo
+Mentre <a href="https://www.volotea.com/" target="_blank">Volotea</a> collega la città con le isole principali con voli da Cagliari e Catania
 
 Una volta atterrati all'<a href="https://www.abruzzoairport.com/home" target="_blank">Aeroporto internazionale d'Abruzzo</a> sarete a circa 3 km dal centro città di Pescara, nel suo confine più occidentale e avrete le seguenti opzioni per raggiungerci:
 
