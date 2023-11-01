@@ -18,7 +18,7 @@ Once landed at <a href="https://www.abruzzoairport.com/web/guest/home" target="_
 
 There’s a taxi rack in front of the airport terminal and one just outside the central station main exit.
 
-Wherever you are you can always call a taxi dialling  (+39) 085 35155
+Wherever you are you can always call a taxi dialling  <a href="tel:+3908535155">(+39) 085 35155</a>
 
 **Urban bus**
 
