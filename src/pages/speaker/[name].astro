@@ -1,24 +1,20 @@
 ---
-import { getCollection } from "astro:content";
 import { changeLanguage } from "i18next";
 import SpeakersOverview from "../../components/SpeakersOverview.astro";
-import { type Speaker } from "../../data/speakers-data";
+import { getSpeakersWithoutBody } from "../../data/speakers-data";
 import Layout from "../../layouts/Layout.astro";
 
 changeLanguage("en");
 
 export async function getStaticPaths() {
-    const speakers = await getCollection("speakers");
+    const speakers = await getSpeakersWithoutBody();
     return speakers.map((speaker) => {
         return {
-            params: { name: speaker.slug },
+            params: { name: speaker.id },
             props: { speaker },
         };
     });
 }
-type Props = {
-    speaker: Speaker;
-};
 const { speaker } = Astro.props;
 const { name } = Astro.params;
 if (!name) {

@@ -1,8 +1,7 @@
 import type { Render } from "astro:content";
-import type { SpeakerId } from "./data/speakers-data";
 
 interface Speaker {
-  id: SpeakerId;
+  id: string;
 }
 
 interface AgendaElement {

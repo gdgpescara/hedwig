@@ -23,14 +23,9 @@ const eventCollection = defineCollection({
   }),
 });
 
-const cocCollection = defineCollection({
-  type: "content",
-});
-
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   speaker: speakerCollection,
   event: eventCollection,
-  coc: cocCollection,
 };
