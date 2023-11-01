@@ -8,11 +8,9 @@ import Layout from "../layouts/Layout.astro";
 changeLanguage("en");
 
 const content = await getEntryBySlug("location", i18next.language);
-
 if (!content) {
   throw new Response("Not found", { status: 404 });
 }
-
 const { Content } = await content.render();
 ---
 
