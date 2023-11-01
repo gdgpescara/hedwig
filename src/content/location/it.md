@@ -6,11 +6,11 @@
 ## Come raggiungerci
 ### Aereo ✈️
 <a href="https://www.ryanair.com" target="_blank">Ryanair</a> atterra direttamente a Pescara da:
-Barcellona (Girona), Bruxelles (Charleroi), Bucarest, Dusseldorf (Weeze), Francoforte (Hahn), Krakow, Londra Stansted, Malta, Milano (Orio al Serio), Praga, Varsavia (Modlin)
+Barcellona (Girona), Bruxelles (Charleroi), Bucarest, Dusseldorf (Weeze), Francoforte (Hahn), Cracovia, Londra Stansted, Malta, Milano (Orio al Serio), Praga, Varsavia (Modlin)
 
 Da Milano ci sono altri voli con <a href="https://www.alitalia.com/" target="_blank">Alitalia</a> (Malpensa / Linate) 
 
-Mentre <a href="https://www.volotea.com/" target="_blank">Volotea</a> collega la città con le isole principali con voli da Cagliari, Catania and Palermo
+Mentre <a href="https://www.volotea.com/" target="_blank">Volotea</a> collega la città con le isole principali con voli da Cagliari e Catania
 
 Una volta atterrati all'<a href="https://www.abruzzoairport.com/home" target="_blank">Aeroporto internazionale d'Abruzzo</a> sarete a circa 3 km dal centro città di Pescara, nel suo confine più occidentale e avrete le seguenti opzioni per raggiungerci:
 
@@ -18,7 +18,7 @@ Una volta atterrati all'<a href="https://www.abruzzoairport.com/home" target="_b
 
 C'è un posteggio taxi davanti l'aeroporto ed un altro fuori l'uscita principale della Stazione Centrale.
 
-Dovunque vi troviate potete sempre chiamare un taxi al numero (+39) 085 35155
+Dovunque vi troviate potete sempre chiamare un taxi al numero <a href="tel:+3908535155">(+39) 085 35155</a>
 
 **Autobus Urbani**
 
@@ -27,9 +27,9 @@ Troverete il modo più veloce di muovervi dall'Aeroporto all'Università degli s
 Potete comprare i biglietti dalle biglietterie automatiche nell'area arrivi del terminal.
 
 ### Treno 🚄
-La Stazione Centrale di Pescara si trova sualla linea Adriatica Nord-Sud. I treni Trenitalia Freccia, InterCity (di giorno) e Intercity Notte (di notte) collegano direttamente Pescara a Bologna, Milano, Torino e Venezia a nord, e Bari, Brindisi e Lecce a sud.
+La Stazione Centrale di Pescara si trova sulla linea Adriatica Nord-Sud. I treni Trenitalia Freccia, InterCity (di giorno) e Intercity Notte (di notte) collegano direttamente Pescara a Bologna, Milano, Torino e Venezia a nord, e Bari, Brindisi e Lecce a sud.
 
-Ci sono anche treni regionali che collegano Pescara a Roma. Sebbene la loro rotta spettacolare attraverso le montagne, impiegano all'incirca il doppio del tempo degli autobus. Quindi se arrivate da Roma raccomandiamo caldamente di prendere l'autobus (di seguito).
+Ci sono anche treni regionali che collegano Pescara a Roma. Sebbene la loro rotta spettacolare attraverso le montagne, impiegano all'incirca il doppio del tempo degli autobus. Quindi se arrivate da Roma raccomandiamo caldamente di prendere l'autobus (indicazioni di seguito).
  
 Potete Prenotare/Comprare i vostri biglietti del treno: <a href="https://www.trenitalia.com/" target="_blank">qui</a>
 
@@ -37,7 +37,7 @@ E trovare il modo più veloce di muovervi dalla Stazione Centrale all'Universit�
 
 
 ### Autobus 🚌
-Raggiungere Pescara con autobus è la scelta più economica, e più veloce se venite da Roma.
+Raggiungere Pescara con l'autobus è la scelta più economica, e più veloce se venite da Roma.
 
 Troverete orari e fermate delle principali compagnie che raggiungono Pescara qui:
 
