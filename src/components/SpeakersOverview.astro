@@ -34,7 +34,7 @@ const secondDayEvents = await getEvents({
           {t("agenda:event-date-1")}
         </h3>
       </a>
-      <AgendaOverview events={firstDayEvents} />
+      <AgendaOverview isSpeakerPage events={firstDayEvents} />
     </div>
   )
 }
@@ -53,7 +53,7 @@ const secondDayEvents = await getEvents({
           {t("agenda:event-date-2")}
         </h3>
       </a>
-      <AgendaOverview events={secondDayEvents} />
+      <AgendaOverview isSpeakerPage events={secondDayEvents} />
     </div>
   )
 }
