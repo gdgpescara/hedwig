@@ -10,6 +10,7 @@ const navItems = [
   { name: t("agenda"), path: "/agenda" },
   { name: t("speakers"), path: "/speaker" },
   { name: t("coc:title"), path: "/code-of-conduct" },
+  { name: t("location:title"), path: "/location" },
 ] as const;
 
 const { pathname } = new URL(Astro.request.url);
