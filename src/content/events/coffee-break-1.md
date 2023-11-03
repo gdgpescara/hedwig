@@ -1,10 +1,10 @@
 ---
   day: 1
-  time: "16:30"
+  time: "11:05"
   tags:
 
   name: "Coffee break"
-  duration: 20 min
+  duration: 15 min
   type: intermission
   room: 
   language: 

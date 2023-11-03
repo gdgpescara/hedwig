@@ -6,7 +6,7 @@
   name: "From Smart Home to Smart Cats: extending my home automation to my pets"
   duration: 50 min
   type: talk
-  room: Room 9-11
+  room: Potions Classroom
   language: English
   speakers:
     - p-insogna

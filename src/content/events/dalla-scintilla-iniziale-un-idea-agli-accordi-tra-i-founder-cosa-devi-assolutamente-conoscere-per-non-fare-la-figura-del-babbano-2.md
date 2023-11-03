@@ -8,7 +8,7 @@
   name: "Dalla scintilla iniziale (un'idea!) agli accordi tra i Founder: cosa devi assolutamente conoscere per non fare la figura del Babbano"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: Italian
   speakers:
     - s-dalessandro

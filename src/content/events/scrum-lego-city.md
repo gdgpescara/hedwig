@@ -6,7 +6,7 @@
   name: "Workshop Scrum Lego City"
   duration: 300 min
   type: talk
-  room: Room 34
+  room: Herbology Classroom
   language: Italian
   speakers:
     - tbd

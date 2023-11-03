@@ -7,7 +7,7 @@
   name: "Testing Web3 applications"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: English
   speakers:
     - s-erradi

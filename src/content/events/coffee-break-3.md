@@ -1,6 +1,6 @@
 ---
-  day: 1
-  time: "16:30"
+  day: 2
+  time: "11:40"
   tags:
 
   name: "Coffee break"

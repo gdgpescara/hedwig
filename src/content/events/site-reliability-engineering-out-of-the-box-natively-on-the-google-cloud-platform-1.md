@@ -7,7 +7,7 @@
   name: "Site Reliability Engineering out of the box natively on the Google Cloud Platform."
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: English
   speakers:
     - j-campbell

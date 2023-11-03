@@ -6,7 +6,7 @@
   name: "Python beginner's workshop"
   duration: 180 min
   type: talk
-  room: Room 3 INFO
+  room: Divination Classroom
   language: Italian
   speakers:
     - l-divita

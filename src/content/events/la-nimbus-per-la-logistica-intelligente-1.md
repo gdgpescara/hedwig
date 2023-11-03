@@ -6,7 +6,7 @@
   name: "La Nimbus per la logistica intelligente"
   duration: 50 min
   type: talk
-  room: Room 14
+  room: Defence against Dark Arts Classroom
   language: Italian
   speakers:
     - c-martini

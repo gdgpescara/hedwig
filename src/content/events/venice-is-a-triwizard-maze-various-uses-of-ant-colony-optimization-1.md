@@ -6,7 +6,7 @@
   name: "Venice is a Triwizard Maze! Various Uses of Ant Colony Optimization."
   duration: 50 min
   type: talk
-  room: Room 14
+  room: Defence against Dark Arts Classroom
   language: English
   speakers:
     - f-trevisan

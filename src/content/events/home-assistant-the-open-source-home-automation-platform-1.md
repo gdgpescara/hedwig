@@ -7,7 +7,7 @@
   name: "Home Assistant: The Open Source Home Automation Platform"
   duration: 120 min
   type: talk
-  room: Room 3 INFO
+  room: Divination Classroom
   language: Italian
   speakers:
     - a-morresi

@@ -7,7 +7,7 @@
   name: "Improving Firebase Backend for Flutter App through Cloud Functions"
   duration: 50 min
   type: talk
-  room: Room 9-11
+  room: Potions Classroom
   language: English
   speakers:
     - s-denisov

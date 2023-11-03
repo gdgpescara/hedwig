@@ -6,7 +6,7 @@
   name: "La rivoluzione dei framework front-end "fullstack": sessione interattiva"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: Italian
   speakers:
     - f-biondi

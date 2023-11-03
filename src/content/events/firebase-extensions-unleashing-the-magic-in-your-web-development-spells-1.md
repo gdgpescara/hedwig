@@ -7,7 +7,7 @@
   name: "Firebase Extensions: Unleashing the Magic in Your Web Development Spells"
   duration: 50 min
   type: talk
-  room: Room 9-11
+  room: Potions Classroom
   language: English
   speakers:
     - l-morinigo

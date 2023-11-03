@@ -7,7 +7,7 @@
   name: "QuestDb and the timeseries of secrets"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: Italian
   speakers:
     - r-solazzi

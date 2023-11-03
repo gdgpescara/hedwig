@@ -6,7 +6,7 @@
   name: "Exploring the Enigmatic: Navigating JavaScript's Uncharted Realms"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: English
   speakers:
     - l-delpuppo

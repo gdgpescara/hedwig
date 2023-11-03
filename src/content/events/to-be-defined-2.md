@@ -6,7 +6,7 @@
   name: "To be defined"
   duration: 50 min
   type: talk
-  room: Room 9-11
+  room: Potions Classroom
   language: English
   speakers:
     - tbd

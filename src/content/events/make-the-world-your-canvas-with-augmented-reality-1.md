@@ -7,7 +7,7 @@
   name: "Make the world your canvas with augmented reality"
   duration: 50 min
   type: talk
-  room: Room 9-11
+  room: Potions Classroom
   language: Italian
   speakers:
     - m-trizio

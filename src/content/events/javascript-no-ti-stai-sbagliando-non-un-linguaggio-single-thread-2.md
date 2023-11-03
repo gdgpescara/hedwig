@@ -6,7 +6,7 @@
   name: "JavaScript: No ti stai sbagliando, non è un linguaggio single thread!"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: Italian
   speakers:
     - f-sciuti

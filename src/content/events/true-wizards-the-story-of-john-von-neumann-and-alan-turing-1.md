@@ -6,7 +6,7 @@
   name: "True Wizards: The Story of John Von Neumann and Alan Turing"
   duration: 50 min
   type: talk
-  room: Room 13, Room 14
+  room: Great Hall, Defence against Dark Arts Classroom
   language: English
   speakers:
     - e-dusi

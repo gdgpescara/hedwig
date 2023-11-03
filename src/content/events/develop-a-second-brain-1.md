@@ -6,7 +6,7 @@
   name: "Develop a Second Brain"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: Italian
   speakers:
     - m-bertaina

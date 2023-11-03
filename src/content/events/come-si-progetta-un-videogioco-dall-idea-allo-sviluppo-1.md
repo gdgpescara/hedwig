@@ -6,7 +6,7 @@
   name: "Come si progetta un videogioco: dall’idea allo sviluppo"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: Italian
   speakers:
     - p-lacitignola

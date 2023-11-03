@@ -6,7 +6,7 @@
   name: "La magia di Erlang può far bene  al tuo stipendio"
   duration: 50 min
   type: talk
-  room: Room 14
+  room: Defence against Dark Arts Classroom
   language: Italian
   speakers:
     - g-santomaggio
