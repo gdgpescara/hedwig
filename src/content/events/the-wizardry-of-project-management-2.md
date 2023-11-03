@@ -7,7 +7,7 @@
   name: "The wizardry of project management"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: English
   speakers:
     - g-gallenomalaga

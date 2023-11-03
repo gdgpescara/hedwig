@@ -7,7 +7,7 @@
   name: "Speed Up Microservice Setup with Composable Approach"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: English
   speakers:
     - k-hrytsaienko

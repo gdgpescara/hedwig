@@ -7,7 +7,7 @@
   name: "Tutto quello che devi sapere prima di creare contenuti audio e video"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: Italian
   speakers:
     - a-mazzu

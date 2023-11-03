@@ -6,7 +6,7 @@
   name: "Dart FFI: A Beginner's Guide to High-Performance Integration"
   duration: 50 min
   type: talk
-  room: Room 14
+  room: Defence against Dark Arts Classroom
   language: Italian
   speakers:
     - m-terzuolo

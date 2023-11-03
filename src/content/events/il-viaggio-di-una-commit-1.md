@@ -6,7 +6,7 @@
   name: "Il viaggio di una commit"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: Italian
   speakers:
     - a-forese

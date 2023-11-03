@@ -6,7 +6,7 @@
   name: "È possibile gestire form complessi in Flutter evitando un crollo nervoso?"
   duration: 50 min
   type: talk
-  room: Room 9-11
+  room: Potions Classroom
   language: Italian
   speakers:
     - c-bucciarelli

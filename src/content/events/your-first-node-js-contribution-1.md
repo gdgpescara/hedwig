@@ -7,7 +7,7 @@
   name: "Your First Node.js Contribution"
   duration: 180 min
   type: talk
-  room: Room 3 INFO
+  room: Divination Classroom
   language: Italian
   speakers:
     - m-ippolito

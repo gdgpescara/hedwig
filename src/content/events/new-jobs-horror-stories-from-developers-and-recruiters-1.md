@@ -7,7 +7,7 @@
   name: "New Jobs horror stories from developers and recruiters"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: Italian
   speakers:
     - m-marzocchi

@@ -6,7 +6,7 @@
   name: "Measuring the Cost of a GraphQL Query"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: English
   speakers:
     - m-ippolito

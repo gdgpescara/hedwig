@@ -6,7 +6,7 @@
   name: "Come usare le VM Spot/Preemptible per risparmiare nella Google Cloud Platform (GCP)"
   duration: 50 min
   type: talk
-  room: Room 10-12
+  room: Charms Classroom
   language: Italian
   speakers:
     - s-caruso

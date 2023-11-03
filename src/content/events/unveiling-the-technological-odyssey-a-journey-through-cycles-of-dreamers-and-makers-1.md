@@ -6,7 +6,7 @@
   name: "Unveiling the Technological Odyssey: A Journey through Cycles of Dreamers and Makers"
   duration: 50 min
   type: talk
-  room: Room 13
+  room: Great Hall
   language: Italian
   speakers:
     - n-guglielmi
