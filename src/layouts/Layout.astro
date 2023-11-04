@@ -1,6 +1,6 @@
 ---
 import { HeadHrefLangs } from "astro-i18next/components";
-import i18next from "i18next";
+import i18next, { t } from "i18next";
 import Drawer from "../components/Drawer.astro";
 import Footer from "../components/Footer.astro";
 import "./global.css";
@@ -28,6 +28,10 @@ const { title, headerShouldBeDarker } = Astro.props;
     <HeadHrefLangs />
   </head>
   <body>
+    <div class="text-center">
+      <a class="sr-only focus:not-sr-only" href="#content">{t("skip-to-content-link")}</a>
+      <a class="sr-only focus:not-sr-only" href="#footer">{t("skip-to-footer-link")}</a>
+    </div>
     <Drawer headerShouldBeDarker={headerShouldBeDarker}>
       <slot />
     </Drawer>
