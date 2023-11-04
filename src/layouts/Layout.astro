@@ -30,7 +30,6 @@ const { title, headerShouldBeDarker } = Astro.props;
   <body>
     <div class="text-center">
       <a class="sr-only focus:not-sr-only" href="#content">{t("skip-to-content-link")}</a>
-      <a class="sr-only focus:not-sr-only" href="#footer">{t("skip-to-footer-link")}</a>
     </div>
     <Drawer headerShouldBeDarker={headerShouldBeDarker}>
       <slot />
