@@ -11,5 +11,6 @@
     },
     "agenda": "Schedule",
     "speakers": "Speakers",
-    "select-label": "Change language"
+    "select-label": "Change language",
+    "open-menu": "Open menu"
 }
