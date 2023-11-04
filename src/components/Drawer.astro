@@ -58,7 +58,9 @@ const origin = env.siteUrl;
         >
           <Navbar />
         </ul>
+        <label for="language-selector" class="sr-only">{t("select-label")}</label>
         <LanguageSelector
+          id="language-selector"
           showFlag={false}
           class={clsx(
             "select ml-1 select-ghost select-sm font-bold lang-selector focus:text-secondary",
@@ -83,7 +85,9 @@ const origin = env.siteUrl;
         <Navbar />
       </ul>
       <div class="p-4">
+        <label for="mobile-language-selector" class="sr-only">{t("select-label")}</label>
         <LanguageSelector
+          id="mobile-language-selector"
           showFlag={true}
           class="select select-ghost w-full font-bold"
         />
