@@ -4,5 +4,6 @@
     "event-date-1": "18 November 2023",
     "event-date-2": "19 November 2023",
     "no-events-found": "No events found",
-    "remove-filters-for": "Remove filters for \"{{filter}}\""
+    "remove-filters-for": "Remove filters for \"{{filter}}\"",
+    "carousel-label": "{{time}}'s events"
 }

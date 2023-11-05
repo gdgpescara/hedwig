@@ -4,6 +4,6 @@
   "event-day": "Giorno {{day}}",
   "title": "Programma",
   "no-events-found": "Nessun evento trovato",
-  "remove-filters-for": "Rimuovi filtri per \"{{filter}}\""
-
+  "remove-filters-for": "Rimuovi filtri per \"{{filter}}\"",
+  "carousel-label": "Eventi per l'orario {{time}}"
 }
