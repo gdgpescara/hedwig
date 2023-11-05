@@ -37,6 +37,7 @@ const { events, isSpeakerPage } = Astro.props;
                 splide: hasMultipleEvents,
               },
             )}
+            aria-label={hasMultipleEvents ? t("agenda:carousel-label", {time: schedule}) : null}
           >
             <div class={clsx({ splide__track: hasMultipleEvents })}>
               <div

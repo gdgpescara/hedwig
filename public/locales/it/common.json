@@ -10,5 +10,10 @@
   "and": "E",
   "by": "di",
   "agenda": "Agenda",
-  "speakers": "Speakers"
+  "speakers": "Speakers",
+  "select-label": "Cambia la lingua",
+  "open-menu": "Apri il menu",
+  "close-menu": "Chiudi il menu",
+  "drawer-side": "Menu laterale",
+  "skip-to-content-link": "Vai al contenuto principale"
 }
