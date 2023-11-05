@@ -13,7 +13,7 @@ const origin = env.siteUrl;
   <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content overflow-x-auto flex flex-col">
     <!-- Navbar -->
-    <header class="w-full navbar fixed top-0 z-50 scrolled bg-primary" role="banner">
+    <header class="w-full navbar top-0 z-50 bg-primary" role="banner">
       <div class="flex-none lg:hidden">
         <label for="drawer-toggle" class="btn btn-square btn-ghost">
           <svg
@@ -84,10 +84,6 @@ const origin = env.siteUrl;
       }
     }
 
-    header:not(.scrolled) {
-      background: linear-gradient(180deg, black 0%, transparent 75%);
-    }
-
     header {
       .logo {
         -webkit-mask: url(/images/logo.svg) no-repeat;
@@ -129,4 +125,12 @@ const origin = env.siteUrl;
       }
     }
   </style>
+
+  <script>
+    // when the scroll is greater than 0px, add a class to the header element
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      header?.classList.toggle("fixed", window.scrollY > 0);
+    });
+  </script>
 </div>
