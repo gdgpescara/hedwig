@@ -15,7 +15,7 @@ const origin = env.siteUrl;
     <!-- Navbar -->
     <header class="w-full navbar top-0 z-50 bg-primary" role="banner">
       <div class="flex-none lg:hidden">
-        <label for="drawer-toggle" class="btn btn-square btn-ghost">
+        <label for="drawer-toggle" class="btn btn-square btn-ghost" aria-label={t("open-menu")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -58,7 +58,7 @@ const origin = env.siteUrl;
     </div>
   </div>
   <aside class="drawer-side z-50" role="complementary" aria-label={t("drawer-side")}>
-    <label for="drawer-toggle" class="drawer-overlay"><span class="sr-only">{t("open-menu")}</span></label>
+    <label id="drawer-overlay" class="drawer-overlay" aria-label={t("close-menu")}></label>
     <div class="bg-base-200 h-full flex flex-col">
       <ul class="menu p-4 w-80 gap-3 flex-1">
         <!-- Sidebar content here (a duplication on navbar) -->
@@ -131,6 +131,10 @@ const origin = env.siteUrl;
     window.addEventListener("scroll", function () {
       const header = document.querySelector("header");
       header?.classList.toggle("fixed", window.scrollY > 0);
+    });
+    const overlay = document.getElementById("drawer-overlay");
+    overlay!.addEventListener("click", function () {
+      document.getElementById("drawer-toggle")?.click();
     });
   </script>
 </div>
