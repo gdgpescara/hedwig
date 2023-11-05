@@ -1,21 +1,28 @@
 import { getCollection, getEntryBySlug } from "astro:content";
 
-export async function getSpeakerById(id: string) {
-  const speaker = await getEntryBySlug("speakers", id);
-  return await createPerson(speaker);
-}
+type Speaker<T = {}> = {
+  id: string;
+  name: string;
+  jobTitle: string;
+  description: string;
+  company: string;
+  raw: string;
+  social: {
+    linkedin: string;
+    twitter: string;
+    facebook: string;
+    instagram: string;
+    blog: string;
+  };
+  imageUrl: string;
+} & T;
 
-export async function getTeamMemberById(id: string) {
-  const teamMember = await getEntryBySlug("team", id);
-  return await createPerson(teamMember);
-}
-
-async function createPerson(person: any) {
+async function createSpeaker(person: any) {
   if (!person) {
-    return null;
+    throw new Error("Speaker not found");
   }
 
-  return {
+  const speaker: Speaker<{ Bio: Awaited<ReturnType<typeof person.render>> }> = {
     id: person?.slug,
     name: person?.data.name,
     jobTitle: person?.data.jobTitle,
@@ -32,30 +39,19 @@ async function createPerson(person: any) {
     },
     imageUrl: person?.data.imageUrl,
   };
+
+  return speaker;
 }
 
-
-export type Speaker = Awaited<ReturnType<typeof getSpeakerById>>;
-export type TeamMember = Awaited<ReturnType<typeof getTeamMemberById>>;
+export async function getSpeakerById(id: string) {
+  const speaker = await getEntryBySlug("speakers", id);
+  return await createSpeaker(speaker);
+}
 
 export async function getSpeakers() {
   const speakers = await getCollection("speakers");
 
-  return Promise.all(
-    speakers.map(
-      async (speaker) => createPerson(speaker)
-    )
-  );
-}
-
-export async function getTeam() {
-  const team = await getCollection("team");
-
-  return Promise.all(
-    team.map(
-      async (teamMember) => createPerson(teamMember)
-    )
-  );
+  return Promise.all(speakers.map(async (speaker) => createSpeaker(speaker)));
 }
 
 export async function getSpeakersWithoutBody() {
@@ -79,7 +75,7 @@ export async function getSpeakersWithoutBody() {
             blog: speaker.data["social.blog"],
           },
           imageUrl: speaker.data.imageUrl,
-        } satisfies Omit<Speaker, "Bio">)
-    )
+        }) satisfies Omit<Speaker, "Bio">,
+    ),
   );
 }

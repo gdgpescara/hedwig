@@ -1,27 +1,28 @@
 ---
 import { changeLanguage } from "i18next";
 import SpeakersOverview from "../../components/SpeakersOverview.astro";
-import { getSpeakersWithoutBody } from "../../data/persons-data";
+import { getSpeakersWithoutBody } from "../../data/speaker";
 import Layout from "../../layouts/Layout.astro";
 
 changeLanguage("en");
 
 export async function getStaticPaths() {
-  const speakers = await getSpeakersWithoutBody();
-  return speakers.map((speaker) => {
-    return {
-      params: { name: speaker.id },
-      props: { speaker },
-    };
-  });
+    const speakers = await getSpeakersWithoutBody();
+    return speakers.map((speaker) => {
+        return {
+            params: { name: speaker.id },
+            props: { speaker },
+        };
+    });
 }
 const { speaker } = Astro.props;
 const { name } = Astro.params;
 if (!name) {
-  throw new Response("Not found", { status: 404 });
+    throw new Response("Not found", { status: 404 });
 }
 ---
 
 <Layout title={"Devfest Pescara 2023 - " + speaker.name}>
   <SpeakersOverview speakerId={name} />
 </Layout>
+../../data/speaker

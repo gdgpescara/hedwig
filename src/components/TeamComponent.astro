@@ -1,12 +1,14 @@
 ---
 import clsx from "clsx";
-import { getTeam } from "../data/persons-data";
+import { getTeam } from "../data/team";
 import { randomize } from "../utils";
 import Section from "./Section.astro";
 import SpeakerProfile from "./SpeakerProfile.astro";
 
 const team = await getTeam();
 const randomTeam = randomize(team);
+
+export const prerender = false;
 ---
 
 <Section title="Team" id="team" additionalClass="dots" />
