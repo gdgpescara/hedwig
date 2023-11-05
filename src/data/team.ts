@@ -1,11 +1,14 @@
-import { getCollection, getEntryBySlug } from "astro:content";
+import {
+  getCollection,
+  getEntryBySlug,
+  type CollectionEntry,
+} from "astro:content";
 
 export type TeamMember<T = {}> = {
   id: string;
   name: string;
   jobTitle: string;
   description: string;
-  Bio: string;
   company: string;
   raw: string;
   social: {
@@ -18,7 +21,9 @@ export type TeamMember<T = {}> = {
   imageUrl: string;
 } & T;
 
-async function createTeamMember(person: any) {
+type TeamCollectionEntry = CollectionEntry<"team">;
+
+async function createTeamMember(person: TeamCollectionEntry) {
   if (!person) {
     throw new Error("Team member not found");
   }
@@ -46,13 +51,20 @@ async function createTeamMember(person: any) {
   return teamMember;
 }
 
-export async function getTeamMemberById(id: string) {
-  const teamMember = await getEntryBySlug("team", id);
+export async function getTeamMemberById(id: string, lang: string = "en") {
+  const teamMember = await getEntryBySlug("team", `${lang}/${id}`);
+
+  if (!teamMember) {
+    return null;
+  }
+
   return await createTeamMember(teamMember);
 }
 
-export async function getTeam() {
-  const team = await getCollection("team");
+export async function getTeam(lang: string = "en") {
+  const team = await getCollection("team", (filter) =>
+    filter.slug.startsWith(lang),
+  );
 
   return Promise.all(
     team.map(async (teamMember) => createTeamMember(teamMember)),

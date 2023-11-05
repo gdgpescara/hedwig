@@ -1,13 +1,48 @@
 ---
-import { changeLanguage } from "i18next";
-import TeamComponent from "../components/TeamComponent.astro";
+import clsx from "clsx";
+import i18next, { changeLanguage } from "i18next";
+import Section from "../components/Section.astro";
+import SpeakerProfile from "../components/SpeakerProfile.astro";
+import { getTeam } from "../data/team";
 import Layout from "../layouts/Layout.astro";
+import { randomize } from "../utils";
 
 changeLanguage("en");
+
+const team = await getTeam(i18next.language);
+const randomTeam = randomize(team);
 
 export const prerender = false;
 ---
 
 <Layout title="Devfest Pescara 2023 - Team">
-  <TeamComponent />
+  <Section title="Team" id="team" additionalClass="dots" />
+  {
+    randomTeam.map((teamMember) => (
+      <div class="max-w-screen-lg m-auto">
+        <div class="bg-[#232323] rounded-xl p-6 my-6 lg:grid lg:grid-cols-2 justify-center m-2">
+          <div class={clsx({ "col-span-2": !teamMember.raw.trim() })}>
+            <SpeakerProfile
+              id={teamMember.id}
+              name={teamMember.name}
+              jobTitle={teamMember.jobTitle}
+              company={teamMember.company}
+              imageUrl={teamMember.imageUrl}
+              social={teamMember.social}
+              showLink={false}
+            />
+          </div>
+
+          {teamMember.raw.trim() ? (
+            <div>
+              <div class="max-w-lg m-auto pt-6 prose">
+                <teamMember.Bio.Content />
+              </div>
+            </div>
+          ) : null}
+          <div class="divider-horizontal divide-secondary-content" />
+        </div>
+      </div>
+    ))
+  }
 </Layout>

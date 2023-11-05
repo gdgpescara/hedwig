@@ -1,4 +1,8 @@
-import { getCollection, getEntryBySlug } from "astro:content";
+import {
+  getCollection,
+  getEntryBySlug,
+  type CollectionEntry,
+} from "astro:content";
 
 type Speaker<T = {}> = {
   id: string;
@@ -17,7 +21,9 @@ type Speaker<T = {}> = {
   imageUrl: string;
 } & T;
 
-async function createSpeaker(person: any) {
+type SpeakerCollectionEntry = CollectionEntry<"speakers">;
+
+async function createSpeaker(person: SpeakerCollectionEntry) {
   if (!person) {
     throw new Error("Speaker not found");
   }
@@ -45,7 +51,12 @@ async function createSpeaker(person: any) {
 
 export async function getSpeakerById(id: string) {
   const speaker = await getEntryBySlug("speakers", id);
-  return await createSpeaker(speaker);
+
+  if (!speaker) {
+    return null;
+  }
+
+  return createSpeaker(speaker);
 }
 
 export async function getSpeakers() {

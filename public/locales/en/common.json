@@ -15,5 +15,6 @@
     "open-menu": "Open menu",
     "close-menu": "Close menu",
     "drawer-side": "Side menu",
-    "skip-to-content-link": "Go to main content"
+    "skip-to-content-link": "Go to main content",
+    "see-profile": "See profile of {{name}}"
 }
