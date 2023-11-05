@@ -13,7 +13,7 @@ const origin = env.siteUrl;
   <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content overflow-x-auto flex flex-col">
     <!-- Navbar -->
-    <header class="w-full navbar top-0 z-50 bg-primary" role="banner">
+    <header class="w-full navbar top-0 z-50 bg-primary fixed" role="banner">
       <div class="flex-none lg:hidden">
         <label for="drawer-toggle" class="btn btn-square btn-ghost" aria-label={t("open-menu")}>
           <svg
@@ -53,12 +53,12 @@ const origin = env.siteUrl;
       </nav>
     </header>
     <!-- Page content here -->
-    <div role="main" id="content">
+    <div role="main" id="content" class="mt-[95px]">
       <slot />
     </div>
   </div>
   <aside class="drawer-side z-50" role="complementary" aria-label={t("drawer-side")}>
-    <label id="drawer-overlay" class="drawer-overlay" aria-label={t("close-menu")}></label>
+    <label id="drawer-overlay" for="drawer-toggle" class="drawer-overlay" aria-label={t("close-menu")}></label>
     <div class="bg-base-200 h-full flex flex-col">
       <ul class="menu p-4 w-80 gap-3 flex-1">
         <!-- Sidebar content here (a duplication on navbar) -->
@@ -125,16 +125,4 @@ const origin = env.siteUrl;
       }
     }
   </style>
-
-  <script>
-    // when the scroll is greater than 0px, add a class to the header element
-    window.addEventListener("scroll", function () {
-      const header = document.querySelector("header");
-      header?.classList.toggle("fixed", window.scrollY > 0);
-    });
-    const overlay = document.getElementById("drawer-overlay");
-    overlay!.addEventListener("click", function () {
-      document.getElementById("drawer-toggle")?.click();
-    });
-  </script>
 </div>
