@@ -1,17 +1,11 @@
 ---
 import { t } from "i18next";
 import Navbar from "./Navbar.astro";
-import clsx from "clsx";
 // @ts-expect-error - no types
 import { localizeUrl } from "astro-i18next";
 import { LanguageSelector } from "astro-i18next/components";
 import { env } from "../costants";
 
-type Props = {
-  headerShouldBeDarker?: boolean;
-};
-
-const { headerShouldBeDarker } = Astro.props;
 const origin = env.siteUrl;
 ---
 
@@ -19,17 +13,14 @@ const origin = env.siteUrl;
   <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content overflow-x-auto flex flex-col">
     <!-- Navbar -->
-    <header class="w-full navbar fixed top-0 z-50" role="banner">
+    <header class="w-full navbar fixed top-0 z-50 scrolled bg-primary" role="banner">
       <div class="flex-none lg:hidden">
         <label for="drawer-toggle" class="btn btn-square btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            class={clsx("hamburger inline-block w-6 h-6 ", {
-              "stroke-secondary": !headerShouldBeDarker,
-              "stroke-primary": headerShouldBeDarker,
-            })}
+            class="hamburger inline-block w-6 h-6 stroke-secondary"
             ><path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -41,10 +32,7 @@ const origin = env.siteUrl;
       <!-- Logo -->
       <div class="flex-1 grid justify-items-center lg:justify-items-start">
         <a
-          class={clsx("btn normal-case text-white text-xl logo hover:scale-105", {
-            "bg-secondary hover:bg-secondary": !headerShouldBeDarker,
-            "bg-primary hover:bg-primary": headerShouldBeDarker,
-          })}
+          class="btn normal-case text-white text-xl logo hover:scale-105 bg-secondary hover:bg-secondary"
           href={localizeUrl(`${origin}/`)}
         >
           {t("site-title")}
@@ -52,9 +40,7 @@ const origin = env.siteUrl;
       </div>
       <nav class="flex-none hidden lg:block" role="navigation">
         <ul
-          class={clsx("nav menu menu-horizontal gap-2", {
-            "paint-it-black": headerShouldBeDarker,
-          })}
+          class="nav menu menu-horizontal gap-2"
         >
           <Navbar />
         </ul>
@@ -62,13 +48,7 @@ const origin = env.siteUrl;
         <LanguageSelector
           id="language-selector"
           showFlag={false}
-          class={clsx(
-            "select ml-1 select-ghost select-sm font-bold lang-selector focus:text-secondary",
-            {
-              "text-primary": headerShouldBeDarker,
-              "text-secondary": !headerShouldBeDarker,
-            }
-          )}
+          class="select ml-1 select-ghost select-sm font-bold lang-selector focus:text-secondary text-secondary"
         />
       </nav>
     </header>
@@ -97,10 +77,15 @@ const origin = env.siteUrl;
 
   <style>
     header:not(.scrolled) .paint-it-black {
+
       & :global(.nav-item),
       :global(.nav-item a) {
         color: theme(colors.primary);
       }
+    }
+
+    header:not(.scrolled) {
+      background: linear-gradient(180deg, black 0%, transparent 75%);
     }
 
     header {
@@ -144,13 +129,4 @@ const origin = env.siteUrl;
       }
     }
   </style>
-
-  <script>
-    // when the scroll is greater than 0px, add a class to the header element
-    window.addEventListener("scroll", function () {
-      const header = document.querySelector("header");
-      header?.classList.toggle("scrolled", window.scrollY > 0);
-      header?.classList.toggle("bg-primary", window.scrollY > 0);
-    });
-  </script>
 </div>

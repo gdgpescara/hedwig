@@ -7,10 +7,9 @@ import "./global.css";
 
 export interface Props {
   title: string;
-  headerShouldBeDarker?: boolean;
 }
 
-const { title, headerShouldBeDarker } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -31,7 +30,7 @@ const { title, headerShouldBeDarker } = Astro.props;
     <div class="text-center">
       <a class="sr-only focus:not-sr-only" href="#content">{t("skip-to-content-link")}</a>
     </div>
-    <Drawer headerShouldBeDarker={headerShouldBeDarker}>
+    <Drawer>
       <slot />
     </Drawer>
     <Footer />
