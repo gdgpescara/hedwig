@@ -34,6 +34,8 @@
   "devDependencies": {
     "@types/google.maps": "^3.54.0",
     "postcss-nesting": "^12.0.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.1",
     "sass": "^1.63.6"
   }
 }
