@@ -18,7 +18,22 @@ const speakerCollection = defineCollection({
 
 const teamCollection = defineCollection({
   type: "content",
-  schema: personSchema,
+  schema: personSchema
+    .merge(
+      z.object({
+        team: z.array(
+          z.enum([
+            "core",
+            "communication",
+            "gamification",
+            "hospitality",
+            "catering",
+            "logistic",
+          ]),
+        ),
+      }),
+    )
+    .omit({ description: true }),
 });
 
 const eventCollection = defineCollection({

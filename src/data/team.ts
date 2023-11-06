@@ -8,9 +8,9 @@ export type TeamMember<T = {}> = {
   id: string;
   name: string;
   jobTitle: string;
-  description: string;
   company: string;
-  raw: string;
+  raw: string; // Markdown
+  team: string[];
   social: {
     linkedin: string;
     twitter: string;
@@ -31,10 +31,10 @@ async function createTeamMember(person: TeamCollectionEntry) {
   const teamMember: TeamMember<{
     Bio: Awaited<ReturnType<typeof person.render>>;
   }> = {
-    id: person?.slug,
+    id: person?.slug.split("/")[1],
     name: person?.data.name,
     jobTitle: person?.data.jobTitle,
-    description: person?.data.description,
+    team: person?.data.team,
     Bio: await person.render(),
     company: person?.data.company,
     raw: person.body,
@@ -45,7 +45,8 @@ async function createTeamMember(person: TeamCollectionEntry) {
       instagram: person?.data["social.instagram"],
       blog: person?.data["social.blog"],
     },
-    imageUrl: person?.data.imageUrl,
+    imageUrl:
+      person?.data.imageUrl,
   };
 
   return teamMember;

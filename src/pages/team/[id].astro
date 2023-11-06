@@ -1,0 +1,136 @@
+---
+import Section from "../../components/Section.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getTeam } from "../../data/team";
+import clsx from "clsx";
+import { t } from "i18next";
+import SocialIcon from "../../components/SocialIcon.astro";
+
+export async function getStaticPaths() {
+  const team = await getTeam();
+  return team.map((member) => {
+    return {
+      params: { id: member.id },
+      props: { member },
+    };
+  });
+}
+
+const { member } = Astro.props;
+---
+
+<Layout title={`Devfest Pescara 2023 - ${member.name}`}>
+  <Section>
+    <div
+      class="gap-2 xl:flex lg:items-center xl:justify-center flex-wrap xl:pb-8 p-2"
+    >
+      <div class="shrink-0 pt-16 md:pt-10 xl:pt-20 my-16">
+        <div class={clsx({ "col-span-2": !member.raw.trim() })}>
+          <div class="text-center">
+            <div>
+              {
+                member.imageUrl && (
+                  <img
+                    src={member.imageUrl}
+                    class="w-60 h-60 rounded-full border-4 m-auto"
+                    alt=""
+                  />
+                )
+              }
+              <h2 class="text-4xl font-bold text-accent-content pt-4">
+                {member.name}
+              </h2>
+            </div>
+            <div
+              class="text-2xl text-accent-content/60 px-10 max-w-screen-md m-auto"
+            >
+              {member.jobTitle}
+            </div>
+            {
+              member.company && (
+                <div class="text-3xl text-accent-content py-4">
+                  @{member.company}
+                </div>
+              )
+            }
+            <div class="py-2">
+              <span class="badge badge-secondary">
+                {member.team.map((team) => t(`team:role.${team}`)).join(", ")}
+              </span>
+            </div>
+
+            <div class="pt-4 px-8 flex justify-center gap-8">
+              {
+                member.social.instagram && (
+                  <a
+                    title={t("see-social", {
+                      social: "instagram",
+                      name: member.name,
+                    })}
+                    href={member.social.instagram}
+                    target="_blank"
+                  >
+                    <SocialIcon name="instagram" />
+                  </a>
+                )
+              }
+              {
+                member.social.facebook && (
+                  <a
+                    title={t("see-social", {
+                      social: "facebook",
+                      name: member.name,
+                    })}
+                    href={member.social.facebook}
+                    target="_blank"
+                  >
+                    <SocialIcon name="facebook" />
+                  </a>
+                )
+              }
+              {
+                member.social.linkedin && (
+                  <a
+                    title={t("see-social", {
+                      social: "linkedin",
+                      name: member.name,
+                    })}
+                    href={member.social.linkedin}
+                    target="_blank"
+                  >
+                    <SocialIcon name="linkedin" />
+                  </a>
+                )
+              }
+              {
+                member.social.twitter && (
+                  <a
+                    title={t("see-social", {
+                      social: "X",
+                      name: member.name,
+                    })}
+                    href={member.social.twitter}
+                    target="_blank"
+                  >
+                    <SocialIcon name="x" />
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+  {
+    !member.raw.trim() ? null : (
+      <div class="max-w-screen-lg w-full mx-auto px-2">
+        <div class="bg-[#232323] py-16 w-full mb-16 text-xl px-6 text-left xl:text-left text-base-content xl:py-16 rounded-xl">
+          <div class="prose">
+            <member.Bio.Content />
+          </div>
+        </div>
+      </div>
+    )
+  }
+</Layout>
