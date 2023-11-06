@@ -37,7 +37,11 @@ const { events, isSpeakerPage } = Astro.props;
                 splide: hasMultipleEvents,
               },
             )}
-            aria-label={hasMultipleEvents ? t("agenda:carousel-label", {time: schedule}) : null}
+            aria-label={
+              hasMultipleEvents
+                ? t("agenda:carousel-label", { time: schedule })
+                : null
+            }
           >
             <div class={clsx({ splide__track: hasMultipleEvents })}>
               <div
@@ -154,9 +158,15 @@ const { events, isSpeakerPage } = Astro.props;
           pagination: true,
         });
 
-        splide.on("active", (evt) => {
-          if (window.innerHeight < evt.slide.offsetHeight + 100) {
-            const { x, y } = evt.slide.getBoundingClientRect();
+        let lastSlideIndex = 0;
+
+        splide.on("moved", function (slideIndex) {
+          if (
+            lastSlideIndex !== slideIndex &&
+            window.innerHeight < element.offsetHeight + 100
+          ) {
+            lastSlideIndex = slideIndex;
+            const { x, y } = element.getBoundingClientRect();
 
             window.scrollTo({
               left: x,
