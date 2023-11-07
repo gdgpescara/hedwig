@@ -20,6 +20,7 @@ type AgendaEventSpeakerType = {
 
 type AgendaEventIntermissionType = {
   type: "intermission";
+  Abstract: Awaited<Render[".md"]>;
 };
 
 export type AgendaEventType = {
