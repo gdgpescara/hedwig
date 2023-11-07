@@ -58,7 +58,9 @@ const { events, isSpeakerPage } = Astro.props;
                       <AgendaIntermission
                         name={event.name}
                         length={event.length}
-                      />
+                      >
+                        <event.Abstract.Content />
+                      </AgendaIntermission>
                     );
                   }
 
