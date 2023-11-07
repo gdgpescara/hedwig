@@ -18,7 +18,7 @@ The Community Dinner will be a networking moment, with:
 - Harry Potter ambientation
 - Yule Dance
 - Music
-- ...a nd much more.
+- ... and much more.
 
 Registration required at https://www.eventbrite.it/e/biglietti-devfest-pescara-2023-community-dinner-746074999407
   
