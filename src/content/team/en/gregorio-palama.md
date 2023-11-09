@@ -1,6 +1,6 @@
 ---
   name: Gregorio Palamà
-  team: ["core"]
+  team: ["core", "sponsor", "communication", "gamification", "content"]
   imageUrl: "https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Ftbd.jpeg?alt=media&token=997af04d-6fec-4c7d-87d0-f6919c1a4c5d"
   company: 
   jobTitle: Senior Cloud Engineer & DevOps @ Lutech
@@ -11,6 +11,4 @@
   social.blog: 
 ---
 
-Ciao Mi presento, sono Gregorio Palamà, Senior Cloud Engineer & DevOps @ Lutech, sono un appassionato di tecnologia e di tutto ciò che è innovativo, mi piace sperimentare e mettermi in gioco, sono un grande sostenitore del concetto di "sharing is caring" e mi piace condividere le mie conoscenze con gli altri. 
-
-Mitico co-pilot
+I have been working in the IT industry for over 15 years and I have experience in various sectors. Currently, I hold the role of Devops and Senior Cloud Engineer at Lutech. I am constantly looking for new things to study and learn and I can't stay even one day without updating. I am co-organizer of the GDG Pescara together with other developers, I love to share my knowledge and try to do it in a fun way.

@@ -1,6 +1,6 @@
 ---
   name: Daniele Irsuti
-  team: ["communication"]
+  team: ["communication", "content"]
   imageUrl: "/images/team/daniele-irsuti.jpeg"
   company: Immobiliare.it
   jobTitle: Frontend Developer
