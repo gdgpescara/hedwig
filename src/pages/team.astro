@@ -21,7 +21,9 @@ export const prerender = false;
 
 <Layout title="Devfest Pescara 2023 - Team">
   <Section title="Team" id="team" additionalClass="dots" />
-  <div class="max-w-screen-2xl m-auto lg:grid 2xl:grid-cols-3 lg:grid-cols-2 gap3">
+  <div
+    class="max-w-screen-2xl m-auto lg:grid 2xl:grid-cols-3 lg:grid-cols-2 gap3"
+  >
     {
       randomTeam.map((teamMember) => (
         <div class="bg-[#232323] rounded-xl p-6  justify-center m-2">
@@ -32,13 +34,15 @@ export const prerender = false;
                   href={localizeUrl(`${env.siteUrl}/team/${teamMember.id}`)}
                   title={`${t("see-profile", { name: teamMember.name })}`}
                 >
-                  {teamMember.imageUrl && (
-                    <img
-                      src={teamMember.imageUrl}
-                      class="w-60 h-60 rounded-full border-4 m-auto"
-                      alt=""
-                    />
-                  )}
+                  <img
+                    src={
+                      teamMember.imageUrl ||
+                      "https://placehold.co/300x300?text=?"
+                    }
+                    class="w-60 h-60 rounded-full border-4 m-auto"
+                    alt=""
+                  />
+
                   <h2 class="text-4xl font-bold text-accent-content pt-4">
                     {teamMember.name}
                   </h2>
@@ -52,12 +56,12 @@ export const prerender = false;
                   @{teamMember.company}
                 </div>
               )}
-              <div class="py-2">
-                <span class="badge badge-secondary">
-                  {teamMember.team
-                    .map((team) => t(`team:role.${team}`))
-                    .join(", ")}
-                </span>
+              <div class="py-2 flex gap-2 flex-wrap justify-center">
+                {teamMember.team.map((team) => (
+                  <span class="badge badge-secondary">
+                    {t(`team:role.${team}`)}
+                  </span>
+                ))}
               </div>
 
               <div class="pt-4 px-8 flex justify-center gap-8">

@@ -1,7 +1,7 @@
 ---
   name: Martina Irsuti
   team: ["hospitality", "logistic", "catering"]
-  imageUrl: 
+  imageUrl: "/images/team/martina-irsuti.jpg"
   company: 
   jobTitle: 
   social.instagram: 

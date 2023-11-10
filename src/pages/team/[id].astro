@@ -53,70 +53,74 @@ const { member } = Astro.props;
                 </div>
               )
             }
-            <div class="py-2">
-              <span class="badge badge-secondary">
-                {member.team.map((team) => t(`team:role.${team}`)).join(", ")}
-              </span>
+            <div class="py-2 flex gap-2 flex-wrap justify-center">
+              {
+                member.team.map((team) => (
+                  <span class="badge badge-secondary">
+                    {t(`team:role.${team}`)}
+                  </span>
+                ))
+              }
             </div>
+          </div>
 
-            <div class="pt-4 px-8 flex justify-center gap-8">
-              {
-                member.social.instagram && (
-                  <a
-                    title={t("see-social", {
-                      social: "instagram",
-                      name: member.name,
-                    })}
-                    href={member.social.instagram}
-                    target="_blank"
-                  >
-                    <SocialIcon name="instagram" />
-                  </a>
-                )
-              }
-              {
-                member.social.facebook && (
-                  <a
-                    title={t("see-social", {
-                      social: "facebook",
-                      name: member.name,
-                    })}
-                    href={member.social.facebook}
-                    target="_blank"
-                  >
-                    <SocialIcon name="facebook" />
-                  </a>
-                )
-              }
-              {
-                member.social.linkedin && (
-                  <a
-                    title={t("see-social", {
-                      social: "linkedin",
-                      name: member.name,
-                    })}
-                    href={member.social.linkedin}
-                    target="_blank"
-                  >
-                    <SocialIcon name="linkedin" />
-                  </a>
-                )
-              }
-              {
-                member.social.twitter && (
-                  <a
-                    title={t("see-social", {
-                      social: "X",
-                      name: member.name,
-                    })}
-                    href={member.social.twitter}
-                    target="_blank"
-                  >
-                    <SocialIcon name="x" />
-                  </a>
-                )
-              }
-            </div>
+          <div class="pt-4 px-8 flex justify-center gap-8">
+            {
+              member.social.instagram && (
+                <a
+                  title={t("see-social", {
+                    social: "instagram",
+                    name: member.name,
+                  })}
+                  href={member.social.instagram}
+                  target="_blank"
+                >
+                  <SocialIcon name="instagram" />
+                </a>
+              )
+            }
+            {
+              member.social.facebook && (
+                <a
+                  title={t("see-social", {
+                    social: "facebook",
+                    name: member.name,
+                  })}
+                  href={member.social.facebook}
+                  target="_blank"
+                >
+                  <SocialIcon name="facebook" />
+                </a>
+              )
+            }
+            {
+              member.social.linkedin && (
+                <a
+                  title={t("see-social", {
+                    social: "linkedin",
+                    name: member.name,
+                  })}
+                  href={member.social.linkedin}
+                  target="_blank"
+                >
+                  <SocialIcon name="linkedin" />
+                </a>
+              )
+            }
+            {
+              member.social.twitter && (
+                <a
+                  title={t("see-social", {
+                    social: "X",
+                    name: member.name,
+                  })}
+                  href={member.social.twitter}
+                  target="_blank"
+                >
+                  <SocialIcon name="x" />
+                </a>
+              )
+            }
           </div>
         </div>
       </div>

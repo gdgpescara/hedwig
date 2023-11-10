@@ -10,5 +10,6 @@
   social.blog: 
 ---
 
-Daniele è uno sviluppatore Frontend. Adora sperimentare con nuove tecnologie e condividere le sue conoscenze con gli altri.
-Di tanto in tanto scrive sul suo [blog](https://danieleirsuti.dev/).
+Sono uno sviluppatore Frontend in Immobiliare.it. 
+Mi piace sperimentare con nuove tecnologie e condividere le sue conoscenze con gli altri. Cerco di aggiornarmi costantemente sulle nuove tecnologie e sulle novità che vengono introdotte nello sviluppo web.
+Di tanto in tanto scrivo sul suo [blog](https://danieleirsuti.dev/), dove parlo di tecnologia e di tutto quello che mi passa per la testa.
