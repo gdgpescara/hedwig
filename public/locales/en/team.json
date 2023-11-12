@@ -1,0 +1,13 @@
+{
+  "title": "Team",
+  "role": {
+    "core": "Core organizers team",
+    "content": "Content team",
+    "communication": "Communication team",
+    "gamification": "Gamification team",
+    "hospitality": "Hospitality team",
+    "catering": "Catering team",
+    "logistic": "Logistic team",
+    "sponsor": "Sponsor team"
+  }
+}

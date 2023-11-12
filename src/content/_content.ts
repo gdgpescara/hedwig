@@ -1,15 +1,39 @@
 // 1. Import utilities from `astro:content`
 import { defineCollection, reference, z } from "astro:content";
+
+// 1.1 Create a shared schema for your content (optional)
+const personSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  imageUrl: z.string(),
+  company: z.string(),
+  jobTitle: z.string(),
+});
+
 // 2. Define your collection(s)
 const speakerCollection = defineCollection({
   type: "content",
-  schema: z.object({
-    name: z.string(),
-    description: z.string(),
-    imageUrl: z.string(),
-    company: z.string(),
-    jobTitle: z.string(),
-  }),
+  schema: personSchema,
+});
+
+const teamCollection = defineCollection({
+  type: "content",
+  schema: personSchema
+    .merge(
+      z.object({
+        team: z.array(
+          z.enum([
+            "core",
+            "communication",
+            "gamification",
+            "hospitality",
+            "catering",
+            "logistic",
+          ]),
+        ),
+      }),
+    )
+    .omit({ description: true }),
 });
 
 const eventCollection = defineCollection({
@@ -28,4 +52,5 @@ const eventCollection = defineCollection({
 export const collections = {
   speaker: speakerCollection,
   event: eventCollection,
+  team: teamCollection,
 };
