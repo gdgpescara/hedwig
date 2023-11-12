@@ -1,22 +1,29 @@
 ---
 import Section from "../../components/Section.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getTeam } from "../../data/team";
+import { getTeam, getTeamMemberById } from "../../data/team";
 import clsx from "clsx";
-import { t } from "i18next";
+import i18n, { t, changeLanguage } from "i18next";
 import SocialIcon from "../../components/SocialIcon.astro";
+
+changeLanguage("en");
 
 export async function getStaticPaths() {
   const team = await getTeam();
   return team.map((member) => {
     return {
       params: { id: member.id },
-      props: { member },
+      props: { id: member.id },
     };
   });
 }
 
-const { member } = Astro.props;
+const { id } = Astro.props;
+const member = await getTeamMemberById(id, i18n.language);
+
+if (!member) {
+  throw new Response(null, { status: 404 });
+}
 ---
 
 <Layout title={`Devfest Pescara 2023 - ${member.name}`}>
