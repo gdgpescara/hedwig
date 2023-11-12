@@ -12,5 +12,13 @@
 
 
 ---
+The Community Dinner will be a networking moment, with:
+- Team building activities
+- Gamification
+- Harry Potter ambientation
+- Yule Dance
+- Music
+- ... and much more.
 
+Registration required at https://www.eventbrite.it/e/biglietti-devfest-pescara-2023-community-dinner-746074999407
   
