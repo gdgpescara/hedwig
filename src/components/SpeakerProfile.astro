@@ -35,7 +35,7 @@ const { company, id, imageUrl, jobTitle, name, social, showLink } = Astro.props;
       <a href={localizeUrl(`${origin}/speaker/${id}`)}>
         <img
           src={imageUrl}
-          class="w-60 h-60 rounded-full border-4 m-auto"
+          class="w-60 h-60 rounded-full border-4 m-auto object-cover"
           alt={name}
         />
       </a>
@@ -46,7 +46,7 @@ const { company, id, imageUrl, jobTitle, name, social, showLink } = Astro.props;
     !showLink && (
       <img
         src={imageUrl}
-        class="w-60 h-60 rounded-full border-4 m-auto"
+        class="w-60 h-60 rounded-full border-4 m-auto object-cover"
         alt={name}
       />
     )
