@@ -1,6 +1,6 @@
 ---
   day: 2
-  time: "10:50"
+  time: "10:00"
   tags:
     - Android
   name: "Jetpack Compose animations playground"
