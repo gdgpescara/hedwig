@@ -1,6 +1,6 @@
 ---
   day: 2
-  time: "10:00"
+  time: "10:50"
   tags:
     - Languages
   name: "La magia di Erlang può far bene  al tuo stipendio"
