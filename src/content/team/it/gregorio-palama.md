@@ -2,7 +2,7 @@
   name: Gregorio Palamà
   description: Senior Cloud Engineer & DevOps @ Lutech
   team: ["core", "sponsor", "communication", "gamification", "content"]
-  imageUrl: https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/speakers%2Ftbd.jpeg?alt=media&token=997af04d-6fec-4c7d-87d0-f6919c1a4c5d
+  imageUrl: https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/team%2Fg-palama.png?alt=media&token=8d2b12e7-49f5-41be-a3c8-f4984efd2948
   company: 
   jobTitle: Senior Cloud Engineer & DevOps @ Lutech
   social.instagram: 
