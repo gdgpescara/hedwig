@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "astro/zod";
 
 const envSchema = z.object({
   siteUrl: z.string().url(),
