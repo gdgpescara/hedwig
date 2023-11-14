@@ -9,7 +9,17 @@
   room: Herbology Classroom
   language: Italian
   speakers:
-    - tbd
+    - a-dimarino
+    - a-villanova
+    - c-desanctis
+    - g-campea
+    - n-mennucci
+    - g-palama
+    - e-candeloro
+    - m-irsuti
+    - l-deberardinis
+    - n-surricchio
+    - g-diplacido
 
 ---
 Imparare facendo e fallendo. Non sottovalutare nessuna Storia… potrebbe costarti molto! Scrum Lego City ti porta dritto al punto: sperimenterai cosa significa essere agile.
