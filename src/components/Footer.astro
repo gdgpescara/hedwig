@@ -9,6 +9,9 @@ import instagramImageSrc from "../assets/social/instagram.svg";
 import linkedinImageSrc from "../assets/social/linkedin.svg";
 import twitterImageSrc from "../assets/social/twitter.svg";
 import Heading from "./Heading.astro";
+// @ts-expect-error - no types
+import { localizeUrl } from "astro-i18next";
+import { env } from "../costants";
 
 interface Social {
   link: string;
@@ -40,60 +43,75 @@ const social: Social[] = [
 ];
 ---
 
-<footer class="text-center dots py-8 md:pt-32 xl:pt-64" role="contentinfo" id="footer">
+<footer>
+  <div
+    class="text-center dots py-8 md:pt-32 xl:pt-64"
+    role="contentinfo"
+    id="footer"
+  >
     <div class="text-center">
-        <Heading text={t("keep-in-touch.title") || "Keep in touch"} level="h2" />
+      <Heading text={t("keep-in-touch.title") || "Keep in touch"} level="h2" />
     </div>
     <div class="flex justify-center gap-8 py-8">
-        {
-            social.map((item) => (
-                <a href={item.link} target="_blank">
-                    <Image
-                        class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
-                        src={item.imageSrc}
-                        alt={item.imageAlt}
-                    />
-                </a>
-            ))
-        }
+      {
+        social.map((item) => (
+          <a href={item.link} target="_blank">
+            <Image
+              class="max-h-[50px] h-[50px] max-w-[50px] w-[50px] m-auto"
+              src={item.imageSrc}
+              alt={item.imageAlt}
+            />
+          </a>
+        ))
+      }
     </div>
     <div class="flex justify-center gap-4 pt-16">
-        {t("keep-in-touch.organized-with")}
-        <Image
-            class="max-h-[24px] h-[24px] max-w-[24px] w-[24px]"
-            src={heartSrc}
-            alt="Heart"
-        />
-        {t("by")}
+      {t("keep-in-touch.organized-with")}
+      <Image
+        class="max-h-[24px] h-[24px] max-w-[24px] w-[24px]"
+        src={heartSrc}
+        alt="Heart"
+      />
+      {t("by")}
     </div>
 
     <div
-        class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap py-10"
+      class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap py-10"
     >
-        <a href="https://gdg.community.dev/gdg-pescara/" target="_blank"
-            ><Image
-                class="max-h-[70px] h-[70px] max-w-[290px] w-[290px]"
-                src={gdgLogoSrc}
-                alt="GDG Pescara Logo"
-            /></a
-        >
+      <a href="https://gdg.community.dev/gdg-pescara/" target="_blank"
+        ><Image
+          class="max-h-[70px] h-[70px] max-w-[290px] w-[290px]"
+          src={gdgLogoSrc}
+          alt="GDG Pescara Logo"
+        /></a
+      >
 
-        <div class="">{t("and")}</div>
-        <a
-            href="https://gdg.community.dev/gdg-cloud-torino/"
-            target="_blank"
-            ><Image
-                class="max-h-[117px] h-[105px] max-w-[290px] w-[260px]"
-                src={gdgCloudTorinoLogoSrc}
-                alt="GDG Cloud Torino Logo"
-            /></a
-        >
+      <div class="">{t("and")}</div>
+      <a href="https://gdg.community.dev/gdg-cloud-torino/" target="_blank"
+        ><Image
+          class="max-h-[117px] h-[105px] max-w-[290px] w-[260px]"
+          src={gdgCloudTorinoLogoSrc}
+          alt="GDG Cloud Torino Logo"
+        /></a
+      >
     </div>
+  </div>
+  <div class="footer p-2 py-10">
+    <nav class="m-auto">
+      <a href={localizeUrl(`${env.siteUrl}/location`)} class="link link-hover"
+        >{t("location:title")}</a
+      >
+      <a
+        href={localizeUrl(`${env.siteUrl}/code-of-conduct`)}
+        class="link link-hover">{t("coc:title")}</a
+      >
+    </nav>
+  </div>
 </footer>
 
 <style is:global>
-    .dots {
-        background-image: radial-gradient(#7b7b7b 1px, transparent 0);
-        background-size: 32px 32px;
-    }
+  .dots {
+    background-image: radial-gradient(#7b7b7b 1px, transparent 0);
+    background-size: 32px 32px;
+  }
 </style>
