@@ -11,11 +11,16 @@ import futuraIconSrc from "../assets/sponsors/futura.svg";
 import leanStartupIconSrc from "../assets/sponsors/leanstartuplab.png";
 import pythonPescaraIconSrc from "../assets/sponsors/pythonpescara.png";
 import jetbrainsIconSrc from "../assets/sponsors/jetbrains.svg";
+import gdgcataniaIconSrc from "../assets/sponsors/gdgcatania.svg";
 import synergieIconSrc from "../assets/sponsors/synergie.png";
 import innovalleyIconSrc from "../assets/sponsors/innovalley.png";
 import ready2useIconSrc from "../assets/sponsors/ready2use.png";
 import aesysIconSrc from "../assets/sponsors/aesys.png";
 import scuolacomicsIconSrc from "../assets/sponsors/scuolacomics.png";
+import innovazioneIconSrc from "../assets/sponsors/innovazione.png";
+import nearformIconSrc from "../assets/sponsors/nearform.svg";
+import randstadIconSrc from "../assets/sponsors/randstad.svg";
+import codemotionIconSrc from "../assets/sponsors/codemotion.svg";
 import Section from "./Section.astro";
 import Sponsor from "./Sponsor.astro";
 import type { ImageMetadata } from "astro";
@@ -95,6 +100,12 @@ const sponsors: SponsorValue[][] = [
       name: "Scuola Internazionale del Comics - sede di Pescara",
       imageSrc: scuolacomicsIconSrc,
       link: "https://scuolacomics.com/sede/pescara",
+    },
+    {
+      level: "Silver sponsor",
+      name: "Randstad",
+      imageSrc: randstadIconSrc,
+      link: "https://www.randstad.it/",
     }
   ],
   [
@@ -103,6 +114,12 @@ const sponsors: SponsorValue[][] = [
       name: "Futura",
       imageSrc: futuraIconSrc,
       link: "https://www.linkedin.com/company/futura-dev/",
+    },
+    {
+      level: "Bronze sponsor",
+      name: "Nearform",
+      imageSrc: nearformIconSrc,
+      link: "https://www.nearform.com/",
     }
   ],
   [
@@ -143,6 +160,26 @@ const sponsors: SponsorValue[][] = [
       name: "Python Pescara",
       imageSrc: pythonPescaraIconSrc,
       link: "https://pescara.python.it/",
+    },
+    {
+      level: "Community partner",
+      name: "GDG Catania",
+      imageSrc: gdgcataniaIconSrc,
+      link: "https://gdg.community.dev/gdg-catania/",
+    }
+  ],
+  [
+    {
+      level: "Community partner",
+      name: "InnoVAzione",
+      imageSrc: innovazioneIconSrc,
+      link: "https://www.instagram.com/innovazioneunich/",
+    },
+    {
+      level: "Community partner",
+      name: "Codemotion",
+      imageSrc: codemotionIconSrc,
+      link: "https://www.codemotion.com/",
     }
   ]
 ];

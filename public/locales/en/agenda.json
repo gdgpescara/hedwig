@@ -2,5 +2,8 @@
     "title": "Schedule",
     "event-day": "Day {{day}}",
     "event-date-1": "18 November 2023",
-    "event-date-2": "19 November 2023"
+    "event-date-2": "19 November 2023",
+    "no-events-found": "No events found",
+    "remove-filters-for": "Remove filters for \"{{filter}}\"",
+    "carousel-label": "{{time}}'s events"
 }

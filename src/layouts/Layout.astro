@@ -1,8 +1,9 @@
 ---
 import { HeadHrefLangs } from "astro-i18next/components";
-import i18next from "i18next";
+import i18next, { t } from "i18next";
 import Drawer from "../components/Drawer.astro";
 import Footer from "../components/Footer.astro";
+import "./global.css";
 
 export interface Props {
   title: string;
@@ -11,59 +12,42 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html data-theme="dark" lang={i18next.language}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Devfest Pescara 2023 and the developers' magic" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<HeadHrefLangs />
-	</head>
-	<body>
-		<Drawer>
-			<slot />
-		</Drawer>
-    <Footer/>
-	</body>
+<!doctype html>
+<html data-theme="hedwig" lang={i18next.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Devfest Pescara 2023 and the developers' magic"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <HeadHrefLangs />
+  </head>
+  <body>
+    <div class="text-center">
+      <a class="sr-only focus:not-sr-only" href="#content">{t("skip-to-content-link")}</a>
+    </div>
+    <Drawer>
+      <slot />
+    </Drawer>
+    <Footer />
+    <script>
+      if ("service-worker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(function (registration) {
+            console.log(
+              "ServiceWorker registration successful with scope: ",
+              registration.scope
+            );
+          })
+          .catch(function (err) {
+            console.log("ServiceWorker registration failed: ", err);
+          });
+      }
+    </script>
+  </body>
 </html>
-<style is:global>
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-  /* The integration's default injected base.css file */
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
-  
-  html,
-  body {
-    background-color: #181818;
-  }
-
-  :global(html) {
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    :global(html) {
-      scroll-behavior: auto;
-    }
-  }
-</style>
-<script>
-  if ("service-worker" in navigator) {
-    navigator.serviceWorker
-      .register("/service-worker.js")
-      .then(function (registration) {
-        console.log(
-          "ServiceWorker registration successful with scope: ",
-          registration.scope
-        );
-      })
-      .catch(function (err) {
-        console.log("ServiceWorker registration failed: ", err);
-      });
-  }
-</script>

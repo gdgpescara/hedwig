@@ -27,5 +27,5 @@ package-lock.json*
 .idea/
 
 # astro translations
-src/pages/it
-src/pages/en
+src/pages/it/
+src/pages/en/

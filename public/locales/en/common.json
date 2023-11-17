@@ -2,6 +2,7 @@
     "site-title": "DevFest Pescara 2023",
     "site-motto": "and the developers' magic",
     "site-dates": "18 and 19 November 2023",
+    "page-title": "DevFest Pescara 2023 - {{ title }}",
     "sign-up": "Sign up",
     "and": "and",
     "by": "by",
@@ -10,5 +11,11 @@
         "organized-with": "Organized with"
     },
     "agenda": "Schedule",
-    "speakers": "Speakers"
+    "speakers": "Speakers",
+    "games": "Games",
+    "select-label": "Change language",
+    "open-menu": "Open menu",
+    "close-menu": "Close menu",
+    "drawer-side": "Side menu",
+    "skip-to-content-link": "Go to main content"
 }

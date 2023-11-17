@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -12,6 +12,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("@tailwindcss/typography"),
     require("daisyui"),
     plugin(function ({ addBase }) {
       addBase({
@@ -29,4 +30,16 @@ module.exports = {
       });
     }),
   ],
+  daisyui: {
+    themes: [
+      {
+        hedwig: {
+          primary: "#000000",
+          secondary: "#FFF",
+          neutral: "#FFF",
+        },
+      },
+      "dark",
+    ],
+  },
 };

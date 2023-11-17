@@ -1,130 +1,128 @@
 ---
 import { t } from "i18next";
 import Navbar from "./Navbar.astro";
+// @ts-expect-error - no types
+import { localizeUrl } from "astro-i18next";
+import { LanguageSelector } from "astro-i18next/components";
+import { env } from "../costants";
+
+const origin = env.siteUrl;
 ---
 
 <div class="drawer">
-    <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col">
-        <!-- Navbar -->
-        <header class="w-full navbar bg-transparent fixed top-0 z-50">
-            <div class="flex-none lg:hidden">
-                <label for="drawer-toggle" class="btn btn-square btn-ghost">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        class="inline-block w-6 h-6 stroke-current"
-                        ><path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path></svg
-                    >
-                </label>
-            </div>
-            <!-- Logo -->
-            <div class="flex-1 grid justify-items-center lg:justify-items-start">
-                <a class="btn normal-case text-xl logo" href="/">
-                    {t('site-title')}
-                </a>
-            </div>
-            <nav class="flex-none hidden lg:block">
-                <ul class="menu menu-horizontal">
-                    <Navbar />
-                </ul>
-            </nav>
-        </header>
-        <!-- Page content here -->
-        <slot />
-    </div>
-    <aside class="drawer-side top-[96px]">
-        <label for="drawer-toggle" class="drawer-overlay"></label>
-        <ul class="menu p-4 w-80 h-full bg-base-200">
-            <!-- Sidebar content here (a duplication on navbar) -->
-            <Navbar />
+  <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content overflow-x-auto flex flex-col">
+    <!-- Navbar -->
+    <header class="w-full navbar top-0 z-50 bg-primary fixed" role="banner">
+      <div class="flex-none lg:hidden">
+        <label for="drawer-toggle" class="btn btn-square btn-ghost" aria-label={t("open-menu")}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="hamburger inline-block w-6 h-6 stroke-secondary"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path></svg
+          >
+        </label>
+      </div>
+      <!-- Logo -->
+      <div class="flex-1 grid justify-items-center lg:justify-items-start">
+        <a
+          class="btn normal-case text-white text-xl logo hover:scale-105 bg-secondary hover:bg-secondary"
+          href={localizeUrl(`${origin}/`)}
+        >
+          {t("site-title")}
+        </a>
+      </div>
+      <nav class="flex-none hidden lg:block" role="navigation">
+        <ul
+          class="nav menu menu-horizontal gap-2"
+        >
+          <Navbar />
         </ul>
-    </aside>
-</div>
+        <label for="language-selector" class="sr-only">{t("select-label")}</label>
+        <LanguageSelector
+          id="language-selector"
+          showFlag={false}
+          class="select ml-1 select-ghost select-sm font-bold lang-selector focus:text-secondary text-secondary"
+        />
+      </nav>
+    </header>
+    <!-- Page content here -->
+    <div role="main" id="content" class="mt-[95px]">
+      <slot />
+    </div>
+  </div>
+  <aside class="drawer-side z-50" role="complementary" aria-label={t("drawer-side")}>
+    <label id="drawer-overlay" for="drawer-toggle" class="drawer-overlay" aria-label={t("close-menu")}></label>
+    <div class="bg-base-200 h-full flex flex-col">
+      <ul class="menu p-4 w-80 gap-3 flex-1">
+        <!-- Sidebar content here (a duplication on navbar) -->
+        <Navbar />
+      </ul>
+      <div class="p-4">
+        <label for="mobile-language-selector" class="sr-only">{t("select-label")}</label>
+        <LanguageSelector
+          id="mobile-language-selector"
+          showFlag={true}
+          class="select select-ghost w-full font-bold"
+        />
+      </div>
+    </div>
+  </aside>
 
-<style is:global lang="scss">
+  <style>
+    header:not(.scrolled) .paint-it-black {
+
+      & :global(.nav-item),
+      :global(.nav-item a) {
+        color: theme(colors.primary);
+      }
+    }
+
     header {
-        .logo {
-            color: #000;
-            background-color: #000;
-            -webkit-mask: url(/images/logo.svg) no-repeat;
-            mask: url(/images/logo.svg) no-repeat;
-            mask-size: contain;
-            mask-position: 1rem;
-            height: 80px;
-            width: 250px;
-            text-indent: -9999px;
-        }
-
-        label svg {
-            color: #000;
-        }
+      .logo {
+        -webkit-mask: url(/images/logo.svg) no-repeat;
+        mask: url(/images/logo.svg) no-repeat;
+        mask-size: contain;
+        mask-position: 1rem;
+        height: 80px;
+        width: 250px;
+        text-indent: -9999px;
+      }
     }
 
-    .menu.menu-horizontal li {
-        color: #000;
-
-        a {
-            border-bottom: 2px dotted transparent;
-            border-radius: 0;
-            margin: 0 1rem;
-
-            &.active, &:active, &:hover {
-                border-color: #000;
-                background-color: transparent !important;
-                color: unset !important;
-            }
-        }
-    }
-
-    .menu li > :not(ul):not(.menu-title):not(details):active, .menu li > :not(ul):not(.menu-title):not(details).active, .menu li > details > summary:active {
-
-    }
-    
     .scrolled {
-        header {
-            background-color: hsl(var(--b2) / var(--tw-bg-opacity))
-        }
+      @apply transition-all duration-150;
+
+      .lang-selector {
+        @apply text-secondary;
+      }
+      .logo {
+        @apply bg-secondary;
+      }
+
+      header {
+        background-color: hsl(var(--b2) / var(--tw-bg-opacity));
+      }
+
+      label svg {
+        color: #fff;
+      }
+
+      .hamburger {
+        @apply stroke-secondary;
+      }
     }
 
-    .black, .scrolled {
-
-        label svg {
-            color: #FFF;
-        }
-
-        .menu.menu-horizontal li {
-            color: #FFF;
-
-            a {
-                &.active, &:active, &:hover {
-                    border-color: #FFF;
-                }
-            }
-        }
-
-        .logo {
-            background-color: white;
-        }
-        .logo:hover {
-            background-color: white;
-        }
-
-        .menu-horizontal {
-            color: white;
-
-            li a.active{
-                border-color: white;
-            }
-        }
+    .paint-it-black {
+      .nav-items {
+        background: theme(colors.primary);
+      }
     }
-</style>
-
-<script>
-    import "../scripts/header.js";
-</script>
+  </style>
+</div>

@@ -1,0 +1,106 @@
+---
+import facebookImageSrc from "../assets/social/facebook.svg";
+import instagramImageSrc from "../assets/social/instagram.svg";
+import linkedinImageSrc from "../assets/social/linkedin.svg";
+import twitterImageSrc from "../assets/social/twitter.svg";
+// @ts-expect-error missing types?
+import { localizeUrl } from "astro-i18next";
+import { Image } from "astro:assets";
+import { env } from "../costants";
+
+type Props = {
+  showLink?: boolean;
+  id: string;
+  name: string;
+  jobTitle: string;
+  company: string;
+  imageUrl: string;
+  social: {
+    instagram?: string;
+    facebook?: string;
+    linkedin?: string;
+    twitter?: string;
+  };
+};
+
+const origin = env.siteUrl
+
+const { company, id, imageUrl, jobTitle, name, social, showLink } = Astro.props;
+---
+
+<div class="text-center">
+  <!-- if showLink -->
+  {
+    showLink && (
+      <a href={localizeUrl(`${origin}/speaker/${id}`)}>
+        <img
+          src={imageUrl}
+          class="w-60 h-60 rounded-full border-4 m-auto"
+          alt={name}
+        />
+      </a>
+    )
+  }
+  <!-- if !showLink -->
+  {
+    !showLink && (
+      <img
+        src={imageUrl}
+        class="w-60 h-60 rounded-full border-4 m-auto"
+        alt={name}
+      />
+    )
+  }
+  <h2 class="text-4xl font-bold text-accent-content pt-4">{name}</h2>
+  <div class="text-2xl text-accent-content/60 px-10 max-w-screen-md m-auto">
+    {jobTitle}
+  </div>
+  {company && <div class="text-3xl text-accent-content py-4">@{company}</div>}
+
+  <div class="pt-4 px-8 flex justify-center gap-8">
+    {
+      social && social.instagram && (
+        <a href={social.instagram} target="_blank">
+          <Image
+            class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
+            src={instagramImageSrc}
+            alt="Instagram"
+          />
+        </a>
+      )
+    }
+    {
+      social && social.facebook && (
+        <a href={social.facebook} target="_blank">
+          <Image
+            class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
+            src={facebookImageSrc}
+            alt="Facebook"
+          />
+        </a>
+      )
+    }
+    {
+      social && social.linkedin && (
+        <a href={social.linkedin} target="_blank">
+          <Image
+            class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
+            src={linkedinImageSrc}
+            alt="Linkedin"
+          />
+        </a>
+      )
+    }
+    {
+      social && social.twitter && (
+        <a href={social.twitter} target="_blank">
+          <Image
+            class="max-h-[40px] h-[40px] max-w-[40px] w-[40px] m-auto"
+            src={twitterImageSrc}
+            alt="Twitter"
+          />
+        </a>
+      )
+    }
+  </div>
+</div>
