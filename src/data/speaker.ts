@@ -19,6 +19,7 @@ type Speaker<T = {}> = {
     blog: string;
   };
   imageUrl: string;
+  slidesUrl: string;
 } & T;
 
 type SpeakerCollectionEntry = CollectionEntry<"speakers">;
@@ -44,6 +45,7 @@ async function createSpeaker(person: SpeakerCollectionEntry) {
       blog: person?.data["social.blog"],
     },
     imageUrl: person?.data.imageUrl,
+    slidesUrl: person?.data.slidesUrl,
   };
 
   return speaker;
@@ -86,6 +88,7 @@ export async function getSpeakersWithoutBody() {
             blog: speaker.data["social.blog"],
           },
           imageUrl: speaker.data.imageUrl,
+          slidesUrl: speaker?.data.slidesUrl,
         }) satisfies Omit<Speaker, "Bio">,
     ),
   );
