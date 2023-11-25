@@ -2,7 +2,7 @@
 import { getEntryBySlug } from "astro:content";
 import i18next, { changeLanguage, t } from "i18next";
 import Heading from "../components/Heading.astro";
-import Section from "../components/Section.astro";
+import Section from "../components/shared/Section.astro";
 import Layout from "../layouts/Layout.astro";
 
 changeLanguage("en");
@@ -15,7 +15,7 @@ const { Content } = await content.render();
 ---
 
 <Layout title="Devfest Pescara 2023 - Location">
-  <Section additionalClass="dots pt-32 pb-16 md:py-32 xl:py-64">
+  <Section>
     <div class="max-w-screen-lg m-auto text-center">
       <Heading level="h2" text={t("location:title")} />
     </div>

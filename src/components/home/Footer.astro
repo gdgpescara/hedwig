@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import { t } from "i18next";
+import Section from "../shared/Section.astro";
+import SocialIcon from "../SocialIcon.astro";
+
+interface Social {
+  link: string;
+  imageSrc: ImageMetadata;
+  imageAlt: string;
+}
+
+const social = [
+  {
+    link: "https://www.instagram.com/gdgpescara/",
+    name: "instagram",
+  },
+  {
+    link: "https://www.facebook.com/gdgpescara/",
+    name: "facebook",
+  },
+  {
+    link: "https://www.linkedin.com/company/gdg-pescara/",
+    name: "linkedin",
+  },
+  {
+    link: "https://twitter.com/gdgpescara",
+    name: "x",
+  },
+] as const;
+---
+
+<footer role="contentinfo" id="footer">
+  <Section title={t("keep-in-touch.title") || ""}>
+    <div class="flex justify-center gap-8 py-8">
+      {
+        social.map((item) => (
+          <a href={item.link} target="_blank" title={item.name}>
+            <SocialIcon name={item.name} />
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex justify-center gap-4 pt-16">
+      {t("keep-in-touch.organized-with")}
+       ❤️
+      {t("by")}
+    </div>
+  </Section>
+</footer>

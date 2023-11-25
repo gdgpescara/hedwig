@@ -27,7 +27,7 @@ import defiIconSrc from "../assets/sponsors/defi.png";
 import ngromeIconSrc from "../assets/sponsors/ngconf.svg";
 import wpteramoIconSrc from "../assets/sponsors/wpteramo.png";
 import cronosferaIconSrc from "../assets/sponsors/cronosfera.png";
-import Section from "./Section.astro";
+import Section from "./shared/Section.astro";
 import Sponsor from "./Sponsor.astro";
 import type { ImageMetadata } from "astro";
 import { t } from "i18next";
@@ -46,7 +46,7 @@ const sponsors: SponsorValue[][] = [
       name: "Google",
       imageSrc: googleIconSrc,
       link: "https://gdg.community.dev/",
-    }
+    },
   ],
   [
     {
@@ -66,7 +66,7 @@ const sponsors: SponsorValue[][] = [
       name: "Aesys - Aesys Cyber",
       imageSrc: aesysIconSrc,
       link: "https://www.aesys.tech/",
-    }
+    },
   ],
   [
     {
@@ -92,7 +92,7 @@ const sponsors: SponsorValue[][] = [
       name: "Innovalley",
       imageSrc: innovalleyIconSrc,
       link: "https://www.inno-valley.it/",
-    }
+    },
   ],
   [
     {
@@ -112,7 +112,7 @@ const sponsors: SponsorValue[][] = [
       name: "Randstad",
       imageSrc: randstadIconSrc,
       link: "https://www.randstad.it/",
-    }
+    },
   ],
   [
     {
@@ -126,7 +126,7 @@ const sponsors: SponsorValue[][] = [
       name: "Nearform",
       imageSrc: nearformIconSrc,
       link: "https://www.nearform.com/",
-    }
+    },
   ],
   [
     {
@@ -140,7 +140,7 @@ const sponsors: SponsorValue[][] = [
       name: "Cialda & Co.",
       imageSrc: cialdaecoIconSrc,
       link: "https://www.cialdaeco.com/",
-    }
+    },
   ],
   [
     {
@@ -174,7 +174,7 @@ const sponsors: SponsorValue[][] = [
       name: "Cronosfera",
       imageSrc: cronosferaIconSrc,
       link: "https://www.cronosfera.it/",
-    }
+    },
   ],
   [
     {
@@ -194,7 +194,7 @@ const sponsors: SponsorValue[][] = [
       name: "GDG Catania",
       imageSrc: gdgcataniaIconSrc,
       link: "https://gdg.community.dev/gdg-catania/",
-    }
+    },
   ],
   [
     {
@@ -214,7 +214,7 @@ const sponsors: SponsorValue[][] = [
       name: "Wordpress Meetup Teramo",
       imageSrc: wpteramoIconSrc,
       link: "https://wpteramo.it/",
-    }
+    },
   ],
   [
     {
@@ -228,15 +228,12 @@ const sponsors: SponsorValue[][] = [
       name: "NgRome",
       imageSrc: ngromeIconSrc,
       link: "https://2023.ngrome.io/",
-    }
-  ]
+    },
+  ],
 ];
 ---
 
-<Section 
-  title={t('landing:sponsors.title') || 'Sponsors'} 
-  additionalClass="bg-[url('/images/map-old-sponsors.svg')]"
-  id="sponsors">
+<Section title={t("landing:sponsors.title") || "Sponsors"} id="sponsors">
   <div class="m-auto">
     {
       sponsors.map((sponsorLevel) => (

@@ -4,7 +4,7 @@ export default {
   locales: ["en", "it"],
   defaultNamespace: "common",
   namespaces: ["common", "landing", "agenda", "coc", "location", "team"],
-  // i18nextServer: {
-  //   debug: true,
-  // }
+  i18nextServer: {
+    debug: true,
+  },
 };

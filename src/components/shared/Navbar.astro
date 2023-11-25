@@ -3,7 +3,7 @@ import { t } from "i18next";
 import Link from "./Link.astro";
 // @ts-expect-error missing types?
 import { localizeUrl, localizePath } from "astro-i18next";
-import { env } from "../costants";
+import { env } from "~/constants";
 
 const navItems = [
   { name: t("Home"), path: "/", exact: true },
@@ -30,7 +30,7 @@ function isActive(path: string, exact = false) {
 
 {
   navItems.map((nav) => (
-    <li class="nav-item text-white font-bold">
+    <li class="nav-item">
       <Link
         href={localizeUrl(`${origin}/${nav.path}`)}
         active={isActive(nav.path, "exact" in nav ? nav.exact : false)}

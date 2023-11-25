@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import Section from "../shared/Section.astro";
+import Values from "./Values.astro";
+import { t } from "i18next";
+---
+
+<Section title={t("landing:numbers.title") || "Numbers"} id="numbers">
+  <div class="grid xl:grid-cols-4 md:grid-cols-2">
+    <Values title={t("landing:numbers.sponsors")} description="16+">
+      <Image
+        class="object-cover m-auto"
+        width={300}
+        height={300}
+        src="https://via.placeholder.com/350"
+        alt="Sponsor"
+      />
+    </Values>
+    <Values title={t("landing:numbers.participants")} description="800+">
+      <Image
+        class="object-cover m-auto"
+        width={300}
+        height={300}
+        src="https://via.placeholder.com/350"
+        alt="Sponsor"
+      />
+    </Values>
+    <Values title={t("landing:numbers.speakers")} description="35+">
+      <Image
+        class="object-cover m-auto"
+        width={300}
+        height={300}
+        src="https://via.placeholder.com/350"
+        alt="Sponsor"
+      />
+    </Values>
+
+    <Values title={t("landing:numbers.days")} description="2">
+      <Image
+        class="object-cover m-auto"
+        width={300}
+        height={300}
+        src="https://via.placeholder.com/350"
+        alt="Sponsor"
+      />
+    </Values>
+  </div>
+</Section>

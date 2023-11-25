@@ -1,0 +1,28 @@
+---
+import { t } from "i18next";
+
+const signUpUrl =
+  "https://gdg.community.dev/events/details/google-gdg-pescara-presents-devfest-pescara-2023/cohost-gdg-pescara";
+---
+
+<section class="hero min-h-screen bg-base-200">
+  <div class="hero-content text-center">
+    <div class="max-w-md">
+      <!-- logo -->
+      <h1 class="text-5xl md:text-6xl">
+        {t("site-title")}
+      </h1>
+      <h2 class="text-4xl">
+        {t("site-motto")}
+      </h2>
+      <h3 class="text-xl">
+        {t("site-dates")}
+      </h3>
+      <a
+        class="btn btn-primary btn-wide btn-lg rounded-full mt-6"
+        href={signUpUrl}
+        target="_blank">{t("sign-up")}</a
+      >
+    </div>
+  </div>
+</section>

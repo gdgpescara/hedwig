@@ -1,0 +1,79 @@
+---
+type Props = {
+  lat: number;
+  lng: number;
+  markerTitle: string;
+  markerIcon: string;
+};
+
+const { lat, lng, markerIcon, markerTitle } = Astro.props;
+---
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<script>
+  import { Loader } from "@googlemaps/js-api-loader";
+
+  async function initMap() {
+    const mapElement = document.getElementById("map");
+
+    if (!mapElement) {
+      return;
+    }
+
+    const location = {
+      lat: Number(mapElement.dataset.lat),
+      lng: Number(mapElement.dataset.lng),
+    };
+    const markerTitle = mapElement.dataset.markerTitle;
+    const markerIcon = mapElement.dataset.markerIcon;
+
+    const loader = new Loader({
+      apiKey: "AIzaSyACS8IGSJ394ipNcrl_Y-6T_q-1DpfhN88",
+      version: "weekly",
+    });
+
+    loader.importLibrary("maps").then(async ({ Map, InfoWindow }) => {
+      const map = new Map(mapElement, {
+        center: location,
+        zoom: 15,
+        fullscreenControl: false,
+        keyboardShortcuts: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        mapId: "63f164f6af1535ee",
+      });
+
+      const marker = new google.maps.Marker({
+        position: location,
+        map,
+        title: markerTitle,
+        icon: markerIcon,
+      });
+
+      const infoWindow = new InfoWindow();
+
+      const fn = () => {
+        infoWindow.close();
+        infoWindow.setContent(marker.getTitle());
+        infoWindow.open(marker.getMap(), marker);
+      };
+
+      marker.addListener("click", fn);
+    });
+  }
+
+  initMap();
+</script>
+
+<div
+  id="map"
+  data-lng={lng}
+  data-lat={lat}
+  data-marker-title={markerTitle}
+  data-marker-icon={markerIcon}
+  class="h-full min-h-[30rem] overflow-hidden order-2 md:order-1"
+>
+</div>
+
+<script></script>

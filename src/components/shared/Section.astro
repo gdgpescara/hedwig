@@ -1,0 +1,18 @@
+---
+import { twMerge } from "tailwind-merge";
+import SectionTitle from "./SectionTitle.astro";
+
+interface Props {
+  id?: string;
+  title?: string;
+  className?: string;
+  level?: "h2" | "h1" | "h3";
+}
+
+const { title, id, className, level = "h2" } = Astro.props;
+---
+
+<section class={twMerge("pt-32 pb-16 md:py-32 xl:py-64", className)} id={id}>
+  {title && <SectionTitle level={level}>{title}</SectionTitle>}
+  <slot />
+</section>

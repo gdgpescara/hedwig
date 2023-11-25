@@ -12,4 +12,13 @@ export default defineConfig({
   adapter: nodejs({
     mode: "standalone",
   }),
+  vite: {
+    resolve: {
+      alias: {
+        "~/components": "/src/components",
+        "~/layouts": "/src/layouts",
+        "~/constants": "/src/constants",
+      },
+    },
+  }
 });

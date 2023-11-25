@@ -1,0 +1,17 @@
+---
+type Props = {
+  level: "h1" | "h2" | "h3";
+};
+
+const { level } = Astro.props;
+
+const className = {
+  h1: "text-8xl xl:text-9xl",
+  h2: "text-7xl xl:text-8xl",
+  h3: "text-6xl xl:text-7xl",
+}[level];
+---
+
+<div class="text-center">
+  <h2 class={className}><slot /></h2>
+</div>

@@ -4,6 +4,17 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "~/components/*": [
+        "./src/components/*"
+      ],
+      "~/layouts/*": [
+        "./src/layouts/*"
+      ],
+      "~/constants": [
+        "./src/constants"
+      ],
+    }
   }
 }

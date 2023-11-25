@@ -1,8 +1,8 @@
 ---
 import { HeadHrefLangs } from "astro-i18next/components";
 import i18next, { t } from "i18next";
-import Drawer from "../components/Drawer.astro";
-import Footer from "../components/Footer.astro";
+import Drawer from "~/components/shared/Drawer.astro";
+import Footer from "~/components/home/Footer.astro";
 import "./global.css";
 
 export interface Props {
@@ -13,7 +13,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html data-theme="hedwig" lang={i18next.language}>
+<html data-theme="dark" lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
     <meta
