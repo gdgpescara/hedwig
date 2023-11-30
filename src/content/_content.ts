@@ -44,6 +44,7 @@ const eventCollection = defineCollection({
     duration: z.array(z.number()), // in minutes
     language: z.string(),
     speakers: z.array(reference("speakers")),
+    slidesUrl: z.string(),
   }),
 });
 

@@ -19,5 +19,7 @@
   "drawer-side": "Menu laterale",
   "skip-to-content-link": "Vai al contenuto principale",
   "see-profile": "Vedi il profilo di {{name}}",
-  "see-social": "Vedi il profilo {{social}} di {{name}}"
+  "see-social": "Vedi il profilo {{social}} di {{name}}",
+  "slides-link": "Link delle slide",
+  "slides": "Slides"
 }
