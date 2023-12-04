@@ -37,17 +37,17 @@ if (!speaker) {
         <div class="bg-[#232323] py-16 max-w-screen-lg mx-auto xl:mx-0 text-xl px-10 text-left xl:text-left text-base-content xl:py-16 rounded-xl prose">
           <speaker.Bio.Content />
 
-          {speaker.slidesUrl ? (
+          {speaker.slides ? (
             <>
               <h3>{t("slides")}</h3>
 
-              <a
-                class="btn btn-secondary"
-                href={speaker.slidesUrl}
-                class="text-primary-500 hover:underline"
-              >
-                {t("slides-link")}
-              </a>
+              <ul>
+                {speaker.slides.map((slide) => (
+                  <li>
+                    <a href={slide.url}>{slide.title}</a>
+                  </li>
+                ))}
+              </ul>
             </>
           ) : null}
         </div>
