@@ -10,6 +10,12 @@
   social.linkedin: https://www.linkedin.com/in/soumaya-erradi
   social.twitter: https://twitter.com/sumy92
   social.blog: https://www.soumayaerradi.it/
+  slides: [
+    {
+      title: 'Slides',
+      url: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/slides%2Ftesting%20web3%20applications%20-%20soumaya%20erradi.pdf?alt=media&token=1e5e3c32-46cf-45f8-bc11-cdeb3daecb68'
+    }
+  ]
 ---
 I'm Soumaya Erradi and I'm a software developer and an IT teacher. 
 I'm high skilled in web development (frontend and backend), specialized in developing enterprise applications using Angular.
