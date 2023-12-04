@@ -10,6 +10,12 @@
   social.linkedin: https://www.linkedin.com/in/aleks-denisov/
   social.twitter: https://twitter.com/ShuregDenisov
   social.blog: 
+  slides: [
+    {
+      title: 'Slides',
+      url: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/slides%2FCloud_Functions_Final.pdf?alt=media&token=e7d401de-7ece-418a-a0e2-e0e493f92987'
+    }
+  ]
 ---
 Aleksandr is an experienced software developer with a rich background, in IT for more than 20 years. He worked with different stacks in backend, frontend and mobile fields, but since 2018 his main interest is Flutter. Aleksandr is a Flutter and Dart GDE and Head of Flutter Discipline in EPAM Systems. Co-Organizer of Flutter Berlin Meetup community.
   

@@ -10,6 +10,12 @@
   social.linkedin: https://www.linkedin.com/in/giovannagalleno/
   social.twitter: https://twitter.com/GallenoGiovanna
   social.blog: 
+  slides: [
+    {
+      title: 'Slides',
+      url: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/slides%2FThe_wizardry_of_project_management_Giovanna_Galleno_Devfest_Pescara.pdf?alt=media&token=53aa962e-ab85-450d-b52e-4478527c03ce'
+    }
+  ]
 ---
 Giovanna is a Technical Project Manager in BIP xTech. She worked in the European Google Developer Relations team as a Senior Program Manager where she fell in love with the tech world.
 

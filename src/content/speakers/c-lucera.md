@@ -10,6 +10,12 @@
   social.linkedin: https://www.linkedin.com/in/clucera/
   social.twitter: https://twitter.com/hat_droid
   social.blog: 
+  slides: [
+    {
+      title: 'Slides',
+      url: 'https://docs.google.com/presentation/d/1TOTlnhTdfK-FQbKUoouWdmTOHtDLhVQEXnKwpay2DCg/edit?usp=drivesdk'
+    }
+  ]
 ---
 Known as HatDroid, is a Technology enthusiast, former Android, and now Flutter developer, always in search of new technologies and strategies to improve.
 Flutter Google Developer Expert and Full-time Flutter Developer @Pvotal technologies and admin for Flutter Italia Developers.

@@ -10,6 +10,12 @@
   social.linkedin: https://www.linkedin.com/in/samuelroberto-97/
   social.twitter: 
   social.blog: 
+  slides: [
+    {
+      title: 'Slides',
+      url: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/slides%2FLa%20Tokenizzazione%20nel%20mondo%20Blockchain%20-%20Samuel%20Roberto.pdf?alt=media&token=4d7f48ae-f618-4974-b3de-fbf4025e6ab0'
+    }
+  ]
 ---
 
   
