@@ -33,7 +33,7 @@ if (!speaker) {
       />
     </div>
     {
-      speaker.raw.trim() ? (
+      speaker.raw.trim() || speaker.slides ? (
         <div class="bg-[#232323] py-16 max-w-screen-lg mx-auto xl:mx-0 text-xl px-10 text-left xl:text-left text-base-content xl:py-16 rounded-xl prose">
           <speaker.Bio.Content />
 
