@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/paolomelchiorre/
   social.twitter: 
   social.blog: https://www.paulox.net/
+  slides: 
 ---
 
   

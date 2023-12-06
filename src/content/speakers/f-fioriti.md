@@ -10,5 +10,6 @@
   social.linkedin: https://www.linkedin.com/in/federico-fioriti-51428417/
   social.twitter: 
   social.blog: 
+  slides: 
 ---
   

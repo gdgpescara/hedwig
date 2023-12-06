@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/santomaggio/
   social.twitter: https://twitter.com/GSantomaggio
   social.blog: https://twitter.com/GSantomaggio
+  slides: 
 ---
 Developer, speaker, 99.9% open-source code.    
 RabbitMQ team.

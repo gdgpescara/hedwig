@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/maraexception/
   social.twitter: https://twitter.com/maraexceptioon?lang=da
   social.blog: 
+  slides: 
 ---
 Mara è Co-Founder di Codemotion. Da sempre appassionata di tecnologia, in Codemotion si occupa dell’ingaggio della tech community e della relazione con gli sviluppatori e le sviluppatrici. Diversity e inclusion sono la sua missione. Ama gli animali, il franciacorta e suoi gatti (Bart e Lisa). 
   

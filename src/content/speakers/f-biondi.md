@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/fabiobiondi/
   social.twitter: https://twitter.com/biondifabio
   social.blog: http://fabiobiondi.dev/
+  slides: 
 ---
 Fabio Biondi, Microsoft MVP e Google Developer Expert, è uno sviluppatore freelance con più di 15 anni di esperienza nella creazione di applicazioni web enterprise.
 Speaker in numerosi eventi front-end, ha inoltre fondato diverse community italiane che si occupano di Javascript, Angular e React (~30000 membri).

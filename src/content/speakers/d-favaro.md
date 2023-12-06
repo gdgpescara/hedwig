@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/danfav/
   social.twitter: https://twitter.com/_danfav
   social.blog: 
+  slides: 
 ---
 Based in Stockholm, Sweden, Daniele is working on the Android stack core solutions that millions of drivers use.
 

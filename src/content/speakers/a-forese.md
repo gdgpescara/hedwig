@@ -10,6 +10,7 @@
   social.linkedin: https://it.linkedin.com/in/aurelio-forese-b2670929
   social.twitter: 
   social.blog: 
+  slides: 
 ---
 Inizia la propria carriera informatica a 7 anni con un Commodore PC1 che inizia a smontare per capirne il funzionamento.
 Dopo la laurea in ing. informatica presso l'università La Sapienza Roma, ha ricoperto, negli ultimi 10 anni, diversi ruoli tecnici occupandosi dei vari aspetti relativi a sistemi distribuiti (networking, architetture software). 

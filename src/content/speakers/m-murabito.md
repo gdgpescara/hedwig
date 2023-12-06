@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/michel-murabito-b5568845
   social.twitter: https://twitter.com/michelmurabito
   social.blog: https://github.com/akelity
+  slides: 
 ---
 Developer Advocate by day,
 Developer in the soul,

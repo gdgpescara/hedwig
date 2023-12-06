@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/stefanodalex/
   social.twitter: https://twitter.com/stefanodalex
   social.blog: 
+  slides: 
 ---
 Sono Laureato in Informatica e lavoro nel mondo IT da oltre 10 anni. Dal 2016 sono un Imprenditore Digitale, CEO e Founder di Suredi, azienda che nasce con l'obiettivo di progettare e sviluppare prodotti digital memorabili!
 
