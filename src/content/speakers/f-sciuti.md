@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/francescosciuti/
   social.twitter: https://twitter.com/FrancescoSciuti
   social.blog: https://devmy.it/blog
+  slides: 
 ---
 Francesco (Google Developer Expert, Microsoft MVP, Google Certified Developer & AWS UG Lead), is a programmer with several years of experience in enterprise programming , high skilled in web development (frontend and backend) and in team project management.
 

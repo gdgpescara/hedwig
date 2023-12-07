@@ -10,6 +10,12 @@
   social.linkedin: https://www.linkedin.com/in/campbelljai
   social.twitter: https://twitter.com/sylvanasbeta
   social.blog: https://www.linkedin.com/in/campbelljai
+  slides: [
+    {
+      title: 'Slides',
+      url: 'https://firebasestorage.googleapis.com/v0/b/devfestpescara-2023.appspot.com/o/slides%2FSite_Reliability_Engineering_natively_on_the_Google_Cloud_Platform.pdf?alt=media&token=e7844108-b7a0-4a0c-9300-6c77ebaf4914'
+    }
+  ]
 ---
 Hi,  my name is Jai,   I am a software engineer and active member of various technical communities varying from Women Techmakers,  open source enablement and visibility, GDG and GDE.
 I work mainly on GCP application and infrastructure modernisation projects for all types of organisations.  I have been working in financial services for the last 3 years as an SRE/Architect enabling clients to move existing and deploy new workloads into the Cloud.

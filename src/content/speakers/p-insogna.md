@@ -10,6 +10,12 @@
   social.linkedin: https://linkedin.com/in/pinsogna
   social.twitter: https://twitter.com/p_insogna
   social.blog: 
+  slides: [
+    {
+      title: 'Slides',
+      url: 'https://talks.paoloinsogna.dev/smart-cats'
+    }
+  ]
 ---
 Node.js Core Member, Staff Developer Experience Engineer at NearForm, Co-founder and Principal Architect at OramaSearch, Polyglot Developer. RPG and LARP addicted and nerd on lot more. Surrounded by lovely chubby cats.
 

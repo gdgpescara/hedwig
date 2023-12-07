@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/santocaruso/
   social.twitter: https://twitter.com/ssantinocaruso
   social.blog: 
+  slides: 
 ---
 sono uno sviluppatore di giorno ed un sistemista di notte, con esperienza nello sviluppo di soluzioni enterprise per il web. Appassionato di nuove tecnologie e di Internet of Things, quando non sto al computer a programmare nuove soluzioni digitali legate al turismo e ai Beni Culturali amo viaggiare tra le bellezze dell’Italia.
   

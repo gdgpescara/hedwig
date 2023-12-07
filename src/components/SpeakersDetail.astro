@@ -1,5 +1,6 @@
 ---
-import { getSpeakerById } from "../data/speakers-data";
+import { t } from "i18next";
+import { getSpeakerById } from "../data/speaker";
 import Section from "./Section.astro";
 import SpeakerProfile from "./SpeakerProfile.astro";
 type Props = {
@@ -32,9 +33,23 @@ if (!speaker) {
       />
     </div>
     {
-      speaker.raw.trim() ? (
+      speaker.raw.trim() || speaker.slides ? (
         <div class="bg-[#232323] py-16 max-w-screen-lg mx-auto xl:mx-0 text-xl px-10 text-left xl:text-left text-base-content xl:py-16 rounded-xl prose">
           <speaker.Bio.Content />
+
+          {speaker.slides ? (
+            <div>
+              <h3>{t("slides")}</h3>
+
+              <ul>
+                {speaker.slides.map((slide) => (
+                  <li>
+                    <a href={slide.url}>{slide.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       ) : null
     }

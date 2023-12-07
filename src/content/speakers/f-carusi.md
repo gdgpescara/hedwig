@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/fabio-carusi-34812325/
   social.twitter: 
   social.blog: 
+  slides: 
 ---
 Aspirante Nerd, Data Engineer per lavoro, sviluppatore per passione, pigro per natura
   

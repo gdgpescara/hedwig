@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/morenomazzocchetti/
   social.twitter: 
   social.blog: 
+  slides: 
 ---
 
   

@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/in/riccardo-solazzi-3624bb161/
   social.twitter: https://twitter.com/TheZalDev
   social.blog: https://thezal.dev/
+  slides: 
 ---
 Hello there! Riccardo, also known as TheZal here! I'm the guy behind the code at Revolt Srl, and I'm all about writing awesome code and spreading the open source love.
 You might have stumbled upon my corner of the internet – thezal.dev. That's where I hang out and chat with fellow developers. I write about coding tips, cool tricks, and the latest trends to keep everyone in the loop.

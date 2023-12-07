@@ -10,6 +10,7 @@
   social.linkedin: https://www.linkedin.com/company/ready2use/
   social.twitter: 
   social.blog: 
+  slides: 
 ---
 Claudio Martini, è oggi Product Manager di sistemi di Supporto alla Decisione (DSS) presso Ready2use S.r.l. Con trent’anni di esperienza internazionale nel mondo ICT come manager, consulente e imprenditore su strategia e prodotti/servizi digitali, ha partecipato in start-up, progetti e aziende in Italia, Europa Centrale e Orientale e America Latina. Negli ultimi dieci anni si è dedicato alla consulenza per la trasformazione digitale per i settori media, bancario e finanziario, a sistemi di analisi comportamentale su canali digitali, e a sistemi di Supporto alla Decisione per diversi ambiti di mercato. È anche musicista, ma questa è un’altra storia. Aiuta a rilassare la mente.
   

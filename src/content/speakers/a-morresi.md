@@ -10,6 +10,7 @@
   social.linkedin: https://linkedin.com/in/alfredomorresi
   social.twitter: https://twitter.com/rainbowbreeze
   social.blog: https://rainbowbreeze.it
+  slides: 
 ---
 I love to help people get things done, leading teams at the intersection of community, technology, and fun. Community builder and developer by passion, Developer Relation @ Google by profession. The learn-build-share loop is my mantra, and I love being a dad, free-software, running on the beach, snowboarding. I relentlessly train myself in preparing (and eating) Tiramisù. I’m definitely yellow.
   

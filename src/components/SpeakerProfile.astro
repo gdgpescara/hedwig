@@ -7,6 +7,7 @@ import twitterImageSrc from "../assets/social/twitter.svg";
 import { localizeUrl } from "astro-i18next";
 import { Image } from "astro:assets";
 import { env } from "../costants";
+import { t } from "i18next";
 
 type Props = {
   showLink?: boolean;
@@ -23,19 +24,23 @@ type Props = {
   };
 };
 
-const origin = env.siteUrl
+const origin = env.siteUrl;
 
 const { company, id, imageUrl, jobTitle, name, social, showLink } = Astro.props;
+
 ---
 
 <div class="text-center">
   <!-- if showLink -->
   {
     showLink && (
-      <a href={localizeUrl(`${origin}/speaker/${id}`)}>
+      <a
+        href={localizeUrl(`${origin}/speaker/${id}`)}
+        title={`${t("see-profile", { name })}`}
+      >
         <img
           src={imageUrl}
-          class="w-60 h-60 rounded-full border-4 m-auto"
+          class="w-60 h-60 rounded-full border-4 m-auto object-cover"
           alt={name}
         />
       </a>
@@ -46,7 +51,7 @@ const { company, id, imageUrl, jobTitle, name, social, showLink } = Astro.props;
     !showLink && (
       <img
         src={imageUrl}
-        class="w-60 h-60 rounded-full border-4 m-auto"
+        class="w-60 h-60 rounded-full border-4 m-auto object-cover"
         alt={name}
       />
     )

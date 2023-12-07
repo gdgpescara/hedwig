@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import { changeLanguage, t } from "i18next";
+import Heading from "../components/Heading.astro";
+import Section from "../components/Section.astro";
+import Layout from "../layouts/Layout.astro";
+
+changeLanguage("en");
+
+const speakers = await getCollection("speakers");
+---
+
+<Layout title="Devfest Pescara 2023 - Location">
+  <Section additionalClass="dots pt-32 pb-16 md:py-32 xl:py-64">
+    <div class="max-w-screen-lg m-auto text-center">
+      <Heading level="h2" text="Slides" />
+    </div>
+  </Section>
+  <div class="max-w-screen-xl m-auto px-6 prose py-16 lg:py-32">
+    {
+      speakers.map((speaker) =>
+        speaker.data.slides ? (
+          <div>
+            <h2>{speaker.data.name}</h2>
+            <ul>
+              {speaker.data.slides.map((slide: any) => (
+                <li>
+                  <a href={slide.url}>{slide.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null,
+      )
+    }
+  </div>
+</Layout>

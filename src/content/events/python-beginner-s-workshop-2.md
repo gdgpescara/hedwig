@@ -15,5 +15,10 @@
     - p-melchiorre
 
 ---
-Registrazioni tramite il [form](https://docs.google.com/forms/d/e/1FAIpQLSeCKzlR-lFlpDDcEhuFAzxSteAVWCQdCy_CzW91i27JfBaz8A/viewform)
+Il workshop è al **completo** e le iscrizioni sono chiuse. 💯
+
+Per i partecipanti saranno **necessari**:
+- Un **laptop** personale 💻
+- Un **account** Google ✉️
   
+_Per eventuali informazioni potete rivolgervi al gruppo [Python Pescara](https://pescara.python.it/) 🐍._
