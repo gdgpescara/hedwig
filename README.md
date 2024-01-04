@@ -46,3 +46,5 @@ All commands are run from the root of the project, from a terminal:
 
 [Figma](https://www.figma.com/file/vGNg1oFEozLImMUl8vidyo/Landing-DevFest-2023?type=design&node-id=0%3A1&mode=design&t=i1jkPzTUHDnIPDi6-1)
 
+## Code of Conduct
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
