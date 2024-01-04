@@ -53,5 +53,3 @@ All commands are run from the root of the project, from a terminal:
 
 The project is published under the [MIT license](/LICENSE.md).
 Feel free to clone and modify repo as you want, but don't forget to add a reference to authors :)
-
-_GDG Pescara is not endorsed and/or supported by Google, the corporation._
