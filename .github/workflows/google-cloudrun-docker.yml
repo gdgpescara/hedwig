@@ -2,14 +2,14 @@ name: Build and Deploy to Cloud Run
 
 on:
   push:
-    branches: [ "develop", "main" ]
+    branches: ["develop", "main"]
 
 jobs:
   deploy:
     # Add 'id-token' with the intended permissions for workload identity federation
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: "read"
+      id-token: "write"
 
     runs-on: ubuntu-latest
     steps:
@@ -18,16 +18,16 @@ jobs:
 
       - name: Google Auth
         id: auth
-        uses: 'google-github-actions/auth@v0'
+        uses: "google-github-actions/auth@v0"
         with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
       # Authenticate Docker to Google Cloud Artifact Registry
       - name: Docker Auth
         id: docker-auth
         uses: docker/login-action@v3
         with:
-          registry: '${{ vars.GAR_LOCATION }}-docker.pkg.dev'
+          registry: "${{ vars.GAR_LOCATION }}-docker.pkg.dev"
           username: _json_key
           password: ${{ secrets.GCP_CREDENTIALS }}
 

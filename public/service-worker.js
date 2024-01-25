@@ -1,4 +1,4 @@
-self.addEventListener("install", function (event) {
+self.addEventListener("install", function () {
   self.skipWaiting();
 });
 
@@ -12,8 +12,8 @@ self.addEventListener("activate", function (event) {
         cacheNames.map(function (cacheName) {
           console.log("Service worker clearing cache");
           return caches.delete(cacheName);
-        })
+        }),
       );
-    })
+    }),
   );
 });

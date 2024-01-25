@@ -12,4 +12,22 @@ export default defineConfig({
   adapter: nodejs({
     mode: "standalone",
   }),
+  image: {
+    domains: ["via.placeholder.com"],
+  },
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "it"],
+    fallback: {
+      it: "en",
+    },
+    routingStrategy: "prefix-other-locales",
+  },
+  vite: {
+    resolve: {
+      alias: {
+        "~/": "/src/",
+      },
+    },
+  },
 });
