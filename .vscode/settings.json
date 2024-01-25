@@ -1,7 +1,14 @@
 {
-    "i18n-ally.localesPaths": [
-        "public/locales/it.json",
-        "public/locales"
-    ],
-    "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.localesPaths": [
+    "public/locales/it.json",
+    "public/locales"
+  ],
+  "i18n-ally.sourceLanguage": "en",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ]
 }

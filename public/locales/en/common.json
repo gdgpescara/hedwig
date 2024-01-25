@@ -1,25 +1,23 @@
 {
-    "site-title": "DevFest Pescara 2023",
-    "site-motto": "and the developers' magic",
-    "site-dates": "18 and 19 November 2023",
-    "page-title": "DevFest Pescara 2023 - {{ title }}",
-    "sign-up": "Sign up",
-    "and": "and",
-    "by": "by",
-    "keep-in-touch": {
-        "title": "Keep in touch",
-        "organized-with": "Organized with"
-    },
-    "agenda": "Schedule",
-    "speakers": "Speakers",
-    "games": "Games",
-    "select-label": "Change language",
-    "open-menu": "Open menu",
-    "close-menu": "Close menu",
-    "drawer-side": "Side menu",
-    "skip-to-content-link": "Go to main content",
-    "see-profile": "See profile of {{name}}",
-    "see-social": "See {{name}}'s {{social}} profile",
-    "slides-link": "Link to slides",
-    "slides": "Link"
+  "site-title": "Hedwig",
+  "site-motto": "a rushed template",
+  "site-dates": "made in 2023",
+  "page-title": "Hedwig - {{ title }}",
+  "sign-up": "Sign up",
+  "and": "and",
+  "by": "by",
+  "keep-in-touch": {
+    "title": "Keep in touch",
+    "organized-with": "Organized with"
+  },
+  "agenda": "Schedule",
+  "speakers": "Speakers",
+  "games": "Games",
+  "select-label": "Change language",
+  "open-menu": "Open menu",
+  "close-menu": "Close menu",
+  "drawer-side": "Side menu",
+  "skip-to-content-link": "Go to main content",
+  "see-profile": "See profile of {{name}}",
+  "see-social": "See {{name}}'s {{social}} profile"
 }
