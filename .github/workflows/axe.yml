@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: ['20.x']
 
     steps:
       - uses: actions/checkout@v3
@@ -39,7 +39,8 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run build --if-present
       - run: pnpm run dev & npx wait-on http://localhost:4321
+      - run: pnpm install -g chromedriver@120.0.6099.224
       - name: Run axe
         run: |
           pnpm install -g @axe-core/cli
-          axe http://localhost:4321 --exit
+          axe --chromedriver-path $(pnpm root -g)/chromedriver/bin/chromedriver http://localhost:4321 --exit
