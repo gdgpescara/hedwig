@@ -2,9 +2,9 @@ name: Lighthouse
 
 on:
   push:
-    branches: [INFRA01]
+    branches: [main]
   pull_request:
-    branches: [INFRA01]
+    branches: [main]
 
 jobs:
   lighthouse:
