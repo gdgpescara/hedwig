@@ -36,7 +36,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - run: pnpm install && npm install -g @lhci/cli@0.8.x
+      - run: pnpm install --no-frozen-lockfile && npm install -g @lhci/cli@0.8.x
       - run: pnpm run build
       - name: Run lighthouse
         run: lhci autorun
