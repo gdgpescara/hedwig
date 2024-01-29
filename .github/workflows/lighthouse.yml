@@ -1,0 +1,27 @@
+name: Lighthouse
+
+on:
+  push:
+    branches: [INFRA01]
+  pull_request:
+    branches: [INFRA01]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - run: pnpm install && npm install -g @lhci/cli@0.8.x
+      - run: pnpm run build
+      - name: Run lighthouse
+        run: lhci autorun

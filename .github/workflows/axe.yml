@@ -1,0 +1,30 @@
+name: Axe
+
+on:
+  push:
+    branches: [INFRA01]
+  pull_request:
+    branches: [INFRA01]
+
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - run: pnpm ci
+      - run: pnpm run build --if-present
+      - run: pnpm run dev & npx wait-on http://localhost:4321
+      - name: Run axe
+        run: |
+          pnpm install -g @axe-core/cli
+          axe http://localhost:4321 --exit
