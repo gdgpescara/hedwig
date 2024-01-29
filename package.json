@@ -9,11 +9,12 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate-translations": "npx astro-i18next generate",
-    "prettier": "prettier --write . --plugin=prettier-plugin-astro"
+    "prettier": "prettier --write . --plugin=prettier-plugin-astro",
+    "test": "vitest",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@astrojs/node": "^8.0.0",
-    "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.0.1",
     "@googlemaps/js-api-loader": "^1.16.2",
@@ -35,18 +36,21 @@
     "tailwindcss": "^3.3.5"
   },
   "devDependencies": {
+    "@astrojs/react": "^3.0.9",
+    "@playwright/test": "^1.41.1",
     "@types/google.maps": "^3.54.9",
+    "@types/node": "^20.11.7",
     "@typescript-eslint/parser": "^6.13.1",
     "eslint": "^8.55.0",
     "eslint-plugin-astro": "^0.30.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jsx-runtime": "link:plugin:react/jsx-runtime",
     "postcss-nesting": "^12.0.1",
     "prettier": "^3.1.0",
     "prettier-plugin-astro": "^0.12.2",
     "sass": "^1.69.5",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "vitest": "^1.2.2"
   }
 }
