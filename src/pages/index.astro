@@ -1,3 +1,16 @@
-<div>
-  <h1>Hedwig</h1>
-</div>
+---
+import i18next, { changeLanguage } from "i18next";
+
+changeLanguage("en");
+---
+
+<html lang={i18next.language}>
+  <head>
+    <title>Hedwig</title>
+  </head>
+  <body>
+    <main role="main">
+      <h1>Welcome to Hedwig!</h1>
+    </main>
+  </body>
+</html>
