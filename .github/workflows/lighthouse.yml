@@ -2,12 +2,12 @@ name: Lighthouse
 
 on:
   push:
-    branches: [main]
+    branches: [INFRA01]
   pull_request:
-    branches: [main]
+    branches: [INFRA01]
 
 jobs:
-  lighthouse:
+  setup:
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,7 +36,62 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - run: pnpm install --no-frozen-lockfile && npm install -g @lhci/cli@0.8.x
+      - run: pnpm install --no-frozen-lockfile
+      
+  
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: pnpm run build
-      - name: Run lighthouse
-        run: lhci autorun
+
+  lighthouse:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: pnpm run dev & npx wait-on http://localhost:4321
+      - name: Run Lighthouse
+        id: lighthouse_audit
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            http://localhost:4321
+          configPath: ./.github/workflows/lighthouse/lighthousesrc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 5
+      - name: Format Lighthouse score
+        uses: actions/github-script@v5
+        id: format_lighthouse_score
+        with:
+          script: |
+            const lighthouseCommentMaker = require('./.github/workflows/lighthouse/lighthouseCommentMaker.cjs');
+
+            const lighthouseOutputs = {
+              manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
+              links: ${{ steps.lighthouse_audit.outputs.links }}
+            };
+
+            const prComment = lighthouseCommentMaker({ lighthouseOutputs });
+            core.setOutput("pr_comment", prComment);
+      - name: Add Lighthouse stats as comment
+        uses: marocchino/sticky-pull-request-comment@v2.0.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.pull_request.number }}
+          header: lighthouse
+          message: ${{ steps.format_lighthouse_score.outputs.pr_comment }}
