@@ -67,7 +67,7 @@ jobs:
             const prComment = lighthouseCommentMaker({ lighthouseOutputs });
             core.setOutput("pr_comment", prComment);
       - name: Add Lighthouse stats as comment
-        uses: marocchino/sticky-pull-request-comment@v2.0.0
+        uses: marocchino/sticky-pull-request-comment@v2.8.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           header: lighthouse
