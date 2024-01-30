@@ -46,6 +46,7 @@ jobs:
         run:  PLAYWRIGHT_JSON_OUTPUT_NAME=results.json pnpm exec playwright test --reporter json
 
       - uses: daun/playwright-report-summary@v3
+        if: always()
         with:
           report-file: results.json
 
