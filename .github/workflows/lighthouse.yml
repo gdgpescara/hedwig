@@ -66,9 +66,12 @@ jobs:
 
             const prComment = lighthouseCommentMaker({ lighthouseOutputs });
             core.setOutput("pr_comment", prComment);
+      - uses: jwalton/gh-find-current-pr@v1
+        id: pr_number_finder
       - name: Add Lighthouse stats as comment
         uses: marocchino/sticky-pull-request-comment@v2.8.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           header: lighthouse
+          number: ${{ github.event.number || steps.pr_number_finder.outputs.pr }}
           message: ${{ steps.format_lighthouse_score.outputs.pr_comment }}
