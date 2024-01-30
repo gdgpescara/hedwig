@@ -45,7 +45,7 @@ jobs:
         with:
           urls: |
             http://localhost:4321
-          configPath: ./.github/workflows/lighthouse/lighthousesrc.json
+          configPath: ./.github/workflows/lighthouse/lighthouserc.json
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 5
