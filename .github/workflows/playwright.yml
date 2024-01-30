@@ -43,7 +43,12 @@ jobs:
         run: pnpm run build
 
       - name: Run Playwright tests
-        run: pnpm exec playwright test
+        run: pnpm exec playwright test --reporter json
+
+      - uses: daun/playwright-report-summary@v3
+        with:
+          report-file: results.json
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
