@@ -4,6 +4,8 @@ on:
     branches: [main, develop, feat/#96] #TODO remove feat/#96
   pull_request:
     branches: [main]
+permissions:
+  pull-requests: write
 jobs:
   test:
     timeout-minutes: 60
