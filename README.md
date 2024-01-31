@@ -50,6 +50,12 @@ All commands are run from the root of the project, from a terminal:
 
 TBD
 
+## Contributing
+
+**New contributors welcome!** Check out our [Contributors Guide](CONTRIBUTING.md) for help getting started.
+
+Join us on [Telegram](https://gdgpescara.page.link/telegram) to meet other maintainers. We'll help you get your first contribution in no time!
+
 ## Code of Conduct
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
