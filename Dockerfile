@@ -1,12 +1,16 @@
-FROM node:lts AS runtime
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY . /app
 WORKDIR /app
 
-COPY . .
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run build
 
-RUN npm install
-RUN npm install -g pnpm
-RUN npm run build
-
+FROM base
+COPY --from=build /app /app
 ENV HOST=0.0.0.0
 ENV PORT=4321
 EXPOSE 4321
