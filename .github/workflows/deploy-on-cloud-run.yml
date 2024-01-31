@@ -2,7 +2,7 @@ name: Build and Deploy to Cloud Run
 
 on:
   push:
-    branches: [ "main", "INFRA04" ]
+    branches: [ "main" ]
 
 jobs:
   deploy:
@@ -11,7 +11,7 @@ jobs:
       id-token: 'write'
 
     runs-on: ubuntu-latest
-    environment: development
+    environment: demo
     steps:
       - name: Checkout
         uses: actions/checkout@v4
