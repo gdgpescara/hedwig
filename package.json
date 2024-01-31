@@ -41,6 +41,7 @@
     "@types/google.maps": "^3.54.9",
     "@types/node": "^20.11.7",
     "@typescript-eslint/parser": "^6.13.1",
+    "@vitest/coverage-v8": "^1.2.2",
     "eslint": "^8.55.0",
     "eslint-plugin-astro": "^0.30.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
