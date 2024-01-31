@@ -6,7 +6,7 @@ export default getViteConfig({
   test: {
     dir: "./src",
     reporters: process.env.GITHUB_ACTIONS
-      ? new GithubActionsReporter()
+      ? ["default", new GithubActionsReporter()]
       : "default",
   },
 });
