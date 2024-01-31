@@ -1,7 +1,7 @@
 name: Playwright Tests
 on:
   push:
-    branches: [main, develop, feat/#96] #TODO remove feat/#96
+    branches: [main]
   pull_request:
     branches: [main]
 permissions:
@@ -45,7 +45,7 @@ jobs:
         run: pnpm run build
 
       - name: Run Playwright tests
-        run:  PLAYWRIGHT_JSON_OUTPUT_NAME=results.json pnpm exec playwright test --reporter json
+        run: PLAYWRIGHT_JSON_OUTPUT_NAME=results.json pnpm exec playwright test --reporter json
 
       - uses: daun/playwright-report-summary@v3
         if: always()
