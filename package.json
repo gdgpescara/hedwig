@@ -51,6 +51,7 @@
     "prettier-plugin-astro": "^0.12.2",
     "sass": "^1.69.5",
     "tailwind-merge": "^2.0.0",
-    "vitest": "^1.2.2"
+    "vitest": "^1.2.2",
+    "vitest-github-actions-reporter": "^0.11.1"
   }
 }
