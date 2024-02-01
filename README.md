@@ -1,4 +1,22 @@
-# hedwig
+# Hedwig 🦉
+
+## ⚡️ Quick Start
+
+Clone the repo and install dependencies with [pnpm](https://pnpm.js.org/):
+
+```bash
+pnpm install
+```
+
+Start the local development server:
+
+```bash
+pnpm dev
+```
+
+Open [localhost:3000](http://localhost:4321) in your browser to see the site!
+
+That's it! You're ready to start contributing to the project! 🥳
 
 [⚡ Live demo](https://hedwig-demo-app.web.app/)
 
@@ -31,20 +49,20 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `pnpm install`      | Installs dependencies                            |
+| `pnpm dev`          | Starts local dev server at `localhost:3000`      |
+| `pnpm build`        | Build your production site to `./dist/`          |
+| `pnpm preview`      | Preview your build locally, before deploying     |
+| `pnpm astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro --help` | Get help using the Astro CLI                     |
 
 ## Tools used
 
 - [Tailwind CSS (Utility-First CSS Framework)](https://tailwindcss.com/)
 - [DaisyUI (Tailwind CSS Components)](https://daisyui.com/)
-- [astro-i18n](https://github.com/yassinedoghri/astro-i18next)
+- [astro-i18n](https://github.com/yassinedoghri/astro-i18next) - TBD
 
 ## Mockup
 
