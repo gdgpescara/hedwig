@@ -1,7 +1,9 @@
 # Contributor Manual
 
 Contributions from the community are essential in keeping Hedwig, as for any Open Source
-project, strong and successful. We welcome contributions of any size and skill level. As an Open Source project, we believe in giving back to our contributors and are happy to help with guidance on PRs and technical writing.
+project, strong and successful. We welcome contributions of any size and skill level. 
+As an Open Source project, we believe in giving back to our contributors and are happy to help 
+with guidance on PRs and technical writing.
 
 
 ## Guidelines
@@ -9,7 +11,12 @@ project, strong and successful. We welcome contributions of any size and skill l
 We ask you to mind just a few guidelines:
 
 * respect the project's requirements
-* have a corresponding Github issue. The key of the issue should be used as the name of the branch, in the commit message and in the name of the PR
+* have a corresponding Github issue. The key of the issue should be used as the name of the branch, in the 
+  	commit message and in the name of the PR
+* stick on Astro components or start discussing a proposed framework or library in the issue.
+	We are open to using different libraries and we choosed Astro for its approach that allows us to use
+	different libraries, but still, we need to review the code and to maintain it. We will have to 
+	be sure we can do it and we can only accept contributions that we also can work on
 * have a set of appropriate tests.  For bug reports, the tests reproduce the initial reported bug
 	and illustrate that the solution actually fixes the bug.  For features/enhancements, the 
 	tests illustrate the feature working as intended.  In both cases the tests are incorporated into
@@ -58,6 +65,10 @@ Any other issue labeled [`help wanted`](https://github.com/gdgpescara/hedwig/lab
 ### Code
 
 Do your thing!
+
+_Remember: if you plan to use some library or framework, discuss it with us using the related Github 
+issue prior to start coding. We want to be sure the project can stay sustainable and it is important to us that we only 
+accept contributions we can keep working on_
 
 
 ### Commit
