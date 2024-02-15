@@ -11,6 +11,7 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.2.4)(tailwindcss@3.4.1)
+    version: 5.1.0(astro@4.2.4)(tailwindcss@3.4.1)
   '@astrojs/vercel':
     specifier: ^7.0.1
     version: 7.0.1(astro@4.2.4)
@@ -1696,6 +1697,14 @@ packages:
     dev: false
     optional: true
 
+  /@grpc/grpc-js@1.9.14:
+    resolution: {integrity: sha512-nOpuzZ2G3IuMFN+UPPpKrC6NsLmWsTqSsm66IRfnBt1D4pwTqE27lmbpcPM+l2Ua4gE7PfjRHI6uedAy7hoXUw==}
+    engines: {node: ^8.13.0 || >=10.10.0}
+    dependencies:
+      '@grpc/proto-loader': 0.7.10
+      '@types/node': 20.11.7
+    dev: false
+
   /@grpc/proto-loader@0.7.10:
     resolution: {integrity: sha512-CAqDfoaQ8ykFd9zqBDn4k6iWT9loLAlc2ETmDFS9JCD70gDcnA4L3AFEo2iV7KyAtAAHFW9ftq1Fz+Vsgq80RQ==}
     engines: {node: '>=6'}
@@ -2970,7 +2979,7 @@ packages:
       typescript: 5.3.2
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 3.2.8(@types/node@20.11.7)(sass@1.69.5)
+      vite: 3.2.8(@types/node@20.11.17)(sass@1.69.5)
       vitefu: 0.2.5(vite@3.2.8)
       yargs-parser: 21.1.1
       zod: 3.22.4
@@ -3257,12 +3266,6 @@ packages:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
-
-  /brace-expansion@2.0.1:
-    resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
-    requiresBuild: true
-    dependencies:
-      balanced-match: 1.0.2
 
   /braces@3.0.2:
     resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
@@ -4313,6 +4316,7 @@ packages:
     engines: {node: '>=6'}
     requiresBuild: true
     dev: false
+    optional: true
 
   /escape-html@1.0.3:
     resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
@@ -9655,7 +9659,7 @@ packages:
       - terser
     dev: true
 
-  /vite@3.2.8(@types/node@20.11.7)(sass@1.69.5):
+  /vite@3.2.8(@types/node@20.11.17)(sass@1.69.5):
     resolution: {integrity: sha512-EtQU16PLIJpAZol2cTLttNP1mX6L0SyI0pgQB1VOoWeQnMSvtiwovV3D6NcjN8CZQWWyESD2v5NGnpz5RvgOZA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -9726,6 +9730,43 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
+  /vite@5.1.2(@types/node@20.11.17)(sass@1.69.5):
+    resolution: {integrity: sha512-uwiFebQbTWRIGbCaTEBVAfKqgqKNKMJ2uPXsXeLIZxM8MVMjoS3j0cG8NrPxdDIadaWnPSjrkLWffLSC+uiP3Q==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || >=20.0.0
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 20.11.17
+      esbuild: 0.19.12
+      postcss: 8.4.35
+      rollup: 4.10.0
+      sass: 1.69.5
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: true
+
   /vitefu@0.2.5(vite@3.2.8):
     resolution: {integrity: sha512-SgHtMLoqaeeGnd2evZ849ZbACbnwQCIwRH57t18FxcXoZop0uQu0uzlIhJBlF/eWVzuce0sHeqPcDo+evVcg8Q==}
     peerDependencies:
@@ -9734,7 +9775,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.8(@types/node@20.11.7)(sass@1.69.5)
+      vite: 3.2.8(@types/node@20.11.17)(sass@1.69.5)
     dev: false
 
   /vitefu@0.2.5(vite@5.0.12):
