@@ -12,6 +12,9 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
     strategy:
       matrix:
