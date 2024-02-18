@@ -40,6 +40,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - run: pnpm install --no-frozen-lockfile
+      - run: echo $FIREBASE_CONFIG
       - run: pnpm run build --if-present
       - run: pnpm run preview & npx wait-on http://localhost:4321
       - run: pnpm install -g @axe-core/cli
