@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.GCP_CREDENTIALS }}
       - name: Build and Push Container
         run: |-
-          docker build --build-arg FIREBASE_CONFIG_ARG=${{ secrets.FIREBASE_CONFIG }} --build_arg FIREBASE_SERVICE_ACCOUNT_ARG=${{ secrets.FIREBASE_SERVICE_ACCOUNT }} -t "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}" ./
+          docker build --build-arg FIREBASE_CONFIG_ARG=${{ secrets.FIREBASE_CONFIG }} --build-arg FIREBASE_SERVICE_ACCOUNT_ARG=${{ secrets.FIREBASE_SERVICE_ACCOUNT }} -t "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}" ./
           docker push "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}"
       - name: Deploy to Cloud Run
         id: deploy
