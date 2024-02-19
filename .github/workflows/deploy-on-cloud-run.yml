@@ -2,7 +2,7 @@ name: Build and Deploy to Cloud Run
 
 on:
   push:
-    branches: [ "main", "INFRA07" ]
+    branches: [ "main" ]
 
 jobs:
   deploy:
