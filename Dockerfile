@@ -1,3 +1,5 @@
+FROM node:20-slim
+COPY ./dist /app
 FROM node:20-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -22,4 +24,4 @@ ENV FIREBASE_SERVICE_ACCOUNT=$FIREBASE_SERVICE_ACCOUNT_ARG
 ENV HOST=0.0.0.0
 ENV PORT=4321
 EXPOSE 4321
-CMD node ./dist/server/entry.mjs
+CMD node /app/server/entry.mjs
