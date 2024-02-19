@@ -1,8 +1,17 @@
-FROM node:20-slim
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 COPY . /app
 WORKDIR /app
+
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --no-frozen-lockfile
+RUN pnpm run build
+
+FROM base
+COPY --from=build /app/dist /app
 ENV HOST=0.0.0.0
 ENV PORT=4321
 EXPOSE 4321
-RUN ls -la /app
-CMD node /app/dist/server/entry.mjs
+CMD node ./server/entry.mjs
