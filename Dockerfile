@@ -14,7 +14,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --no-frozen-lockf
 RUN pnpm run build
 
 FROM base
-COPY --from=build /app/dist /app
+COPY --from=build /app /app
 ARG FIREBASE_CONFIG_ARG
 ARG FIREBASE_SERVICE_ACCOUNT_ARG
 ENV FIREBASE_CONFIG=$FIREBASE_CONFIG_ARG
@@ -22,4 +22,4 @@ ENV FIREBASE_SERVICE_ACCOUNT=$FIREBASE_SERVICE_ACCOUNT_ARG
 ENV HOST=0.0.0.0
 ENV PORT=4321
 EXPOSE 4321
-CMD node ./server/entry.mjs
+CMD node ./dist/server/entry.mjs
