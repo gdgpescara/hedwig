@@ -54,6 +54,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run build
+      - run: ls -la
       - name: Build and Push Container
         run: |-
           docker build -t "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}" ./
