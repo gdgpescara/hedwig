@@ -47,7 +47,7 @@ jobs:
       - run: pnpm run preview & npx wait-on http://localhost:4321
       - name: Run Lighthouse
         id: lighthouse_audit
-        uses: treosh/lighthouse-ci-action@v10
+        uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
             http://localhost:4321
