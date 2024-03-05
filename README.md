@@ -81,6 +81,10 @@ All commands are run from the root of the project, from a terminal:
 - [DaisyUI (Tailwind CSS Components)](https://daisyui.com/)
 - [astro-i18n](https://github.com/yassinedoghri/astro-i18next) - TBD
 
+## User Personas
+
+You can find the User Personas in the [Wiki page](https://github.com/gdgpescara/hedwig/wiki/User-Personas) and on [Figma](https://www.figma.com/file/8TIY8v09HJbxblDy2ZZfiL/GDG-Pescara---User-Personas---User-Journery?type=design&node-id=8%3A7&mode=design&t=t5UFCQfpvqX27Jno-1)
+
 ## Mockup
 
 TBD
