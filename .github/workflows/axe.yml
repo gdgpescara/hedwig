@@ -41,6 +41,7 @@ jobs:
       - run: pnpm run preview & npx wait-on http://localhost:4321
       - run: pnpm install -g @axe-core/cli
       - run: pnpm install -g chromedriver@120.0.2
+      - run: $(pnpm root -g)/chromedriver/bin/chromedriver -version
       - name: Run axe
         run: |
           axe --chromedriver-path $(pnpm root -g)/chromedriver/bin/chromedriver http://localhost:4321 --exit
