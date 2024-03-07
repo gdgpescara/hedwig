@@ -17,7 +17,6 @@
   "engines": {
     "node": "18"
   },
-  "type": "module",
   "main": "lib/src/index.js",
   "dependencies": {
     "@fastify/cors": "^9.0.1",
