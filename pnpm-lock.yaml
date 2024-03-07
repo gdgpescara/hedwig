@@ -2951,8 +2951,6 @@ packages:
       path-to-regexp: 6.2.1
       postcss: 8.4.33
       postcss-load-config: 3.1.4(postcss@8.4.33)
-      postcss: 8.4.33
-      postcss-load-config: 3.1.4(postcss@8.4.33)
       preferred-pm: 3.1.2
       prompts: 2.4.2
       recast: 0.20.5
