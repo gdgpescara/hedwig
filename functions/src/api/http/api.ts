@@ -1,7 +1,7 @@
 import fastify, { type FastifyServerFactoryHandler } from 'fastify';
 import Sensible from '@fastify/sensible';
 import Cors from '@fastify/cors';
-import * as functions from 'firebase-functions';
+import { onRequest } from "firebase-functions/v2/https";
 import * as http from 'http';
 
 let requestHandler: FastifyServerFactoryHandler;
@@ -30,7 +30,7 @@ app.get('/hello', async (req, res) => {
     return "hello";
 });
 
-export default functions.https.onRequest((req, res) => {
+export default onRequest((req, res) => {
     app.ready((err) => {
         if (err) throw err;
         requestHandler(req, res);
