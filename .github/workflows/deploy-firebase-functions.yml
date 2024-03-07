@@ -43,8 +43,8 @@ jobs:
       - run: cd functions
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run build
-      - run: pnpm install firebase-tools
+      - run: pnpm install -g firebase-tools
       - run: echo '${{ secrets.GCP_CREDENTIALS }}' > /opt/gcp_key.json
       - run: export GOOGLE_APPLICATION_CREDENTIALS=/opt/gcp_key.json
-      - run: firebase use${{ vars.PROJECT_ID }}
+      - run: firebase use ${{ vars.PROJECT_ID }}
       - run: pnpm run deploy
