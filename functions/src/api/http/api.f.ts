@@ -2,7 +2,7 @@ import fastify, { type FastifyServerFactoryHandler } from 'fastify';
 import Sensible from '@fastify/sensible';
 import Cors from '@fastify/cors';
 import * as functions from 'firebase-functions';
-import http from 'http';
+import * as http from 'http';
 
 let requestHandler: FastifyServerFactoryHandler;
 
@@ -14,9 +14,9 @@ const serverFactory = (handler: FastifyServerFactoryHandler) => {
 
 const app = fastify({ logger: true, serverFactory });
 
-await app.register(Sensible);
-await app.register(Cors, { origin: false });
-await app.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, done) => {
+app.register(Sensible);
+app.register(Cors, { origin: false });
+app.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, done) => {
     try {
         var json = JSON.parse(body as string);
         done(null, json);

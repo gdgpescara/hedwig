@@ -1,0 +1,50 @@
+name: Build and Deploy Firebase Functions
+
+on:
+  push:
+    branches: [ "main",  "INFRA18"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    env:
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
+    environment: demo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - run: cd functions
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm run build
+      - run: pnpm install firebase-tools
+      - run: echo '${{ secrets.GCP_CREDENTIALS }}' > /opt/gcp_key.json
+      - run: export GOOGLE_APPLICATION_CREDENTIALS=/opt/gcp_key.json
+      - run: firebase use${{ vars.PROJECT_ID }}
+      - run: pnpm run deploy
