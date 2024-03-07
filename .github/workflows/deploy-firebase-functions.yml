@@ -44,4 +44,4 @@ jobs:
       - run: cd functions && pnpm run build
       - run: pnpm install -g firebase-tools
       - run: firebase use ${{ vars.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
-      - run: cd functions && firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
+      - run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
