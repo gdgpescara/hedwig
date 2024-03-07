@@ -29,6 +29,9 @@ app.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, 
 app.get('/hello', async (req, res) => {
     return "hello";
 });
+app.get('/', async (req, res) => {
+    return "hello root";
+});
 
 export default onRequest((req, res) => {
     app.ready((err) => {

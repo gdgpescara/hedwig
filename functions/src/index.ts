@@ -1,3 +1,3 @@
 import * as http_api from './api/http/api';
 
-export { http_api };
+exports.http_api = http_api.default;
