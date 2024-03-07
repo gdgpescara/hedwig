@@ -1,7 +1,7 @@
-import { globSync } from "glob";
+import * as glob from "glob";
 import camelCase from "camelcase";
 
-const functionFiles = globSync('./api/**/*.f.js', { cwd: __dirname, ignore: './node_modules/**'});
+const functionFiles = glob.sync('./api/**/*.f.js', { cwd: __dirname, ignore: './node_modules/**'});
 
 for (let i = 0; i < functionFiles.length; i++) {
   const functionFile = functionFiles[i];
