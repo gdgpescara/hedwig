@@ -8,6 +8,23 @@ Clone the repo and install dependencies with [pnpm](https://pnpm.js.org/):
 pnpm install
 ```
 
+Create a `.env` file in the root folder.
+Create a new Firebase project. [Get the Firebase's configuration object](https://support.google.com/firebase/answer/7015592) and use it to set the `FIREBASE_CONFIG` variable in the `.env` file:
+
+```bash
+FIREBASE_CONFIG=THE_CONFIGURATION_OBJECT
+```
+
+Be careful to put the whole object in a single row, eliminating every new line character.
+
+[Create a private key for the Firebase's service account](https://firebase.google.com/docs/admin/setup#initialize_the_sdk_in_non-google_environments) and use it to set the `FIREBASE_SERVICE_ACCOUNT` variable in the `.env` file:
+
+```bash
+FIREBASE_SERVICE_ACCOUNT=THE_SERVICE_ACCOUNT_PRIVATE_KEY
+```
+
+Again, be careful to put the whole object in a single row, eliminating every new line character.
+
 Start the local development server:
 
 ```bash

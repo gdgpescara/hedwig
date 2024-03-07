@@ -1,7 +1,12 @@
 ---
 import i18next, { changeLanguage } from "i18next";
+import { app } from "../firebase/server";
+import { getAuth } from "firebase-admin/auth";
 
 changeLanguage("en");
+
+const auth = getAuth(app);
+console.log(auth);
 ---
 
 <html lang={i18next.language}>
