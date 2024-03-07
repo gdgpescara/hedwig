@@ -1,22 +1,18 @@
-name: Build and Deploy Firebase Functions
+name: Test Firebase Functions
 
 on:
   push:
-    branches: [ "main"]
-  workflow_dispatch:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  deploy:
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
       FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
       FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-
-    environment: demo
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,6 +38,4 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: cd functions && pnpm install --no-frozen-lockfile
       - run: cd functions && pnpm run build
-      - run: pnpm install -g firebase-tools
-      - run: firebase use ${{ vars.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
-      - run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
+      - run: cd functions && pnpm run test
