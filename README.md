@@ -62,6 +62,10 @@ There's nothing special about `src/feature-x/`, (replace "x" with any component 
 
 Any static assets, like images, can be placed in the `public/` directory.
 
+## Firebase Functions
+
+We make use of Firebase Functions in the project. To understand how they are used and how to contribute to Functions development or just how to develop your own Function, please, refer to the [Technical Documentation on Firebase Functions](https://github.com/gdgpescara/hedwig/wiki/Firebase-Functions).
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
