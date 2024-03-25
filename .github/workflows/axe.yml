@@ -53,6 +53,8 @@ jobs:
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: ${{ env.CHROMIUM_VERSION }}
+      - name: Linking Chrome
+        run: ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /opt/google/chrome/chrome
       - name: Install chromedriver
         run: |
           echo "Installing chromedriver version: $CHROMIUM_VERSION"
