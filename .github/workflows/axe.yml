@@ -43,6 +43,26 @@ jobs:
       - run: pnpm run build --if-present
       - run: pnpm run preview & npx wait-on http://localhost:4321
       - run: pnpm install -g @axe-core/cli
+      - name: Get Chromium version
+        run: |
+          CHROMIUM_VERSION=$(wget -qO- https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE | cut -d. -f1)
+          echo "Chromium version: $CHROMIUM_VERSION"
+          echo "CHROMIUM_VERSION=$CHROMIUM_VERSION" >> $GITHUB_ENV
+      - name: Setup Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: ${{ env.CHROMIUM_VERSION }}
+      - name: Linking Chrome
+        run: |
+          rm -f /opt/google/chrome/chrome
+          ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /opt/google/chrome/chrome
+      - name: Install chromedriver
+        run: |
+          echo "Installing chromedriver version: $CHROMIUM_VERSION"
+          pnpm install -g chromedriver@$CHROMIUM_VERSION
+          echo "chromedriver version: $(chromedriver --version)"
       - name: Run axe
         run: |
-          axe http://localhost:4321 --exit
+          CHROMIUM_VERSION=$(google-chrome --version | cut -d' ' -f3 | cut -d'.' -f1)
+          axe --chromedriver-path $(pnpm root -g)/chromedriver/bin/chromedriver http://localhost:4321 --exit

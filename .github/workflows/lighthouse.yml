@@ -55,6 +55,7 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 5
+          budgetPath: ./.github/workflows/lighthouse/budget.json
       - name: Format Lighthouse score
         uses: actions/github-script@v5
         id: format_lighthouse_score
