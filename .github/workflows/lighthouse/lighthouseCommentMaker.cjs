@@ -53,6 +53,7 @@ ${scoreRow('SEO', summary.seo)}
 ${scoreRow('PWA', summary.pwa)}
 
 *Lighthouse ran against [${testedUrl}](${testedUrl})*
+${summary}
 `;
 
   return comment;
