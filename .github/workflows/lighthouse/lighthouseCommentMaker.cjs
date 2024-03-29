@@ -19,9 +19,21 @@
  */
 
 /**
+ * @typedef {Object} AssertionResult
+ * @prop {string} name
+ * @prop {boolean} passed
+ * @prop {number} expected
+ * @prop {number} actual
+ * @prop {number[]} values
+ * @prop {string} auditProperty
+ * @prop {string} operator
+ */
+
+/**
  * @typedef {Object} LighthouseOutputs
  * @prop {Record<string, string>} links
  * @prop {Manifest[]} manifest
+ * @prop {AssertionResult[]} assertionResults
  */
 
 const formatScore = (/** @type { number } */ score) => Math.round(score * 100);
@@ -38,13 +50,9 @@ const scoreRow = (
  */
 function makeComment(lighthouseOutputs) {
   const { summary } = lighthouseOutputs.manifest[0];
-  const s1 = lighthouseOutputs.manifest[1].summary;
-  const s2 = lighthouseOutputs.manifest[2].summary;
-  const s3 = lighthouseOutputs.manifest[3].summary;
-  const s4 = lighthouseOutputs.manifest[4].summary;
   const [[testedUrl, reportUrl]] = Object.entries(lighthouseOutputs.links);
 
-  const comment = `## ⚡️🏠 Lighthouse report
+  let comment = `## ⚡️🏠 Lighthouse report
 
 We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
 
@@ -54,26 +62,27 @@ ${scoreRow('Performance', summary.performance)}
 ${scoreRow('Accessibility', summary.accessibility)}
 ${scoreRow('Best practices', summary['best-practices'])}
 ${scoreRow('SEO', summary.seo)}
-${scoreRow('Performance', s1.performance)}
-${scoreRow('Accessibility', s1.accessibility)}
-${scoreRow('Best practices', s1['best-practices'])}
-${scoreRow('SEO', s1.seo)}
-${scoreRow('Performance', s2.performance)}
-${scoreRow('Accessibility', s2.accessibility)}
-${scoreRow('Best practices', s2['best-practices'])}
-${scoreRow('SEO', s2.seo)}
-${scoreRow('Performance', s3.performance)}
-${scoreRow('Accessibility', s3.accessibility)}
-${scoreRow('Best practices', s3['best-practices'])}
-${scoreRow('SEO', s3.seo)}
-${scoreRow('Performance', s4.performance)}
-${scoreRow('Accessibility', s4.accessibility)}
-${scoreRow('Best practices', s4['best-practices'])}
-${scoreRow('SEO', s4.seo)}
 
 *Lighthouse ran against [${testedUrl}](${testedUrl})*
+
+
 `;
 
+
+const { assertionResults } = lighthouseOutputs;
+for (let i = 0; i<assertionResults.length; i++) {
+  const result = assertionResults[i];
+  comment = comment + `
+  ###result ${i}
+  name: ${result.name}
+  expected: ${result.expected}, actual: ${result.actual}
+  values: ${result.values}
+  passed: ${result.passed}
+  operator: ${result.operator}, property: ${result.auditProperty}
+
+  
+  `;
+}
   return comment;
 }
 
