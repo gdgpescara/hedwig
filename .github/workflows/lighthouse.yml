@@ -55,7 +55,6 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 5
-      - run: echo ${{ steps.lighthouse_audit.outputs.assertionResults }}
       - name: Format Lighthouse score
         uses: actions/github-script@v5
         id: format_lighthouse_score
@@ -65,8 +64,7 @@ jobs:
 
             const lighthouseOutputs = {
               manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
-              links: ${{ steps.lighthouse_audit.outputs.links }},
-              assertionResults: ${{ steps.lighthouse_audit.outputs.assertionResults }}
+              links: ${{ steps.lighthouse_audit.outputs.links }}
             };
 
             const prComment = lighthouseCommentMaker({ lighthouseOutputs });

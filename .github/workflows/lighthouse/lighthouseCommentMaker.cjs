@@ -19,21 +19,9 @@
  */
 
 /**
- * @typedef {Object} AssertionResult
- * @prop {string} name
- * @prop {boolean} passed
- * @prop {number} expected
- * @prop {number} actual
- * @prop {number[]} values
- * @prop {string} auditProperty
- * @prop {string} operator
- */
-
-/**
  * @typedef {Object} LighthouseOutputs
  * @prop {Record<string, string>} links
  * @prop {Manifest[]} manifest
- * @prop {AssertionResult[]} assertionResults
  */
 
 const formatScore = (/** @type { number } */ score) => Math.round(score * 100);
@@ -49,12 +37,12 @@ const scoreRow = (
  * @param {LighthouseOutputs} lighthouseOutputs
  */
 function makeComment(lighthouseOutputs) {
-  const { summary } = lighthouseOutputs.manifest[0];
+  const { summary, jsonPath } = lighthouseOutputs.manifest[0];
   const [[testedUrl, reportUrl]] = Object.entries(lighthouseOutputs.links);
 
   let comment = `## ⚡️🏠 Lighthouse report
 
-We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
+We ran Lighthouse against the changes and produced this [report](${reportUrl}). [json](${jsonPath}). Here's the summary:
 
 | Category | Score |
 | -------- | ----- |
@@ -68,21 +56,6 @@ ${scoreRow('SEO', summary.seo)}
 
 `;
 
-
-const { assertionResults } = lighthouseOutputs;
-for (let i = 0; i<assertionResults.length; i++) {
-  const result = assertionResults[i];
-  comment = comment + `
-  ###result ${i}
-  name: ${result.name}
-  expected: ${result.expected}, actual: ${result.actual}
-  values: ${result.values}
-  passed: ${result.passed}
-  operator: ${result.operator}, property: ${result.auditProperty}
-
-
-  `;
-}
   return comment;
 }
 
