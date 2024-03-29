@@ -42,7 +42,6 @@ function makeComment(lighthouseOutputs) {
 
   const comment = `## ⚡️🏠 Lighthouse report
 
-  ${lighthouseOutputs.manifest.length}
 We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
 
 | Category | Score |
@@ -54,7 +53,6 @@ ${scoreRow('SEO', summary.seo)}
 ${scoreRow('PWA', summary.pwa)}
 
 *Lighthouse ran against [${testedUrl}](${testedUrl})*
-${summary}
 `;
 
   return comment;
