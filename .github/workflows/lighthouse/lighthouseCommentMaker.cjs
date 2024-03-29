@@ -42,6 +42,7 @@ function makeComment(lighthouseOutputs) {
 
   const comment = `## ⚡️🏠 Lighthouse report
 
+  ${lighthouseOutputs.manifest.length}
 We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
 
 | Category | Score |
