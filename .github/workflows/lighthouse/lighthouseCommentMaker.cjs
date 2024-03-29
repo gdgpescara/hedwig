@@ -37,19 +37,35 @@ const scoreRow = (
  * @param {LighthouseOutputs} lighthouseOutputs
  */
 function makeComment(lighthouseOutputs) {
-  const { summary, jsonPath } = lighthouseOutputs.manifest[0];
+  const manifest = lighthouseOutputs.manifest;
   const [[testedUrl, reportUrl]] = Object.entries(lighthouseOutputs.links);
+
+  const runs = manifest.length;
+  let metrics = {
+    "performance" : new Array(),
+    "accessibility" : new Array(),
+    "bestpractices" : new Array(),
+    "seo" : new Array()
+  };
+
+  manifest.map(m => m.summary)
+    .forEach(summary => {
+        metrics["performance"].push(summary.performance);
+        metrics["accessibility"].push(summary.accessibility);
+        metrics["bestpractices"].push(summary["best-practices"]);
+        metrics["seo"].push(summary.seo);
+    });
 
   let comment = `## ⚡️🏠 Lighthouse report
 
-We ran Lighthouse against the changes and produced this [report](${reportUrl}). [json](${jsonPath}). Here's the summary:
+We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
 
 | Category | Score |
 | -------- | ----- |
-${scoreRow('Performance', summary.performance)}
-${scoreRow('Accessibility', summary.accessibility)}
-${scoreRow('Best practices', summary['best-practices'])}
-${scoreRow('SEO', summary.seo)}
+${scoreRow('Performance', metrics.performance.reduce((acc, p) => acc + p, 0) / metrics.performance.length)}
+${scoreRow('Accessibility', Math.max(...metrics.accessibility))}
+${scoreRow('Best practices', Math.max(...metrics.bestpractices))}
+${scoreRow('SEO', Math.max(...metrics.seo))}
 
 *Lighthouse ran against [${testedUrl}](${testedUrl})*
 
