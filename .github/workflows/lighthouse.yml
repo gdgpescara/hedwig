@@ -45,7 +45,6 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run build
       - run: pnpm run preview & npx wait-on http://localhost:4321
-      - run: cat /home/runner/work/hedwig/hedwig/.github/workflows/lighthouse/lighthouserc.json
       - name: Run Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v11
@@ -56,7 +55,6 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 5
-          budgetPath: ./.github/workflows/lighthouse/budget.json
       - run: echo ${{ steps.lighthouse_audit.outputs.assertionResults }}
       - name: Format Lighthouse score
         uses: actions/github-script@v5
