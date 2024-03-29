@@ -80,7 +80,7 @@ for (let i = 0; i<assertionResults.length; i++) {
   passed: ${result.passed}
   operator: ${result.operator}, property: ${result.auditProperty}
 
-  
+
   `;
 }
   return comment;

@@ -65,7 +65,8 @@ jobs:
 
             const lighthouseOutputs = {
               manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
-              links: ${{ steps.lighthouse_audit.outputs.links }}
+              links: ${{ steps.lighthouse_audit.outputs.links }},
+              assertionResults: ${{ steps.lighthouse_audit.outputs.assertionResults }}
             };
 
             const prComment = lighthouseCommentMaker({ lighthouseOutputs });
