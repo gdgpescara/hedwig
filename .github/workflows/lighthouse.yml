@@ -45,6 +45,7 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run build
       - run: pnpm run preview & npx wait-on http://localhost:4321
+      - run: cat /home/runner/work/hedwig/hedwig/.github/workflows/lighthouse/lighthouserc.json
       - name: Run Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v11
