@@ -51,7 +51,6 @@ const scoreRow = (
 function makeComment(lighthouseOutputs) {
   const manifest = lighthouseOutputs.manifest;
   const [[testedUrl, reportUrl]] = Object.entries(lighthouseOutputs.links);
-  console.log(lighthouseOutputs.assertionResults);
 
   const runs = manifest.length;
   let metrics = {
