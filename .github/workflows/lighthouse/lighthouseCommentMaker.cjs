@@ -19,9 +19,21 @@
  */
 
 /**
+ * @typedef {Object} AssertionResult
+ * @prop {string} name
+ * @prop {boolean} passed
+ * @prop {number} expected
+ * @prop {number} actual
+ * @prop {number[]} values
+ * @prop {string} auditProperty
+ * @prop {string} operator
+ */
+
+/**
  * @typedef {Object} LighthouseOutputs
  * @prop {Record<string, string>} links
  * @prop {Manifest[]} manifest
+ * @prop {AssertionResult[]} assertionResults
  */
 
 const formatScore = (/** @type { number } */ score) => Math.round(score * 100);
@@ -39,6 +51,7 @@ const scoreRow = (
 function makeComment(lighthouseOutputs) {
   const manifest = lighthouseOutputs.manifest;
   const [[testedUrl, reportUrl]] = Object.entries(lighthouseOutputs.links);
+  console.log(lighthouseOutputs.assertionResults);
 
   const runs = manifest.length;
   let metrics = {
