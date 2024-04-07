@@ -1,0 +1,76 @@
+---
+
+
+---
+<script>
+  import { inMemoryPersistence } from "firebase/auth";
+  import firebase from "firebase/compat/app";
+  import * as firebaseui from "firebaseui";
+  import "firebaseui/dist/firebaseui.css";
+  import { auth } from "../firebase/client";
+
+  const uiConfig = {
+    signInOptions: [
+      // Leave the lines as is for the providers you want to offer your users.
+      // google, apple, email
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      // in order to make the switch from signin to signup for email 
+      // remember to disable the the email enumeration protection
+      // https://github.com/firebase/firebaseui-web/issues/1040
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      'apple.com'
+    ],
+    // tosUrl and privacyPolicyUrl accept either url string or a callback
+    // function.
+    // Terms of service url/callback.
+    tosUrl: "<your-tos-url>",
+    // Privacy policy url/callback.
+    privacyPolicyUrl: function () {
+      window.location.assign("<your-privacy-policy-url>");
+    },
+    callbacks: {
+      signInSuccessWithAuthResult: function(authResult: any, redirectUrl?: string) {
+        return false;
+      },
+      signInFailure: function(error: firebaseui.auth.AuthUIError) {
+        // Some unrecoverable error occurred during sign-in.
+        // Return a promise when error handling is completed and FirebaseUI
+        // will reset, clearing any UI. This commonly occurs for error code
+        // 'firebaseui/anonymous-upgrade-merge-conflict' when merge conflict
+        // occurs. Check below for more details on this.
+        return console.error(error);
+      },
+    }
+  };
+
+  // Initialize the FirebaseUI Widget using Firebase.
+  const ui = new firebaseui.auth.AuthUI(auth);
+
+  // This will prevent the browser from storing session data
+  auth.setPersistence(inMemoryPersistence);
+
+  // The start method will wait until the DOM is loaded.
+  ui.start("#firebaseui-auth-container", uiConfig);
+
+  auth.onAuthStateChanged(async function(user) {
+    if (user) {
+      // User is signed in.
+      const accessToken = await user.getIdToken();
+
+      const response = await fetch("/api/auth/signin", {
+      method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (response.redirected) {
+        window.location.assign(response.url);
+      }
+      
+    }
+  }, function(error) {
+    console.log(error);
+  });
+</script>
+<div id="firebaseui-auth-container"></div>
