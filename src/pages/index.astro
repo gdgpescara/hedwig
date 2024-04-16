@@ -2,6 +2,7 @@
 import i18next, { changeLanguage } from "i18next";
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
+import Layout from "~/layouts/Layout.astro";
 
 changeLanguage("en");
 
@@ -15,7 +16,9 @@ console.log(auth);
   </head>
   <body>
     <main role="main">
-      <h1>Welcome to Hedwig!</h1>
+      <Layout>
+        <p>My page content, wrapped in a layout!</p>
+      </Layout>
     </main>
   </body>
 </html>

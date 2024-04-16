@@ -1,0 +1,20 @@
+---
+import Sidebar from "~/feature-sidebar/Sidebar";
+
+
+
+//const { content } = Astro.props;
+---
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="flex flex-row">
+      <Sidebar client:load>
+        <slot/>
+      </Sidebar>
+    </div>
+  </body>
+</html>
