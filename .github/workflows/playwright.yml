@@ -4,8 +4,6 @@ on:
     branches: [main]
   pull_request_target:
     branches: [main]
-  pull_request_target:
-    branches: [main]
 
 permissions:
   pull-requests: write
@@ -13,7 +11,7 @@ permissions:
 jobs:
   authorize:
     environment:
-      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'demo' }}
+      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
     runs-on: ubuntu-latest
     steps:
       - run: true
