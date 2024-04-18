@@ -8,11 +8,13 @@ on:
     branches: [main]
   pull_request_target:
     branches: [main]
+  pull_request_target:
+    branches: [main]
 
 jobs:
   authorize:
     environment:
-      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
+      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'demo' }}
     runs-on: ubuntu-latest
     steps:
       - run: true
