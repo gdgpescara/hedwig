@@ -1,4 +1,3 @@
-const admin = require("firebase-admin");
 const { loader } = require("./utilities/loader");
 const {
   checkIfSeedWasExecuted,
@@ -6,15 +5,9 @@ const {
 } = require("./utilities/real-time-db");
 const { seeds } = require("./seeds/seeds");
 const { exit } = require("process");
+const { initializeApp } = require("./config");
 
-require("dotenv").config({ path: "../.env" });
-
-admin.initializeApp({
-  credential: admin.credential.cert(
-    JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "{}"),
-  ),
-  databaseURL: process.env.FIREBASE_DATABASE_URL || "",
-});
+initializeApp();
 
 const checkAndExecuteSeed = async (seed) => {
   loader.start(`Checking if ${seed.description} was executed...`);
