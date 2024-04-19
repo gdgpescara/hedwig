@@ -1,0 +1,6 @@
+{
+  "type": "commonjs",
+  "dependencies": {
+    "loading-cli": "^1.1.2"
+  }
+}

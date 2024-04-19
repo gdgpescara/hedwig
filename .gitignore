@@ -32,3 +32,6 @@ package-lock.json*
 
 #firebase
 .firebaserc
+*.log
+
+.history/
