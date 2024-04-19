@@ -6,13 +6,13 @@
     "build:watch": "tsc --watch",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
-    "test": "mocha",
+    "test": "npm run build && firebase emulators:exec mocha",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
   "mocha": {
-    "spec": "lib/test"
+    "spec": "lib/test/**/*.test.js"
   },
   "engines": {
     "node": "18"
@@ -25,25 +25,25 @@
     "camelcase": "^8.0.0",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
-    "firebase-admin": "^11.8.0",
-    "firebase-functions": "^4.8.2",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^4.9.0",
     "fluent-json-schema": "^4.2.1",
-    "glob": "^10.3.10"
+    "glob": "^10.3.12"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.12",
+    "@types/chai": "^4.3.14",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.25",
-    "@typescript-eslint/eslint-plugin": "^5.12.0",
-    "@typescript-eslint/parser": "^5.12.0",
-    "chai": "^5.1.0",
-    "eslint": "^8.9.0",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "chai": "^4.2.0",
+    "eslint": "^8.57.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-import": "^2.25.4",
-    "firebase-functions-test": "^3.1.1",
-    "mocha": "^10.3.0",
+    "eslint-plugin-import": "^2.29.1",
+    "firebase-functions-test": "^3.2.0",
+    "mocha": "^10.4.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.5"
   },
   "private": true
 }
