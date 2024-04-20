@@ -18,10 +18,8 @@ const checkAndExecuteSeed = async (seed) => {
     loader.start("Updating seed status...");
     await markSeedAsExecuted(seed.key);
     loader.stop();
-    await checkAndExecuteSeed(seed);
-  } else {
-    console.log(`\x1b[0m✅ ${seed.description} was executed!\x1b[0m`);
   }
+  console.log(`\x1b[0m✅ ${seed.description} was executed!\x1b[0m`);
 };
 
 const startSeeding = async () => {

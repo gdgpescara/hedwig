@@ -1,5 +1,8 @@
 {
   "type": "commonjs",
+  "scripts": {
+    "seed": "node run-seeding.js"
+  },
   "dependencies": {
     "loading-cli": "^1.1.2"
   }

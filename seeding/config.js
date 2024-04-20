@@ -4,7 +4,7 @@ require("dotenv").config({ path: "../.env" });
 const initializeApp = () =>
   admin.initializeApp({
     credential: admin.credential.cert(
-      JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "{}"),
+      JSON.parse(process.env.PUBLIC_FIREBASE_SERVICE_ACCOUNT || "{}"),
     ),
     databaseURL: process.env.FIREBASE_DATABASE_URL || "",
   });
