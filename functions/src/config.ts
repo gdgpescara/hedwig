@@ -3,7 +3,9 @@ import * as dotenv from "dotenv";
 
 // load environment variables
 dotenv.config({ path: "../.env" });
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "{}");
+const serviceAccount = JSON.parse(
+  process.env.PUBLIC_FIREBASE_SERVICE_ACCOUNT || "{}",
+);
 
 // initialize firebase app
 export const initialize = () =>
