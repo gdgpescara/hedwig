@@ -1,12 +1,6 @@
-const { uploadSecrets } = require("./github-secrets");
+const { setupGitHubSecrets } = require("./setup-github-secrets");
 
-const seeds = [
-  {
-    key: "setGithubSecrets",
-    description: "\x1b[1mSet Github secrets\x1b[0m",
-    execute: uploadSecrets,
-  },
-];
+const seeds = [setupGitHubSecrets];
 
 module.exports = {
   seeds,
