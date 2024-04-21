@@ -35,7 +35,6 @@ if (sessionCookie) {
       <p>We are happy to see you here</p>
       {user && (
         <h2>User logged: {user.displayName}</h2>
-        <div id="firebaseui-auth-container" class="hidden"></div>
         <form action="/api/auth/signout">
           <button type="submit">Sign out</button>
         </form>
