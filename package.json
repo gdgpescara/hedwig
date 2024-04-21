@@ -25,6 +25,7 @@
     "astro-i18next": "1.0.0-beta.21",
     "clsx": "^2.1.0",
     "daisyui": "^4.7.2",
+    "dotenv": "^16.4.5",
     "firebase": "^10.8.0",
     "firebase-admin": "^12.0.0",
     "firebaseui": "^6.1.0",
