@@ -21,10 +21,13 @@
     },
     callbacks: {
       signInSuccessWithAuthResult: function(authResult: any, redirectUrl?: string) {
+        document.getElementById("firebaseui-error-container")?.querySelectorAll("*").forEach(n => n.remove());
         return false;
       },
       signInFailure: function(error: firebaseui.auth.AuthUIError) {
-        return console.error(error);
+        const errorSpan = document.createElement('span');
+        errorSpan.textContent = `Error while signin in.\nCode: ${error.code}\nMessage: ${error.message}`;
+        document.getElementById('firebaseui-error-container')?.append(errorSpan);
       },
     }
   };
@@ -53,7 +56,9 @@
       
     }
   }, function(error) {
-    console.log(error);
+    const errorSpan = document.createElement('span');
+    errorSpan.textContent = `Error while signin in.\n ${error}`;
+    document.getElementById('firebaseui-error-container')?.append(errorSpan);
   });
 
   const divId = "firebaseui-auth-container";
@@ -62,4 +67,5 @@
   }
 
 </script>
+<div id="firebaseui-error-container"></div>
 <div id="firebaseui-auth-container"></div>
