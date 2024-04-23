@@ -2,7 +2,7 @@
 import i18next, { changeLanguage } from "i18next";
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
-import Layout from "~/layouts/Layout.astro";
+import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
 
 changeLanguage("en");
 
@@ -13,12 +13,12 @@ console.log(auth);
 <html lang={i18next.language}>
   <head>
     <title>Hedwig</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website template for Devfests, powered by GDG Pescara">
   </head>
   <body>
     <main role="main">
-      <Layout>
-        <p>My page content, wrapped in a layout!</p>
-      </Layout>
+      <h1>Welcome to Hedwig!</h1>
     </main>
   </body>
 </html>
