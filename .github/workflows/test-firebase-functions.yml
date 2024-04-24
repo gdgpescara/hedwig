@@ -45,5 +45,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - run: cd functions && pnpm install --no-frozen-lockfile
+      - run: pnpm install -g firebase-tools
       - run: cd functions && pnpm run build
       - run: cd functions && pnpm run test
