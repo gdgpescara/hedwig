@@ -2,7 +2,7 @@ name: Test Firebase Functions
 
 on:
   push:
-    branches: [main]
+    branches: [main, HOTFIX01]
   pull_request_target:
     branches: [main]
 
