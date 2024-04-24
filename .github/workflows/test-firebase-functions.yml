@@ -43,14 +43,11 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: cd functions && pnpm install --no-frozen-lockfile
       - run: pnpm install -g firebase-tools
-      - name: Set env file
+      - name: Set environment
         shell: bash
         run: |
           echo "PUBLIC_FIREBASE_CONFIG=${{ secrets.FIREBASE_CONFIG }}" >> .env
           echo "PUBLIC_FIREBASE_SERVICE_ACCOUNT=${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" >> .env
-      - name: Set env file 2
-        shell: bash
-        run: |
           echo "LOCATION=${{ vars.GAR_LOCATION }}" >> .env.test
           cat .env.test
       - run: cd functions && pnpm run build
