@@ -46,7 +46,8 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v2.0
         with:
-          PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-          PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          file_name: .env
       - run: cd functions && pnpm run build
       - run: cd functions && pnpm run test
