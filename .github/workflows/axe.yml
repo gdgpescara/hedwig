@@ -54,21 +54,25 @@ jobs:
       - name: Get Chromium version
         run: |
           CHROMIUM_VERSION=$(wget -qO- https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE | cut -d. -f1)
+          CHROMEDRIVER_VERSION=$(pnpm view chromedriver version| cut -d. -f1)
           echo "Chromium version: $CHROMIUM_VERSION"
-          echo "CHROMIUM_VERSION=$CHROMIUM_VERSION" >> $GITHUB_ENV
+          echo "Chromedriver version: $CHROMEDRIVER_VERSION"
+          CHROME_VERSION=$(echo -e "$CHROMIUM_VERSION\n$CHROMEDRIVER_VERSION"| sort -n | head -n 1)
+          echo "Chrome version that will be used: $CHROME_VERSION"
+          echo "CHROME_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
       - name: Setup Chrome
         id: setup-chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: ${{ env.CHROMIUM_VERSION }}
+          chrome-version: ${{ env.CHROME_VERSION }}
       - name: Linking Chrome
         run: |
           rm -f /opt/google/chrome/chrome
           ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /opt/google/chrome/chrome
       - name: Install chromedriver
         run: |
-          echo "Installing chromedriver version: $CHROMIUM_VERSION"
-          pnpm install -g chromedriver@$CHROMIUM_VERSION
+          echo "Installing chromedriver version: $CHROME_VERSION"
+          pnpm install -g chromedriver@$CHROME_VERSION
           echo "chromedriver version: $(chromedriver --version)"
       - name: Run axe
         run: |
