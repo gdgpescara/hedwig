@@ -2,7 +2,7 @@ name: Axe
 
 on:
   push:
-    branches: [main]
+    branches: [INFRA24]
   pull_request_target:
     branches: [main]
 
