@@ -1,4 +1,6 @@
-export const httpApiBaseUrl = `http://localhost:5001/${process.env.FIREBASE_PROJECT_ID}/${process.env.FIREBASE_FUNCTIONS_REGION}/http_api`;
+import { functionsRegion, projectId } from "../../../src/config";
+
+export const httpApiBaseUrl = `http://localhost:5001/${projectId}/${functionsRegion}/http_api`;
 
 export const login = async (
   email: string,
