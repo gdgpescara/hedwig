@@ -1,5 +1,15 @@
-import { ServiceAccount, cert, initializeApp } from "firebase-admin/app";
+import {
+  cert,
+  getApps,
+  initializeApp,
+  ServiceAccount,
+} from "firebase-admin/app";
 import * as dotenv from "dotenv";
+import { FastifyInstance, RawServerDefault } from "fastify";
+import { Request } from "firebase-functions/lib/v2/providers/https";
+import { RawReplyDefaultExpression } from "fastify/types/utils";
+import { FastifyBaseLogger } from "fastify/types/logger";
+import { FastifyTypeProviderDefault } from "fastify/types/type-provider";
 
 // load environment variables
 dotenv.config({ path: "../.env" });
@@ -8,9 +18,21 @@ const serviceAccount = JSON.parse(
 );
 
 // initialize firebase app
-export const initialize = () =>
-  initializeApp({
-    credential: cert(serviceAccount as ServiceAccount),
-  });
+export const initializeFirebaseApp = () => {
+  if (getApps().length === 0) {
+    initializeApp({
+      credential: cert(serviceAccount as ServiceAccount),
+      databaseURL: process.env.FIREBASE_DATABASE_URL,
+    });
+  }
+};
 
 export const functionsRegion = process.env.FIREBASE_FUNCTIONS_REGION || "";
+
+export type FunctionFastifyInstance = FastifyInstance<
+  RawServerDefault,
+  Request,
+  RawReplyDefaultExpression,
+  FastifyBaseLogger,
+  FastifyTypeProviderDefault
+>;

@@ -1,41 +1,34 @@
-import fastify, { type FastifyServerFactoryHandler } from 'fastify';
-import Sensible from '@fastify/sensible';
-import Cors from '@fastify/cors';
+import fastify, { FastifyServerFactoryHandler } from "fastify";
+import Sensible from "@fastify/sensible";
+import Cors from "@fastify/cors";
 import { onRequest } from "firebase-functions/v2/https";
-import * as http from 'http';
+import userRoutes from "./user";
+import { createServer } from "http";
+import { FunctionFastifyInstance, functionsRegion } from "../../config";
 
 let requestHandler: FastifyServerFactoryHandler;
 
 const serverFactory = (handler: FastifyServerFactoryHandler) => {
-    requestHandler = handler;
+  requestHandler = handler;
+  return createServer();
+};
 
-    return http.createServer();
-}
-
-const app = fastify({ logger: true, serverFactory });
+const app: FunctionFastifyInstance = fastify({
+  logger: true,
+  serverFactory,
+});
 
 app.register(Sensible);
 app.register(Cors, { origin: false });
-app.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, done) => {
-    try {
-        var json = JSON.parse(body as string);
-        done(null, json);
-    } catch (err: any) {
-        err.statusCode = 400;
-        done(err, undefined);
-    }
+app.addContentTypeParser("application/json", (_, payload, done) => {
+  done(null, payload.body);
 });
 
-app.get('/hello', async (req, res) => {
-    return "hello";
-});
-app.get('/', async (req, res) => {
-    return "hello root";
-});
+app.register(userRoutes);
 
-export default onRequest((req, res) => {
-    app.ready((err) => {
-        if (err) throw err;
-        requestHandler(req, res);
-    });
+export default onRequest({ region: functionsRegion }, (req, res) => {
+  app.ready((err) => {
+    if (err) throw err;
+    requestHandler(req, res);
+  });
 });
