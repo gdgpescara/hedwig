@@ -43,7 +43,7 @@ jobs:
         with:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          envkey_FIREBASE_FUNCTIONS_REGION: ${{ vars.LOCATION }}
+          envkey_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
           file_name: .env
       - run: cd functions && pnpm run build
       - run: pnpm install -g firebase-tools
