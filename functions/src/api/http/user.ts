@@ -10,7 +10,7 @@ const userRoutes = async (fastify: FastifyInstance) => {
       uid: string;
     };
     type Body = {
-      role?: string;
+      [key: string]: boolean;
     };
 
     const params = request.params as Params;
@@ -29,14 +29,14 @@ const userRoutes = async (fastify: FastifyInstance) => {
       return reply.unauthorized();
     }
 
-    if (body.role === "organizer") {
+    if (body["organizer"]) {
       await addUserRole(params.uid, "organizer");
       return reply.send({
         message: `User with uid ${params.uid} is now an organizer`,
       });
     }
 
-    if (body.role !== "organizer") {
+    if (!body["organizer"]) {
       await removeUserRole(params.uid, "organizer");
       return reply.send({
         message: `User with uid ${params.uid} is no longer an organizer`,

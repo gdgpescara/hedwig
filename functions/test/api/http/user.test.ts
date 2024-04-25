@@ -102,7 +102,7 @@ describe("user APIs", () => {
         Authorization: `Bearer ${organizer.idToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ role: "organizer" }),
+      body: JSON.stringify({ organizer: true }),
     });
 
     expect(response.status).to.be.equal(200);
@@ -111,7 +111,27 @@ describe("user APIs", () => {
     expect(userRecord.customClaims).to.deep.equal({ organizer: true });
   });
 
-  test("WHEN call /user/:uid API with organizer token and user uid of user with organizer role EXPECT 200 status code and user with organizer role removed", async () => {
+    test("WHEN call /user/:uid API with organizer token and user uid of user with organizer role and request body with organizer: false EXPECT 200 status code and user with organizer role removed", async () => {
+    await getAuth().setCustomUserClaims(userToPromoteUid, {
+      organizer: true,
+    });
+
+    const response = await fetch(`${httpApiBaseUrl}/user/${userToPromoteUid}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${organizer.idToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({organizer: false}),
+    });
+
+    expect(response.status).to.be.equal(200);
+
+    const userRecord = await getAuth().getUser(userToPromoteUid);
+    expect(userRecord.customClaims).to.deep.equal({});
+  });
+
+  test("WHEN call /user/:uid API with organizer token and user uid of user with organizer role and request body empty EXPECT 200 status code and user with organizer role removed", async () => {
     await getAuth().setCustomUserClaims(userToPromoteUid, {
       organizer: true,
     });
