@@ -13,4 +13,4 @@ export const initialize = () =>
     credential: cert(serviceAccount as ServiceAccount),
   });
 
-export const functionsRegion = process.env.FIREBASE_FUNCTIONS_REGION || "";
+export const functionsRegion = process.env.PUBLIC_FIREBASE_FUNCTIONS_REGION || "";

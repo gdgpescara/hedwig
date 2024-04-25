@@ -48,6 +48,8 @@ jobs:
         with:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
           file_name: .env
+          directory: functions
       - run: cd functions && pnpm run build
       - run: cd functions && pnpm run test

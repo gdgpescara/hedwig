@@ -51,9 +51,9 @@ jobs:
         with:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          envkey_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
           file_name: .env
-          directory: functions/lib
+          directory: functions
       - run: pnpm install -g firebase-tools
       - run: firebase use ${{ vars.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
       - run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
