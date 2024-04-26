@@ -29,7 +29,7 @@ export const initializeFirebaseApp = () => {
 
 export const projectId = serviceAccount.project_id;
 
-export const functionsRegion = process.env.FIREBASE_FUNCTIONS_REGION || "";
+export const functionsRegion = process.env.PUBLIC_FIREBASE_FUNCTIONS_REGION || "";
 
 export type FunctionFastifyInstance = FastifyInstance<
   RawServerDefault,

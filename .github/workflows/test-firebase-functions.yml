@@ -43,11 +43,20 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: cd functions && pnpm install --no-frozen-lockfile
       - run: pnpm install -g firebase-tools
+      - name: Make envfile for functions
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
+          file_name: .env
+          directory: functions
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v2.0
         with:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
           file_name: .env
       - run: cd functions && pnpm run build
       - run: cd functions && pnpm run test
