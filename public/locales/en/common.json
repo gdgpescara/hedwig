@@ -25,7 +25,8 @@
     "subtitle": "New here? <a href=\"/register\">Create an account</a>",
     "email": "Email",
     "password": "Password",
-    "login-button": "Login"
+    "login-button": "Login",
+    "external-login": "Sign in with {{providerName}}"
   },
   "register": {
     "title": "Register",

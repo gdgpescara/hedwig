@@ -1,9 +1,10 @@
 ---
+import { t } from "i18next";
 
 ---
 <div id="external-provider-error"></div>
-<button id="google">Sign in with Google</button>
-<button id="apple">Sign in with Apple</button>
+<button id="google">{t("common:login:external-login", {providerName: 'Google'})}</button>
+<button id="apple">{t("common:login:external-login", {providerName: 'Apple'})}</button>
 
 <script>
   import {
