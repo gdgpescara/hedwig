@@ -2,7 +2,6 @@
 import i18next, { changeLanguage } from "i18next";
 
 import { UserRecord, getAuth } from "firebase-admin/auth";
-import LoginComponent from "~/components/LoginComponent.astro";
 import { app } from "../firebase/server";
 
 changeLanguage("en");
@@ -38,9 +37,6 @@ if (sessionCookie) {
         <form action="/api/auth/signout">
           <button type="submit">Sign out</button>
         </form>
-      )}
-      {!user && (
-        <LoginComponent />
       )}
     </main>
   </body>

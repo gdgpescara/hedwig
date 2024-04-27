@@ -1,0 +1,59 @@
+---
+import ExternalProvider from "./ExternalProvider.astro";
+import { t } from "i18next";
+
+---
+
+<h1>{t("common:register:title")}</h1>
+<p>
+  <Fragment set:html={t("common:register:subtitle")} />
+</p>
+<div id="register-error-container"></div>
+<form id="register-form">
+  <label for="email" for="email">{t("common:register:email")}</label>
+  <input type="email" required name="email" id="email" />
+  <label for="password">{t("common:register:password")}</label>
+  <input type="password" required name="password" id="password" />
+  <button type="submit">{t("common:register:register-button")}</button>
+</form>
+<ExternalProvider />
+<small>
+  <Fragment set:html={t("common:register:disclaimer")} />
+</small>
+
+<script>
+  const registerForm = document.getElementById("register-form") as HTMLFormElement;
+  if(registerForm) {
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(registerForm);
+      const email = formData.get("email")?.toString();
+      const password = formData.get("password")?.toString();
+      if (!email || !password) {
+        return;
+      }
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+      if (!response.ok) {
+        const error = await response.text();
+        const errorSpan = document.createElement("span");
+        errorSpan.textContent = `Error while registering: ${error}`;
+        document.getElementById("register-error-container")?.append(errorSpan);
+      } else {
+        document
+          .getElementById("register-error-container")
+          ?.querySelectorAll("*")
+          .forEach((n) => n.remove());
+      }
+
+      if (response?.redirected) {
+        window.location.assign(response.url);
+      }
+    });
+  }
+</script>

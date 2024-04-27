@@ -1,71 +1,79 @@
 ---
-
+import ExternalProvider from "./ExternalProvider.astro";
+import { t } from "i18next";
 
 ---
+
+<h1>{t("common:login:title")}</h1>
+<p>
+  <Fragment set:html={t("common:login:subtitle")} />
+</p>
+<div id="login-error-container"></div>
+<form id="login-form">
+  <label for="email" for="email">{t("common:login:email")}</label>
+  <input type="email" required name="email" id="email" />
+  <label for="password">{t("common:login:password")}</label>
+  <input type="password" required name="password" id="password" />
+  <button type="submit">{t("common:login:login-button")}</button>
+</form>
+<ExternalProvider />
+
 <script>
-  import { inMemoryPersistence } from "firebase/auth";
-  import firebase from "firebase/compat/app";
-  import * as firebaseui from "firebaseui";
-  import "firebaseui/dist/firebaseui.css";
-  import { auth } from "../firebase/client";
+  import {
+    getAuth,
+    inMemoryPersistence,
+    signInWithEmailAndPassword
+  } from "firebase/auth";
+  import { app } from "../firebase/client";
 
-  const uiConfig = {
-    signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      'apple.com'
-    ],
-    tosUrl: "terms-of-service",
-    privacyPolicyUrl: function () {
-      window.location.assign("privacy-policy");
-    },
-    callbacks: {
-      signInSuccessWithAuthResult: function(authResult: any, redirectUrl?: string) {
-        document.getElementById("firebaseui-error-container")?.querySelectorAll("*").forEach(n => n.remove());
-        return false;
-      },
-      signInFailure: function(error: firebaseui.auth.AuthUIError) {
-        const errorSpan = document.createElement('span');
-        errorSpan.textContent = `Error while signin in.\nCode: ${error.code}\nMessage: ${error.message}`;
-        document.getElementById('firebaseui-error-container')?.append(errorSpan);
-      },
-    }
-  };
-
-  // Initialize the FirebaseUI Widget using Firebase.
-  const ui = new firebaseui.auth.AuthUI(auth);
-
+  const auth = getAuth(app);
   // This will prevent the browser from storing session data
   auth.setPersistence(inMemoryPersistence);
 
-  auth.onAuthStateChanged(async function(user) {
-    if (user) {
-      // User is signed in.
-      const accessToken = await user.getIdToken();
-
-      const response = await fetch("/api/auth/signin", {
-      method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-
-      if (response.redirected) {
-        window.location.assign(response.url);
+  const loginForm = document.getElementById("login-form") as HTMLFormElement;
+  if(loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(loginForm);
+      const email = formData.get("email")?.toString();
+      const password = formData.get("password")?.toString();
+  
+      if (!email || !password) {
+        return;
       }
-      
-    }
-  }, function(error) {
-    const errorSpan = document.createElement('span');
-    errorSpan.textContent = `Error while signin in.\n ${error}`;
-    document.getElementById('firebaseui-error-container')?.append(errorSpan);
-  });
-
-  const divId = "firebaseui-auth-container";
-  if (document.getElementById(divId)) {
-    ui.start(`#${divId}`, uiConfig);
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const idToken = await userCredential.user.getIdToken();
+        const response = await fetch("/api/auth/signin", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+          },
+        });
+        if (!response.ok) {
+          const error = await response.text();
+          const errorSpan = document.createElement("span");
+          errorSpan.textContent = `Error while registering: ${error}`;
+          document.getElementById("login-error-container")?.append(errorSpan);
+        } else {
+          document
+            .getElementById("login-error-container")
+            ?.querySelectorAll("*")
+            .forEach((n) => n.remove());
+        }
+    
+        if (response.redirected) {
+          window.location.assign(response.url);
+        }
+      } catch(error) {
+        const errorSpan = document.createElement("span");
+        errorSpan.textContent = `Error while registering: ${error}`;
+        document.getElementById("login-error-container")?.append(errorSpan);
+      }
+    });
   }
-
 </script>
-<div id="firebaseui-error-container"></div>
-<div id="firebaseui-auth-container"></div>

@@ -21,5 +21,20 @@
   "see-profile": "Vedi il profilo di {{name}}",
   "see-social": "Vedi il profilo {{social}} di {{name}}",
   "slides-link": "Link delle slide",
-  "slides": "Link"
+  "slides": "Link",
+  "login": {
+    "title": "Accedi",
+    "subtitle": "Nuovo account? <a href=\"/register\">Registrati</a>",
+    "email": "Email",
+    "password": "Password",
+    "login-button": "Accedi"
+  },
+  "register": {
+    "title": "Registrati",
+    "subtitle": "Hai già un account? <a href=\"/signin\">Accedi</a>",
+    "email": "Email",
+    "password": "Password",
+    "register-button": "Registrati",
+    "disclaimer": "Continuando, accetti i nostri <a href=\"/terms-of-service\">Termini del servizio</a> e la <a href=\"/privacy-policy\">Privacy Policy</a>."
+  }
 }

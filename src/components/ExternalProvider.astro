@@ -1,0 +1,77 @@
+---
+
+---
+<div id="external-provider-error"></div>
+<button id="google">Sign in with Google</button>
+<button id="apple">Sign in with Apple</button>
+
+<script>
+  import {
+    GoogleAuthProvider,
+    OAuthProvider,
+    getAuth,
+    signInWithPopup,
+  } from "firebase/auth";
+  import { app } from "../firebase/client";
+
+  const auth = getAuth(app);
+
+  const googleSignin = document.querySelector("#google") as HTMLButtonElement;
+  if (googleSignin) {
+    googleSignin.addEventListener("click", async () => {
+      const provider = new GoogleAuthProvider();
+      try {
+        const userCredential = await signInWithPopup(auth, provider);
+        const idToken = await userCredential.user.getIdToken();
+        await tryExternalLogin(idToken);
+      } catch (error: any) {
+        handleError(error);
+      }
+    });
+  }
+
+  const appleSignin = document.querySelector("#apple") as HTMLButtonElement;
+  if (appleSignin) {
+    appleSignin.addEventListener("click", async () => {
+      const provider = new OAuthProvider("apple.com");
+      try {
+        const userCredential = await signInWithPopup(auth, provider);
+        const idToken = await userCredential.user.getIdToken();
+        await tryExternalLogin(idToken);
+      } catch (error: any) {
+        handleError(error);
+      }
+    });
+  }
+
+  async function tryExternalLogin(idToken: string) {
+    const response = await fetch("/api/auth/signin", {
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+      },
+    });
+    if (!response.ok) {
+      const error = await response.text();
+      handleError(error);
+    } else {
+      handleError();
+    }
+
+    if (response.redirected) {
+      window.location.assign(response.url);
+    }
+  }
+
+  function handleError(error: string = "") {
+    if (error) {
+      const errorSpan = document.createElement("span");
+      errorSpan.textContent = `Error while registering: ${error}`;
+      document.getElementById("external-provider-error")?.append(errorSpan);
+    } else {
+      document
+        .getElementById("external-provider-error")
+        ?.querySelectorAll("*")
+        .forEach((n) => n.remove());
+    }
+  }
+</script>
