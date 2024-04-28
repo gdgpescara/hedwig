@@ -24,7 +24,18 @@ jobs:
       PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
       PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
     steps:
+      - uses: actions/github-script@v7
+        id: pr
+        with:
+          script: |
+            const { data: pullRequest } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            return pullRequest
       - uses: actions/checkout@v4
+        with:
+          ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
       - uses: pnpm/action-setup@v2
         with:
           version: 8.14.3
