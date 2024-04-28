@@ -1,21 +1,23 @@
 import { getAuth } from "firebase-admin/auth";
+import { CustomClaims, Roles } from "../models/user.types";
 
-export const addUserRole = async (uid: string, role: string) => {
-  const user = await getAuth().getUser(uid);
-  if (user.customClaims && user.customClaims[role]) {
-    return;
+const userExists = async (uid: string) => {
+  try {
+    await getAuth().getUser(uid);
+    return true;
+  } catch (error) {
+    return false;
   }
-  await getAuth().setCustomUserClaims(uid, {
-    [role]: true,
-  });
 };
 
-export const removeUserRole = async (uid: string, role: string) => {
-  const user = await getAuth().getUser(uid);
-  if (!user.customClaims || !user.customClaims[role]) {
-    return;
+const updateUserRoles = async (uid: string, roles: CustomClaims) => {
+  const rolesKeys = Object.keys(roles) as Roles[];
+  for (const role of rolesKeys) {
+    if (!roles[role]) {
+      delete roles[role];
+    }
   }
-  const newCustomClaims = { ...user.customClaims };
-  delete newCustomClaims[role];
-  await getAuth().setCustomUserClaims(uid, newCustomClaims);
+  await getAuth().setCustomUserClaims(uid, roles);
 };
+
+export { userExists, updateUserRoles };
