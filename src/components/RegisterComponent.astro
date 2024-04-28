@@ -5,9 +5,7 @@ import { t } from "i18next";
 ---
 
 <h1>{t("common:register:title")}</h1>
-<p>
-  <Fragment set:html={t("common:register:subtitle")} />
-</p>
+<p set:html={t("common:register:subtitle")}></p>
 <div id="register-error-container"></div>
 <form id="register-form">
   <label for="email" for="email">{t("common:register:email")}</label>

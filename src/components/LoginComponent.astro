@@ -5,9 +5,7 @@ import { t } from "i18next";
 ---
 
 <h1>{t("common:login:title")}</h1>
-<p>
-  <Fragment set:html={t("common:login:subtitle")} />
-</p>
+<p set:html={t("common:login:subtitle")}></p>
 <div id="login-error-container"></div>
 <form id="login-form">
   <label for="email" for="email">{t("common:login:email")}</label>
