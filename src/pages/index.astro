@@ -2,6 +2,8 @@
 import i18next, { changeLanguage } from "i18next";
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
+import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
+
 
 changeLanguage("en");
 
@@ -9,15 +11,16 @@ const auth = getAuth(app);
 console.log(auth);
 ---
 
-<html lang={i18next.language}>
+<html lang={i18next.language} class="bg-[#4c0519]">
   <head>
     <title>Hedwig</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A website template for Devfests, powered by GDG Pescara">
   </head>
-  <body>
-    <main role="main">
-      <h1>Welcome to Hedwig!</h1>
-    </main>
+  <body class="bg-[#eab308]">
+    <BackofficeLayout >
+      <p>djdsaajkldsh</p>
+    </BackofficeLayout>
+   
   </body>
 </html>

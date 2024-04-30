@@ -1,16 +1,10 @@
 ---
 import Sidebar from "~/backoffice-sidebar/Sidebar.astro";
 ---
-<html lang="it">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
+
     <div class="flex flex-row">
-      <Sidebar client:load>
+      <Sidebar>
         <slot/>
       </Sidebar>
     </div>
-  </body>
-</html>
+  

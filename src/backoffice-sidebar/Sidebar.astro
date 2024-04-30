@@ -3,36 +3,51 @@ import Header from "~/backoffice-header/Header.astro";
 import SidebarItems from "./SidebarItems.astro";
 ---
 
-<script>
-    //the function change class to open or close the drawer
-    const manageToggleDrawer=(classToAdd:string, classToRemove:string)=>{
-        document.getElementById('drawercontainer')?.classList.add(classToAdd);
-        document.getElementById('drawercontainer')?.classList.remove(classToRemove);
-    }
-    //events
-    document.getElementById('sidebar')?.addEventListener("mouseover",()=>manageToggleDrawer('lg:drawer-open', 'lg:drawer-close'));
-    document.getElementById('drawerside')?.addEventListener("mouseleave",()=>manageToggleDrawer('lg:drawer-close', 'lg:drawer-open'));
-</script>
-
-<div id="drawercontainer" class='drawer'>
-    <button id="sidebar" class="opacity-100 bg-base-200 drawer-toggle h-lvh w-16 hidden lg:block">
-        <!-- close sidebar -->
-      <div class="h-full w-12">
-        <SidebarItems content={[{icon:"A"}, {icon:"B"}, {icon:"C"}, {icon:"D"}, {icon:"E"}, {icon:"F"}]} />
+<!-- <script>
+  //the function change class to open or close the drawer
+  const manageToggleDrawer = (classToAdd: string, classToRemove: string) => {
+    document.getElementById("drawercontainer")?.classList.add(classToAdd);
+    document.getElementById("drawercontainer")?.classList.remove(classToRemove);
+  };
+  //events
+  document
+    .getElementById("sidebar")
+    ?.addEventListener("mouseover", () =>
+      manageToggleDrawer("lg:drawer-open", "lg:drawer-close"),
+    );
+  document
+    .getElementById("drawerside")
+    ?.addEventListener("mouseleave", () =>
+      manageToggleDrawer("lg:drawer-close", "lg:drawer-open"),
+    );
+</script> -->
+<div class="drawer lg:drawer-open">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <div class="flex flex-col items-center">
+      <div class="flex flex-row justify-between items-center w-full px-5 mt-2">
+        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden"
+          >Open drawer</label
+        >
+        <div class="m-0 lg:w-5/6 w-full">
+          <Header />
+        </div>
       </div>
-    </button>
-    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-  
-    <div class="drawer-content flex flex-col items-center">
-      <label for="my-drawer-2" class="btn btn-primary self-start drawer-button lg:hidden">Open</label>
-      <div class="m-0 lg:w-5/6 w-full">
-          <Header/>
-      </div>
-    </div> 
-
-    <div class="drawer-side" id="drawerside">
-        <!-- open sidebar -->
-      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label> 
-      <SidebarItems content={[{icon:"A", item:"Sidebar Item A", url:"#"}, {icon:"B", item:"Sidebar Item B", url:"#"}, {icon:"C", item:"Sidebar Item C", url:"#"}, {icon:"D", item:"Sidebar Item D", url:"#"}, {icon:"E", item:"Sidebar Item E", url:"#"}, {icon:"F", item:"Sidebar Item F", url:"#"}]} />
     </div>
+    <slot />
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <SidebarItems
+      content={[
+        { icon: "A", item: "Sidebar Item A", url: "#" },
+        { icon: "B", item: "Sidebar Item B", url: "#" },
+        { icon: "C", item: "Sidebar Item C", url: "#" },
+        { icon: "D", item: "Sidebar Item D", url: "#" },
+        { icon: "E", item: "Sidebar Item E", url: "#" },
+        { icon: "F", item: "Sidebar Item F", url: "#" },
+      ]}
+    />
+  </div>
 </div>
