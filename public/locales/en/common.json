@@ -19,5 +19,21 @@
   "drawer-side": "Side menu",
   "skip-to-content-link": "Go to main content",
   "see-profile": "See profile of {{name}}",
-  "see-social": "See {{name}}'s {{social}} profile"
+  "see-social": "See {{name}}'s {{social}} profile",
+  "login": {
+    "title": "Sign in",
+    "subtitle": "New here? <a href=\"/register\">Create an account</a>",
+    "email": "Email",
+    "password": "Password",
+    "login-button": "Login",
+    "external-login": "Sign in with {{providerName}}"
+  },
+  "register": {
+    "title": "Register",
+    "subtitle": "Already have an account? <a href=\"/signin\">Sign in</a>",
+    "email": "Email",
+    "password": "Password",
+    "register-button": "Register",
+    "disclaimer": "By continuing, you are indicating that you accept our <a href=\"/terms-of-service\">Terms of Service</a> and <a href=\"/privacy-policy\">Privacy Policy</a>."
+  }
 }

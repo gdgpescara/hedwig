@@ -1,0 +1,31 @@
+---
+import { getAuth } from "firebase-admin/auth";
+import i18next, { changeLanguage } from "i18next";
+import LoginComponent from "~/components/LoginComponent.astro";
+import { app } from "../firebase/server";
+
+changeLanguage("en");
+
+/* Check if the user is authenticated */
+const auth = getAuth(app);
+if (Astro.cookies.has("session")) {
+  const sessionCookie = Astro.cookies.get("session")!.value;
+  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  if (decodedCookie) {
+    return Astro.redirect("/");
+  }
+}
+---
+
+<html lang={i18next.language}>
+  <head>
+    <title>Hedwig - Signin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Hedwig - Privacy Policy" />
+  </head>
+  <body>
+    <main role="main">
+        <LoginComponent />
+    </main>
+  </body>
+</html>
