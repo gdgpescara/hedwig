@@ -8,6 +8,7 @@ import { functionsRegion } from "../../config";
 import { decodeIdToken, isOrganizer } from "../../services/auth";
 import { FunctionFastifyInstance } from "./fastify-config";
 import userRoutes from "./user/user.route";
+
 import { sharedSchemas } from "./shared/shared.schema";
 
 let requestHandler: FastifyServerFactoryHandler;
