@@ -3,24 +3,7 @@ import Header from "~/backoffice-header/Header.astro";
 import SidebarItems from "./SidebarItems.astro";
 ---
 
-<!-- <script>
-  //the function change class to open or close the drawer
-  const manageToggleDrawer = (classToAdd: string, classToRemove: string) => {
-    document.getElementById("drawercontainer")?.classList.add(classToAdd);
-    document.getElementById("drawercontainer")?.classList.remove(classToRemove);
-  };
-  //events
-  document
-    .getElementById("sidebar")
-    ?.addEventListener("mouseover", () =>
-      manageToggleDrawer("lg:drawer-open", "lg:drawer-close"),
-    );
-  document
-    .getElementById("drawerside")
-    ?.addEventListener("mouseleave", () =>
-      manageToggleDrawer("lg:drawer-close", "lg:drawer-open"),
-    );
-</script> -->
+
 <div class="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content">
