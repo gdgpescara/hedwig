@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { getAuth } from "firebase-admin/auth";
 import { DocumentSnapshot, getFirestore } from "firebase-admin/firestore";
 import { before, describe, test } from "mocha";
-import {initialize} from "../../../src/config";
+import { initializeFirebaseApp } from "../../../src/config";
 
 describe("onCreate", () => {
   const collection = "users";
@@ -13,7 +13,7 @@ describe("onCreate", () => {
   };
 
   before(async () => {
-    initialize();
+    initializeFirebaseApp();
   });
 
   test("Create user and check if it saved in users collection", async () => {
