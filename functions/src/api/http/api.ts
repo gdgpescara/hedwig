@@ -7,6 +7,7 @@ import { createServer } from "http";
 import { functionsRegion } from "../../config";
 import { decodeIdToken, isOrganizer } from "../../services/auth";
 import { FunctionFastifyInstance } from "./fastify-config";
+import { sharedSchemas } from "./shared/shared.schema";
 
 let requestHandler: FastifyServerFactoryHandler;
 
@@ -52,6 +53,10 @@ app
   .addContentTypeParser("application/json", (_, payload, done) => {
     done(null, payload.body);
   });
+
+for (const schema of sharedSchemas) {
+  app.addSchema(schema);
+}
 
 export default onRequest({ region: functionsRegion }, (req, res) => {
   app.ready((err) => {
