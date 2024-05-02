@@ -59,9 +59,6 @@ jobs:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
-          envkey_CI: true
-          envkey_FIREBASE_AUTH_EMULATOR_HOST: localhost:9099
-          envkey_FIRESTORE_EMULATOR_HOST: localhost:8080
           file_name: .env
           directory: functions
       - name: Make envfile
@@ -70,9 +67,6 @@ jobs:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
-          envkey_CI: true
-          envkey_FIREBASE_AUTH_EMULATOR_HOST: localhost:9099
-          envkey_FIRESTORE_EMULATOR_HOST: localhost:8080
           file_name: .env
       - run: cd functions && pnpm run build
       - run: cd functions && pnpm run test
