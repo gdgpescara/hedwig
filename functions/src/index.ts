@@ -1,8 +1,8 @@
 import * as httpApi from "./api/http/api";
 import * as authOnCreate from "./api/auth/on-create";
-import { initializeFirebaseApp } from "./config";
+import { initialize } from "./config";
 
-initializeFirebaseApp();
+initialize();
 
 exports.http_api = httpApi.default;
 exports.onCreateUser = authOnCreate.default;

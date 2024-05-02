@@ -1,27 +1,16 @@
-import {
-  cert,
-  getApps,
-  initializeApp,
-  ServiceAccount,
-} from "firebase-admin/app";
+import { ServiceAccount, cert, initializeApp } from "firebase-admin/app";
 import * as dotenv from "dotenv";
 
+// load environment variables
 dotenv.config({ path: "../.env" });
 const serviceAccount = JSON.parse(
   process.env.PUBLIC_FIREBASE_SERVICE_ACCOUNT || "{}",
 );
 
-const initializeFirebaseApp = () => {
-  if (getApps().length === 0) {
-    initializeApp({
-      credential: cert(serviceAccount as ServiceAccount),
-      databaseURL: process.env.FIREBASE_DATABASE_URL,
-    });
-  }
-};
+// initialize firebase app
+export const initialize = () =>
+  initializeApp({
+    credential: cert(serviceAccount as ServiceAccount),
+  });
 
-const projectId = serviceAccount.project_id;
-
-const functionsRegion = process.env.PUBLIC_FIREBASE_FUNCTIONS_REGION || "";
-
-export { initializeFirebaseApp, projectId, functionsRegion };
+export const functionsRegion = process.env.PUBLIC_FIREBASE_FUNCTIONS_REGION || "";
