@@ -7,6 +7,8 @@ import { createServer } from "http";
 import { functionsRegion } from "../../config";
 import { decodeIdToken, isOrganizer } from "../../services/auth";
 import { FunctionFastifyInstance } from "./fastify-config";
+import userRoutes from "./user/user.route";
+
 import { sharedSchemas } from "./shared/shared.schema";
 
 let requestHandler: FastifyServerFactoryHandler;
@@ -57,6 +59,8 @@ app
 for (const schema of sharedSchemas) {
   app.addSchema(schema);
 }
+
+app.register(userRoutes);
 
 export default onRequest({ region: functionsRegion }, (req, res) => {
   app.ready((err) => {
