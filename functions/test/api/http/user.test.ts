@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { getAuth } from "firebase-admin/auth";
 import { before, describe, test } from "mocha";
 import { initializeFirebaseApp } from "../../../src/config";
-import { httpApiBaseUrl, login } from "./utils"; /* eslint-disable max-len */
+import { httpApiBaseUrl, login } from "./utils";
 
 /* eslint-disable max-len */
 /* eslint-disable quote-props */

@@ -45,6 +45,14 @@ const userRoutes = async (fastify: FastifyInstance) => {
       return reply.send({ message: "User roles updated" });
     },
   );
+
+  fastify.get(
+    prefix,
+    {
+      schema: fastify.paginationSchemas(),
+    },
+    (request, reply) => fastify.paginate("users", request, reply),
+  );
 };
 
 export default userRoutes;
