@@ -1,14 +1,25 @@
 ---
 import i18next, { changeLanguage } from "i18next";
-import { app } from "../firebase/server";
-import { getAuth } from "firebase-admin/auth";
-import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
 
+import { UserRecord, getAuth } from "firebase-admin/auth";
+import { app } from "../firebase/server";
 
 changeLanguage("en");
 
 const auth = getAuth(app);
-console.log(auth);
+
+/* Check current session */
+// if (!Astro.cookies.has("session")) {
+//   return Astro.redirect("/signin");
+// }
+const sessionCookie = Astro.cookies.get("session")?.value;
+let user: UserRecord | null = null;
+if (sessionCookie) {
+  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  user = await auth.getUser(decodedCookie.uid);
+}
+
+
 ---
 
 <html lang={i18next.language}>
@@ -20,6 +31,13 @@ console.log(auth);
   <body>
     <main role="main">
       <h1>Welcome to Hedwig!</h1>
+      <p>We are happy to see you here</p>
+      {user && (
+        <h2>User logged: {user.displayName}</h2>
+        <form action="/api/auth/signout">
+          <button type="submit">Sign out</button>
+        </form>
+      )}
     </main>
   </body>
 </html>

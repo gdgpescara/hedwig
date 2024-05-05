@@ -12,9 +12,6 @@ jobs:
       id-token: 'write'
 
     runs-on: ubuntu-latest
-    env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
     environment: demo
     steps:
@@ -24,7 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -41,6 +38,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - run: cd functions && pnpm install --no-frozen-lockfile
+      - name: Make envfile for functions
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
+          file_name: .env
+          directory: functions
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
+          file_name: .env
       - run: cd functions && pnpm run build
       - run: pnpm install -g firebase-tools
       - run: firebase use ${{ vars.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}

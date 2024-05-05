@@ -6,27 +6,46 @@ permissions:
 on:
   push:
     branches: [main]
-  pull_request:
+  pull_request_target:
     branches: [main]
 
 jobs:
+  authorize:
+    environment:
+      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: true
+
   lighthouse:
+    needs: authorize
     runs-on: ubuntu-latest
     env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
     strategy:
       matrix:
         node-version: ['20.x']
 
     steps:
+      - uses: actions/github-script@v7
+        id: pr
+        with:
+          script: |
+            const { data: pullRequest } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            return pullRequest
       - uses: actions/checkout@v4
+        with:
+          ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -55,9 +74,8 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 5
-          budgetPath: ./.github/workflows/lighthouse/budget.json
       - name: Format Lighthouse score
-        uses: actions/github-script@v5
+        uses: actions/github-script@v7
         id: format_lighthouse_score
         with:
           script: |
@@ -65,7 +83,8 @@ jobs:
 
             const lighthouseOutputs = {
               manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
-              links: ${{ steps.lighthouse_audit.outputs.links }}
+              links: ${{ steps.lighthouse_audit.outputs.links }},
+              assertionResults: ${{ steps.lighthouse_audit.outputs.assertionResults }}
             };
 
             const prComment = lighthouseCommentMaker({ lighthouseOutputs });

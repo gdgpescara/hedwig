@@ -3,24 +3,39 @@ name: Test Firebase Functions
 on:
   push:
     branches: [main]
-  pull_request:
+  pull_request_target:
     branches: [main]
 
 jobs:
+  authorize:
+    environment:
+      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: true
+
   test:
+    needs: authorize
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        id: pr
+        with:
+          script: |
+            const { data: pullRequest } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            return pullRequest
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -37,5 +52,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - run: cd functions && pnpm install --no-frozen-lockfile
+      - run: pnpm install -g firebase-tools
+      - name: Make envfile for functions
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
+          file_name: .env
+          directory: functions
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
+          file_name: .env
       - run: cd functions && pnpm run build
       - run: cd functions && pnpm run test

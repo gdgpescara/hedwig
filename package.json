@@ -11,7 +11,9 @@
     "generate-translations": "npx astro-i18next generate",
     "prettier": "prettier --write . --plugin=prettier-plugin-astro",
     "test": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "emulators": "cd functions/ && npm run build && cd .. && firebase emulators:start --import=./firebase-data",
+    "emulators:export": "firebase emulators:export ./firebase-data"
   },
   "dependencies": {
     "@astrojs/node": "^8.0.0",
@@ -25,6 +27,7 @@
     "astro-i18next": "1.0.0-beta.21",
     "clsx": "^2.1.0",
     "daisyui": "^4.7.2",
+    "dotenv": "^16.4.5",
     "firebase": "^10.8.0",
     "firebase-admin": "^12.0.0",
     "i18next": "^22.5.1",

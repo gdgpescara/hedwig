@@ -1,0 +1,77 @@
+---
+import ExternalProvider from "./ExternalProvider.astro";
+import { t } from "i18next";
+
+---
+
+<h1>{t("common:login:title")}</h1>
+<p set:html={t("common:login:subtitle")}></p>
+<div id="login-error-container"></div>
+<form id="login-form">
+  <label for="email" for="email">{t("common:login:email")}</label>
+  <input type="email" required name="email" id="email" />
+  <label for="password">{t("common:login:password")}</label>
+  <input type="password" required name="password" id="password" />
+  <button type="submit">{t("common:login:login-button")}</button>
+</form>
+<ExternalProvider />
+
+<script>
+  import {
+    getAuth,
+    inMemoryPersistence,
+    signInWithEmailAndPassword
+  } from "firebase/auth";
+  import { app } from "../firebase/client";
+
+  const auth = getAuth(app);
+  // This will prevent the browser from storing session data
+  auth.setPersistence(inMemoryPersistence);
+
+  const loginForm = document.getElementById("login-form") as HTMLFormElement;
+  if(loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(loginForm);
+      const email = formData.get("email")?.toString();
+      const password = formData.get("password")?.toString();
+  
+      if (!email || !password) {
+        return;
+      }
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const idToken = await userCredential.user.getIdToken();
+        const response = await fetch("/api/auth/signin", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+          },
+        });
+        if (!response.ok) {
+          const error = await response.text();
+          const errorSpan = document.createElement("span");
+          errorSpan.textContent = `Error while registering: ${error}`;
+          document.getElementById("login-error-container")?.append(errorSpan);
+        } else {
+          document
+            .getElementById("login-error-container")
+            ?.querySelectorAll("*")
+            .forEach((n) => n.remove());
+        }
+    
+        if (response.redirected) {
+          window.location.assign(response.url);
+        }
+      } catch(error) {
+        const errorSpan = document.createElement("span");
+        errorSpan.textContent = `Error while registering: ${error}`;
+        document.getElementById("login-error-container")?.append(errorSpan);
+      }
+    });
+  }
+</script>

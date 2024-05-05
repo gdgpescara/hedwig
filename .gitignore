@@ -1,3 +1,7 @@
+# vscode files
+.vscode/
+.history/
+
 # build output
 dist/
 
@@ -32,3 +36,4 @@ package-lock.json*
 
 #firebase
 .firebaserc
+*.log

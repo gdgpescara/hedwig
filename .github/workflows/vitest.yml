@@ -2,21 +2,41 @@ name: "Test"
 on:
   push:
     branches: [main]
-  pull_request:
+  pull_request_target:
     branches: [main]
+
 jobs:
+  authorize:
+    environment:
+      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: true
+
   test:
+    needs: authorize
     runs-on: ubuntu-latest
     env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
     permissions:
       contents: write
 
     steps:
+      - uses: actions/github-script@v7
+        id: pr
+        with:
+          script: |
+            const { data: pullRequest } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            return pullRequest
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+        with:
+          ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
+      - uses: pnpm/action-setup@v3
         with:
           version: 8.14.3
       - name: "Install Node"

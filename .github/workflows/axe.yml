@@ -3,27 +3,46 @@ name: Axe
 on:
   push:
     branches: [main]
-  pull_request:
+  pull_request_target:
     branches: [main]
 
 jobs:
+  authorize:
+    environment:
+      ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.repository && 'external' || 'internal' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: true
+
   axe:
+    needs: authorize
     runs-on: ubuntu-latest
     env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
     strategy:
       matrix:
         node-version: ['20.x']
 
     steps:
+      - uses: actions/github-script@v7
+        id: pr
+        with:
+          script: |
+            const { data: pullRequest } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            return pullRequest
       - uses: actions/checkout@v4
+        with:
+          ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -46,21 +65,25 @@ jobs:
       - name: Get Chromium version
         run: |
           CHROMIUM_VERSION=$(wget -qO- https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE | cut -d. -f1)
+          CHROMEDRIVER_VERSION=$(pnpm view chromedriver version| cut -d. -f1)
           echo "Chromium version: $CHROMIUM_VERSION"
-          echo "CHROMIUM_VERSION=$CHROMIUM_VERSION" >> $GITHUB_ENV
+          echo "Chromedriver version: $CHROMEDRIVER_VERSION"
+          CHROME_VERSION=$(echo -e "$CHROMIUM_VERSION\n$CHROMEDRIVER_VERSION"| sort -n | head -n 1)
+          echo "Chrome version that will be used: $CHROME_VERSION"
+          echo "CHROME_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
       - name: Setup Chrome
         id: setup-chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: ${{ env.CHROMIUM_VERSION }}
+          chrome-version: ${{ env.CHROME_VERSION }}
       - name: Linking Chrome
         run: |
           rm -f /opt/google/chrome/chrome
           ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /opt/google/chrome/chrome
       - name: Install chromedriver
         run: |
-          echo "Installing chromedriver version: $CHROMIUM_VERSION"
-          pnpm install -g chromedriver@$CHROMIUM_VERSION
+          echo "Installing chromedriver version: $CHROME_VERSION"
+          pnpm install -g chromedriver@$CHROME_VERSION
           echo "chromedriver version: $(chromedriver --version)"
       - name: Run axe
         run: |

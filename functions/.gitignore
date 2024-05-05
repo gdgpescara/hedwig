@@ -7,3 +7,10 @@ typings/
 
 # Node.js dependency directory
 node_modules/
+
+# Debug files
+*.log
+
+# environment variables
+.env
+.env.production
