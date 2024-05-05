@@ -1,0 +1,36 @@
+---
+import Header from "~/backoffice-layout/Header.astro";
+import SidebarItems from "../backoffice-sidebar./backoffice-layout/SidebarItems.astro";
+---
+
+
+<div class="drawer lg:drawer-open">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <div class="flex flex-col items-center">
+      <div class="flex flex-row justify-between items-center w-full px-5 mt-2">
+        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden"
+          >Open drawer</label
+        >
+        <div class="m-0 lg:w-5/6 w-full">
+          <Header />
+        </div>
+      </div>
+    </div>
+    <slot />
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <SidebarItems
+      content={[
+        { icon: "A", item: "Sidebar Item A", url: "#" },
+        { icon: "B", item: "Sidebar Item B", url: "#" },
+        { icon: "C", item: "Sidebar Item C", url: "#" },
+        { icon: "D", item: "Sidebar Item D", url: "#" },
+        { icon: "E", item: "Sidebar Item E", url: "#" },
+        { icon: "F", item: "Sidebar Item F", url: "#" },
+      ]}
+    />
+  </div>
+</div>
