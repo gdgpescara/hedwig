@@ -3,6 +3,7 @@ import i18next, { changeLanguage } from "i18next";
 
 import { UserRecord, getAuth } from "firebase-admin/auth";
 import { app } from "../firebase/server";
+import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
 
 changeLanguage("en");
 
@@ -30,6 +31,9 @@ if (sessionCookie) {
   </head>
   <body>
     <main role="main">
+      <BackofficeLayout>
+        <p>My page content, wrapped in a layout!</p>
+
       <h1>Welcome to Hedwig!</h1>
       <p>We are happy to see you here</p>
       {user && (
@@ -38,6 +42,8 @@ if (sessionCookie) {
           <button type="submit">Sign out</button>
         </form>
       )}
+            </BackofficeLayout>
+
     </main>
   </body>
 </html>
