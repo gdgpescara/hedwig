@@ -16,7 +16,7 @@ const paginationResponse = z.object({
   totalPages: z.number(),
 });
 
-export const { schemas: paginationSchemas, $ref: $paginationSchemasRef } =
+const { schemas: paginationSchemas, $ref: $paginationSchemasRef } =
   buildJsonSchemas(
     {
       paginationParams,
@@ -24,3 +24,9 @@ export const { schemas: paginationSchemas, $ref: $paginationSchemasRef } =
     },
     { $id: "PaginationSchema" },
   );
+
+export {
+  paginationSchemas,
+  $paginationSchemasRef,
+  paginationParams,
+};

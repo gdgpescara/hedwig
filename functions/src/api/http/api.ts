@@ -8,13 +8,8 @@ import { functionsRegion } from "../../config";
 import { decodeIdToken, isOrganizer } from "../../services/auth";
 import { FunctionFastifyInstance } from "./fastify-config";
 import userRoutes from "./user/user.route";
-
-import { $sharedSchemaRef, sharedSchemas } from "./shared/shared.schema";
-import Pagination from "./pagination/pagination-plugin";
-import {
-  $paginationSchemasRef,
-  paginationSchemas,
-} from "./pagination/pagination.schema";
+import { sharedSchemas } from "./shared/shared.schema";
+import { paginationSchemas } from "./pagination/pagination.schema";
 
 let requestHandler: FastifyServerFactoryHandler;
 
@@ -32,12 +27,6 @@ app
   .register(Sensible)
   .register(Cors, { origin: false })
   .register(Auth, { defaultRelation: "and" })
-  .register(Pagination, {
-    paginationSchemas: paginationSchemas,
-    paginationParams: $paginationSchemasRef("paginationParams"),
-    paginationResponse: $paginationSchemasRef("paginationResponse"),
-    errorResponseSchema: $sharedSchemaRef("errorResponse"),
-  })
   .decorate("authenticated", async (request: FastifyRequest, _, done) => {
     if (!request.headers.authorization) {
       done(new Error("Unauthorized"));
@@ -68,6 +57,10 @@ app
   });
 
 for (const schema of sharedSchemas) {
+  app.addSchema(schema);
+}
+
+for (const schema of paginationSchemas) {
   app.addSchema(schema);
 }
 

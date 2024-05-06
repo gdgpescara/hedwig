@@ -4,6 +4,7 @@ import { IdPathParam } from "../shared/shared.type";
 import { $userSchemasRef, userSchemas } from "./user.schema";
 import { updateUserRoles, userExists } from "../../../services/user";
 import { CustomClaims } from "../../../models/user.types";
+import { $paginationSchemasRef } from "../pagination/pagination.schema";
 
 const prefix = "/user";
 
@@ -44,14 +45,6 @@ const userRoutes = async (fastify: FastifyInstance) => {
 
       return reply.send({ message: "User roles updated" });
     },
-  );
-
-  fastify.get(
-    prefix,
-    {
-      schema: fastify.paginationSchemas(),
-    },
-    (request, reply) => fastify.paginate("users", request, reply),
   );
 };
 

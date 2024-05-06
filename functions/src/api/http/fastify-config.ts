@@ -24,12 +24,6 @@ declare module "fastify" {
       reply: FastifyReply,
       done: (error?: Error) => void,
     ) => Promise<void>;
-    paginationSchemas: () => FastifySchema;
-    paginate: (
-      collection: string,
-      request: FastifyRequest,
-      reply: FastifyReply,
-    ) => Promise<void>;
   }
 }
 
