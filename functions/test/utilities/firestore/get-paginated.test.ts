@@ -51,7 +51,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-1",
       lastUpdate: new Date("2024-01-01"),
-      name: "Carrefour spa",
+      name: "name-1",
       userUpdate: {
         id: "test-id-1",
         username: "test",
@@ -63,7 +63,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-2",
       lastUpdate: new Date("2024-01-02"),
-      name: "Conad spa",
+      name: "name-2",
       userUpdate: {
         id: "test-id-1",
         username: "test",
@@ -75,7 +75,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-3",
       lastUpdate: new Date("2024-01-03"),
-      name: "Esselunga spa",
+      name: "name-3",
       userUpdate: {
         id: "test-id-2",
         username: "test",
@@ -87,7 +87,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-4",
       lastUpdate: new Date("2024-01-04"),
-      name: "Crai",
+      name: "name-4",
       userUpdate: {
         id: "test-id-2",
         username: "test",
@@ -99,7 +99,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-5",
       lastUpdate: new Date("2024-01-05"),
-      name: "Craig spa",
+      name: "name-5",
       userUpdate: {
         id: "test-id-3",
         username: "test",
@@ -111,7 +111,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-6",
       lastUpdate: new Date("2024-01-06"),
-      name: "Tigre",
+      name: "name-6",
       userUpdate: {
         id: "test-id-3",
         username: "test",
@@ -123,7 +123,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-7",
       lastUpdate: new Date("2024-01-07"),
-      name: "Coop",
+      name: "name-7",
       userUpdate: {
         id: "test-id-3",
         username: "test",
@@ -135,7 +135,7 @@ describe("Get all documents", () => {
     {
       id: "test-model-8",
       lastUpdate: new Date("2024-01-08"),
-      name: "Coop adriatico",
+      name: "name-8",
       userUpdate: {
         id: "test-id-4",
         username: "test",
