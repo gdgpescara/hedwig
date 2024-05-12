@@ -25,6 +25,7 @@
     "astro": "^4.2.4",
     "astro-firebase": "^0.0.3",
     "astro-i18next": "1.0.0-beta.21",
+    "astro-icon": "^1.1.0",
     "clsx": "^2.1.0",
     "daisyui": "^4.7.2",
     "dotenv": "^16.4.5",
@@ -39,6 +40,8 @@
   },
   "devDependencies": {
     "@astrojs/react": "^3.0.9",
+    "@iconify-json/mdi": "^1.1.66",
+    "@mdi/font": "^7.4.47",
     "@playwright/test": "^1.41.2",
     "@types/google.maps": "^3.54.9",
     "@types/node": "^20.11.17",

@@ -31,18 +31,6 @@ if (sessionCookie) {
   </head>
   <body>
     <main role="main">
-      <BackofficeLayout>
-        <p>My page content, wrapped in a layout!</p>
-
-      <h1>Welcome to Hedwig!</h1>
-      <p>We are happy to see you here</p>
-      {user && (
-        <h2>User logged: {user.displayName}</h2>
-        <form action="/api/auth/signout">
-          <button type="submit">Sign out</button>
-        </form>
-      )}
-            </BackofficeLayout>
 
     </main>
   </body>
