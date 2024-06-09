@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable quote-props */
+
 import { afterEach, before, beforeEach, describe, test } from "mocha";
 import { initializeFirebaseApp } from "../../../src/config";
 import {
@@ -5,10 +8,8 @@ import {
   getFirestore,
   Timestamp,
 } from "firebase-admin/firestore";
-// eslint-disable-next-line max-len
 import { PaginationParams } from "../../../src/api/http/pagination/pagination.type";
 import getPaginated from "../../../src/utilities/firestore/get-paginated";
-// eslint-disable-next-line max-len
 import FirestoreDocument from "../../../src/utilities/firestore/model-document-mapper";
 import { expect } from "chai";
 
