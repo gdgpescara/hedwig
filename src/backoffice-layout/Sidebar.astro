@@ -1,0 +1,41 @@
+---
+import Header from "~/backoffice-layout/Header.astro";
+import SidebarItems from "./SidebarItems.astro";
+import { Icon } from "astro-icon/components";
+/**
+ * Sidebar component: DaisyUi Sidebar component in which there is the page content
+ * in future release you have to add menu items prop in this component related to SidebarItems Prop type
+ * @prop slot: page content
+ */
+---
+
+<div class="drawer lg:drawer-open">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <div class="flex flex-col items-center">
+      <div class="flex flex-row justify-between items-center w-full px-5 mt-2">
+        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden"
+          ><Icon name="mdi:hamburger-menu" size={28} />
+        </label>
+        <div class="m-0 lg:w-5/6 w-full">
+          <Header />
+        </div>
+      </div>
+    </div>
+    <slot />
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <SidebarItems
+      content={[
+        { icon: "mdi:settings", item: "Sidebar Item A", url: "#" },
+        { icon: "mdi:settings", item: "Sidebar Item B", url: "#" },
+        { icon: "mdi:settings", item: "Sidebar Item C", url: "#" },
+        { icon: "mdi:settings", item: "Sidebar Item D", url: "#" },
+        { icon: "mdi:settings", item: "Sidebar Item E", url: "#" },
+        { icon: "mdi:settings", item: "Sidebar Item F", url: "#" },
+      ]}
+    />
+  </div>
+</div>
