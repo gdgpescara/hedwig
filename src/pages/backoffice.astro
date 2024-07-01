@@ -1,0 +1,39 @@
+---
+import { UserRecord, getAuth } from "firebase-admin/auth";
+import { app } from "../firebase/server";
+import i18next, { changeLanguage } from "i18next";
+import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
+
+changeLanguage("en");
+const auth = getAuth(app);
+const sessionCookie = Astro.cookies.get("session")?.value;
+let user: UserRecord | null = null;
+
+if (sessionCookie) {
+  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  user = await auth.getUser(decodedCookie.uid);
+  //if the user is not an organizer redirect to 404.astro
+  if (!user?.customClaims?.organizer) {
+    Astro.response.status = 404;
+    Astro.response.statusText = "Not found";
+  }
+}
+---
+<!-- This is the backoffice page, to add the link to this component 
+use {user?.customClaims?.organizer === true && <a href="/backoffice">Backoffice</a>}
+in the page where the link should be visible -->
+<html lang={i18next.language}>
+  <head>
+    <title>Backoffice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Hedwig - Backoffice" />
+  </head>
+  <body>
+    <main role="main">
+      <BackofficeLayout>
+        <h1>Hi, you are in the backoffice world!</h1>
+        <p>Put your content here!</p>
+      </BackofficeLayout>
+    </main>
+  </body>
+</html>
