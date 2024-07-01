@@ -38,7 +38,7 @@ if (sessionCookie) {
           <button type="submit">Sign out</button>
         </form>
       )}
-      {user?.customClaims?.organizer === true && <a href="/backoffice">Backoffice</a>}
+      {user?.customClaims?.organizer && <a href="/backoffice">Backoffice</a>}
     </main>
   </body>
 </html>
