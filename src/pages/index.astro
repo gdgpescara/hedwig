@@ -38,6 +38,8 @@ if (sessionCookie) {
           <button type="submit">Sign out</button>
         </form>
       )}
+      <a href="/signin">Login</a>
+      {user?.customClaims?.organizer && <a href="/backoffice">Backoffice</a>}
     </main>
   </body>
 </html>
