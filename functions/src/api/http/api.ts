@@ -10,6 +10,7 @@ import { FunctionFastifyInstance } from "./fastify-config";
 import userRoutes from "./user/user.route";
 import { sharedSchemas } from "./shared/shared.schema";
 import { paginationSchemas } from "./pagination/pagination.schema";
+import partnershipRoutes from "./partnership/partnership.route";
 
 let requestHandler: FastifyServerFactoryHandler;
 
@@ -65,6 +66,7 @@ for (const schema of paginationSchemas) {
 }
 
 app.register(userRoutes);
+app.register(partnershipRoutes);
 
 export default onRequest({ region: functionsRegion }, (req, res) => {
   app.ready((err) => {
