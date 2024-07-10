@@ -2,8 +2,11 @@ import { FastifyInstance } from "fastify";
 import { $sharedSchemaRef } from "../shared/shared.schema";
 import { IdPathParam } from "../shared/shared.type";
 import { $userSchemasRef, userSchemas } from "./user.schema";
-import { updateUserRoles, userExists } from "../../../services/user";
 import { CustomClaims } from "../../../models/user.types";
+import { $paginationSchemasRef } from "../pagination/pagination.schema";
+import { updateUserRoles, userExists } from "../../../services/auth";
+import { getUsers } from "../../../services/user";
+import { PaginationParams } from "../pagination/pagination.type";
 
 const prefix = "/user";
 
@@ -43,6 +46,27 @@ const userRoutes = async (fastify: FastifyInstance) => {
       await updateUserRoles(params.id, body);
 
       return reply.send({ message: "User roles updated" });
+    },
+  );
+
+  fastify.get(
+    `${prefix}`,
+    {
+      schema: {
+        querystring: $paginationSchemasRef("paginationParams"),
+        response: {
+          200: $paginationSchemasRef("paginationResponse"),
+          400: $sharedSchemaRef("errorResponse"),
+          401: $sharedSchemaRef("errorResponse"),
+          403: $sharedSchemaRef("errorResponse"),
+        },
+      },
+      preHandler: fastify.auth([fastify.authenticated, fastify.isOrganizer]),
+    },
+    async (request, reply) => {
+      const query = request.query as PaginationParams;
+      const response = await getUsers(query);
+      reply.send(response);
     },
   );
 };
