@@ -55,6 +55,7 @@ You can verify your email by clicking on the link below:\x1b[0m
       `,
       "\x1b[0m",
     );
+    throw error;
   } finally {
     rl.close();
   }

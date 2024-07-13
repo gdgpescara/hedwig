@@ -1,7 +1,8 @@
 {
   "type": "commonjs",
   "scripts": {
-    "seed": "node run-seeding.js"
+    "seed": "node src/run-seeding.js",
+    "check-seeding-status": "node src/check-seeding-status.js"
   },
   "dependencies": {
     "loading-cli": "^1.1.2"
