@@ -1,8 +1,5 @@
 {
-  "i18n-ally.localesPaths": [
-    "public/locales/it.json",
-    "public/locales"
-  ],
+  "i18n-ally.localesPaths": ["public/locales/it.json", "public/locales"],
   "i18n-ally.sourceLanguage": "en",
   "eslint.validate": [
     "javascript",
@@ -10,5 +7,6 @@
     "astro", // Enable .astro
     "typescript", // Enable .ts
     "typescriptreact" // Enable .tsx
-  ]
+  ],
+  "eslint.workingDirectories": ["./src", "./functions", "./seeding"]
 }
