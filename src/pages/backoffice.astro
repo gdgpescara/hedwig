@@ -3,6 +3,8 @@ import { UserRecord, getAuth } from "firebase-admin/auth";
 import { app } from "../firebase/server";
 import i18next, { changeLanguage } from "i18next";
 import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
+import { getUsers } from "../../functions/src/services/user";
+import { Debug } from "astro:components";
 
 changeLanguage("en");
 const auth = getAuth(app);
@@ -11,11 +13,6 @@ let user: UserRecord | null = null;
 if (sessionCookie) {
   const decodedCookie = await auth.verifySessionCookie(sessionCookie);
   user = await auth.getUser(decodedCookie.uid);
-  const pippo = {
-    email: "organizer@test.it",
-    displayName: "main organizer",
-    password: "verysecurepassword",
-  }
 
   //if the user is not an organizer redirect to 404.astro
   if (!user?.customClaims?.organizer) {

@@ -1,16 +1,38 @@
 ---
 import Sidebar from "~/backoffice-layout/Sidebar.astro";
+//import { getUsers } from "../../functions/src/services/user";
+import { Debug } from "astro:components";
+
 /**
  * Backoffice Layout. How call this component?
  *  <BackofficeLayout>
  *      <p>My page content</p>
  *  </BackofficeLayout>
  */
+
+const sessionCookie = Astro.cookies.get("session")?.value;
+
+/* const aaa = JSON.stringify({
+      orderBy: "lastUpdate",
+      offset: 0,
+      limit: 2,
+      orderDirection: "desc",
+    }); */
+    const bbb = "orderBy=lastUpdate&offset=0&limit=2&orderDirection=desc";
+const url =
+  "https://http-api-bu2cymxwrq-ey.a.run.app/user?" + bbb;
+  //new URLSearchParams(aaa);
+const response = await fetch(url,{
+  headers: {Authorization: `Bearer ${sessionCookie}`}
+});
+const data = await response.json();
+
 ---
 
-    <div class="flex flex-row">
-      <Sidebar>
-        <slot/>
-      </Sidebar>
-    </div>
-  
+<div class="flex flex-row">
+  <Debug answer={data} />
+
+  <Sidebar>
+    <slot />
+  </Sidebar>
+</div>
