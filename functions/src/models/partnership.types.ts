@@ -13,4 +13,10 @@ type Partnership = {
     partners: Partner[];
 };
 
-export { Partner, Partnership}
+type PartnershipDoc = {
+        id: string;
+        name: string;
+        position: number;
+};
+
+export { Partner, Partnership, PartnershipDoc}

@@ -1,14 +1,31 @@
-import { getFirestore } from "firebase-admin/firestore";
-import { Partnership } from "../models/partnership.types"
+import { FirestoreDataConverter, getFirestore } from "firebase-admin/firestore";
+import { Partnership, PartnershipDoc } from "../models/partnership.types"
+import getPaginated from "../utilities/firestore/get-paginated";
+import { PaginationParams } from "../api/http/pagination/pagination.type";
 
-const getPartnerships = async () => {
+
+const partnershipDataConverter: FirestoreDataConverter<Partnership, PartnershipDoc> = {
+    toFirestore: (model: Partnership): PartnershipDoc => {
+        return {
+            id: model.id,
+            name: model.name,
+            position: model.position,
+        };
+    },
+    fromFirestore: (snapshot: FirebaseFirestore.QueryDocumentSnapshot): Partnership => {
+        const data = snapshot.data();
+        return {
+            id: snapshot.id,
+            ...data,
+        } as Partnership;
+    },
+};
+
+const getPartnerships = async (paginationParams: PaginationParams) => {
     const firestore = getFirestore();
-    const partnershipsCollection = firestore.collection("partnerships");
-    const partnershipsSnaphot = await partnershipsCollection.get();
+    const partnershipsPage = await getPaginated("partnerships", partnershipDataConverter, paginationParams);
 
-    const partnershipsPromises = partnershipsSnaphot.docs.map(async (partnershipDoc) => {
-        const partnership = partnershipDoc.data() as Partnership;
-
+    const partnershipsPromises = partnershipsPage.data.map(async (partnership) => {
         const partners = firestore.collection(`partnerships/${partnership.id}/partners`);
         const partnersSnapshot = await partners.get();
 
@@ -19,7 +36,9 @@ const getPartnerships = async () => {
         return partnership;
     });
 
-    return Promise.all(partnershipsPromises);
+    partnershipsPage.data = await  Promise.all(partnershipsPromises);
+
+    return partnershipsPage;
 }
 
 export { getPartnerships };

@@ -48,7 +48,7 @@ describe("getParterships", () => {
   });
 
   test("Fetch partnerships from collections", async () => {
-    const response = await fetch(`${httpApiBaseUrl}/partnership`);
+    const response = await fetch(`${httpApiBaseUrl}/partnership?orderDirection=asc&limit=10&offset=0&orderBy=position`);
 
     expect(response.status).to.be.equal(200);
 
