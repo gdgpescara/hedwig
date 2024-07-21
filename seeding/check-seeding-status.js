@@ -15,6 +15,7 @@ const checkSeedingStatus = async () => {
       exit(1);
     }
   }
+  exit(0);
 };
 
 checkSeedingStatus();

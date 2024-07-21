@@ -9,12 +9,20 @@ const { initializeApp } = require("./config");
 
 initializeApp();
 
+let someSeedFails = false;
+
 const checkAndExecuteSeed = async (seed) => {
   loader.start(`Checking if ${seed.description} was executed...`);
   const isExecuted = await checkIfSeedWasExecuted(seed.key);
   loader.stop();
   if (!isExecuted) {
-    await seed.execute();
+    try {
+      await seed.execute();
+    } catch (error) {
+      someSeedFails = true;
+      loader.stop();
+      return;
+    }
     loader.start("Updating seed status...");
     await markSeedAsExecuted(seed.key);
     loader.stop();
@@ -23,6 +31,7 @@ const checkAndExecuteSeed = async (seed) => {
 };
 
 const startSeeding = async () => {
+  someSeedFails = false;
   console.log(
     "\x1b[33m",
     `
@@ -41,9 +50,15 @@ const startSeeding = async () => {
     await checkAndExecuteSeed(seed);
   }
 
-  console.log(`
-\x1b[32mSeeding completed!\x1b[0m
-`);
+  if (someSeedFails) {
+    console.log(
+      "\x1b[38;2;255;165;0m",
+      "Some seeds failed to execute.",
+      "\x1b[0m",
+    );
+  } else {
+    console.log("\x1b[32m", "All seeds executed successfully!", "\x1b[0m");
+  }
   exit();
 };
 
