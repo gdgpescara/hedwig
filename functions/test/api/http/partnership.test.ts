@@ -4,6 +4,7 @@ import { httpApiBaseUrl } from "./utils";
 import { initializeFirebaseApp } from "../../../src/config";
 import { Partnership } from "../../../src/models/partnership.types";
 import { getFirestore } from "firebase-admin/firestore";
+import { PaginatedResponse } from "../../../src/api/http/pagination/pagination.type";
 
 describe("getParterships", () => {
   const collection = "/partnerships";
@@ -47,7 +48,7 @@ describe("getParterships", () => {
     await batch.commit();
   });
 
-  test("Fetch partnerships from collections", async () => {
+  test("Fetch partnerships from collections", async function () {
     const response = await fetch(`${httpApiBaseUrl}/partnership?orderDirection=asc&limit=10&offset=0&orderBy=position`);
 
     expect(response.status).to.be.equal(200);
@@ -57,9 +58,18 @@ describe("getParterships", () => {
       partners: dummyPartners,
     }
 
+    const expextedResponse : PaginatedResponse<Partnership> = {
+      data: [expectedPartnership],
+      total: 1,
+      limit: 10,
+      offset: 0,
+      totalPages: 1,
+    };
+    
+
     const partnershipFeched = await response.json() as Partnership[];
 
-    expect(partnershipFeched).to.deep.be.equal([expectedPartnership]);
+    expect(partnershipFeched).to.deep.be.equal(expextedResponse);
     
   });
 
