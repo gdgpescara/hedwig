@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import { expect} from "chai";
 import { describe, test } from "mocha";
 import { httpApiBaseUrl } from "./utils";
 import { initializeFirebaseApp } from "../../../src/config";
@@ -34,11 +34,17 @@ describe("getParterships", () => {
   before(async () => {
     initializeFirebaseApp();
     const fs = getFirestore();
-    await fs.doc(`${collection}/${dummyPartnership.id}`).set(dummyPartnership);
+    const batch = fs.batch();
+    
+    const partnerDocRef = fs.doc(`${collection}/${dummyPartnership.id}`)
+    await batch.set(partnerDocRef,dummyPartnership);
+    
+    dummyPartners.forEach((partner) => {
+      const ref =  fs.doc(`${collection}/${dummyPartnership.id}/partners/${partner.id}`);
+      batch.set(ref, partner);
+    });
 
-    await Promise.all(dummyPartners.map((partner) => {
-      return fs.doc(`${collection}/${dummyPartnership.id}/partners/${partner.id}`).set(partner);
-    }))
+    await batch.commit();
   });
 
   test("Fetch partnerships from collections", async () => {
@@ -51,7 +57,10 @@ describe("getParterships", () => {
       partners: dummyPartners,
     }
 
-    expect(response.json()).to.deep.be.equal([expectedPartnership]);
+    const partnershipFeched = await response.json() as Partnership[];
+
+    expect(partnershipFeched).to.deep.be.equal([expectedPartnership]);
+    
   });
 
 });
