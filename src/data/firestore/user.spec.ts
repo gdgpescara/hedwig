@@ -3,51 +3,51 @@ import type {
   PaginatedResponse,
   PaginationParams,
 } from "~/models/pagination/pagination.type";
-import getDocsPaginated from "./get-docs-paginated";
 import { firestore } from "~/firebase/server";
-import { testConverter, type TestModel } from "./test-model";
+import { testConverter } from "./common/test-model";
+import type { User } from "~/models/user/user.type";
+import { getUsersPaginated } from "./user";
 
-const testCollection = "get-paginated-test";
+const testCollection = "users" as const;
 
 describe("Get docs paginated", () => {
-  const modelsToSave: TestModel[] = [
+  const modelsToSave: User[] = [
     {
-      lastUpdate: new Date("2024-01-01"),
-      name: "Name 1",
+      displayName: "Name 1",
+      email: "email@email.it",
+      organizer: true,
     },
     {
-      lastUpdate: new Date("2024-01-02"),
-      name: "Name 2",
+      displayName: "Name 2",
+      email: "email2@email.it",
     },
     {
-      lastUpdate: new Date("2024-01-03"),
-      name: "Name 3",
+      displayName: "Name 3",
+      email: "email3@email.it",
+      organizer: true,
     },
     {
-      lastUpdate: new Date("2024-01-04"),
-      name: "Name 4",
+      displayName: "Name 4",
+      email: "email4@email.it",
     },
     {
-      lastUpdate: new Date("2024-01-05"),
-      name: "Name 5",
+      displayName: "Name 5",
+      email: "email5@email.it",
     },
     {
-      lastUpdate: new Date("2024-01-07"),
-      name: "Name 6",
+      displayName: "Name 6",
+      email: "email6@email.it",
     },
     {
-      lastUpdate: new Date("2024-01-07"),
-      name: "Name 7",
+      displayName: "Name 7",
+      email: "email7@email.it",
     },
   ];
 
   beforeEach(async () => {
     const batch = firestore.batch();
     modelsToSave.forEach((model) => {
-      batch.create(
-        firestore.collection(testCollection).withConverter(testConverter).doc(),
-        model,
-      );
+      batch.create(firestore.collection(testCollection).doc(), model);
     });
     await batch.commit();
   });
@@ -65,18 +65,14 @@ describe("Get docs paginated", () => {
   });
 
   test("should get first offset ordered", async () => {
-    const params: PaginationParams<TestModel> = {
+    const params: PaginationParams<User> = {
       offset: 0,
       limit: 2,
-      orderBy: "name",
+      orderBy: "displayName",
       orderDirection: "desc",
     };
 
-    const result = await getDocsPaginated(
-      testCollection,
-      testConverter,
-      params,
-    );
+    const result = await getUsersPaginated(params);
 
     expect(result).toMatchObject({
       status: "success",
@@ -88,24 +84,19 @@ describe("Get docs paginated", () => {
         totalPages: Math.ceil(modelsToSave.length / params.limit),
       },
     });
-    const response = result.data as PaginatedResponse<TestModel>;
+    const response = result.data as PaginatedResponse<User>;
     expect(response.data).toHaveLength(params.limit);
-    expect(response.data[0].lastUpdate).toEqual(modelsToSave[6].lastUpdate);
   });
 
   test("should get second offset ordered", async () => {
-    const params: PaginationParams<TestModel> = {
+    const params: PaginationParams<User> = {
       offset: 2,
       limit: 2,
-      orderBy: "name",
+      orderBy: "displayName",
       orderDirection: "desc",
     };
 
-    const result = await getDocsPaginated(
-      testCollection,
-      testConverter,
-      params,
-    );
+    const result = await getUsersPaginated(params);
 
     expect(result).toMatchObject({
       status: "success",
@@ -117,24 +108,19 @@ describe("Get docs paginated", () => {
         totalPages: Math.ceil(modelsToSave.length / params.limit),
       },
     });
-    const response = result.data as PaginatedResponse<TestModel>;
+    const response = result.data as PaginatedResponse<User>;
     expect(response.data).toHaveLength(params.limit);
-    expect(response.data[0].lastUpdate).toEqual(modelsToSave[4].lastUpdate);
   });
 
   test("should get last page ordered", async () => {
-    const params: PaginationParams<TestModel> = {
+    const params: PaginationParams<User> = {
       offset: 6,
       limit: 3,
-      orderBy: "name",
+      orderBy: "displayName",
       orderDirection: "desc",
     };
 
-    const result = await getDocsPaginated(
-      testCollection,
-      testConverter,
-      params,
-    );
+    const result = await getUsersPaginated(params);
 
     expect(result).toMatchObject({
       status: "success",
@@ -146,26 +132,22 @@ describe("Get docs paginated", () => {
         totalPages: Math.ceil(modelsToSave.length / params.limit),
       },
     });
-    const response = result.data as PaginatedResponse<TestModel>;
+    const response = result.data as PaginatedResponse<User>;
     expect(response.data).toHaveLength(1);
-    expect(response.data[0].lastUpdate).toEqual(modelsToSave[0].lastUpdate);
+    expect(response.data[0].displayName).toEqual(modelsToSave[0].displayName);
   });
 
   // *********** Error cases *********** //
 
   test("should return an error if offset is less than 1", async () => {
-    const params: PaginationParams<TestModel> = {
+    const params: PaginationParams<User> = {
       offset: -1,
       limit: 2,
-      orderBy: "name",
+      orderBy: "displayName",
       orderDirection: "asc",
     };
 
-    const result = await getDocsPaginated(
-      testCollection,
-      testConverter,
-      params,
-    );
+    const result = await getUsersPaginated(params);
 
     expect(result).toMatchObject({
       status: "error",
@@ -177,18 +159,14 @@ describe("Get docs paginated", () => {
   });
 
   test("should return an error if limit is less than 1", async () => {
-    const params: PaginationParams<TestModel> = {
+    const params: PaginationParams<User> = {
       offset: 0,
       limit: 0,
-      orderBy: "name",
+      orderBy: "displayName",
       orderDirection: "asc",
     };
 
-    const result = await getDocsPaginated(
-      testCollection,
-      testConverter,
-      params,
-    );
+    const result = await getUsersPaginated(params);
 
     expect(result).toMatchObject({
       status: "error",
@@ -199,45 +177,15 @@ describe("Get docs paginated", () => {
     });
   });
 
-  test("should return an empty array if no documents found", async () => {
-    const params: PaginationParams<TestModel> = {
-      offset: 0,
-      limit: 2,
-      orderBy: "name",
-      orderDirection: "asc",
-    };
-
-    const result = await getDocsPaginated(
-      "non-existing-collection",
-      testConverter,
-      params,
-    );
-
-    expect(result).toMatchObject({
-      status: "success",
-      data: {
-        data: [],
-        total: 0,
-        offset: 0,
-        limit: 2,
-        totalPages: 0,
-      },
-    });
-  });
-
   test("should return an error if offset is out of range", async () => {
-    const params: PaginationParams<TestModel> = {
+    const params: PaginationParams<User> = {
       offset: 10,
       limit: 2,
-      orderBy: "name",
+      orderBy: "displayName",
       orderDirection: "asc",
     };
 
-    const result = await getDocsPaginated(
-      testCollection,
-      testConverter,
-      params,
-    );
+    const result = await getUsersPaginated(params);
 
     expect(result).toMatchObject({
       status: "error",

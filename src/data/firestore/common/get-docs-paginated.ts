@@ -1,8 +1,8 @@
 import {
   type DocumentData,
   type FirestoreDataConverter,
-  getFirestore,
 } from "firebase-admin/firestore";
+import { firestore } from "~/firebase/server";
 import type {
   PaginatedResponse,
   PaginationParams,
@@ -65,7 +65,7 @@ const getDocsPaginated = async <
         },
       };
     }
-    const collectionRef = getFirestore().collection(collection);
+    const collectionRef = firestore.collection(collection);
     let query = collectionRef
       .withConverter(converter)
       .orderBy(params.orderBy, params.orderDirection);
