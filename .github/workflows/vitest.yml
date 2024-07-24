@@ -44,7 +44,7 @@ jobs:
           cache: "pnpm"
       - name: "Install Deps"
         run: pnpm i --frozen-lockfile
-      - name: Install Firebase tools
+      - name: "Install Firebase tools"
         run: pnpm install -g firebase-tools
       - name: "Test"
         run: pnpm run test --coverage.enabled true
