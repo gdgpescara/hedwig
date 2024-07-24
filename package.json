@@ -10,7 +10,7 @@
     "astro": "astro",
     "generate-translations": "npx astro-i18next generate",
     "prettier": "prettier --write . --plugin=prettier-plugin-astro",
-    "test": "vitest",
+    "test": "firebase emulators:exec --only firestore 'vitest --coverage'",
     "test:e2e": "playwright test",
     "emulators": "cd functions/ && npm run build && cd .. && firebase emulators:start --import=./firebase-data",
     "emulators:export": "firebase emulators:export ./firebase-data"
