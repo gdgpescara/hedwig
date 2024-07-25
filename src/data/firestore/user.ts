@@ -1,6 +1,9 @@
 import type { User } from "~/models/user/user.type";
 import type { FirestoreDocument } from "../model-document-mapper";
-import type { FirestoreDataConverter } from "firebase-admin/firestore";
+import type {
+  FirestoreDataConverter,
+  QueryDocumentSnapshot,
+} from "firebase-admin/firestore";
 import type { PaginationParams } from "~/models/pagination/pagination.type";
 import getDocsPaginated from "./common/get-docs-paginated";
 
@@ -15,7 +18,7 @@ const converter: FirestoreDataConverter<User, UserDoc> = {
       ...doc,
     };
   },
-  fromFirestore: (snapshot: FirebaseFirestore.QueryDocumentSnapshot): User => {
+  fromFirestore: (snapshot: QueryDocumentSnapshot): User => {
     const data = snapshot.data();
     return {
       id: snapshot.id,
