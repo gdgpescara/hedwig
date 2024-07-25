@@ -4,8 +4,9 @@ import type {
   PaginationParams,
 } from "~/models/pagination/pagination.type";
 import getDocsPaginated from "./get-docs-paginated";
-import { firestore } from "~/firebase/server";
-import { testConverter, type TestModel } from "./test-model";
+import { firestoreInstance } from "~/firebase/server";
+import { testConverter, type TestDoc, type TestModel } from "./test-model";
+import type { FirestoreDataConverter } from "firebase-admin/firestore";
 
 const testCollection = "get-paginated-test";
 
@@ -42,10 +43,13 @@ describe("Get docs paginated", () => {
   ];
 
   beforeEach(async () => {
-    const batch = firestore.batch();
+    const batch = firestoreInstance.batch();
     modelsToSave.forEach((model) => {
       batch.create(
-        firestore.collection(testCollection).withConverter(testConverter).doc(),
+        firestoreInstance
+          .collection(testCollection)
+          .withConverter(testConverter)
+          .doc(),
         model,
       );
     });
@@ -53,11 +57,11 @@ describe("Get docs paginated", () => {
   });
 
   afterEach(async () => {
-    const docs = await firestore
+    const docs = await firestoreInstance
       .collection(testCollection)
       .withConverter(testConverter)
       .listDocuments();
-    const batch = firestore.batch();
+    const batch = firestoreInstance.batch();
     docs.forEach((doc) => {
       batch.delete(doc);
     });
@@ -244,6 +248,36 @@ describe("Get docs paginated", () => {
       data: {
         code: `${testCollection}/search-error:invalid-offset`,
         message: `Offset is greater than the total number of documents`,
+      },
+    });
+  });
+
+  test("Should return an error if firestore error", async () => {
+    const fakeConverter: FirestoreDataConverter<TestModel, TestDoc> = {
+      toFirestore: (): TestDoc => {
+        throw new Error("Error converting to firestore");
+      },
+      fromFirestore: (): TestModel => {
+        throw new Error("Error converting from firestore");
+      },
+    };
+    const params: PaginationParams<TestModel> = {
+      offset: 6,
+      limit: 3,
+      orderBy: "name",
+      orderDirection: "desc",
+    };
+
+    const result = await getDocsPaginated(
+      testCollection,
+      fakeConverter,
+      params,
+    );
+    expect(result).toMatchObject({
+      status: "error",
+      data: {
+        code: `${testCollection}/search-error`,
+        message: `Error getting documents from ${testCollection}`,
       },
     });
   });

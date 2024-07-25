@@ -16,4 +16,4 @@ export const app =
     : activeApps[0];
 
 export const auth = getAuth(app);
-export const firestore = getFirestore(app);
+export const firestoreInstance = getFirestore(app);
