@@ -3,7 +3,7 @@ import type {
   PaginatedResponse,
   PaginationParams,
 } from "~/models/pagination/pagination.type";
-import { firestore } from "~/firebase/server";
+import { firestoreInstance } from "~/firebase/server";
 import { testConverter } from "./common/test-model";
 import type { User } from "~/models/user/user.type";
 import { getUsersPaginated } from "./user";
@@ -45,19 +45,19 @@ describe("Get docs paginated", () => {
   ];
 
   beforeEach(async () => {
-    const batch = firestore.batch();
+    const batch = firestoreInstance.batch();
     modelsToSave.forEach((model) => {
-      batch.create(firestore.collection(testCollection).doc(), model);
+      batch.create(firestoreInstance.collection(testCollection).doc(), model);
     });
     await batch.commit();
   });
 
   afterEach(async () => {
-    const docs = await firestore
+    const docs = await firestoreInstance
       .collection(testCollection)
       .withConverter(testConverter)
       .listDocuments();
-    const batch = firestore.batch();
+    const batch = firestoreInstance.batch();
     docs.forEach((doc) => {
       batch.delete(doc);
     });
