@@ -10,8 +10,8 @@
     "astro": "astro",
     "generate-translations": "npx astro-i18next generate",
     "prettier": "prettier --write . --plugin=prettier-plugin-astro",
-    "test": "firebase emulators:exec --only firestore 'vitest --coverage'",
-    "test:ui": "firebase emulators:exec --only firestore 'vitest --coverage --ui'",
+    "test": "firebase emulators:exec --only auth,firestore,storage 'vitest --coverage'",
+    "test:ui": "firebase emulators:exec --only auth,firestore,storage 'vitest --coverage --ui'",
     "test:e2e": "playwright test",
     "emulators": "cd functions/ && npm run build && cd .. && firebase emulators:start --import=./firebase-data",
     "emulators:export": "firebase emulators:export ./firebase-data"
@@ -19,12 +19,11 @@
   "dependencies": {
     "@astrojs/node": "^8.0.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/vercel": "^7.0.1",
+    "@google-cloud/storage": "^7.12.0",
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "astro": "^4.2.4",
-    "astro-firebase": "^0.0.3",
     "astro-i18next": "1.0.0-beta.21",
     "astro-icon": "^1.1.0",
     "clsx": "^2.1.0",
@@ -47,9 +46,9 @@
     "@types/google.maps": "^3.54.9",
     "@types/node": "^20.11.17",
     "@typescript-eslint/parser": "^6.21.0",
-    "@vitest/coverage-v8": "^1.2.2",
+    "@vitest/coverage-v8": "^2.0.4",
     "@vitest/ui": "^2.0.4",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.30.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
@@ -59,7 +58,7 @@
     "prettier-plugin-astro": "^0.12.3",
     "sass": "^1.69.5",
     "tailwind-merge": "^2.2.1",
-    "vitest": "^1.2.2",
+    "vitest": "^2.0.4",
     "vitest-github-actions-reporter": "^0.11.1"
   }
 }

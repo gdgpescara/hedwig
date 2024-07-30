@@ -1,0 +1,16 @@
+rules_version = '2';
+
+// Craft rules based on data in your Firestore database
+// allow write: if firestore.get(
+//    /databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin;
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /test/fails/{allPaths=**} {
+      allow read, write: if false;
+    }
+    match /test/success/{allPaths=**} {
+      allow write: if request.auth != null;
+      allow read: if true;
+    }
+  }
+}
