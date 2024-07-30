@@ -12,11 +12,10 @@ type PartnershipDoc = FirestoreDocument<Partnership>;
 
 const partnershipDataConverter: FirestoreDataConverter<Partnership, PartnershipDoc> = {
     toFirestore: (model: Partnership): PartnershipDoc => {
+    delete model.id;
+    delete model.partners
         return {
-            id: model.id,
-            name: model.name,
-            position: model.position,
-            partners: model.partners,
+            ...model,
         };
     },
     fromFirestore: (snapshot: QueryDocumentSnapshot): Partnership => {
