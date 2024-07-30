@@ -1,5 +1,5 @@
 type Partner = {
-    id: string;
+    id?: string;
     name: string;
     logo: string;
     position: number;
@@ -7,16 +7,11 @@ type Partner = {
 };
 
 type Partnership = {
-    id: string;
+    id?: string;
     name: string;
     position: number;
-    partners: Partner[];
+    partners?: Partner[];
 };
 
-type PartnershipDoc = {
-        id: string;
-        name: string;
-        position: number;
-};
 
-export type { Partner, Partnership, PartnershipDoc}
+export type { Partner, Partnership}
