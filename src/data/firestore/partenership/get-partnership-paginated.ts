@@ -1,5 +1,5 @@
 import type { PaginationParams } from "~/models/pagination/pagination.type";
-import type { Partner, Partnership } from "~/models/partnership/partnership.type";
+import type { Partnership } from "~/models/partnership/partnership.type";
 import getDocsPaginated from "../common/get-docs-paginated";
 import { partnerDataConverter, partnershipDataConverter } from "./models";
 import { getFirestore } from "firebase-admin/firestore";
