@@ -35,6 +35,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
+      - name: Cache firebase emulators
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/firebase/emulators
+          key: ${{ runner.os }}-firebase-emulators-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-firebase-emulators-
       - uses: pnpm/action-setup@v3
         with:
           version: 8.14.3
