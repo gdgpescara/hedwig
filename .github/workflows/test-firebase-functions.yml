@@ -29,6 +29,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
+      - name: Cache firebase emulators
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/firebase/emulators
+          key: ${{ runner.os }}-firebase-emulators-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-firebase-emulators-
+        continue-on-error: true
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
