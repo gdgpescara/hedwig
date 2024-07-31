@@ -15,10 +15,14 @@ if (sessionCookie) {
   //if the user is not an organizer redirect to 404.astro
   if (!user?.customClaims?.organizer) {
     Astro.response.status = 404;
-    Astro.response.statusText = "Not found";
+    Astro.redirect("/404");
   }
+} else {
+  Astro.response.status = 404;
+  Astro.redirect("/404");
 }
 ---
+
 <!-- This is the backoffice page, to add the link to this component 
 use {user?.customClaims?.organizer === true && <a href="/backoffice">Backoffice</a>}
 in the page where the link should be visible -->

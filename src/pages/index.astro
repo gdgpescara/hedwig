@@ -32,6 +32,7 @@ if (sessionCookie) {
     <main role="main">
       <h1>Welcome to Hedwig!</h1>
       <p>We are happy to see you here</p>
+      <a href="/signin">Login</a>
       {user && (
         <h2>User logged: {user.displayName}</h2>
         <form action="/api/auth/signout">
