@@ -14,12 +14,20 @@ if (sessionCookie) {
   user = await auth.getUser(decodedCookie.uid);
   //if the user is not an organizer redirect to 404.astro
   if (!user?.customClaims?.organizer) {
+    try {
     Astro.response.status = 404;
-    Astro.redirect("/404");
+    throw Astro.redirect("/404");
+  } catch (e) {
+    console.log(e);
+  }
   }
 } else {
-  Astro.response.status = 404;
-  Astro.redirect("/404");
+  try {
+    Astro.response.status = 404;
+    throw Astro.redirect("/404");
+  } catch (e) {
+    console.log(e);
+  }
 }
 ---
 
