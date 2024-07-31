@@ -15,11 +15,11 @@ if (sessionCookie) {
   //if the user is not an organizer redirect to 404.astro
   if (!user?.customClaims?.organizer) {
     try {
-    Astro.response.status = 404;
-    throw Astro.redirect("/404");
-  } catch (e) {
-    console.log(e);
-  }
+      Astro.response.status = 404;
+      throw Astro.redirect("/404");
+    } catch (e) {
+      console.log(e);
+    }
   }
 } else {
   try {
