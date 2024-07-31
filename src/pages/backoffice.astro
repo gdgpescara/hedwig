@@ -7,27 +7,22 @@ import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
 changeLanguage("en");
 const auth = getAuth(app);
 const sessionCookie = Astro.cookies.get("session")?.value;
-let user: UserRecord | null = null;
 
-if (sessionCookie) {
+if (!sessionCookie) {
+  Astro.response.status = 404;
+  return Astro.redirect("/404");
+}
+try {
   const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-  user = await auth.getUser(decodedCookie.uid);
+  const user: UserRecord | null = await auth.getUser(decodedCookie.uid);
   //if the user is not an organizer redirect to 404.astro
   if (!user?.customClaims?.organizer) {
-    try {
-      Astro.response.status = 404;
-      throw Astro.redirect("/404");
-    } catch (e) {
-      console.log(e);
-    }
-  }
-} else {
-  try {
     Astro.response.status = 404;
-    throw Astro.redirect("/404");
-  } catch (e) {
-    console.log(e);
+    return Astro.redirect("/404");
   }
+} catch (error) {
+  Astro.response.status = 404;
+  return Astro.redirect("/404");
 }
 ---
 
