@@ -6,15 +6,16 @@ type PartnershipDoc = FirestoreDocument<Partnership>;
 type PartnerDoc = FirestoreDocument<Partner>;
 
 const partnerDataConverter: FirestoreDataConverter<Partner, PartnerDoc> = {
+    toFirestore: (model: Partner) => {
+        delete model.id;
+        return { ...model };
+    },
+    
     fromFirestore: (snapshot: QueryDocumentSnapshot) => {
         const data = snapshot.data() as PartnerDoc;
         data.id = snapshot.id;
 
         return { ...data };
-    },
-    toFirestore: (model: Partner) => {
-        delete model.id;
-        return { ...model };
     }
 }
 

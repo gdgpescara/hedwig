@@ -3,18 +3,18 @@ import type { Partnership } from "~/models/partnership/partnership.type";
 import getDocsPaginated from "../common/get-docs-paginated";
 import { partnerDataConverter, partnershipDataConverter } from "./models";
 import { getFirestore } from "firebase-admin/firestore";
+import { firestoreInstance } from "~/firebase/server";
 
 const collection = "partnerships" as const;
 
 
 const getPartnershipsPaginated = async (params: PaginationParams<Partnership>) => {
     const result = await getDocsPaginated(collection, partnershipDataConverter, params);
-    const db = getFirestore();
 
     if (result.status == "success") {
         result.data.data = await Promise.all(
             result.data.data.map(async (p) => {
-                const snapshot = await db.collection(`${collection}/${p.id}/partners`)
+                const snapshot = await firestoreInstance.collection(`${collection}/${p.id}/partners`)
                   .withConverter(partnerDataConverter)
                   .orderBy("position", "asc")
                   .get();
