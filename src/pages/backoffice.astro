@@ -1,29 +1,8 @@
 ---
-import { UserRecord, getAuth } from "firebase-admin/auth";
-import { app } from "../firebase/server";
 import i18next, { changeLanguage } from "i18next";
 import BackofficeLayout from "~/backoffice-layout/BackofficeLayout.astro";
 
 changeLanguage("en");
-const auth = getAuth(app);
-const sessionCookie = Astro.cookies.get("session")?.value;
-
-if (!sessionCookie) {
-  Astro.response.status = 404;
-  return Astro.redirect("/404");
-}
-try {
-  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-  const user: UserRecord | null = await auth.getUser(decodedCookie.uid);
-  //if the user is not an organizer redirect to 404.astro
-  if (!user?.customClaims?.organizer) {
-    Astro.response.status = 404;
-    return Astro.redirect("/404");
-  }
-} catch (error) {
-  Astro.response.status = 404;
-  return Astro.redirect("/404");
-}
 ---
 
 <!-- This is the backoffice page, to add the link to this component 
