@@ -64,6 +64,7 @@ jobs:
         with:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
           envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
           file_name: .env
           directory: functions
@@ -72,6 +73,7 @@ jobs:
         with:
           envkey_PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
           envkey_PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          envkey_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
           envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
           file_name: .env
       - run: cd functions && pnpm run build

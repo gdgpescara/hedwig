@@ -22,6 +22,8 @@ jobs:
     env:
       PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
       PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      PUBLIC_FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
+
     steps:
       - uses: actions/github-script@v7
         id: pr

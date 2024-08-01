@@ -15,6 +15,7 @@ jobs:
     env:
       PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
       PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      PUBLIC_FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
 
     environment: demo
     steps:
@@ -57,7 +58,7 @@ jobs:
       - run: pnpm run build
       - name: Build and Push Container
         run: |-
-          docker build --build-arg FIREBASE_CONFIG_ARG='${{ secrets.FIREBASE_CONFIG }}' --build-arg FIREBASE_SERVICE_ACCOUNT_ARG='${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' -t "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}" ./
+          docker build --build-arg FIREBASE_CONFIG_ARG='${{ secrets.FIREBASE_CONFIG }}' --build-arg FIREBASE_SERVICE_ACCOUNT_ARG='${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' --build-arg FIREBASE_STORAGE_BUCKET_ARG='${{secrets.FIREBASE_STORAGE_BUCKET}}' -t "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}" ./
           docker push "${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPOSITORY }}/${{ vars.SERVICE }}:${{ github.sha }}"
       - name: Deploy to Cloud Run
         id: deploy
