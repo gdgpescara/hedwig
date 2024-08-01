@@ -1008,6 +1008,9 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
+  '@polka/url@1.0.0-next.23':
+    resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}
+
   '@polka/url@1.0.0-next.25':
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
 
@@ -6337,6 +6340,8 @@ snapshots:
   '@playwright/test@1.41.2':
     dependencies:
       playwright: 1.41.2
+
+  '@polka/url@1.0.0-next.23': {}
 
   '@polka/url@1.0.0-next.25': {}
 
