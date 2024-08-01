@@ -1,23 +1,34 @@
-import { getAuth } from "firebase-admin/auth";
-import { CustomClaims, Roles } from "../models/user.types";
+import {
+  PaginationParams,
+  PaginatedResponse,
+} from "../api/http/pagination/pagination.type";
+import getDocsPaginated from "./generic/get-docs-paginated";
+import { User, UserDoc } from "../api/http/user/user.type";
 
-const userExists = async (uid: string) => {
-  try {
-    await getAuth().getUser(uid);
-    return true;
-  } catch (error) {
-    return false;
-  }
+const collection = "users";
+
+const userConverter = {
+  toFirestore: (user: User): UserDoc => {
+    return user as UserDoc;
+  },
+  fromFirestore: (snapshot: FirebaseFirestore.QueryDocumentSnapshot): User => {
+    const data = snapshot.data();
+    return {
+      id: snapshot.id,
+      displayName: data.displayName,
+      email: data.email,
+    };
+  },
 };
 
-const updateUserRoles = async (uid: string, roles: CustomClaims) => {
-  const rolesKeys = Object.keys(roles) as Roles[];
-  for (const role of rolesKeys) {
-    if (!roles[role]) {
-      delete roles[role];
-    }
-  }
-  await getAuth().setCustomUserClaims(uid, roles);
+const getUsers = async (
+  params: PaginationParams,
+): Promise<PaginatedResponse<User>> => {
+  return getDocsPaginated<User, UserDoc, PaginationParams>(
+    collection,
+    userConverter,
+    params,
+  );
 };
 
-export { userExists, updateUserRoles };
+export { getUsers };

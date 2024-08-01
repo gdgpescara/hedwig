@@ -10,7 +10,8 @@
     "astro": "astro",
     "generate-translations": "npx astro-i18next generate",
     "prettier": "prettier --write . --plugin=prettier-plugin-astro",
-    "test": "vitest",
+    "test": "firebase emulators:exec --only firestore 'vitest --coverage'",
+    "test:ui": "firebase emulators:exec --only firestore 'vitest --coverage --ui'",
     "test:e2e": "playwright test",
     "emulators": "cd functions/ && npm run build && cd .. && firebase emulators:start --import=./firebase-data",
     "emulators:export": "firebase emulators:export ./firebase-data"
@@ -47,6 +48,7 @@
     "@types/node": "^20.11.17",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitest/coverage-v8": "^1.2.2",
+    "@vitest/ui": "^2.0.4",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.30.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
