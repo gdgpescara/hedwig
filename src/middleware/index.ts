@@ -2,7 +2,7 @@ import { defineMiddlewareRouter } from './router'
 import { manageOrganizerAuth } from './utils';
 
 export const onRequest = defineMiddlewareRouter({
-    '/backoffice': (context, next) => {
+    '/backoffice*': (context, next) => {
             const sessionCookie = context.cookies.get("session")?.value;
 
             if (!sessionCookie) {
