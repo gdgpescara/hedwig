@@ -44,7 +44,7 @@ jobs:
             ${{ runner.os }}-firebase-emulators-
       - uses: pnpm/action-setup@v3
         with:
-          version: 8.14.3
+          version: 9
       - name: "Install Node"
         uses: actions/setup-node@v4
         with:
