@@ -3,7 +3,6 @@ import { getDownloadURL } from "firebase-admin/storage"
 import { bucket } from "~/firebase/server"
 import uploadFile from "~/data/storage/common/upload-file.ts";
 
-// Mock delle dipendenze
 vi.mock('firebase-admin/storage', () => ({
   getDownloadURL: vi.fn()
 }))
@@ -14,7 +13,6 @@ vi.mock('~/firebase/server', () => ({
   }
 }))
 
-// Definizione dei tipi per i parametri di save
 type SaveOptions = {
   public: boolean;
   private: boolean;
@@ -28,6 +26,8 @@ type SaveOptions = {
   validation: string;
 }
 
+
+// eslint-disable-next-line no-unused-vars
 type SaveCallback = (err: Error | null) => void
 
 type MockFileRef = {
@@ -115,7 +115,7 @@ describe('uploadFile', () => {
     const destination = 'uploads/test.txt'
     const saveError = new Error('Save error')
 
-    mockFileRef.save.mockImplementation((data: Buffer, options: SaveOptions, callback: SaveCallback) => {
+    mockFileRef.save.mockImplementation((_: Buffer, __: SaveOptions, callback: SaveCallback) => {
       callback(saveError)
     })
 
@@ -136,7 +136,7 @@ describe('uploadFile', () => {
     const destination = 'uploads/test.txt'
     const downloadError = new Error('Download URL error')
 
-    mockFileRef.save.mockImplementation((data: Buffer, options: SaveOptions, callback: SaveCallback) => {
+    mockFileRef.save.mockImplementation((_: Buffer, __: SaveOptions, callback: SaveCallback) => {
       callback(null)
     })
     ;(getDownloadURL as any).mockRejectedValue(downloadError)
