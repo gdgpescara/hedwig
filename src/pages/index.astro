@@ -2,7 +2,6 @@
 import i18next, { changeLanguage } from "i18next";
 import { UserRecord, getAuth } from "firebase-admin/auth";
 import { app } from "../firebase/server";
-import { Astro } from "astro/env";
 
 changeLanguage("en");
 
@@ -49,17 +48,6 @@ try {
           </>
         )
       }
-      <br />
-      <hr />
-      <br />
-      <form
-        action="/api/upload-file"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <input type="file" name="file" />
-        <button type="submit">Upload</button>
-      </form>
     </main>
   </body>
 </html>
