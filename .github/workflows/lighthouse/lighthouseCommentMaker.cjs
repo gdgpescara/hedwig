@@ -68,7 +68,9 @@ function makeComment(lighthouseOutputs) {
         metrics["seo"].push(summary.seo);
     });
 
-  let comment = `## ⚡️🏠 Lighthouse report
+  let comment = `
+  
+  ## ⚡️🏠 Lighthouse report
 
 We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
 

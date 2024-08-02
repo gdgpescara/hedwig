@@ -4,6 +4,8 @@ permissions:
   pull-requests: write
 
 on:
+  push:
+    branches: [ "INFRA16" ]
   pull_request_target:
     branches: [main]
 
@@ -63,7 +65,7 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run build
       - run: pnpm run preview & npx wait-on http://localhost:4321
-      - name: Run Lighthouse
+      - name: Run Lighthouse Mobile
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v11
         with:
@@ -73,7 +75,7 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 5
-      - name: Format Lighthouse score
+      - name: Format Lighthouse Mobile score
         uses: actions/github-script@v7
         id: format_lighthouse_score
         with:
@@ -88,6 +90,31 @@ jobs:
 
             const prComment = lighthouseCommentMaker({ lighthouseOutputs });
             core.setOutput("pr_comment", prComment);
+      - name: Run Lighthouse Desktop
+        id: lighthouse_desktop_audit
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            http://localhost:4321
+          configPath: ./.github/workflows/lighthouse/lighthouserc-desktop.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 5
+      - name: Format Lighthouse Desktop score
+        uses: actions/github-script@v7
+        id: format_lighthouse_desktop_score
+        with:
+          script: |
+            const lighthouseCommentMaker = require('./.github/workflows/lighthouse/lighthouseCommentMaker.cjs');
+
+            const lighthouseOutputs = {
+              manifest: ${{ steps.lighthouse_desktop_audit.outputs.manifest }},
+              links: ${{ steps.lighthouse_desktop_audit.outputs.links }},
+              assertionResults: ${{ steps.lighthouse_desktop_audit.outputs.assertionResults }}
+            };
+
+            const prComment = lighthouseCommentMaker({ lighthouseOutputs });
+            core.setOutput("pr_comment", prComment);
       - uses: jwalton/gh-find-current-pr@v1
         id: pr_number_finder
       - name: Add Lighthouse stats as comment
@@ -96,4 +123,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           header: lighthouse
           number: ${{ github.event.number || steps.pr_number_finder.outputs.pr }}
-          message: ${{ steps.format_lighthouse_score.outputs.pr_comment }}
+          message: Mobile score ${{ steps.format_lighthouse_score.outputs.pr_comment }} Dekstop score ${{ steps.format_lighthouse_desktop_score.outputs.pr_comment }}
