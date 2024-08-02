@@ -125,9 +125,7 @@ jobs:
           header: lighthouse
           number: ${{ github.event.number || steps.pr_number_finder.outputs.pr }}
           message: |
-            ```
             ## Mobile score 
             ${{ steps.format_lighthouse_score.outputs.pr_comment }} 
             ## Desktop score 
             ${{ steps.format_lighthouse_desktop_score.outputs.pr_comment }}
-            ```
