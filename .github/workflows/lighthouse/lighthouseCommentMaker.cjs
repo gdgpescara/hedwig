@@ -70,7 +70,7 @@ function makeComment(lighthouseOutputs) {
 
   let comment = `
   
-  ## ⚡️🏠 Lighthouse report
+  ### ⚡️🏠 Lighthouse report
 
 We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
 
