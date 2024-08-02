@@ -1,3 +1,5 @@
+import type { GetAllDocumentsParam } from "~/models/get-all/get-all-document.type.ts";
+
 type PaginatedResponse<T> = {
   data: T[];
   total: number;
@@ -6,23 +8,9 @@ type PaginatedResponse<T> = {
   totalPages: number;
 };
 
-type PaginationParams<T> = {
-  orderBy: FlattenKeys<T>;
-  orderDirection: OrderDirection;
+type PaginationParams<T> = GetAllDocumentsParam<T> & {
   offset: number;
   limit: number;
 };
 
-type OrderDirection = "asc" | "desc";
-
-type FlattenKeys<T> = T extends object
-  ? {
-      [K in keyof T]-?: T[K] extends Date
-        ? `${K & string}`
-        : K extends string | number | boolean
-          ? `${K}` | `${K & string}.${FlattenKeys<T[K]>}`
-          : never;
-    }[keyof T]
-  : never;
-
-export type { PaginatedResponse, PaginationParams, OrderDirection };
+export type { PaginatedResponse, PaginationParams };
