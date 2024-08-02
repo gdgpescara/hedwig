@@ -100,7 +100,7 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 5
-          uploadExtraArgs: "--reportFilenamePattern='%%HOSTNAME%%-%%PATHNAME%%-%%DATETIME%%.report-desktop.%%EXTENSION%%'
+          uploadExtraArgs: "--reportFilenamePattern='%%HOSTNAME%%-%%PATHNAME%%-%%DATETIME%%.report-desktop.%%EXTENSION%%'"
       - name: Format Lighthouse Desktop score
         uses: actions/github-script@v7
         id: format_lighthouse_desktop_score
