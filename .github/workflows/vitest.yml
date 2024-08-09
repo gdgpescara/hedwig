@@ -64,7 +64,7 @@ jobs:
           node-version: 20.x
           cache: "pnpm"
       - run: pnpm install -g firebase-tools
-      - run: firebase use ${{ vars.PROJECT_ID }} --debug
+      - run: firebase use ${{ vars.PROJECT_ID }}
       - name: "Install Dependencies"
         run: pnpm i --frozen-lockfile
       - name: "Install Firebase"
@@ -78,4 +78,4 @@ jobs:
           path: coverage
        - name: Remove credentials file
         if: success() || failure()
-        run: rm credentials.json
+        run: rm google-application-credentials.json
