@@ -21,6 +21,7 @@ jobs:
       PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
       PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
       PUBLIC_FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
+      GOOGLE_APPLICATION_CREDENTIALS: google-application-credentials.json
 
     permissions:
       contents: write
@@ -50,6 +51,10 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+      - name: Prepare Google Application Credentials
+        shell: bash
+        run: |
+          echo "${{ secrets.GCP_CREDENTIALS }}" > "google-application-credentials.json"
       - uses: pnpm/action-setup@v3
         with:
           version: 9
