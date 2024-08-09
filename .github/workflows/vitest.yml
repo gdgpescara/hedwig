@@ -19,6 +19,7 @@ jobs:
       PUBLIC_FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
       PUBLIC_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
       PUBLIC_FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
+      GOOGLE_APPLICATION_CREDENTIALS: google-application-credentials.json
 
     permissions:
       contents: write
@@ -43,6 +44,10 @@ jobs:
           key: ${{ runner.os }}-firebase-emulators-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-firebase-emulators-
+      - name: Prepare Google Application Credentials
+        shell: bash
+        run: |
+          echo "${{ secrets.GCP_CREDENTIALS }}" > "google-application-credentials.json"
       - uses: pnpm/action-setup@v3
         with:
           version: 9
@@ -51,15 +56,20 @@ jobs:
         with:
           node-version: 20.x
           cache: "pnpm"
+      - run: pnpm install -g firebase-tools
+      - run: firebase use ${{ vars.PROJECT_ID }}
       - name: "Install Dependencies"
         run: pnpm i --frozen-lockfile
       - name: "Install Firebase"
         run: pnpm install -g firebase-tools
       - name: "Test"
         run: pnpm run test
-
       - name: "Upload Coverage"
         uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: coverage
+      - name: Remove credentials file
+        if: success() || failure()
+        run: |
+          rm google-application-credentials.json

@@ -12,6 +12,8 @@ jobs:
       id-token: 'write'
 
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_APPLICATION_CREDENTIALS: google-application-credentials.json
 
     environment: demo
     steps:
@@ -56,6 +58,14 @@ jobs:
           envkey_PUBLIC_FIREBASE_FUNCTIONS_REGION: ${{ vars.REGION }}
           file_name: .env
       - run: cd functions && pnpm run build
+      - name: Prepare Google Application Credentials
+        shell: bash
+        run: |
+          echo "${{ secrets.GCP_CREDENTIALS }}" > "google-application-credentials.json"
       - run: pnpm install -g firebase-tools
-      - run: firebase use ${{ vars.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
-      - run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
+      - run: firebase use ${{ vars.PROJECT_ID }} 
+      - run: firebase deploy --only functions 
+      - name: Remove credentials file
+        if: success() || failure()
+        run: |
+          rm google-application-credentials.json

@@ -16,6 +16,9 @@ jobs:
     needs: authorize
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_APPLICATION_CREDENTIALS: google-application-credentials.json
+
     steps:
       - uses: actions/github-script@v7
         id: pr
@@ -58,7 +61,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - run: cd functions && pnpm install --no-frozen-lockfile
+      - name: Prepare Google Application Credentials
+        shell: bash
+        run: |
+          echo "${{ secrets.GCP_CREDENTIALS }}" > "google-application-credentials.json"
       - run: pnpm install -g firebase-tools
+      - run: firebase use ${{ vars.PROJECT_ID }}
       - name: Make envfile for functions
         uses: SpicyPizza/create-envfile@v2.0
         with:
@@ -78,3 +86,7 @@ jobs:
           file_name: .env
       - run: cd functions && pnpm run build
       - run: cd functions && pnpm run test
+      - name: Remove credentials file
+        if: success() || failure()
+        run: |
+          rm google-application-credentials.json
