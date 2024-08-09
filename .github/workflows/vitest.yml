@@ -1,8 +1,6 @@
 name: "Test"
 
 on:
-  push:
-    branches: ["remove-firebaserc"]
   pull_request_target:
     branches: [main]
 
@@ -27,18 +25,18 @@ jobs:
       contents: write
 
     steps:
-      #- uses: actions/github-script@v7
-      #  id: pr
-      #  with:
-      #    script: |
-      #      const { data: pullRequest } = await github.rest.pulls.get({
-      #        ...context.repo,
-      #        pull_number: context.payload.pull_request.number,
-      #      });
-      #      return pullRequest
+      - uses: actions/github-script@v7
+        id: pr
+        with:
+          script: |
+            const { data: pullRequest } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            return pullRequest
       - uses: actions/checkout@v4
-      #  with:
-      #    ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
+        with:
+          ref: ${{fromJSON(steps.pr.outputs.result).merge_commit_sha}}
       - name: Cache firebase emulators
         uses: actions/cache@v4
         with:
@@ -46,11 +44,6 @@ jobs:
           key: ${{ runner.os }}-firebase-emulators-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-firebase-emulators-
-      - name: Google Auth
-        id: auth
-        uses: 'google-github-actions/auth@v2'
-        with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       - name: Prepare Google Application Credentials
         shell: bash
         run: |
@@ -64,7 +57,7 @@ jobs:
           node-version: 20.x
           cache: "pnpm"
       - run: pnpm install -g firebase-tools
-      - run: firebase use ${{ vars.PROJECT_ID }} --debug
+      - run: firebase use ${{ vars.PROJECT_ID }}
       - name: "Install Dependencies"
         run: pnpm i --frozen-lockfile
       - name: "Install Firebase"
