@@ -3,7 +3,7 @@ import type { BaseModel } from "../base-model";
 type User = BaseModel & {
   displayName: string;
   email: string;
-  customClaims: CustomClaims;
+  customClaims?: CustomClaims;
 };
 
 type CustomClaims = {

@@ -1,8 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { createDocument } from "./create";
 import { getDocumentById } from "./get-by-id";
 import { testConverter, type TestDoc, type TestModel } from "./test-model";
 import type { FirestoreDataConverter } from "firebase-admin/firestore";
+import createDocument from "./create";
+import { defaultLanguage } from "~/constants/i18n";
 
 const testCollection = "get-by-id-test";
 
@@ -17,6 +18,7 @@ describe("Get by id", () => {
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
 
     const get = await getDocumentById(
@@ -84,6 +86,7 @@ describe("Get by id", () => {
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
 
     const fakeConverter: FirestoreDataConverter<TestModel, TestDoc> = {

@@ -1,4 +1,5 @@
 import type { GetAllDocumentsParam } from "~/models/get-all/get-all-document.type.ts";
+import type {LocalizationParam} from "~/models/localization/localization.type.ts";
 
 type PaginatedResponse<T> = {
   data: T[];
@@ -8,7 +9,7 @@ type PaginatedResponse<T> = {
   totalPages: number;
 };
 
-type PaginationParams<T> = GetAllDocumentsParam<T> & {
+type PaginationParams<T> = GetAllDocumentsParam<T> & LocalizationParam & {
   offset: number;
   limit: number;
 };

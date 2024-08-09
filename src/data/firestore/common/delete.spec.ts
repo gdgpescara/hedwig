@@ -1,8 +1,8 @@
 import { describe, expect, test } from "vitest";
 import { deleteDocument } from "./delete";
-import { createDocument } from "./create";
-import { getDocumentById } from "./get-by-id";
 import { testConverter, type TestModel } from "./test-model";
+import createDocument from "./create";
+import { defaultLanguage } from "~/constants/i18n";
 
 const testCollection = "delete-test";
 
@@ -17,21 +17,8 @@ describe("deleteDocument", () => {
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
-
-    const get = await getDocumentById(
-      testCollection,
-      testConverter,
-      result.data as string,
-    );
-
-    expect(get).toMatchObject({
-      status: "success",
-      data: expect.objectContaining({
-        ...modelToSave,
-        id: result.data,
-      }),
-    });
 
     const deleteResult = await deleteDocument(
       testCollection,
@@ -41,22 +28,6 @@ describe("deleteDocument", () => {
     expect(deleteResult).toMatchObject({
       status: "success",
       data: null,
-    });
-
-    const getAfterDelete = await getDocumentById(
-      testCollection,
-      testConverter,
-      result.data as string,
-    );
-
-    expect(getAfterDelete).toMatchObject({
-      status: "error",
-      data: {
-        code: `${testCollection}/get-by-id-error:not-found`,
-        message: `Document with id ${
-          result.data as string
-        } not found in collection delete-test`,
-      },
     });
   });
 

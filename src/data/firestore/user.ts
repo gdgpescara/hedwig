@@ -1,11 +1,11 @@
 import type { User } from "~/models/user/user.type";
-import type { FirestoreDocument } from "../model-document-mapper";
 import type {
   FirestoreDataConverter,
   QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
 import type { PaginationParams } from "~/models/pagination/pagination.type";
 import getDocsPaginated from "./common/get-docs-paginated";
+import type { FirestoreDocument } from "~/data/firestore/docs/model-document-mapper.ts";
 
 const collection = "users" as const;
 

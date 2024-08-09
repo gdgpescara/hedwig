@@ -1,9 +1,10 @@
 import { test, describe, expect } from "vitest";
 import { updateDocument } from "./update";
 import { getDocumentById } from "./get-by-id";
-import { createDocument } from "./create";
 import { testConverter, type TestDoc, type TestModel } from "./test-model";
 import type { FirestoreDataConverter } from "firebase-admin/firestore";
+import createDocument from "./create";
+import { defaultLanguage } from "~/constants/i18n";
 
 const testCollection = "update-test";
 
@@ -18,6 +19,7 @@ describe("Update a new document", () => {
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
 
     const modelToUpdate = {
@@ -88,6 +90,7 @@ describe("Update a new document", () => {
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
 
     const modelToUpdate = {

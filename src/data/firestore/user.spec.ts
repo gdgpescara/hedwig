@@ -15,7 +15,6 @@ describe("Get docs paginated", () => {
     {
       displayName: "Name 1",
       email: "email@email.it",
-      organizer: true,
     },
     {
       displayName: "Name 2",
@@ -24,7 +23,9 @@ describe("Get docs paginated", () => {
     {
       displayName: "Name 3",
       email: "email3@email.it",
-      organizer: true,
+      customClaims: {
+        organizer: true,
+      },
     },
     {
       displayName: "Name 4",
