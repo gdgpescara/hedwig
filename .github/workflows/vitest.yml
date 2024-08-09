@@ -54,7 +54,7 @@ jobs:
       - name: Prepare Google Application Credentials
         shell: bash
         run: |
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 --decode > "google-application-credentials.json"
+          echo "${{ secrets.GOOGLE_APPLICATIONGCP_CREDENTIALS_CREDENTIALS }}" > "google-application-credentials.json"
       - uses: pnpm/action-setup@v3
         with:
           version: 9
