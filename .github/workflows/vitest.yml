@@ -76,6 +76,7 @@ jobs:
         with:
           name: coverage
           path: coverage
-       - name: Remove credentials file
+      - name: Remove credentials file
         if: success() || failure()
-        run: rm google-application-credentials.json
+        run: |
+          rm google-application-credentials.json
