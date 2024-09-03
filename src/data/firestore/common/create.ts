@@ -1,12 +1,10 @@
-import type {
-  DocumentData,
-  FirestoreDataConverter,
-} from "firebase-admin/firestore";
 import { firestoreInstance } from "~/firebase/server";
 import type { BaseModel } from "~/models/base-model";
 import type { ServerResponse } from "~/models/server-response/server-response.type";
+import { defaultLanguage, type SupportedLanguages } from "~/constants/i18n";
+import type {DocumentData, FirestoreDataConverter} from "firebase-admin/firestore";
 
-export const createDocument = async <
+const createDocument = async <
   M extends BaseModel,
   D extends DocumentData,
   C extends string,
@@ -14,13 +12,25 @@ export const createDocument = async <
   collection: C,
   converter: FirestoreDataConverter<M, D>,
   model: M,
+  currentLanguage: SupportedLanguages,
 ): Promise<
   ServerResponse<
     string,
-    `${C}/create-error` | `${C}/create-error:id-is-present`
+    | `${C}/create-error`
+    | `${C}/create-error:id-is-present`
+    | `${C}/create-error:default-language-is-required`
   >
 > => {
   try {
+    if (currentLanguage !== defaultLanguage) {
+      return {
+        status: "error",
+        data: {
+          code: `${collection}/create-error:default-language-is-required`,
+          message: "Default language is required",
+        },
+      };
+    }
     if (model.id) {
       return {
         status: "error",
@@ -49,3 +59,5 @@ export const createDocument = async <
     };
   }
 };
+
+export default createDocument;

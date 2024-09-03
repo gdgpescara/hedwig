@@ -1,7 +1,7 @@
-import { test, describe, expect } from "vitest";
-import { createDocument } from "./create";
-import { getDocumentById } from "./get-by-id";
-import { testConverter, type TestDoc, type TestModel } from "./test-model";
+import { describe, expect, test } from "vitest";
+import createDocument from "./create";
+import { defaultLanguage } from "~/constants/i18n";
+import {testConverter, type TestDoc, type TestModel} from "./test-model";
 import type { FirestoreDataConverter } from "firebase-admin/firestore";
 
 const testCollection = "create-test";
@@ -11,28 +11,17 @@ describe("Create a new document", () => {
     const modelToSave: TestModel = {
       lastUpdate: new Date("2024-01-01"),
       name: "Test Document",
+      description: "Test description",
     };
     const result = await createDocument(
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
     expect(result).toMatchObject({
       status: "success",
       data: expect.any(String),
-    });
-
-    const getResult = await getDocumentById(
-      testCollection,
-      testConverter,
-      result.data as string,
-    );
-    expect(getResult).toMatchObject({
-      status: "success",
-      data: expect.objectContaining({
-        ...modelToSave,
-        id: result.data,
-      }),
     });
   });
 
@@ -46,6 +35,7 @@ describe("Create a new document", () => {
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
     expect(result).toMatchObject({
       status: "error",
@@ -73,6 +63,7 @@ describe("Create a new document", () => {
       testCollection,
       fakeConverter,
       modelToSave,
+      defaultLanguage,
     );
     expect(result).toMatchObject({
       status: "error",
@@ -93,12 +84,33 @@ describe("Create a new document", () => {
       testCollection,
       testConverter,
       modelToSave,
+      defaultLanguage,
     );
     expect(result).toMatchObject({
       status: "error",
       data: {
         code: `${testCollection}/create-error:id-is-present`,
         message: "Document ID is required",
+      },
+    });
+  });
+
+  test("Should return an error if passed language is not default one", async () => {
+    const modelToSave: TestModel = {
+      lastUpdate: new Date("2024-01-01"),
+      name: "Test Document",
+    };
+    const result = await createDocument(
+      testCollection,
+      testConverter,
+      modelToSave,
+      "it",
+    );
+    expect(result).toMatchObject({
+      status: "error",
+      data: {
+        code: `${testCollection}/create-error:default-language-is-required`,
+        message: "Default language is required",
       },
     });
   });

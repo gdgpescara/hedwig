@@ -1,31 +1,37 @@
+import type {LocalizedFirestoreDocument} from "~/data/firestore/docs/model-document-mapper";
+import {type FirestoreDataConverter, type QueryDocumentSnapshot, Timestamp} from "firebase-admin/firestore";
 import {
-  QueryDocumentSnapshot,
-  Timestamp,
-  type FirestoreDataConverter,
-} from "firebase-admin/firestore";
-import type { FirestoreDocument } from "~/data/model-document-mapper";
+  localizedFieldFromFirestore,
+  localizedFieldToFirestore
+} from "~/data/firestore/docs/converters/localization-converter.ts";
+import omit from "~/data/firestore/docs/utils.ts";
 
 export type TestModel = {
   id?: string;
   name: string;
+  description?: string;
   lastUpdate: Date;
 };
 
-export type TestDoc = FirestoreDocument<TestModel>;
+type TestDocLocalizedFields = "description";
+
+export type TestDoc = LocalizedFirestoreDocument<TestModel, TestDocLocalizedFields>
 
 export const testConverter: FirestoreDataConverter<TestModel, TestDoc> = {
-  toFirestore: (company: TestModel): TestDoc => {
-    return {
-      ...company,
-      lastUpdate: Timestamp.fromDate(company.lastUpdate),
+  toFirestore: (model: TestModel): TestDoc => {
+    const rest = omit(model, ["id", "description"]);
+    const doc: TestDoc = {
+      ...rest,
+      lastUpdate: Timestamp.fromDate(model.lastUpdate),
     };
+    return localizedFieldToFirestore(model, "en", ["description"], doc);
   },
   fromFirestore: (snapshot: QueryDocumentSnapshot): TestModel => {
     const data = snapshot.data();
+    const model = localizedFieldFromFirestore<TestModel, TestDocLocalizedFields>(snapshot, "en", ["description"]);
     return {
-      id: snapshot.id,
-      ...data,
+      ...model,
       lastUpdate: data.lastUpdate.toDate(),
-    } as TestModel;
+    };
   },
 };
