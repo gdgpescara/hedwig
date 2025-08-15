@@ -17,7 +17,7 @@
     "emulators:export": "firebase emulators:export ./firebase-data"
   },
   "dependencies": {
-    "@astrojs/node": "^8.0.0",
+    "@astrojs/node": "^9.4.1",
     "@astrojs/tailwind": "^5.1.0",
     "@google-cloud/storage": "^7.12.0",
     "@tailwindcss/typography": "^0.5.10",
